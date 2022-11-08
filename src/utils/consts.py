@@ -9,7 +9,7 @@ REPO_DIR = os.path.join(
 )
 SRC_DIR = os.path.join(
     REPO_DIR,
-    "SRC",
+    "src",
 )
 
 dotenv.load_dotenv(os.path.join(REPO_DIR, ".env"))
