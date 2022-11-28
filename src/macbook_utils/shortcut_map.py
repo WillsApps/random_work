@@ -127,6 +127,15 @@ shortcuts = [
         ],
         {"left_shift"},
     ),
+    Shortcut(
+        "keyboard_fn",
+        "left_control",
+        ["a", "x", "q", "z", "t", "w", "r", "f", "c", "v", "i", "p", "i",
+            "delete_or_backspace",
+            "right_arrow",
+            "left_arrow",],
+        {"left_shift"},
+    ),
     # Shortcut(
     #     "",
     #     "left_option",
