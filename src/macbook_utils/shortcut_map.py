@@ -108,6 +108,19 @@ shortcuts = [
             )
         ],
     ),
+    # Shortcut(
+    #     "left_command",
+    #     "left_control",
+    #     ["c"],
+    #     {"left_shift"},
+    #     conditions=[
+    #         Condition(
+    #             "frontmost_application_if",
+    #             "bundle_identifiers",
+    #             [ "com.googlecode.iterm2"],
+    #         )
+    #     ],
+    # ),
     Shortcut(
         "left_option",
         "left_control",
@@ -130,10 +143,24 @@ shortcuts = [
     Shortcut(
         "keyboard_fn",
         "left_control",
-        ["a", "x", "q", "z", "t", "w", "r", "f", "c", "v", "i", "p", "i",
+        [
+            "a",
+            "x",
+            "q",
+            "z",
+            "t",
+            "w",
+            "r",
+            "f",
+            "c",
+            "v",
+            "i",
+            "p",
+            "i",
             "delete_or_backspace",
             "right_arrow",
-            "left_arrow",],
+            "left_arrow",
+        ],
         {"left_shift"},
     ),
     # Shortcut(

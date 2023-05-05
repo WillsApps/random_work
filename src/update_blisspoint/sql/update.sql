@@ -1,0 +1,17 @@
+--
+-- UPDATE
+--   dbt_wburdett.{table_name}
+-- SET
+--   _load_date = CURRENT_DATE,
+--   _loaded_from = '{s3_key}',
+--   _loaded_from_date = '{upload_date}',
+--   local_timestamp = (
+--     ("timestamp" AT TIME ZONE 'UTC') AT TIME ZONE 'America/New_York'
+--   ),
+--   local_date = CAST(
+--     (
+--       ("timestamp" AT TIME ZONE 'UTC') AT TIME ZONE 'America/New_York'
+--     ) AS DATE
+--   )
+-- WHERE
+--   _loaded_from IS NULL;

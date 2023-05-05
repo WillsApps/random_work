@@ -12,4 +12,6 @@ SRC_DIR = os.path.join(
     "src",
 )
 
-dotenv.load_dotenv(os.path.join(REPO_DIR, ".env"))
+
+def load():
+    dotenv.load_dotenv(os.path.join(REPO_DIR, ".env"))

@@ -1,0 +1,2928 @@
+{
+  "dbt_wburdett.stg_hubspot__email_campaigns": {
+    "sources": [
+      "hubspot.email_campaigns"
+    ]
+  },
+  "dbt_wburdett.stg_hubspot__email_subscription_event_changes": {
+    "sources": [
+      "hubspot.email_subscription_event_changes"
+    ]
+  },
+  "dbt_wburdett.stg_hubspot__email_events": {
+    "sources": [
+      "hubspot.email_events"
+    ]
+  },
+  "dbt_wburdett.stg_hubspot__email_events_sent": {
+    "sources": [
+      "hubspot.email_events"
+    ]
+  },
+  "dbt_wburdett.stg_hubspot__contacts": {
+    "sources": [
+      "hubspot.contacts"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__onboarding_started": {
+    "sources": [
+      "iosregistry.onboarding_started",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__product_list_filtered": {
+    "sources": [
+      "iosregistry.product_list_filtered",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__order_completed": {
+    "sources": [
+      "iosregistry.order_completed",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__product_clicked": {
+    "sources": [
+      "iosregistry.product_clicked",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__product_viewed": {
+    "sources": [
+      "iosregistry.product_viewed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__onboarding_step_completed": {
+    "sources": [
+      "iosregistry.onboarding_step_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__onboarding_completed": {
+    "sources": [
+      "iosregistry.onboarding_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__product_list_viewed": {
+    "sources": [
+      "iosregistry.product_list_viewed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__identifies": {
+    "sources": [
+      "iosregistry.identifies"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__tapped": {
+    "sources": [
+      "iosregistry.tapped",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__customization_step_completed": {
+    "sources": [
+      "iosregistry.customization_step_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__screens": {
+    "sources": [
+      "iosregistry.screens",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__flow_completed": {
+    "sources": [
+      "iosregistry.flow_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__custom_experiment_viewed": {
+    "sources": [
+      "iosregistry.custom_experiment_viewed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__customization_started": {
+    "sources": [
+      "iosregistry.customization_started",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__flow_step_viewed": {
+    "sources": [
+      "iosregistry.flow_step_viewed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__user_created": {
+    "sources": []
+  },
+  "dbt_wburdett.stg_iosregistry__flow_step_completed": {
+    "sources": [
+      "iosregistry.flow_step_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__registry_item_added": {
+    "sources": [
+      "iosregistry.registry_item_added"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__product_added": {
+    "sources": [
+      "iosregistry.product_added",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__flow_started": {
+    "sources": [
+      "iosregistry.flow_started",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_iosregistry__customization_completed": {
+    "sources": [
+      "iosregistry.customization_completed",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__organizations": {
+    "sources": [
+      "zendesk_cs.organizations"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__groups": {
+    "sources": [
+      "zendesk_cs.groups"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__users": {
+    "sources": [
+      "zendesk_cs.users"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__activities": {
+    "sources": [
+      "zendesk_cs.activities"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__ticket_fields": {
+    "sources": [
+      "zendesk_cs.ticket_fields"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__attachments": {
+    "sources": [
+      "zendesk_cs.attachments"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__satisfaction_ratings": {
+    "sources": [
+      "zendesk_cs.satisfaction_ratings"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__tickets": {
+    "sources": [
+      "zendesk_cs.tickets"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__ticket_comments": {
+    "sources": [
+      "zendesk_cs.ticket_comments"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__ticket_events": {
+    "sources": [
+      "zendesk_cs.ticket_events"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_cs__ticket_metrics": {
+    "sources": [
+      "zendesk_cs.ticket_metrics"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_ops__users": {
+    "sources": [
+      "zendesk_ops.users"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_ops__groups": {
+    "sources": [
+      "zendesk_ops.groups"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_ops__organizations": {
+    "sources": [
+      "zendesk_ops.organizations"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_ops__tickets": {
+    "sources": [
+      "zendesk_ops.tickets"
+    ]
+  },
+  "dbt_wburdett.stg_zendesk_ops__ticket_metrics": {
+    "sources": [
+      "zendesk_ops.ticket_metrics"
+    ]
+  },
+  "dbt_wburdett.stg_supermetrics__googleads_ad": {
+    "sources": [
+      "supermetrics.googleads_ad"
+    ]
+  },
+  "dbt_wburdett.stg_supermetrics__bingads_ad": {
+    "sources": [
+      "supermetrics.bingads_ad"
+    ]
+  },
+  "dbt_wburdett.stg_supermetrics__fbads_ad": {
+    "sources": [
+      "supermetrics.fbads_ad"
+    ]
+  },
+  "dbt_wburdett.stg_supermetrics__pinterestads_ad": {
+    "sources": [
+      "supermetrics.pinterestads_ad"
+    ]
+  },
+  "dbt_wburdett.stg_supermetrics__asa_creative": {
+    "sources": [
+      "supermetrics.asa_creative"
+    ]
+  },
+  "dbt_wburdett.stg_bliss_point_media__tvpostlogs": {
+    "sources": [
+      "adverity_bliss_point_media.tvpostlogs"
+    ]
+  },
+  "dbt_wburdett.stg_bliss_point_media__ip_matches": {
+    "sources": [
+      "adverity_bliss_point_media.ip_matches"
+    ]
+  },
+  "dbt_wburdett.stg_bliss_point_media__impressions": {
+    "sources": [
+      "adverity_bliss_point_media.impressions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_snapshots__wedding_dates_daily": {
+    "sources": [
+      "reporting_snapshots.wedding_dates_daily"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_honeymoon__trip_requests": {
+    "sources": [
+      "reporting_honeymoon.trip_requests"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_honeymoon__honeymoon_accounts": {
+    "sources": [
+      "reporting_honeymoon.honeymoon_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefront_preferred_vendors": {
+    "sources": [
+      "reporting_marketplace.storefront_preferred_vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__boards": {
+    "sources": [
+      "reporting_marketplace.boards"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__taxonomy_node_to_vendor_markets": {
+    "sources": [
+      "reporting_marketplace.taxonomy_node_to_vendor_markets"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_transactions": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_transactions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__inquiry_credit_payments": {
+    "sources": [
+      "reporting_marketplace.inquiry_credit_payments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__inquiry_matches": {
+    "sources": [
+      "reporting_marketplace.inquiry_matches"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_leads": {
+    "sources": [
+      "reporting_marketplace.vendor_leads"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__option_facets": {
+    "sources": [
+      "reporting_marketplace.option_facets"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__inquiries": {
+    "sources": [
+      "reporting_marketplace.inquiries"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__wedding_vendors": {
+    "sources": [
+      "reporting_marketplace.wedding_vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefront_users": {
+    "sources": [
+      "reporting_marketplace.storefront_users"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__pending_reference_vendors": {
+    "sources": [
+      "reporting_marketplace.pending_reference_vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__inquiry_closes": {
+    "sources": [
+      "reporting_marketplace.inquiry_closes"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__realweddings_accounts": {
+    "sources": [
+      "reporting_marketplace.realweddings_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__inquiry_events": {
+    "sources": [
+      "reporting_marketplace.inquiry_events"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__taxonomy_nodes": {
+    "sources": [
+      "reporting_marketplace.taxonomy_nodes"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_lines": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_lines"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__marketplace_accounts": {
+    "sources": [
+      "reporting_marketplace.marketplace_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_packages": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_packages"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_accounts": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__board_storefronts": {
+    "sources": [
+      "reporting_marketplace.board_storefronts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__wedding_photos": {
+    "sources": [
+      "reporting_marketplace.wedding_photos"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefront_options": {
+    "sources": [
+      "reporting_marketplace.storefront_options"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_orders": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_orders"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_discounts": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_discounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__board_weddings": {
+    "sources": [
+      "reporting_marketplace.board_weddings"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_associates": {
+    "sources": [
+      "reporting_marketplace.vendor_associates"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__addresses": {
+    "sources": [
+      "reporting_marketplace.addresses"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__weddings": {
+    "sources": [
+      "reporting_marketplace.weddings"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__account_wedding_preference_options": {
+    "sources": [
+      "reporting_marketplace.account_wedding_preference_options"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__users": {
+    "sources": [
+      "reporting_marketplace.users"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__review_requests": {
+    "sources": [
+      "reporting_marketplace.review_requests"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__wedding_options": {
+    "sources": [
+      "reporting_marketplace.wedding_options"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__companies": {
+    "sources": [
+      "reporting_marketplace.companies"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefront_purchase_eligibility_events": {
+    "sources": [
+      "reporting_marketplace.storefront_purchase_eligibility_events"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefront_to_vendor_markets": {
+    "sources": [
+      "reporting_marketplace.storefront_to_vendor_markets"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__wedding_option_facets": {
+    "sources": [
+      "reporting_marketplace.wedding_option_facets"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__account_wedding_preferences": {
+    "sources": [
+      "reporting_marketplace.account_wedding_preferences"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__storefronts": {
+    "sources": [
+      "reporting_marketplace.storefronts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__board_wedding_photos": {
+    "sources": [
+      "reporting_marketplace.board_wedding_photos"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_credit_line_adjustments": {
+    "sources": [
+      "reporting_marketplace.vendor_credit_line_adjustments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__vendor_markets": {
+    "sources": [
+      "reporting_marketplace.vendor_markets"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__us_counties": {
+    "sources": [
+      "reporting_marketplace.us_counties"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__reviews": {
+    "sources": [
+      "reporting_marketplace.reviews"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_marketplace__reference_vendors": {
+    "sources": [
+      "reporting_marketplace.reference_vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__seating_charts": {
+    "sources": [
+      "reporting_wedding.seating_charts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_design_families": {
+    "sources": [
+      "reporting_wedding.card_design_families"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_variation_options": {
+    "sources": [
+      "reporting_wedding.card_variation_options"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__photobook_project_items": {
+    "sources": [
+      "reporting_wedding.photobook_project_items"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__seating_chart_table_seats": {
+    "sources": [
+      "reporting_wedding.seating_chart_table_seats"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__events": {
+    "sources": [
+      "reporting_wedding.events"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__wedding_accounts": {
+    "sources": [
+      "reporting_wedding.wedding_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__photobook_projects": {
+    "sources": [
+      "reporting_wedding.photobook_projects"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_suites": {
+    "sources": [
+      "reporting_wedding.card_suites"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_templates": {
+    "sources": [
+      "reporting_wedding.card_templates"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_variations": {
+    "sources": [
+      "reporting_wedding.card_variations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__album_sizes": {
+    "sources": [
+      "reporting_wedding.album_sizes"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_projects": {
+    "sources": [
+      "reporting_wedding.card_projects"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__favorite_cards": {
+    "sources": [
+      "reporting_wedding.favorite_cards"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__themes": {
+    "sources": [
+      "reporting_wedding.themes"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_options": {
+    "sources": [
+      "reporting_wedding.card_options"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__cards": {
+    "sources": [
+      "reporting_wedding.cards"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__cms_banners": {
+    "sources": [
+      "reporting_wedding.cms_banners"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__album_variations": {
+    "sources": [
+      "reporting_wedding.album_variations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__event_invitations": {
+    "sources": [
+      "reporting_wedding.event_invitations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_suite_items": {
+    "sources": [
+      "reporting_wedding.card_suite_items"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_project_digital_details": {
+    "sources": [
+      "reporting_wedding.card_project_digital_details"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__albums": {
+    "sources": [
+      "reporting_wedding.albums"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__album_items": {
+    "sources": [
+      "reporting_wedding.album_items"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__photobook_project_item_media_images": {
+    "sources": [
+      "reporting_wedding.photobook_project_item_media_images"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__cms_banner_selections": {
+    "sources": [
+      "reporting_wedding.cms_banner_selections"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__wedding_registries": {
+    "sources": [
+      "reporting_wedding.wedding_registries"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_designs": {
+    "sources": [
+      "reporting_wedding.card_designs"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__cms_pages": {
+    "sources": [
+      "reporting_wedding.cms_pages"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__checklist_tasks": {
+    "sources": [
+      "reporting_wedding.checklist_tasks"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_project_customizations": {
+    "sources": [
+      "reporting_wedding.card_project_customizations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__checklists": {
+    "sources": [
+      "reporting_wedding.checklists"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__card_template_pages": {
+    "sources": [
+      "reporting_wedding.card_template_pages"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__guests": {
+    "sources": [
+      "reporting_wedding.guests"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__seating_chart_tables": {
+    "sources": [
+      "reporting_wedding.seating_chart_tables"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__guest_collection_details": {
+    "sources": [
+      "reporting_wedding.guest_collection_details"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__invitation_accounts": {
+    "sources": [
+      "reporting_wedding.invitation_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_wedding__wedding_themes": {
+    "sources": [
+      "reporting_wedding.wedding_themes"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__registry_collections": {
+    "sources": [
+      "reporting_internal.registry_collections"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__theknot_vendors": {
+    "sources": [
+      "reporting_internal.theknot_vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__account_interactions_summary": {
+    "sources": [
+      "reporting_internal.account_interactions_summary"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__user_signup_devices": {
+    "sources": [
+      "reporting_internal.user_signup_devices"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__galleon_logistics_shipments": {
+    "sources": [
+      "reporting_internal.galleon_logistics_shipments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__revenue_share_terms": {
+    "sources": [
+      "reporting_internal.revenue_share_terms"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__user_account_facts": {
+    "sources": [
+      "reporting_internal.user_account_facts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__order_item_fulfillments": {
+    "sources": [
+      "reporting_internal.order_item_fulfillments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__galleon_logistics_vendor_invoices": {
+    "sources": [
+      "reporting_internal.galleon_logistics_vendor_invoices"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__bpm_ip_matches": {
+    "sources": [
+      "reporting_internal.bpm_ip_matches"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__account_exclusions": {
+    "sources": [
+      "reporting_internal.account_exclusions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_internal__product_catalog": {
+    "sources": [
+      "reporting_internal.product_catalog"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__partner_retailers": {
+    "sources": [
+      "reporting_public.partner_retailers"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_promotions": {
+    "sources": [
+      "reporting_public.user_promotions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_item_customizations": {
+    "sources": [
+      "reporting_public.order_item_customizations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_partner_retailers": {
+    "sources": [
+      "reporting_public.user_partner_retailers"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_fulfillments": {
+    "sources": [
+      "reporting_public.order_fulfillments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_ad_campaigns": {
+    "sources": [
+      "reporting_public.user_ad_campaigns"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_items_v2": {
+    "sources": [
+      "reporting_public.order_items_v2"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__orders_v2": {
+    "sources": [
+      "reporting_public.orders_v2"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_awareness_channels": {
+    "sources": [
+      "reporting_public.user_awareness_channels"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__discounts": {
+    "sources": [
+      "reporting_public.discounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__scraper_registry_task_schedules": {
+    "sources": [
+      "reporting_public.scraper_registry_task_schedules"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__replacement_orders": {
+    "sources": [
+      "reporting_public.replacement_orders"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__accounts": {
+    "sources": [
+      "reporting_public.accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_questions": {
+    "sources": [
+      "reporting_public.onboarding_questionnaire_questions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__store_accounts": {
+    "sources": [
+      "reporting_public.store_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__snapshot_inventory_daily": {
+    "sources": [
+      "reporting_public.snapshot_inventory_daily"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__community_events": {
+    "sources": [
+      "reporting_public.community_events"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_app_connections": {
+    "sources": [
+      "reporting_public.user_app_connections"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__weddings": {
+    "sources": [
+      "reporting_public.weddings"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__dimension_date": {
+    "sources": [
+      "reporting_public.dimension_date"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__sku_facility_inventory": {
+    "sources": [
+      "reporting_public.sku_facility_inventory"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_item_adjustments": {
+    "sources": [
+      "reporting_public.order_item_adjustments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_response_answers": {
+    "sources": [
+      "reporting_public.onboarding_questionnaire_response_answers"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__adjustments": {
+    "sources": [
+      "reporting_public.adjustments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_item_fulfillment_group_lines": {
+    "sources": [
+      "reporting_public.order_item_fulfillment_group_lines"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_adjustments": {
+    "sources": [
+      "reporting_public.order_adjustments"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_linkshare_referrals": {
+    "sources": [
+      "reporting_public.user_linkshare_referrals"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__promotion_groups": {
+    "sources": [
+      "reporting_public.promotion_groups"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__registry_accounts": {
+    "sources": [
+      "reporting_public.registry_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__skus": {
+    "sources": [
+      "reporting_public.skus"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_roles": {
+    "sources": [
+      "reporting_public.user_roles"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__order_attributions": {
+    "sources": [
+      "reporting_public.order_attributions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__onboarding_questionnaire": {
+    "sources": [
+      "reporting_public.onboarding_questionnaire"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__user_experiment_variations": {
+    "sources": [
+      "reporting_public.user_experiment_variations"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__promotions": {
+    "sources": [
+      "reporting_public.promotions"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_responses": {
+    "sources": [
+      "reporting_public.onboarding_questionnaire_responses"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__backordered_items": {
+    "sources": [
+      "reporting_public.backordered_items"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_public__split_orders_v2": {
+    "sources": [
+      "reporting_public.split_orders_v2"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_inspiration__inspiration_accounts": {
+    "sources": [
+      "reporting_inspiration.inspiration_accounts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__credits": {
+    "sources": [
+      "reporting_mongo.credits"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__user_auths": {
+    "sources": [
+      "reporting_mongo.user_auths"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__carts": {
+    "sources": [
+      "reporting_mongo.carts"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__registries": {
+    "sources": [
+      "reporting_mongo.registries"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__skus": {
+    "sources": [
+      "reporting_mongo.skus"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__collection_items": {
+    "sources": [
+      "reporting_mongo.collection_items"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__users": {
+    "sources": [
+      "reporting_mongo.users"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__brands": {
+    "sources": [
+      "reporting_mongo.brands"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__vendors": {
+    "sources": [
+      "reporting_mongo.vendors"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__products": {
+    "sources": [
+      "reporting_mongo.products"
+    ]
+  },
+  "dbt_wburdett.stg_reporting_mongo__collections": {
+    "sources": [
+      "reporting_mongo.collections"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__deferrals": {
+    "sources": [
+      "mandrill.deferral"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__opens": {
+    "sources": [
+      "mandrill._open"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__rejects": {
+    "sources": [
+      "mandrill.reject"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__soft_bounces": {
+    "sources": [
+      "mandrill.soft_bounce"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__sends": {
+    "sources": [
+      "mandrill.send"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__activity": {
+    "sources": [
+      "mandrill.activity"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__clicks": {
+    "sources": [
+      "mandrill.click"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__hard_bounces": {
+    "sources": [
+      "mandrill.hard_bounce"
+    ]
+  },
+  "dbt_wburdett.stg_mandrill__spams": {
+    "sources": [
+      "mandrill.spam"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__triggered_unsubscribes": {
+    "sources": [
+      "adverity_sailthru.triggered_unsubscribes"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__templates": {
+    "sources": [
+      "adverity_sailthru.templates"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__lifecycle_optimizer_flows": {
+    "sources": [
+      "adverity_sailthru.lifecycle_optimizer_flows"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__triggered_clicks": {
+    "sources": [
+      "adverity_sailthru.triggered_clicks"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaigns": {
+    "sources": [
+      "adverity_sailthru.campaigns"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_opens": {
+    "sources": [
+      "adverity_sailthru.campaign_opens"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__profiles": {
+    "sources": [
+      "adverity_sailthru.profiles",
+      "dbt_wburdett.stg_reporting_mongo__users"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__triggered_bounces": {
+    "sources": [
+      "adverity_sailthru.triggered_bounces"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_sends": {
+    "sources": [
+      "adverity_sailthru.campaign_sends"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_unsubscribes": {
+    "sources": [
+      "adverity_sailthru.campaign_unsubscribes"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_clicks": {
+    "sources": [
+      "adverity_sailthru.campaign_clicks"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__triggered_sends": {
+    "sources": [
+      "adverity_sailthru.triggered_sends"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_abtests": {
+    "sources": [
+      "adverity_sailthru.campaign_abtests"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__triggered_opens": {
+    "sources": [
+      "adverity_sailthru.triggered_opens"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__labels": {
+    "sources": [
+      "adverity_sailthru.labels"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__campaign_bounces": {
+    "sources": [
+      "adverity_sailthru.campaign_bounces"
+    ]
+  },
+  "dbt_wburdett.stg_sailthru__user_list_signups": {
+    "sources": [
+      "adverity_sailthru.user_list_signups"
+    ]
+  },
+  "dbt_wburdett.stg_androidweddings__registry_item_added": {
+    "sources": [
+      "androidweddings.registry_item_added"
+    ]
+  },
+  "dbt_wburdett.stg_androidweddings__screens": {
+    "sources": [
+      "androidweddings.screens",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_androidweddings__custom_experiment_viewed": {
+    "sources": [
+      "androidweddings.custom_experiment_viewed"
+    ]
+  },
+  "dbt_wburdett.stg_androidweddings__tapped": {
+    "sources": [
+      "androidweddings.tapped",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_androidweddings__identifies": {
+    "sources": [
+      "androidweddings.identifies"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__segment_event_expected_schema": {
+    "sources": [
+      "analytics.segment_event_expected_schema"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__segment_event_daily_rollup": {
+    "sources": [
+      "analytics.segment_event_daily_rollup"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__segment_event_column_metrics": {
+    "sources": [
+      "analytics.segment_event_column_metrics"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__segment_event_violations": {
+    "sources": [
+      "analytics.segment_event_violations"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__segment_event_table_metrics": {
+    "sources": [
+      "analytics.segment_event_table_metrics"
+    ]
+  },
+  "dbt_wburdett.stg_analytics__internal_ips": {
+    "sources": [
+      "analytics.internal_ips"
+    ]
+  },
+  "dbt_wburdett.tstat_to_pvalue": {
+    "sources": [
+      "dbt_wburdett.tstat_to_pvalue_seed"
+    ]
+  },
+  "dbt_wburdett.user_master_aliases": {
+    "sources": [
+      "dbt_wburdett.int_identifies"
+    ]
+  },
+  "dbt_wburdett.stg_zola__user_agents": {
+    "sources": [
+      "zola.user_agents"
+    ]
+  },
+  "dbt_wburdett.zscore_to_pvalue": {
+    "sources": [
+      "reporting_internal.z_score_to_p_value"
+    ]
+  },
+  "dbt_wburdett.valuable_signup_metric_mappings": {
+    "sources": [
+      "dbt_wburdett.valuable_signup_metric_seed"
+    ]
+  },
+  "dbt_wburdett.ordinal_array": {
+    "sources": []
+  },
+  "dbt_wburdett.fct_ios_paper": {
+    "sources": [
+      "dbt_wburdett.int_ios_paper_customization",
+      "dbt_wburdett.int_ios_paper_sample_flow",
+      "dbt_wburdett.int_ios_paper_order_items",
+      "dbt_wburdett.int_ios_product_views"
+    ]
+  },
+  "dbt_wburdett.fct_web_paper": {
+    "sources": [
+      "dbt_wburdett.int_web_paper_traffic",
+      "dbt_wburdett.int_web_paper_sample_flow",
+      "dbt_wburdett.int_web_paper_order_items",
+      "dbt_wburdett.int_web_upload_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_flow_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_paper_sample_flow": {
+    "sources": [
+      "dbt_wburdett.int_web_flow_started",
+      "dbt_wburdett.int_web_flow_step_viewed",
+      "dbt_wburdett.int_web_flow_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_customization_started": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_started"
+    ]
+  },
+  "dbt_wburdett.int_web_flow_step_viewed": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_step_viewed"
+    ]
+  },
+  "dbt_wburdett.int_web_paper_traffic": {
+    "sources": [
+      "dbt_wburdett.int_web_paper_pdp_views",
+      "dbt_wburdett.int_web_paper_plp_views",
+      "dbt_wburdett.int_web_customization_step_completed",
+      "dbt_wburdett.int_web_customization_started",
+      "dbt_wburdett.int_web_customization_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_customization_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_paper_plp_filters": {
+    "sources": [
+      "dbt_wburdett.int_web_paper_plp_views"
+    ]
+  },
+  "dbt_wburdett.int_web_customization_step_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_step_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_paper_plp_views": {
+    "sources": []
+  },
+  "dbt_wburdett.int_web_paper_pdp_views": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_viewed"
+    ]
+  },
+  "dbt_wburdett.int_web_flow_started": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_started"
+    ]
+  },
+  "dbt_wburdett.int_web_upload_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__upload_completed"
+    ]
+  },
+  "dbt_wburdett.int_web_paper_order_items": {
+    "sources": [
+      "dbt_wburdett.stg_web__order_completed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.stg_zola__user_agents"
+    ]
+  },
+  "dbt_wburdett.int_web_product_list_viewed": {
+    "sources": [
+      "web.product_list_viewed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.int_ios_flow_completed": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__flow_completed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_customization_step_completed": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__customization_step_completed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_paper_sample_flow": {
+    "sources": [
+      "dbt_wburdett.int_ios_flow_started",
+      "dbt_wburdett.int_ios_flow_step_viewed",
+      "dbt_wburdett.int_ios_flow_completed"
+    ]
+  },
+  "dbt_wburdett.int_ios_paper_customization": {
+    "sources": [
+      "dbt_wburdett.int_ios_customization_started",
+      "dbt_wburdett.int_ios_customization_step_completed",
+      "dbt_wburdett.int_ios_customization_completed"
+    ]
+  },
+  "dbt_wburdett.int_ios_product_views": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__screens",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_customization_completed": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__customization_completed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_flow_started": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__flow_started",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_customization_started": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__customization_started",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_flow_step_viewed": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__flow_step_viewed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_ios_paper_order_items": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__order_completed",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.fct_event_quality_summary": {
+    "sources": [
+      "dbt_wburdett.int_orders_event_quality",
+      "dbt_wburdett.int_inquiries_event_quality",
+      "dbt_wburdett.int_user_created_event_quality"
+    ]
+  },
+  "dbt_wburdett.int_orders_event_quality": {
+    "sources": [
+      "dbt_wburdett.fct_order_sales",
+      "dbt_wburdett.stg_web__order_completed",
+      "dbt_wburdett.stg_iosregistry__order_completed"
+    ]
+  },
+  "dbt_wburdett.int_user_created_event_quality": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.stg_web__user_created",
+      "dbt_wburdett.stg_iosregistry__user_created"
+    ]
+  },
+  "dbt_wburdett.int_inquiries_event_quality": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_marketplace__inquiries"
+    ]
+  },
+  "dbt_wburdett.fct_order_backorder_history": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_public__order_fulfillments",
+      "dbt_wburdett.stg_reporting_public__order_fulfillments"
+    ]
+  },
+  "dbt_wburdett.fct_user_signup_metadata": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_mongo__user_auths",
+      "dbt_wburdett.int_user_signup_time",
+      "dbt_wburdett.stg_reporting_dataset__us_dmas_zipcodes"
+    ]
+  },
+  "dbt_wburdett.fct_user_awareness_channels_condensed": {
+    "sources": [
+      "dbt_wburdett.int_user_awareness_channels",
+      "dbt_wburdett.int_user_awareness_channels"
+    ]
+  },
+  "dbt_wburdett.int_user_awareness_channels": {
+    "sources": []
+  },
+  "dbt_wburdett.int_first_backorder": {
+    "sources": []
+  },
+  "dbt_wburdett.int_user_questionnaire": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_public__onboarding_questionnaire",
+      "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_questions",
+      "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_responses",
+      "dbt_wburdett.stg_reporting_public__onboarding_questionnaire_response_answers",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_early_user_questionnaire": {
+    "sources": [
+      "dbt_wburdett.int_user_questionnaire"
+    ]
+  },
+  "dbt_wburdett.int_user_signup_time": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_mongo__user_auths"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_zscore_conversions": {
+    "sources": [
+      "dbt_wburdett.int_custom_experiment_viewed",
+      "dbt_wburdett.int_tlr_account_definitions",
+      "dbt_wburdett.int_site_engagement",
+      "dbt_wburdett.int_reporting_inquiries",
+      "dbt_wburdett.int_paper_events",
+      "dbt_wburdett.int_segment_inquiries",
+      "dbt_wburdett.int_valuable_rgc",
+      "dbt_wburdett.int_valuable_user",
+      "dbt_wburdett.int_tlr_first_signup"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_zscore_conversions_v2": {
+    "sources": [
+      "dbt_wburdett.int_custom_experiment_viewed",
+      "dbt_wburdett.int_tlr_account_definitions",
+      "dbt_wburdett.int_site_engagement",
+      "dbt_wburdett.int_paper_events",
+      "dbt_wburdett.int_valuable_rgc",
+      "dbt_wburdett.int_valuable_user",
+      "dbt_wburdett.int_tlr_first_signup"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_conversions_v2": {
+    "sources": [
+      "dbt_wburdett.zscore_to_pvalue",
+      "dbt_wburdett.tstat_to_pvalue",
+      "dbt_wburdett.fct_tlr_zscore_conversions_v2",
+      "dbt_wburdett.fct_tlr_tstat_conversions_v2"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_tstat_conversions": {
+    "sources": [
+      "dbt_wburdett.int_custom_experiment_viewed",
+      "dbt_wburdett.int_tlr_retail_sales",
+      "dbt_wburdett.int_time_on_site",
+      "dbt_wburdett.int_days_active_on_site"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_tstat_conversions_v2": {
+    "sources": [
+      "dbt_wburdett.int_custom_experiment_viewed",
+      "dbt_wburdett.int_tlr_retail_sales",
+      "dbt_wburdett.int_time_on_site",
+      "dbt_wburdett.int_days_active_on_site",
+      "dbt_wburdett.int_segment_inquiries",
+      "dbt_wburdett.int_reporting_inquiries"
+    ]
+  },
+  "dbt_wburdett.fct_tlr_conversions": {
+    "sources": [
+      "dbt_wburdett.zscore_to_pvalue",
+      "dbt_wburdett.tstat_to_pvalue",
+      "dbt_wburdett.fct_tlr_zscore_conversions",
+      "dbt_wburdett.fct_tlr_tstat_conversions"
+    ]
+  },
+  "dbt_wburdett.int_tlr_retail_sales": {
+    "sources": [
+      "dbt_wburdett.fct_order_sales"
+    ]
+  },
+  "dbt_wburdett.int_tlr_account_definitions": {
+    "sources": [
+      "dbt_wburdett.int_account_definitions",
+      "dbt_wburdett.int_account_definitions"
+    ]
+  },
+  "dbt_wburdett.int_time_on_site": {
+    "sources": [
+      "dbt_wburdett.fct_user_sections"
+    ]
+  },
+  "dbt_wburdett.int_valuable_rgc": {
+    "sources": [
+      "dbt_wburdett.fct_valuable_signup"
+    ]
+  },
+  "dbt_wburdett.int_segment_inquiries": {
+    "sources": [
+      "dbt_wburdett.int_flow_started",
+      "dbt_wburdett.int_flow_started",
+      "dbt_wburdett.int_flow_step_completed",
+      "dbt_wburdett.int_flow_step_completed",
+      "dbt_wburdett.int_flow_completed",
+      "dbt_wburdett.int_flow_completed"
+    ]
+  },
+  "dbt_wburdett.int_days_active_on_site": {
+    "sources": [
+      "dbt_wburdett.fct_user_sections"
+    ]
+  },
+  "dbt_wburdett.int_reporting_inquiries": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_marketplace__inquiry_events"
+    ]
+  },
+  "dbt_wburdett.int_site_engagement": {
+    "sources": [
+      "dbt_wburdett.fct_traffic"
+    ]
+  },
+  "dbt_wburdett.int_tlr_first_signup": {
+    "sources": [
+      "dbt_wburdett.user_account_interactions"
+    ]
+  },
+  "dbt_wburdett.int_valuable_user": {
+    "sources": [
+      "dbt_wburdett.fct_valuable_signup"
+    ]
+  },
+  "dbt_wburdett.int_paper_events": {
+    "sources": [
+      "dbt_wburdett.fct_web_paper",
+      "dbt_wburdett.fct_ios_paper"
+    ]
+  },
+  "dbt_wburdett.fct_traffic_2019": {
+    "sources": [
+      "dbt_wburdett.int_web_pages_2019",
+      "dbt_wburdett.int_ios_screens_2019"
+    ]
+  },
+  "dbt_wburdett.fct_traffic": {
+    "sources": []
+  },
+  "dbt_wburdett.fct_acquisition_channel": {
+    "sources": []
+  },
+  "dbt_wburdett.fct_valuable_signup": {
+    "sources": [
+      "dbt_wburdett.int_user_journey_7d"
+    ]
+  },
+  "dbt_wburdett.fct_user_sections": {
+    "sources": [
+      "dbt_wburdett.fct_traffic"
+    ]
+  },
+  "dbt_wburdett.fct_acquisition_utm_parameters": {
+    "sources": []
+  },
+  "dbt_wburdett.int_user_journey_7d": {
+    "sources": []
+  },
+  "dbt_wburdett.int_user_accounts": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.fct_acquisition_channel",
+      "dbt_wburdett.fct_user_awareness_channels_condensed",
+      "dbt_wburdett.int_early_user_questionnaire"
+    ]
+  },
+  "dbt_wburdett.int_actual_rgc": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_internal__account_interactions_summary"
+    ]
+  },
+  "dbt_wburdett.int_traffic": {
+    "sources": [
+      "dbt_wburdett.fct_web_pages",
+      "dbt_wburdett.int_web_user_created",
+      "dbt_wburdett.fct_ios_tapped",
+      "dbt_wburdett.fct_android_tapped"
+    ]
+  },
+  "dbt_wburdett.int_ranked_signups_activations": {
+    "sources": [
+      "dbt_wburdett.stg_zola__account_interactions_summary",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.int_traffic_ios_tapped": {
+    "sources": [
+      "dbt_wburdett.fct_ios_tapped"
+    ]
+  },
+  "dbt_wburdett.int_rgc": {
+    "sources": [
+      "dbt_wburdett.stg_zola__account_interactions_summary"
+    ]
+  },
+  "dbt_wburdett.int_signups_days_active": {
+    "sources": [
+      "dbt_wburdett.fct_traffic",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.fct_experiments": {
+    "sources": [
+      "dbt_wburdett.int_iosregistry_custom_experiment_viewed",
+      "dbt_wburdett.int_androidweddings_custom_experiment_viewed",
+      "dbt_wburdett.int_web_custom_experiment_viewed",
+      "dbt_wburdett.stg_reporting_public__user_experiment_variations"
+    ]
+  },
+  "dbt_wburdett.int_web_custom_experiment_viewed": {
+    "sources": []
+  },
+  "dbt_wburdett.int_iosregistry_custom_experiment_viewed": {
+    "sources": []
+  },
+  "dbt_wburdett.int_androidweddings_custom_experiment_viewed": {
+    "sources": []
+  },
+  "dbt_wburdett.fct_web_pages": {
+    "sources": [
+      "dbt_wburdett.stg_web__pages",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.stg_analytics__internal_ips",
+      "dbt_wburdett.dim_web_path_sections"
+    ]
+  },
+  "dbt_wburdett.dim_web_path_sections": {
+    "sources": [
+      "dbt_wburdett.stg_web__pages"
+    ]
+  },
+  "dbt_wburdett.int_web_pages_2019": {
+    "sources": [
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.stg_analytics__internal_ips",
+      "dbt_wburdett.dim_web_path_sections"
+    ]
+  },
+  "dbt_wburdett.int_web_user_created": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.fct_ios_tapped": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__tapped",
+      "dbt_wburdett.dim_ios_mapping",
+      "dbt_wburdett.stg_analytics__internal_ips",
+      "dbt_wburdett.int_user_accounts"
+    ]
+  },
+  "dbt_wburdett.dim_ios_mapping": {
+    "sources": []
+  },
+  "dbt_wburdett.int_ios_screens_2019": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__screens",
+      "dbt_wburdett.stg_analytics__internal_ips",
+      "dbt_wburdett.stg_reporting_internal__user_account_facts"
+    ]
+  },
+  "dbt_wburdett.fct_android_tapped": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.int_android_screens_backfill": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.int_product_viewed": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_viewed",
+      "dbt_wburdett.stg_iosregistry__product_viewed"
+    ]
+  },
+  "dbt_wburdett.int_customization_step_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_step_completed",
+      "dbt_wburdett.stg_iosregistry__customization_step_completed"
+    ]
+  },
+  "dbt_wburdett.int_experiment_details": {
+    "sources": [
+      "dbt_wburdett.int_experiment_unified"
+    ]
+  },
+  "dbt_wburdett.int_product_list_viewed": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_list_viewed",
+      "dbt_wburdett.stg_iosregistry__product_list_viewed"
+    ]
+  },
+  "dbt_wburdett.int_flow_completed": {
+    "sources": [
+      "dbt_wburdett.stg_iosregistry__flow_completed"
+    ]
+  },
+  "dbt_wburdett.int_identifies": {
+    "sources": [
+      "dbt_wburdett.stg_web__identifies",
+      "dbt_wburdett.stg_iosregistry__identifies",
+      "dbt_wburdett.stg_androidweddings__identifies"
+    ]
+  },
+  "dbt_wburdett.int_customization_started": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_started",
+      "dbt_wburdett.stg_iosregistry__customization_started"
+    ]
+  },
+  "dbt_wburdett.int_product_clicked": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_clicked",
+      "dbt_wburdett.stg_iosregistry__product_clicked"
+    ]
+  },
+  "dbt_wburdett.int_customization_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__customization_completed",
+      "dbt_wburdett.stg_iosregistry__customization_completed"
+    ]
+  },
+  "dbt_wburdett.int_product_list_viewed_details": {
+    "sources": [
+      "dbt_wburdett.int_product_list_viewed",
+      "dbt_wburdett.ordinal_array"
+    ]
+  },
+  "dbt_wburdett.int_flow_started": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_started",
+      "dbt_wburdett.stg_iosregistry__flow_started"
+    ]
+  },
+  "dbt_wburdett.int_flow_step_viewed": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_step_viewed",
+      "dbt_wburdett.stg_iosregistry__flow_step_viewed"
+    ]
+  },
+  "dbt_wburdett.int_flow_step_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__flow_step_completed",
+      "dbt_wburdett.stg_iosregistry__flow_step_completed"
+    ]
+  },
+  "dbt_wburdett.int_product_list_filtered_details": {
+    "sources": [
+      "dbt_wburdett.ordinal_array"
+    ]
+  },
+  "dbt_wburdett.int_experiment_unified": {
+    "sources": [
+      "dbt_wburdett.stg_web__custom_experiment_viewed",
+      "dbt_wburdett.stg_iosregistry__custom_experiment_viewed"
+    ]
+  },
+  "dbt_wburdett.int_product_list_filtered": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_list_filtered",
+      "dbt_wburdett.stg_iosregistry__product_list_filtered"
+    ]
+  },
+  "dbt_wburdett.int_onboarding_started": {
+    "sources": [
+      "dbt_wburdett.stg_web__onboarding_started",
+      "dbt_wburdett.stg_iosregistry__onboarding_started"
+    ]
+  },
+  "dbt_wburdett.int_registry_item_added": {
+    "sources": [
+      "dbt_wburdett.stg_web__registry_item_added",
+      "dbt_wburdett.stg_iosregistry__registry_item_added",
+      "dbt_wburdett.stg_androidweddings__registry_item_added"
+    ]
+  },
+  "dbt_wburdett.int_product_added": {
+    "sources": [
+      "dbt_wburdett.stg_web__product_added",
+      "dbt_wburdett.stg_iosregistry__product_added"
+    ]
+  },
+  "dbt_wburdett.int_custom_experiment_viewed": {
+    "sources": []
+  },
+  "dbt_wburdett.int_onboarding_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__onboarding_completed",
+      "dbt_wburdett.stg_iosregistry__onboarding_completed"
+    ]
+  },
+  "dbt_wburdett.int_onboarding_step_completed": {
+    "sources": [
+      "dbt_wburdett.stg_web__onboarding_step_completed",
+      "dbt_wburdett.stg_iosregistry__onboarding_step_completed"
+    ]
+  },
+  "dbt_wburdett.fct_segment_analytics_latest_state": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__segment_event_expected_schema",
+      "dbt_wburdett.int_segment_analytics_flattened_violations",
+      "dbt_wburdett.int_segment_analytics_flattened_column_metrics"
+    ]
+  },
+  "dbt_wburdett.int_segment_analytics_flattened_violations": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__segment_event_violations"
+    ]
+  },
+  "dbt_wburdett.int_segment_analytics_flattened_column_metrics": {
+    "sources": [
+      "dbt_wburdett.stg_analytics__segment_event_column_metrics",
+      "dbt_wburdett.stg_analytics__segment_event_table_metrics"
+    ]
+  },
+  "dbt_wburdett.int_web_marketplace_vendors_pages": {
+    "sources": [
+      "dbt_wburdett.fct_web_pages"
+    ]
+  },
+  "dbt_wburdett.int_mandrill__message_summary": {
+    "sources": [
+      "dbt_wburdett.stg_mandrill__sends",
+      "dbt_wburdett.stg_mandrill__activity"
+    ]
+  },
+  "dbt_wburdett.mandrill__recipient_summary": {
+    "sources": [
+      "dbt_wburdett.stg_mandrill__sends",
+      "dbt_wburdett.stg_mandrill__activity"
+    ]
+  },
+  "dbt_wburdett.fct_mandrill__template_summary": {
+    "sources": [
+      "dbt_wburdett.int_mandrill__message_summary"
+    ]
+  },
+  "dbt_wburdett.hubspot__email_sends": {
+    "sources": [
+      "dbt_wburdett.stg_hubspot__email_events_sent",
+      "dbt_wburdett.stg_hubspot__contacts",
+      "dbt_wburdett.int_hubspot__email_event_aggregates",
+      "dbt_wburdett.int_hubspot__email_aggregate_status_change"
+    ]
+  },
+  "dbt_wburdett.hubspot__email_event_status_change": {
+    "sources": [
+      "dbt_wburdett.stg_hubspot__email_subscription_event_changes",
+      "dbt_wburdett.stg_hubspot__email_events",
+      "dbt_wburdett.stg_hubspot__contacts"
+    ]
+  },
+  "dbt_wburdett.hubspot__contacts": {
+    "sources": [
+      "dbt_wburdett.stg_hubspot__contacts",
+      "dbt_wburdett.hubspot__email_sends"
+    ]
+  },
+  "dbt_wburdett.hubspot__email_campaigns": {
+    "sources": [
+      "dbt_wburdett.stg_hubspot__email_campaigns"
+    ]
+  },
+  "dbt_wburdett.int_hubspot__email_event_aggregates": {
+    "sources": [
+      "dbt_wburdett.stg_hubspot__email_events"
+    ]
+  },
+  "dbt_wburdett.int_hubspot__email_aggregate_status_change": {
+    "sources": [
+      "dbt_wburdett.hubspot__email_event_status_change"
+    ]
+  },
+  "dbt_wburdett.user_account_interactions": {
+    "sources": [
+      "dbt_wburdett.int_account_definition_accounts",
+      "dbt_wburdett.int_account_kpi_signups",
+      "dbt_wburdett.int_account_kpi_active_signups",
+      "dbt_wburdett.int_account_kpi_users",
+      "dbt_wburdett.int_account_kpi_rgc"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_guestlist": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_wedding__events"
+    ]
+  },
+  "dbt_wburdett.int_account_kpi_users": {
+    "sources": [
+      "dbt_wburdett.int_account_definitions"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_accounts": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_public__user_roles",
+      "dbt_wburdett.stg_reporting_public__user_roles"
+    ]
+  },
+  "dbt_wburdett.int_user_account_summary": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_internal__account_interactions_summary"
+    ]
+  },
+  "dbt_wburdett.int_account_kpi_active_signups": {
+    "sources": [
+      "dbt_wburdett.int_account_definitions"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_real_weddings": {
+    "sources": []
+  },
+  "dbt_wburdett.int_account_definition_seating_chart": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_wedding__seating_chart_tables",
+      "dbt_wburdett.stg_reporting_wedding__seating_chart_tables"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_marketplace": {
+    "sources": []
+  },
+  "dbt_wburdett.int_account_definition_registry": {
+    "sources": []
+  },
+  "dbt_wburdett.int_account_kpi_rgc": {
+    "sources": [
+      "dbt_wburdett.int_account_definitions"
+    ]
+  },
+  "dbt_wburdett.int_account_kpi_signups": {
+    "sources": [
+      "dbt_wburdett.int_account_definitions"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_website": {
+    "sources": []
+  },
+  "dbt_wburdett.int_user_signup_devices": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_mongo__user_auths",
+      "dbt_wburdett.stg_reporting_mongo__user_auths",
+      "dbt_wburdett.stg_reporting_mongo__users",
+      "dbt_wburdett.stg_zola__user_agents"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_paper": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_public__user_roles",
+      "dbt_wburdett.stg_reporting_public__user_roles"
+    ]
+  },
+  "dbt_wburdett.int_account_definition_checklist": {
+    "sources": []
+  },
+  "dbt_wburdett.int_account_definitions": {
+    "sources": [
+      "dbt_wburdett.int_account_definition_checklist",
+      "dbt_wburdett.int_account_definition_guestlist",
+      "dbt_wburdett.int_account_definition_marketplace",
+      "dbt_wburdett.int_account_definition_paper",
+      "dbt_wburdett.int_account_definition_real_weddings",
+      "dbt_wburdett.int_account_definition_registry",
+      "dbt_wburdett.int_account_definition_seating_chart",
+      "dbt_wburdett.int_account_definition_website"
+    ]
+  },
+  "dbt_wburdett.zendesk_cs__ticket_summary": {
+    "sources": [
+      "dbt_wburdett.zendesk_cs__ticket_metrics",
+      "dbt_wburdett.stg_zendesk_cs__users"
+    ]
+  },
+  "dbt_wburdett.zendesk_ops__ticket_metrics": {
+    "sources": [
+      "dbt_wburdett.stg_zendesk_ops__ticket_metrics",
+      "dbt_wburdett.stg_zendesk_ops__tickets"
+    ]
+  },
+  "dbt_wburdett.zendesk_ops__ticket_summary": {
+    "sources": [
+      "dbt_wburdett.zendesk_ops__ticket_metrics",
+      "dbt_wburdett.stg_zendesk_ops__users"
+    ]
+  },
+  "dbt_wburdett.zendesk_cs__ticket_metrics": {
+    "sources": [
+      "dbt_wburdett.stg_zendesk_cs__ticket_metrics",
+      "dbt_wburdett.stg_zendesk_cs__tickets"
+    ]
+  },
+  "dbt_wburdett.fct_email_performances": {
+    "sources": []
+  },
+  "dbt_wburdett.int_triggered_bounces": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__triggered_bounces"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_draft_started": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.fct_web_paper"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_window": {
+    "sources": []
+  },
+  "dbt_wburdett.int_campaign_unsubscribes": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__campaign_unsubscribes"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_reviews": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.stg_reporting_marketplace__reviews"
+    ]
+  },
+  "dbt_wburdett.int_campaign_email_events": {
+    "sources": []
+  },
+  "dbt_wburdett.int_lifecycle_optimizer_flows": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__lifecycle_optimizer_flows"
+    ]
+  },
+  "dbt_wburdett.int_campaign_opens": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__campaign_opens"
+    ]
+  },
+  "dbt_wburdett.int_triggered_opens": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__triggered_opens"
+    ]
+  },
+  "dbt_wburdett.int_campaign_bounces": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__campaign_bounces"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_site_visits": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.fct_traffic"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_favorites": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.stg_reporting_marketplace__board_storefronts",
+      "dbt_wburdett.stg_reporting_marketplace__board_wedding_photos",
+      "dbt_wburdett.stg_reporting_marketplace__board_weddings"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_paper_orders": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.fct_web_paper"
+    ]
+  },
+  "dbt_wburdett.int_sailthru_experiment_viewed": {
+    "sources": [
+      "dbt_wburdett.sailthru_experiment_mapping_seed",
+      "dbt_wburdett.stg_sailthru__user_list_signups"
+    ]
+  },
+  "dbt_wburdett.int_triggered_clicks": {
+    "sources": []
+  },
+  "dbt_wburdett.int_email_attribution_paper_samples": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.fct_web_paper"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_paper_albums": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.stg_web__order_completed"
+    ]
+  },
+  "dbt_wburdett.int_email_performances": {
+    "sources": [
+      "dbt_wburdett.int_triggered_email_events",
+      "dbt_wburdett.int_campaign_email_events",
+      "dbt_wburdett.int_templates",
+      "dbt_wburdett.int_campaigns",
+      "dbt_wburdett.int_lifecycle_optimizer_flows"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_order_sales": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window",
+      "dbt_wburdett.stg_web__order_completed"
+    ]
+  },
+  "dbt_wburdett.int_campaign_clicks": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__campaign_clicks"
+    ]
+  },
+  "dbt_wburdett.int_campaigns": {
+    "sources": []
+  },
+  "dbt_wburdett.int_triggered_email_events": {
+    "sources": []
+  },
+  "dbt_wburdett.int_triggered_unsubscribes": {
+    "sources": [
+      "dbt_wburdett.stg_sailthru__triggered_unsubscribes"
+    ]
+  },
+  "dbt_wburdett.int_email_attribution_inquiries": {
+    "sources": [
+      "dbt_wburdett.int_email_attribution_window"
+    ]
+  },
+  "dbt_wburdett.int_templates": {
+    "sources": []
+  },
+  "dbt_wburdett.int_collection_items_plus_bundle_items": {
+    "sources": []
+  },
+  "dbt_wburdett.marketing__unified_ads": {
+    "sources": [
+      "dbt_wburdett.stg_supermetrics__bingads_ad",
+      "dbt_wburdett.stg_supermetrics__fbads_ad",
+      "dbt_wburdett.stg_supermetrics__googleads_ad",
+      "dbt_wburdett.stg_supermetrics__pinterestads_ad",
+      "dbt_wburdett.stg_supermetrics__asa_creative",
+      "dbt_wburdett.int_bliss_point_media__marketing_combined"
+    ]
+  },
+  "dbt_wburdett.int_bliss_point_media__marketing_combined": {
+    "sources": [
+      "dbt_wburdett.stg_bliss_point_media__impressions",
+      "dbt_wburdett.stg_bliss_point_media__tvpostlogs"
+    ]
+  },
+  "dbt_wburdett.fct_order_sales": {
+    "sources": []
+  },
+  "dbt_wburdett.int_split_orders": {
+    "sources": [
+      "dbt_wburdett.stg_reporting_public__split_orders_v2"
+    ]
+  },
+  "dbt_wburdett.int_order_item_fulfillments": {
+    "sources": []
+  },
+  "dbt_wburdett.int_oia_price_match": {
+    "sources": []
+  },
+  "dbt_wburdett.int_wedding_cards": {
+    "sources": []
+  },
+  "dbt_wburdett.int_shipped": {
+    "sources": []
+  },
+  "dbt_wburdett.int_order_items": {
+    "sources": []
+  },
+  "dbt_wburdett.int_raap_registries": {
+    "sources": []
+  },
+  "dbt_wburdett.int_orders": {
+    "sources": []
+  },
+  "dbt_wburdett.stg_reporting_dataset__us_dmas_zipcodes": {
+    "sources": [
+      "reporting_dataset.us_dmas_zipcodes"
+    ]
+  },
+  "dbt_wburdett.stg_zola__dimension_numbers": {
+    "sources": [
+      "zola.dimension_numbers"
+    ]
+  },
+  "dbt_wburdett.stg_zola__maxmind_ipv4_lookup": {
+    "sources": [
+      "zola.maxmind_ipv4_lookup"
+    ]
+  },
+  "dbt_wburdett.stg_zola__maxmind_geo_to_city": {
+    "sources": [
+      "zola.maxmind_geo_to_city"
+    ]
+  },
+  "dbt_wburdett.stg_zola__dimension_date": {
+    "sources": [
+      "zola.dimension_date"
+    ]
+  },
+  "dbt_wburdett.stg_zola__account_interactions_summary": {
+    "sources": [
+      "zola.account_interactions_summary"
+    ]
+  },
+  "dbt_wburdett.stg_zola__maxmind_ipv4_to_geo": {
+    "sources": [
+      "zola.maxmind_ipv4_to_geo"
+    ]
+  },
+  "dbt_wburdett.stg_web__product_list_viewed": {
+    "sources": [
+      "web.product_list_viewed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__customization_completed": {
+    "sources": [
+      "web.customization_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__product_added": {
+    "sources": [
+      "web.product_added",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__custom_experiment_viewed": {
+    "sources": [
+      "web.custom_experiment_viewed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__tracks": {
+    "sources": [
+      "web.tracks"
+    ]
+  },
+  "dbt_wburdett.stg_web__onboarding_completed": {
+    "sources": [
+      "web.onboarding_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__products_searched": {
+    "sources": [
+      "web.products_searched",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__onboarding_step_completed": {
+    "sources": [
+      "web.onboarding_step_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__order_completed": {
+    "sources": [
+      "web.order_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__product_list_filtered": {
+    "sources": [
+      "web.product_list_filtered",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__vendor_user_created": {
+    "sources": [
+      "web.vendor_user_created",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__flow_step_viewed": {
+    "sources": [
+      "web.flow_step_viewed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__product_clicked": {
+    "sources": [
+      "web.product_clicked",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__customization_step_completed": {
+    "sources": [
+      "web.customization_step_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__identifies": {
+    "sources": [
+      "web.identifies"
+    ]
+  },
+  "dbt_wburdett.stg_web__cta_clicked": {
+    "sources": [
+      "web.cta_clicked",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__registry_item_added": {
+    "sources": [
+      "web.registry_item_added",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents"
+    ]
+  },
+  "dbt_wburdett.stg_web__product_viewed": {
+    "sources": [
+      "web.product_viewed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__user_created": {
+    "sources": []
+  },
+  "dbt_wburdett.stg_web__navigation_clicked": {
+    "sources": [
+      "web.navigation_clicked"
+    ]
+  },
+  "dbt_wburdett.stg_web__customization_started": {
+    "sources": [
+      "web.customization_started",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__pages": {
+    "sources": [
+      "web.pages",
+      "dbt_wburdett.user_master_aliases"
+    ]
+  },
+  "dbt_wburdett.stg_web__flow_step_completed": {
+    "sources": [
+      "web.flow_step_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__cart_viewed": {
+    "sources": [
+      "web.cart_viewed"
+    ]
+  },
+  "dbt_wburdett.stg_web__flow_started": {
+    "sources": [
+      "web.flow_started",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__checkout_started": {
+    "sources": [
+      "web.checkout_started",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__upload_completed": {
+    "sources": [
+      "web.upload_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__flow_completed": {
+    "sources": [
+      "web.flow_completed",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.stg_zola__user_agents",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_web__onboarding_started": {
+    "sources": [
+      "web.onboarding_started",
+      "dbt_wburdett.user_master_aliases",
+      "dbt_wburdett.int_user_accounts",
+      "dbt_wburdett.stg_analytics__internal_ips"
+    ]
+  },
+  "dbt_wburdett.stg_segment_ios__screens": {
+    "sources": [
+      "iosregistry.screens"
+    ]
+  },
+  "dbt_wburdett.stg_segment_ios__tracks": {
+    "sources": [
+      "iosregistry.tracks"
+    ]
+  },
+  "dbt_wburdett.stg_segment_android__screens": {
+    "sources": [
+      "androidweddings.screens"
+    ]
+  },
+  "dbt_wburdett.stg_segment_android__tracks": {
+    "sources": [
+      "androidweddings.tracks"
+    ]
+  },
+  "dbt_wburdett.redshift_columns": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_tables": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_constraints": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_sort_dist_keys": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_admin_queries": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_admin_users_schema_privileges": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_admin_dependencies": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_admin_users_table_view_privileges": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_admin_table_stats": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_namespace": {
+    "sources": []
+  },
+  "dbt_wburdett.stv_partitions": {
+    "sources": []
+  },
+  "dbt_wburdett.stl_query": {
+    "sources": []
+  },
+  "dbt_wburdett.svv_diskusage": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_user": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_tables": {
+    "sources": []
+  },
+  "dbt_wburdett.redshift_cost": {
+    "sources": []
+  },
+  "dbt_wburdett.stv_tbl_perm": {
+    "sources": []
+  },
+  "dbt_wburdett.stv_blocklist": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_class": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_depend": {
+    "sources": []
+  },
+  "dbt_wburdett.stl_explain": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_attribute": {
+    "sources": []
+  },
+  "dbt_wburdett.pg_views": {
+    "sources": []
+  },
+  "dbt_wburdett.stl_wlm_query": {
+    "sources": []
+  },
+  "dbt_wburdett.stg_stripe__payment_intent": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__payment_intent_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payment_method": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__payment_method_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__refund": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__refund_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__subscription": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__subscription_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__card": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__card_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payout": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__payout_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__charge": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__charge_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__balance_transaction": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__balance_transaction_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__fee": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__fee_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__plan": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__plan_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payment_method_card": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__payment_method_card_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__customer": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__customer_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payment_method_card_tmp": {
+    "sources": [
+      "fivetran_stripe.payment_method_card"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payment_method_tmp": {
+    "sources": [
+      "fivetran_stripe.payment_method"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__refund_tmp": {
+    "sources": [
+      "fivetran_stripe.refund"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payout_tmp": {
+    "sources": [
+      "fivetran_stripe.payout"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__charge_tmp": {
+    "sources": [
+      "fivetran_stripe.charge"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__fee_tmp": {
+    "sources": [
+      "fivetran_stripe.fee"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__payment_intent_tmp": {
+    "sources": [
+      "fivetran_stripe.payment_intent"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__plan_tmp": {
+    "sources": [
+      "fivetran_stripe.plan"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__card_tmp": {
+    "sources": [
+      "fivetran_stripe.card"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__balance_transaction_tmp": {
+    "sources": [
+      "fivetran_stripe.balance_transaction"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__customer_tmp": {
+    "sources": [
+      "fivetran_stripe.customer"
+    ]
+  },
+  "dbt_wburdett.stg_stripe__subscription_tmp": {
+    "sources": [
+      "fivetran_stripe.subscription"
+    ]
+  },
+  "dbt_wburdett.salesforce__opportunity_enhanced": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__opportunity",
+      "dbt_wburdett.stg_salesforce__user",
+      "dbt_wburdett.stg_salesforce__user_role",
+      "dbt_wburdett.stg_salesforce__account"
+    ]
+  },
+  "dbt_wburdett.salesforce__owner_performance": {
+    "sources": [
+      "dbt_wburdett.salesforce__opportunity_enhanced",
+      "dbt_wburdett.stg_salesforce__user",
+      "dbt_wburdett.stg_salesforce__user"
+    ]
+  },
+  "dbt_wburdett.salesforce__opportunity_line_item_enhanced": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__opportunity_line_item",
+      "dbt_wburdett.stg_salesforce__product_2"
+    ]
+  },
+  "dbt_wburdett.salesforce__sales_snapshot": {
+    "sources": [
+      "dbt_wburdett.salesforce__opportunity_enhanced"
+    ]
+  },
+  "dbt_wburdett.salesforce__contact_enhanced": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__contact",
+      "dbt_wburdett.stg_salesforce__account",
+      "dbt_wburdett.stg_salesforce__user"
+    ]
+  },
+  "dbt_wburdett.salesforce__daily_activity": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__task",
+      "dbt_wburdett.stg_salesforce__event",
+      "dbt_wburdett.stg_salesforce__lead",
+      "dbt_wburdett.stg_salesforce__lead",
+      "dbt_wburdett.stg_salesforce__opportunity"
+    ]
+  },
+  "dbt_wburdett.salesforce__manager_performance": {
+    "sources": [
+      "dbt_wburdett.salesforce__opportunity_enhanced",
+      "dbt_wburdett.stg_salesforce__user",
+      "dbt_wburdett.stg_salesforce__user_role",
+      "dbt_wburdett.stg_salesforce__user"
+    ]
+  },
+  "dbt_wburdett.int_salesforce__opportunity_aggregation_by_owner": {
+    "sources": [
+      "dbt_wburdett.salesforce__opportunity_enhanced",
+      "dbt_wburdett.stg_salesforce__user"
+    ]
+  },
+  "dbt_wburdett.int_salesforce__date_spine": {
+    "sources": []
+  },
+  "dbt_wburdett.stg_salesforce__opportunity": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__opportunity_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__user_role": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__user_role_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__contact": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__contact_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__account": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__account_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__lead": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__lead_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__order": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__order_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__event": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__event_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__product_2": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__product_2_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__opportunity_line_item": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__opportunity_line_item_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__user": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__user_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__task": {
+    "sources": [
+      "dbt_wburdett.stg_salesforce__task_tmp"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__user_tmp": {
+    "sources": [
+      "fivetran_salesforce.user"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__product_2_tmp": {
+    "sources": [
+      "fivetran_salesforce.product_2"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__lead_tmp": {
+    "sources": [
+      "fivetran_salesforce.lead"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__opportunity_tmp": {
+    "sources": [
+      "fivetran_salesforce.opportunity"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__event_tmp": {
+    "sources": [
+      "fivetran_salesforce.event"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__order_tmp": {
+    "sources": [
+      "fivetran_salesforce.order"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__task_tmp": {
+    "sources": [
+      "fivetran_salesforce.task"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__opportunity_line_item_tmp": {
+    "sources": [
+      "fivetran_salesforce.opportunity_line_item"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__contact_tmp": {
+    "sources": [
+      "fivetran_salesforce.contact"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__account_tmp": {
+    "sources": [
+      "fivetran_salesforce.account"
+    ]
+  },
+  "dbt_wburdett.stg_salesforce__user_role_tmp": {
+    "sources": [
+      "fivetran_salesforce.user_role"
+    ]
+  },
+  "dbt_wburdett.stripe__customer_overview": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__charge",
+      "dbt_wburdett.stripe__balance_transactions",
+      "dbt_wburdett.stg_stripe__customer"
+    ]
+  },
+  "dbt_wburdett.stripe__balance_transactions": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__balance_transaction",
+      "dbt_wburdett.stg_stripe__charge",
+      "dbt_wburdett.stg_stripe__payment_intent",
+      "dbt_wburdett.stg_stripe__card",
+      "dbt_wburdett.stg_stripe__payout",
+      "dbt_wburdett.stg_stripe__customer",
+      "dbt_wburdett.stg_stripe__payment_method",
+      "dbt_wburdett.stg_stripe__payment_method_card",
+      "dbt_wburdett.stg_stripe__refund"
+    ]
+  },
+  "dbt_wburdett.stripe__monthly_overview": {
+    "sources": [
+      "dbt_wburdett.stripe__daily_overview"
+    ]
+  },
+  "dbt_wburdett.stripe__weekly_overview": {
+    "sources": [
+      "dbt_wburdett.stripe__daily_overview"
+    ]
+  },
+  "dbt_wburdett.stripe__quarterly_overview": {
+    "sources": [
+      "dbt_wburdett.stripe__daily_overview"
+    ]
+  },
+  "dbt_wburdett.stripe__daily_overview": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__charge",
+      "dbt_wburdett.stripe__balance_transactions"
+    ]
+  },
+  "dbt_wburdett.int_stripe__incomplete_charges": {
+    "sources": [
+      "dbt_wburdett.stg_stripe__charge"
+    ]
+  }
+}

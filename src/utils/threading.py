@@ -15,10 +15,10 @@ class Worker(Thread):
     def run(self):
         while True:
             try:
-                work, kwargs = self.my_queue.get()  # 3s timeout
+                work, kwargs = self.my_queue.get(timeout=3)  # 3s timeout
                 work(**kwargs)
             except Empty:
-                time.sleep(2)
+                return
             # do whatever work you have to do on work
             self.my_queue.task_done()
 
