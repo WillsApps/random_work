@@ -128,5 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# IDE
+*/raw_data
+drug-*
 .idea
+src/ahk_scripts_local/email.ahk
+src/process_mount_sinai_prices/results/*/*.json
+src/process_mount_sinai_prices/*.json
+src/process_mount_sinai_prices/*.csv
