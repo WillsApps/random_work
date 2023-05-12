@@ -104,7 +104,7 @@ shortcuts = [
             Condition(
                 "frontmost_application_unless",
                 "bundle_identifiers",
-                ["com.jetbrains.pycharm", "com.googlecode.iterm2"],
+                ["com.jetbrains.pycharm", "com.jetbrains.AppCode", "com.googlecode.iterm2"],
             )
         ],
     ),
