@@ -1,6 +1,7 @@
 #SingleInstance Force
 #NoTrayIcon
 ^SPACE::{
-    WinSetAlwaysOnTop()
+    title := WinGetTitle("A")
+    WinSetAlwaysOnTop(-1, title)
 }
 return

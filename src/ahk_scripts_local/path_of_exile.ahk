@@ -61,15 +61,20 @@ if WinActive("ahk_exe PathOfExileSteam.exe"){
         MouseMove(x_pos, y_pos)
     }
 
-    wrap_paste(paste_me){
+    wrap_paste(warped_paste_me){
         Send("{Enter}")
+        Sleep(35)
         Send("^a")
-        fast_paste(paste_me)
+        fast_paste(warped_paste_me)
         Send("{Enter}")
     }
 
+    F3::{
+        wrap_paste("F4-Thanks | F5-hideout | F6-Invite | F7-Leave")
+    }
+
     F4::{
-        wrap_paste("F5-hideout | F6-Invite | F7-Leave")
+        wrap_paste("Thanks")
     }
 
     F5::{
