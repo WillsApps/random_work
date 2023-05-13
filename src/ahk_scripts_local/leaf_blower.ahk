@@ -1,40 +1,40 @@
 #SingleInstance Force
 #NoTrayIcon
 ;#InstallKeybdHook
-#IfWinActive ahk_exe game.exe
 
-click_x = 2005
-click_y = 1147
+if WinActive("ahk_exe game.exe"){
+click_x := 2005
+click_y := 1147
 
 
-    F12::
-        MouseGetPos, xpos, ypos
-        Click, %click_x%, %click_y%
+    F12::{
+        MouseGetPos(&xpos, &ypos)
+        Click(click_x, click_y)
         Sleep 2
-        Click, %click_x%, %click_y%
-        MouseMove, %xpos%, %ypos%
-    return
+        Click(click_x, click_y)
+        MouseMove(xpos, ypos)
+    }
 
-    F13::
-        MouseGetPos, xpos, ypos
-        click_x = %xpos%
-        click_y = %ypos%
-        MsgBox, Saved position to X%xpos% Y%ypos%.
-    return
+    F13::{
+        MouseGetPos(&xpos, &ypos)
+        click_x := xpos
+        click_y := ypos
+        MsgBox("Saved position to X" xpos " Y" ypos ".")
+    }
 
-    F14::
-        MouseGetPos, xpos, ypos
-        Click, %click_x%, %click_y%
-        MouseMove, %xpos%, %ypos%
-    return
+    F14::{
+        MouseGetPos(&xpos, &ypos)
+        Click(click_x, click_y)
+        MouseMove(xpos, ypos)
+    }
 
-    F15::
-        MsgBox, The saved position is X%click_x% Y%click_y%.
-    return
+    F15::{
+        MsgBox("The saved position is X" click_x " Y" click_y ".")
+    }
 
-    F16::
-        Send, '
-    return
+    F16::{
+        Send("'")
+    }
 
 ;    F121::
 ;        Loop
@@ -692,4 +692,4 @@ click_y = 1147
 
 
 
-#If
+}

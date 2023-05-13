@@ -1,20 +1,20 @@
 #NoTrayIcon
 #SingleInstance Force
 
-SetTitleMatchMode, 2
+SetTitleMatchMode 2
 
-#If WinActive("TowerDefense")
+if WinActive("ahk_exe TowerDefense.exe"){
     getProperties() {
-        Send {Alt down}p{Alt up}
+        Send("{Alt down}p{Alt up}")
     }
 
 
-    #NumpadEnd::
+    #NumpadEnd::{
         getProperties()
-    return
+    }
 
-    #NumpadClear::
-        Send {F6}
-        Send {F7}
-    return
-#If
+    #NumpadClear::{
+        Send("{F6}")
+        Send("{F7}")
+    }
+}

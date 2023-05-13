@@ -72,21 +72,21 @@ if (not A_IsAdmin) {
         Send 4
     return
 
-    #NumpadEnd::
+    #NumpadEnd::{
         Send 1
-    return
+    }
 
-    #NumpadDown::
+    #NumpadDown::{
         Send 2
-    return
+    }
 
-    #NumpadPgDn::
+    #NumpadPgDn::{
         Send 3
-    return
+    }
 
-    #NumpadLeft::
+    #NumpadLeft::{
         Send 4
-    return
+    }
 
     #NumpadClear::
         MouseGetPos, xpos, ypos

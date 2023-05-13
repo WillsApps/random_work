@@ -1,4 +1,6 @@
 #SingleInstance Force
 #NoTrayIcon
-^SPACE::  Winset, Alwaysontop, , A
+^SPACE::{
+    WinSetAlwaysOnTop()
+}
 return
