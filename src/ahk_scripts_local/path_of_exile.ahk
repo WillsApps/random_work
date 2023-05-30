@@ -1,20 +1,32 @@
 #SingleInstance Force
 ;#NoTrayIcon
 ;#InstallKeybdHook
-
+SendMode("Event")
 #include utils.ahk
 
 
-if WinActive("ahk_exe PathOfExileSteam.exe"){
-    drag_start_x := 970
-    drag_start_y := 1062
-    drag_end_x := 891
-    drag_end_y := 1066
-    click_x := 830
-    click_y := 1148
-    reset_x := 1258
-    reset_y := 1162
+maps_to_skip := [
+    "core",
+    "arsenal",
+    "maze",
+    "siege",
+    "frozen cabin",
+    "overgrown ruin",
+]
+okay_maps := [
+    "jungle valley",
+    "plaza",
+    "terrace",
+]
+maps_i_like := [
+    "underground river",
+    "wharf",
+]
 
+
+#HotIf WinActive("ahk_exe PathOfExileSteam.exe")
+global click_x := 830
+global click_y := 1148
     F11::{
         Send(1)
     }
@@ -36,29 +48,40 @@ if WinActive("ahk_exe PathOfExileSteam.exe"){
     }
 
     F17::{
+        click_x := 830
+        click_y := 1148
         MouseGetPos &x_pos, &y_pos
-        Click click_x, click_y
-        MouseMove x_pos, y_pos
+        games_click(click_x, click_y)
+        MouseMove(x_pos, y_pos, 2)
+    }
+
+    F18::{
+        drag_start_x := 970
+        drag_start_y := 1062
+        drag_end_x := 891
+        drag_end_y := 1066
+        click_x := 830
+        click_y := 1148
+
+        MouseGetPos &x_pos, &y_pos
+        games_click(x_pos, y_pos)
+        MouseMove(drag_start_x, drag_start_y, 2)
+        MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
+        games_click(click_x, click_y)
+        MouseMove(x_pos, y_pos, 2)
+    }
+
+    F19::{
+        reset_x := 1258
+        reset_y := 1162
+        MouseGetPos &x_pos, &y_pos
+        games_click(reset_x, reset_y)
+        MouseMove(x_pos, y_pos, 2)
     }
 
     F20::{
         MouseGetPos &x_pos, &y_pos
-        MsgBox("Mouse position is X" x_pos "Y" y_pos ".")
-    }
-
-    F18::{
-        MouseGetPos &x_pos, &y_pos
-        Click(x_pos, y_pos)
-        MouseMove(drag_start_x, drag_start_y)
-        MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 5)
-        Click(click_x, click_y)
-        MouseMove(x_pos, y_pos)
-    }
-
-    F19::{
-        MouseGetPos &x_pos, &y_pos
-        Click(reset_x, reset_y)
-        MouseMove(x_pos, y_pos)
+        MsgBox("Mouse position is X" x_pos " Y" y_pos ".")
     }
 
     wrap_paste(warped_paste_me){
@@ -93,14 +116,14 @@ if WinActive("ahk_exe PathOfExileSteam.exe"){
         Send("{Space}")
     }
 
-    F21::{
-        Loop
-        {
-            Send("^{Click}")
-            Sleep 125
-            if !GetKeyState("F21"){
-                break
-            }
-        }
-    }
-}
+    ;F21::{
+    ;    Loop
+    ;    {
+    ;        Send("^{Click}")
+    ;        Sleep 125
+    ;        if !GetKeyState("F21"){
+    ;            break
+    ;        }
+    ;    }
+    ;}
+;}
