@@ -98,7 +98,7 @@ shortcuts = [
     Shortcut(
         "left_command",
         "left_control",
-        ["a", "x", "q", "z", "t", "w", "r", "f", "c", "v", "i", "p", "i"],
+        ["a", "x", "q", "z", "t", "w", "r", "f", "c", "v", "i", "p", "i", "o"],
         optionals,
         conditions=[
             Condition(
