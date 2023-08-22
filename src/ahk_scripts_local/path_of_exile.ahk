@@ -47,6 +47,10 @@ global click_y := 1148
         Send(5)
     }
 
+    F16::{
+        Send("Q")
+    }
+
     F17::{
         click_x := 830
         click_y := 1148
@@ -109,7 +113,7 @@ global click_y := 1148
     }
 
     F7::{
-        wrap_paste("/kick Agathos_CR_WandGoesBurr")
+        wrap_paste("/kick Aggy_AN_FireNBrimstone")
     }
 
     ScrollLock::{
