@@ -43,7 +43,8 @@ class Condition:
 class Shortcut:
     original_modifier: str
     new_modifier: str
-    keys: List[str]
+    key_names: List[str]
+    key_type: str
     _optionals: Set[str] = field(default_factory=lambda: set())
     conditions: List[Condition] = field(default_factory=lambda: list())
     _clean_optionals: Set[str] = None
@@ -60,18 +61,18 @@ class Shortcut:
 
     def to_dict(self) -> List[Dict[str, Any]]:
         rules = []
-        for key in self.keys:
+        for key in self.key_names:
             rule = {
                 "description": f"{self.original_modifier} to {self.new_modifier} for {key}",
                 "manipulators": [
                     {
                         "from": {
-                            "key_code": key.lower(),
+                            self.key_type: key.lower(),
                             "modifiers": {"mandatory": [self.new_modifier]},
                         },
                         "to": [
                             {
-                                "key_code": key.lower(),
+                                self.key_type: key.lower(),
                                 "modifiers": [self.original_modifier],
                             }
                         ],
@@ -94,56 +95,28 @@ class Shortcut:
 optionals = {"left_command", "left_control", "left_option", "left_shift"}
 
 
-shortcuts = [
+SHORTCUTS = [
     Shortcut(
-        "left_command",
-        "left_control",
-        ["a", "x", "q", "z", "t", "w", "r", "f", "c", "v", "i", "p", "i", "o"],
-        optionals,
+        original_modifier="left_command",
+        new_modifier="left_control",
+        key_names=[
+            "button1",
+            "button2",
+        ],
+        key_type="pointing_button",
+        _optionals=optionals,
         conditions=[
             Condition(
-                "frontmost_application_unless",
+                "frontmost_application_if",
                 "bundle_identifiers",
-                ["com.jetbrains.pycharm", "com.jetbrains.AppCode", "com.googlecode.iterm2"],
+                ["com.jetbrains.pycharm", "com.jetbrains.AppCode"],
             )
         ],
     ),
-    # Shortcut(
-    #     "left_command",
-    #     "left_control",
-    #     ["c"],
-    #     {"left_shift"},
-    #     conditions=[
-    #         Condition(
-    #             "frontmost_application_if",
-    #             "bundle_identifiers",
-    #             [ "com.googlecode.iterm2"],
-    #         )
-    #     ],
-    # ),
     Shortcut(
-        "left_option",
-        "left_control",
-        [
-            "delete_or_backspace",
-            "right_arrow",
-            "left_arrow",
-        ],
-        optionals,
-    ),
-    Shortcut(
-        "left_command",
-        "left_option",
-        [
-            "grave_accent_and_tilde",
-            "tab",
-        ],
-        {"left_shift"},
-    ),
-    Shortcut(
-        "keyboard_fn",
-        "left_control",
-        [
+        original_modifier="left_command",
+        new_modifier="left_control",
+        key_names=[
             "a",
             "x",
             "q",
@@ -157,29 +130,50 @@ shortcuts = [
             "i",
             "p",
             "i",
+            "o",
+        ],
+        key_type="key_code",
+        _optionals=optionals,
+        conditions=[
+            Condition(
+                "frontmost_application_unless",
+                "bundle_identifiers",
+                [
+                    "com.jetbrains.pycharm",
+                    "com.jetbrains.AppCode",
+                    "com.googlecode.iterm2",
+                ],
+            )
+        ],
+    ),
+    Shortcut(
+        original_modifier="left_option",
+        new_modifier="left_control",
+        key_names=[
             "delete_or_backspace",
             "right_arrow",
             "left_arrow",
         ],
-        {"left_shift"},
+        key_type="key_code",
+        _optionals=optionals,
     ),
-    # Shortcut(
-    #     "",
-    #     "left_option",
-    #     [
-    #         "grave_accent_and_tilde",
-    #         "tab",
-    #     ],
-    #     {"left_shift"},
-    # ),
+    Shortcut(
+        original_modifier="left_command",
+        new_modifier="left_option",
+        key_names=[
+            "grave_accent_and_tilde",
+            "tab",
+        ],
+        key_type="key_code",
+        _optionals={"left_shift"},
+    ),
 ]
 
 
 def main():
-
     d = datetime.now()
     rules = []
-    for shortcut in shortcuts:
+    for shortcut in SHORTCUTS:
         rules.extend(shortcut.to_dict())
     with open("/Users/Shared/web/local_tooling/karabiner.json", "r") as f:
         raw = json.loads(f.read())
