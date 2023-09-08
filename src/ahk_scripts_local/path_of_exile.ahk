@@ -113,7 +113,7 @@ global click_y := 1148
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AN_FireNBrimstone")
+        wrap_paste("/kick Aggy_AN_BoomingGoodTime")
     }
 
     ScrollLock::{
