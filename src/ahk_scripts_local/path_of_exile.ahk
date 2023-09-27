@@ -52,9 +52,17 @@ global click_y := 1148
     }
 
     F17::{
+        drag_start_x := 970
+        drag_start_y := 1062
+        drag_end_x := 836
+        drag_end_y := 1066
         click_x := 830
         click_y := 1148
+
         MouseGetPos &x_pos, &y_pos
+        games_click(x_pos, y_pos)
+        MouseMove(drag_start_x, drag_start_y, 2)
+        MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
         games_click(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     }
