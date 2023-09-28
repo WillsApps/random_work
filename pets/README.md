@@ -2,7 +2,7 @@
 * [Feeding Schedule](#feeding-schedule)
   * [Wet food (3:30PM)](#wet-food-330pm)
   * [Dry Food (7:30 AM and 11:30PM)](#dry-food-730-am-and-1130pm)
-  * [Setting up the cat feeder](#setting-up-the-cat-feeder)
+    * [Setting up the cat feeder](#setting-up-the-cat-feeder)
 * [Medications](#medications)
   * [Schedule](#schedule)
   * [Dosages](#dosages)
