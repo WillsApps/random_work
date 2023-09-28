@@ -30,7 +30,7 @@
    2. Scale
    3. Dry food
    4. Ice tray
-2. For each bowl:
+2. For each bowl
    1. Put the bowl on the scale and hit "0"
    2. Add dry food to the bowl until it has between 20 and 22g
    3. Put 1 cube of ice into the bowl
