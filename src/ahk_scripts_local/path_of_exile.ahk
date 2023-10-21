@@ -27,6 +27,12 @@ maps_i_like := [
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
 global click_x := 830
 global click_y := 1148
+    *WheelDown::{
+        MouseClick()
+    }
+    *WheelUp::{
+        MouseClick()
+    }
     F11::{
         Send(1)
     }
