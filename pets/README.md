@@ -28,13 +28,14 @@
 1. Grab these items
    1. 2 bowls - The feeder only works with the metal bowls
    2. Scale
-   3. Dry food
+   3. Both dry foods
    4. Ice tray
 2. For each bowl
    1. Put the bowl on the scale and hit "0"
-   2. Add dry food to the bowl until it has between 20 and 22g
-   3. Put 1 cube of ice into the bowl
-   4. Slowly mix in a small amount of water until the food is a wet paste
+   2. Add the first dry food to the bowl until it has between 9g and 11g
+   3. Add the second dry food to the bowl until it has between 19g and 21g
+   4. Put 1 cube of ice into the bowl
+   5. Slowly mix in a small amount of water until the food is a wet paste
 3. Put 2 of the bowls down for them to start eating
 
 ### Setting up the cat feeder
@@ -52,11 +53,10 @@
 
 # Medications
 ## Schedule
-- Thursday (28th) - Chemo and Steroids
-- Friday (29th) - Nothing
-- Saturday (30th) - Antibiotics and Steroids
-- Sunday (1st) - Chemo
-- Monday (2nd) - Steroids
+- Thursday (28th) - Chemo
+- Friday (29th) - Steroids
+- Saturday (30th) - Antibiotics
+- Sunday (1st) - Chemo and Steroids
 
 ## Dosages
 - Chemo - 0.5ml
