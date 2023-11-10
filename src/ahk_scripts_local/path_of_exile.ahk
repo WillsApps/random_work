@@ -27,11 +27,20 @@ maps_i_like := [
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
 global click_x := 830
 global click_y := 1148
+global flasks_triggering := 0
     *WheelDown::{
-        MouseClick()
+        if(GetKeyState("Shift") || GetKeyState("Ctrl")){
+            MouseClick()
+        } else {
+            Send("{WheelDown}")
+        }
     }
     *WheelUp::{
-        MouseClick()
+        if(GetKeyState("Shift") || GetKeyState("Ctrl")){
+            MouseClick()
+        } else {
+            Send("{WheelUp}")
+        }
     }
     F11::{
         Send(1)
@@ -53,77 +62,95 @@ global click_y := 1148
         Send(5)
     }
 
-    F16::{
-        Send("Q")
+    *F16::{
+        Send("{Shift down}q{Shift up}")
     }
-
 
     F8::{
-        global calls_this_item := 0
-        global mouse_start_x := 0
-        global mouse_start_y := 0
+        global flasks_triggering := 0
     }
-
 
     F9::{
-        textbox_x := 837
-        textbox_y := 1021
-        confirm_x := 830
-        confirm_y := 1148
-
-        global calls_this_item
-        static previous_price
-        global mouse_start_x
-        global mouse_start_y
-
-        if (calls_this_item == 0){
-            calls_this_item += 1
-
-            ; Get item position, click it
-            MouseGetPos &x_pos, &y_pos
-            mouse_start_x := x_pos
-            mouse_start_y := y_pos
-            games_click(x_pos, y_pos)
-
-            ; Click the textbox, grab value
-            games_click(textbox_x, textbox_y)
-            Send("{Ctrl down}a{Ctrl up}")
-            Send("{Ctrl down}c{Ctrl up}")
-            max_value := A_Clipboard
-
-            ; Half the value, send it
-            half_value := Ceil(max_value / 2)
-            previous_price := half_value
-            Send(half_value)
-            games_click(confirm_x, confirm_y)
-        }
-        else{
-            calls_this_item += 1
-
-            ; Click the textbox, grab value
-            games_click(textbox_x, textbox_y)
-            Send("{Ctrl down}a{Ctrl up}")
-            Send("{Ctrl down}c{Ctrl up}")
-            max_value := A_Clipboard
-
-            ; Find difference, add quarter of difference to previous, send it
-            difference := max_value - previous_price
-            quarter_value := Ceil(difference / 4)
-            send_value := previous_price + quarter_value + 1
-            previous_price := send_value
-            Send(send_value)
-            games_click(confirm_x, confirm_y)
+        global flasks_triggering := 1
+        while(flasks_triggering == 1){
+            if(flasks_triggering == 1){
+                Send(3)
+                Sleep(6000)
+            }
+            if(flasks_triggering == 1){
+                Send(4)
+                Sleep(6000)
+            }
         }
     }
 
-    F10::{
-        global calls_this_item
-        global mouse_start_x
-        global mouse_start_y
 
-        calls_this_item := 0
-        MouseMove(mouse_start_x, mouse_start_y, 2)
-    }
+    ;F8::{
+    ;    global calls_this_item := 0
+    ;    global mouse_start_x := 0
+    ;    global mouse_start_y := 0
+    ;}
+;
+;
+    ;F9::{
+    ;    textbox_x := 837
+    ;    textbox_y := 1021
+    ;    confirm_x := 830
+    ;    confirm_y := 1148
+;
+    ;    global calls_this_item
+    ;    static previous_price
+    ;    global mouse_start_x
+    ;    global mouse_start_y
+;
+    ;    if (calls_this_item == 0){
+    ;        calls_this_item += 1
+;
+    ;        ; Get item position, click it
+    ;        MouseGetPos &x_pos, &y_pos
+    ;        mouse_start_x := x_pos
+    ;        mouse_start_y := y_pos
+    ;        games_click(x_pos, y_pos)
+;
+    ;        ; Click the textbox, grab value
+    ;        games_click(textbox_x, textbox_y)
+    ;        Send("{Ctrl down}a{Ctrl up}")
+    ;        Send("{Ctrl down}c{Ctrl up}")
+    ;        max_value := A_Clipboard
+;
+    ;        ; Half the value, send it
+    ;        half_value := Ceil(max_value / 2)
+    ;        previous_price := half_value
+    ;        Send(half_value)
+    ;        games_click(confirm_x, confirm_y)
+    ;    }
+    ;    else{
+    ;        calls_this_item += 1
+;
+    ;        ; Click the textbox, grab value
+    ;        games_click(textbox_x, textbox_y)
+    ;        Send("{Ctrl down}a{Ctrl up}")
+    ;        Send("{Ctrl down}c{Ctrl up}")
+    ;        max_value := A_Clipboard
+;
+    ;        ; Find difference, add quarter of difference to previous, send it
+    ;        difference := max_value - previous_price
+    ;        quarter_value := Ceil(difference / 4)
+    ;        send_value := previous_price + quarter_value + 1
+    ;        previous_price := send_value
+    ;        Send(send_value)
+    ;        games_click(confirm_x, confirm_y)
+    ;    }
+    ;}
+
+    ;F10::{
+    ;    global calls_this_item
+    ;    global mouse_start_x
+    ;    global mouse_start_y
+;
+    ;    calls_this_item := 0
+    ;    MouseMove(mouse_start_x, mouse_start_y, 2)
+    ;}
 
     F17::{
         drag_start_x := 970
@@ -183,7 +210,7 @@ global click_y := 1148
     }
 
     F4::{
-        wrap_paste("Thanks")
+        wrap_paste("Thank you!")
     }
 
     F5::{
@@ -195,7 +222,7 @@ global click_y := 1148
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AN_BoomingGoodTime")
+        wrap_paste("/kick Aggy_AN_SpinnyWind")
     }
 
     ScrollLock::{
