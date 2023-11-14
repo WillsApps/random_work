@@ -2,7 +2,6 @@
 SetWorkingDir path
 
 ; Admin
-;Run *RunAs %path%\diablo_2.exe ; Requires v1.0.92.01+
 ; Standard
 Run "utils.ahk"
 Run "factorio.ahk"

@@ -27,6 +27,14 @@ games_click(click_x, click_y){
     MouseClick("Left", click_x, click_y, number_clicks, speed)
 }
 
+games_click_modifier(click_x, click_y, modifier){
+    number_clicks := 1
+    speed := 2
+    Send("{" modifier " down}")
+    games_click(click_x, click_y)
+    Send("{" modifier " up}")
+}
+
 games_click_back(click_x, click_y, key){
     state := GetKeyState("ScrollLock", "T")
     if (state) {

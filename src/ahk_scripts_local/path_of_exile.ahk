@@ -42,6 +42,7 @@ global flasks_triggering := 0
             Send("{WheelUp}")
         }
     }
+
     F11::{
         Send(1)
     }
@@ -74,14 +75,31 @@ global flasks_triggering := 0
         global flasks_triggering := 1
         while(flasks_triggering == 1){
             if(flasks_triggering == 1){
-                Send(3)
+                Send(2)
                 Sleep(6000)
             }
             if(flasks_triggering == 1){
-                Send(4)
+                Send(3)
                 Sleep(6000)
             }
         }
+    }
+
+    F10::{
+        drag_start_x := 970
+        drag_start_y := 1062
+        drag_end_x := 836
+        drag_end_y := 1066
+        confirm_x := 814
+        confirm_y := 987
+        grab_x := 814
+        grab_y := 665
+
+        MouseGetPos &x_pos, &y_pos
+        games_click_modifier(x_pos, y_pos, "Ctrl")
+        games_click(confirm_x, confirm_y)
+        games_click_modifier(grab_x, grab_y, "Ctrl")
+        MouseMove(x_pos, y_pos, 2)
     }
 
 
