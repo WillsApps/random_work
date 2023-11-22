@@ -35,12 +35,21 @@ global flasks_triggering := 0
             Send("{WheelDown}")
         }
     }
+
     *WheelUp::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
             MouseClick()
         } else {
             Send("{WheelUp}")
         }
+    }
+
+    MButton::{
+        Send("``")
+    }
+
+    *`::{
+        Send("{Shift down}``{Shift up}")
     }
 
     F11::{
@@ -84,6 +93,13 @@ global flasks_triggering := 0
             }
         }
     }
+
+;    *F10::{
+;        ; craft flasks
+;        MouseGetPos &x_pos, &y_pos
+;        games_click(x_pos, y_pos)
+;        Send("{Ctrl down}c{Ctrl up}")
+;    }
 
     F10::{
         drag_start_x := 970
@@ -208,11 +224,6 @@ global flasks_triggering := 0
         MouseGetPos &x_pos, &y_pos
         games_click(reset_x, reset_y)
         MouseMove(x_pos, y_pos, 2)
-    }
-
-    F20::{
-        MouseGetPos &x_pos, &y_pos
-        MsgBox("Mouse position is X" x_pos " Y" y_pos ".")
     }
 
     wrap_paste(warped_paste_me){

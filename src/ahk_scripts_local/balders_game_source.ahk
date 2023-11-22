@@ -26,11 +26,6 @@ SendMode("Event")
         MouseMove(x_pos, y_pos, 2)
     }
 
-    F20::{
-        MouseGetPos &x_pos, &y_pos
-        MsgBox "x_pos: '" x_pos "' y_pos: '" y_pos "'"
-    }
-
    ;ScrollLock::{
    ;    Send("{ScrollLock}")
    ;    state := GetKeyState("ScrollLock", "T")

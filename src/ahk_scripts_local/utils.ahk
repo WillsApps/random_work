@@ -1,7 +1,18 @@
 #NoTrayIcon
 #SingleInstance Force
+InstallKeybdHook
 SetNumLockState("AlwaysOn")
 SetTitleMatchMode(2)
+
+
+F20::{
+    MouseGetPos &x_pos, &y_pos
+    MsgBox("Mouse position is X" x_pos " Y" y_pos ".")
+}
+
+F21::{
+   KeyHistory
+}
 
 F22::{
     ;active_id := WinGetProcessName("A")
