@@ -76,23 +76,23 @@ global flasks_triggering := 0
         Send("{Shift down}q{Shift up}")
     }
 
-    F8::{
-        global flasks_triggering := 0
-    }
-
-    F9::{
-        global flasks_triggering := 1
-        while(flasks_triggering == 1){
-            if(flasks_triggering == 1){
-                Send(2)
-                Sleep(6000)
-            }
-            if(flasks_triggering == 1){
-                Send(3)
-                Sleep(6000)
-            }
-        }
-    }
+    ;F8::{
+    ;    global flasks_triggering := 0
+    ;}
+;
+    ;F9::{
+    ;    global flasks_triggering := 1
+    ;    while(flasks_triggering == 1){
+    ;        if(flasks_triggering == 1){
+    ;            Send(2)
+    ;            Sleep(6000)
+    ;        }
+    ;        if(flasks_triggering == 1){
+    ;            Send(3)
+    ;            Sleep(6000)
+    ;        }
+    ;    }
+    ;}
 
 ;    *F10::{
 ;        ; craft flasks
@@ -252,6 +252,10 @@ global flasks_triggering := 0
 
     F7::{
         wrap_paste("/kick Aggy_AN_SpinnyWind")
+    }
+
+    F8::{
+        wrap_paste("/tradewith @last")
     }
 
     ScrollLock::{
