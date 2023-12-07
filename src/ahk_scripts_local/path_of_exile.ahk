@@ -186,6 +186,12 @@ global flasks_triggering := 0
     ;    MouseMove(mouse_start_x, mouse_start_y, 2)
     ;}
 
+    ;F9::{
+    ;    MouseGetPos &x_pos, &y_pos
+    ;    games_click(x_pos, y_pos)
+    ;    wrap_paste("/destroy")
+    ;}
+
     F17::{
         drag_start_x := 970
         drag_start_y := 1062

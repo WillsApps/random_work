@@ -1,13 +1,28 @@
 from dataclasses import dataclass
 
-RAGE_LOST_BASE = 5
-RAGE_LOST_ACCELERATION = 0.1
-HELM_ENCHANT_MODIFIER = 1
 COOLDOWN = 5
 MAX_RAGE = 50
-CURRENT_RAGE = MAX_RAGE
-CURRENT_RAGE = min(CURRENT_RAGE, MAX_RAGE)
 
+@dataclass
+class Skill:
+    name: str
+    rage_lost_base: int
+    rage_lost_acceleration: float
+    cooldown: int = None
+
+SKILLS = [
+    Skill(
+        name="Berserk",
+        rage_lost_base=5,
+        rage_lost_acceleration=0.1,
+        cooldown=5,
+    ),
+    Skill(
+        name="Rage Vortex",
+        rage_lost_base=3,
+        rage_lost_acceleration=0.2
+    )
+]
 
 @dataclass
 class Result:
@@ -17,33 +32,32 @@ class Result:
     total_length: int
     uptime: float
 
-
-RESULTS = []
-for helm_enchant_modifier in (0.6, 1):
+def get_results_for_skill(skill: Skill):
+    results = []
     for rage_generation in range(1, 25):
         berserker_length = 0
-        CURRENT_RAGE = 100
-        CURRENT_RAGE = min(CURRENT_RAGE, MAX_RAGE)
-        RAGE_LOST_BASE = 5
+        current_rage = 120
+        current_rage = min(current_rage, MAX_RAGE)
+        rage_lost_base = skill.rage_lost_base
         for i in range(1, 100):
-            if CURRENT_RAGE < 0:
+            if current_rage < 0:
                 berserker_length = i
                 break
-            RAGE_LOST_BASE += helm_enchant_modifier * (RAGE_LOST_BASE * RAGE_LOST_ACCELERATION)
-            CURRENT_RAGE -= RAGE_LOST_BASE
-            CURRENT_RAGE += rage_generation
-            CURRENT_RAGE = min(CURRENT_RAGE, MAX_RAGE)
+            rage_lost_base += (rage_lost_base * skill.rage_lost_acceleration)
+            current_rage -= rage_lost_base
+            current_rage += rage_generation
+            current_rage = min(current_rage, MAX_RAGE)
         max_rage_length = 0
-        CURRENT_RAGE = 0
+        current_rage = 0
         for i in range(1, 100):
             # print(f"{i=}, {current_rage=}")
-            if CURRENT_RAGE > MAX_RAGE:
+            if current_rage > MAX_RAGE:
                 max_rage_length = i
                 break
-            CURRENT_RAGE += rage_generation
+            current_rage += rage_generation
         total_length = berserker_length + max_rage_length
         uptime = berserker_length / total_length
-        RESULTS.append(
+        results.append(
             Result(
                 rage_generation=rage_generation,
                 berserker_length=berserker_length,
@@ -53,6 +67,10 @@ for helm_enchant_modifier in (0.6, 1):
             )
         )
         # print(f"{rage_generation=}, {berserker_length=}, {max_rage_length=}, {total_length=}, {uptime=}")
+    return results
 
-for result in RESULTS:
-    print(result)
+for skill in SKILLS:
+    results = get_results_for_skill(skill)
+    print(f"{skill.name=}")
+    for result in results:
+        print(result)
