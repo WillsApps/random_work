@@ -52,23 +52,23 @@ global flasks_triggering := 0
         Send("{Shift down}``{Shift up}")
     }
 
-    F11::{
+    *F11::{
         Send(1)
     }
 
-    F12::{
+    *F12::{
         Send(2)
     }
 
-    F13::{
+    *F13::{
         Send(3)
     }
 
-    F14::{
+    *F14::{
         Send(4)
     }
 
-    F15::{
+    *F15::{
         Send(5)
     }
 
