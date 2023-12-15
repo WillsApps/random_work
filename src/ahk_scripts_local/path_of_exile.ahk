@@ -80,19 +80,62 @@ global flasks_triggering := 0
     ;    global flasks_triggering := 0
     ;}
 ;
-    ;F9::{
-    ;    global flasks_triggering := 1
-    ;    while(flasks_triggering == 1){
-    ;        if(flasks_triggering == 1){
-    ;            Send(2)
-    ;            Sleep(6000)
-    ;        }
-    ;        if(flasks_triggering == 1){
-    ;            Send(3)
-    ;            Sleep(6000)
-    ;        }
-    ;    }
-    ;}
+    F9::{
+        global flasks_triggering
+        global last_flask := 2
+        if (!IsSet(flasks_triggering)){
+            flasks_triggering := 1
+        }
+        else if (flasks_triggering == 0){
+            flasks_triggering := 1
+        }
+        else {
+            flasks_triggering := 0
+        }
+
+        if (flasks_triggering == 1){
+            run_flasks()
+            run_life_flask()
+            SetTimer(run_flasks, 9600)
+            SetTimer(run_life_flask, 3900)
+        } else{
+            SetTimer(run_flasks, 0)
+            SetTimer(run_life_flask, 0)
+        }
+        ;while(flasks_triggering == 1){
+        ;    if(flasks_triggering == 1){
+        ;        Send(2)
+        ;        Sleep(6000)
+        ;    }
+        ;    if(flasks_triggering == 1){
+        ;        Send(3)
+        ;        Sleep(6000)
+        ;    }
+        ;}
+
+        run_life_flask() {
+            if (WinActive("ahk_exe PathOfExileSteam.exe")){
+                Send(1)
+            }
+        }
+
+        run_flasks() {
+            global last_flask
+            if (WinActive("ahk_exe PathOfExileSteam.exe")){
+;                Send(2)
+                Send(3)
+                Send(4)
+                Send(5)
+                ;if (last_flask == 2){
+                ;    Send(3)
+                ;    last_flask := 3
+                ;} else {
+                ;    Send(2)
+                ;    last_flask := 2
+                ;}
+            }
+        }
+    }
 
 ;    *F10::{
 ;        ; craft flasks
@@ -257,12 +300,12 @@ global flasks_triggering := 0
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AN_SpinnyWind")
+        wrap_paste("/kick Aggy_AF_RenHangingOut")
     }
 
-    F8::{
-        wrap_paste("/tradewith @last")
-    }
+    ; F8::{
+    ;     wrap_paste("/tradewith @last")
+    ; }
 
     ScrollLock::{
         Send("{Space}")
