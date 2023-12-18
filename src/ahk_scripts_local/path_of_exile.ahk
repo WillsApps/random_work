@@ -96,8 +96,8 @@ global flasks_triggering := 0
         if (flasks_triggering == 1){
             run_flasks()
             run_life_flask()
-            SetTimer(run_flasks, 9600)
-            SetTimer(run_life_flask, 3900)
+            SetTimer(run_flasks, 10000)
+            SetTimer(run_life_flask, 3000)
         } else{
             SetTimer(run_flasks, 0)
             SetTimer(run_life_flask, 0)

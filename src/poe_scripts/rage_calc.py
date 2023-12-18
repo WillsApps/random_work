@@ -3,12 +3,14 @@ from dataclasses import dataclass
 COOLDOWN = 5
 MAX_RAGE = 50
 
+
 @dataclass
 class Skill:
     name: str
     rage_lost_base: int
     rage_lost_acceleration: float
     cooldown: int = None
+
 
 SKILLS = [
     Skill(
@@ -17,12 +19,9 @@ SKILLS = [
         rage_lost_acceleration=0.1,
         cooldown=5,
     ),
-    Skill(
-        name="Rage Vortex",
-        rage_lost_base=3,
-        rage_lost_acceleration=0.2
-    )
+    Skill(name="Rage Vortex", rage_lost_base=3, rage_lost_acceleration=0.2),
 ]
+
 
 @dataclass
 class Result:
@@ -31,6 +30,7 @@ class Result:
     max_rage_length: int
     total_length: int
     uptime: float
+
 
 def get_results_for_skill(skill: Skill):
     results = []
@@ -43,7 +43,7 @@ def get_results_for_skill(skill: Skill):
             if current_rage < 0:
                 berserker_length = i
                 break
-            rage_lost_base += (rage_lost_base * skill.rage_lost_acceleration)
+            rage_lost_base += rage_lost_base * skill.rage_lost_acceleration
             current_rage -= rage_lost_base
             current_rage += rage_generation
             current_rage = min(current_rage, MAX_RAGE)
@@ -68,6 +68,7 @@ def get_results_for_skill(skill: Skill):
         )
         # print(f"{rage_generation=}, {berserker_length=}, {max_rage_length=}, {total_length=}, {uptime=}")
     return results
+
 
 for skill in SKILLS:
     results = get_results_for_skill(skill)
