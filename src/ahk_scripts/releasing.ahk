@@ -1,6 +1,6 @@
+
 #include %A_WorkingDir%\local_code_location.ahk
 SetWorkingDir path
-
 ; Admin
 ; Standard
 Run "utils.ahk"

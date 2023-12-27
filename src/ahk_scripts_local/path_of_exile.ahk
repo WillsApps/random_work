@@ -68,6 +68,14 @@ global flasks_triggering := 0
         Send(4)
     }
 
+    NumpadAdd::{
+
+    }
+
+    NumpadSub::{
+
+    }
+
     *F15::{
         Send(5)
     }
@@ -94,24 +102,15 @@ global flasks_triggering := 0
         }
 
         if (flasks_triggering == 1){
-            run_flasks()
             run_life_flask()
-            SetTimer(run_flasks, 10000)
-            SetTimer(run_life_flask, 3000)
+            Send(4)
+            Send(5)
+;            SetTimer(run_flasks, 9500)
+            SetTimer(run_life_flask, 3400)
         } else{
-            SetTimer(run_flasks, 0)
+;            SetTimer(run_flasks, 0)
             SetTimer(run_life_flask, 0)
         }
-        ;while(flasks_triggering == 1){
-        ;    if(flasks_triggering == 1){
-        ;        Send(2)
-        ;        Sleep(6000)
-        ;    }
-        ;    if(flasks_triggering == 1){
-        ;        Send(3)
-        ;        Sleep(6000)
-        ;    }
-        ;}
 
         run_life_flask() {
             if (WinActive("ahk_exe PathOfExileSteam.exe")){
@@ -124,8 +123,9 @@ global flasks_triggering := 0
             if (WinActive("ahk_exe PathOfExileSteam.exe")){
 ;                Send(2)
                 Send(3)
-                Send(4)
-                Send(5)
+;                Send("e")
+;                Send(4)
+;                Send(5)
                 ;if (last_flask == 2){
                 ;    Send(3)
                 ;    last_flask := 3
