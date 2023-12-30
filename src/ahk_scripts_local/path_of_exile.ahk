@@ -86,6 +86,7 @@ global flasks_triggering := 0
 
     ;F8::{
     ;    global flasks_triggering := 0
+    ;    X226, Y543
     ;}
 ;
     F9::{
@@ -102,11 +103,12 @@ global flasks_triggering := 0
         }
 
         if (flasks_triggering == 1){
+;            run_flasks()
             run_life_flask()
             Send(4)
             Send(5)
-;            SetTimer(run_flasks, 9500)
-            SetTimer(run_life_flask, 3400)
+;            SetTimer(run_flasks, 6000)
+            SetTimer(run_life_flask, 2300)
         } else{
 ;            SetTimer(run_flasks, 0)
             SetTimer(run_life_flask, 0)
@@ -122,17 +124,17 @@ global flasks_triggering := 0
             global last_flask
             if (WinActive("ahk_exe PathOfExileSteam.exe")){
 ;                Send(2)
-                Send(3)
+;                Send(3)
 ;                Send("e")
 ;                Send(4)
 ;                Send(5)
-                ;if (last_flask == 2){
-                ;    Send(3)
-                ;    last_flask := 3
-                ;} else {
-                ;    Send(2)
-                ;    last_flask := 2
-                ;}
+                if (last_flask == 2){
+                    Send(3)
+                    last_flask := 3
+                } else {
+                    Send(2)
+                    last_flask := 2
+                }
             }
         }
     }
