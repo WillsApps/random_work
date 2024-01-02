@@ -89,6 +89,51 @@ global flasks_triggering := 0
     ;    X226, Y543
     ;}
 ;
+    ; 6-link orbing
+;Item Class: Body Armours
+;Rarity: Unique
+;Thousand Ribbons
+;Simple Robe
+;--------
+;Evasion Rating: 32 (augmented)
+;Energy Shield: 65 (augmented)
+;--------
+;Requirements:
+;Intelligence: 17
+;--------
+;Sockets: G-B B G B-B
+;--------
+;Item Level: 85
+;--------
+;{ Unique Modifier — Defences, Energy Shield }
+;+49(30-60) to maximum Energy Shield
+;{ Unique Modifier — Defences, Evasion }
+;+32(30-60) to Evasion Rating
+;{ Unique Modifier — Gem }
+;Socketed Gems are Supported by Level 5 Elemental Proliferation — Unscalable Value
+;{ Unique Modifier — Life }
+;+28(25-50) to maximum Life
+;{ Unique Modifier — Mana }
+;+41(25-50) to maximum Mana
+;{ Unique Modifier — Damage, Elemental, Fire, Attack, Caster }
+;Adds 4(2-4) to 8(5-9) Fire Damage to Spells and Attacks
+;{ Unique Modifier — Damage, Elemental, Lightning, Attack, Caster }
+;Adds 1 to 8(4-12) Lightning Damage to Spells and Attacks
+;{ Unique Modifier — Damage, Elemental, Cold, Attack, Caster }
+;Adds 4(2-4) to 7(5-9) Cold Damage to Spells and Attacks
+;{ Unique Modifier — Elemental, Fire, Resistance }
+;+18(15-30)% to Fire Resistance
+;{ Unique Modifier — Elemental, Cold, Resistance }
+;+18(15-30)% to Cold Resistance
+;{ Unique Modifier — Elemental, Lightning, Resistance }
+;+15(15-30)% to Lightning Resistance
+;--------
+;The night of a thousand ribbons
+;To remember the day of a thousand flames
+;When Sarn burned
+;And was born again
+
+
     F9::{
         global flasks_triggering
         global last_flask := 2
@@ -104,20 +149,20 @@ global flasks_triggering := 0
 
         if (flasks_triggering == 1){
 ;            run_flasks()
-;            run_flask_1()
-;            Send(4)
-;            Send(5)
 ;            SetTimer(run_flasks, 6000)
 ;            SetTimer(run_flask_1, 2300)
+;            run_flask_1()
             run_flask_2()
-            run_flask_4()
-            SetTimer(run_flask_2, 7100)
-            SetTimer(run_flask_4, 8500)
-        } else{
+;            run_flask_3()
+;            SetTimer(run_flask_1, 4900)
+            SetTimer(run_flask_2, 8500)
+;            SetTimer(run_flask_3, 8500)
+        } else {
 ;            SetTimer(run_flasks, 0)
 ;            SetTimer(run_flask_1, 0)
+;            SetTimer(run_flask_1, 0)
             SetTimer(run_flask_2, 0)
-            SetTimer(run_flask_4, 0)
+;            SetTimer(run_flask_3, 0)
         }
 
         send_flask(flask_number) {
