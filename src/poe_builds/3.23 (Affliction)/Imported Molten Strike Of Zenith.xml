@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PathOfBuilding>
-	<Build level="95" targetVersion="3_0" pantheonMajorGod="Arakaali" bandit="None" className="Ranger" ascendClassName="Pathfinder" characterLevelAutoMode="false" mainSocketGroup="6" viewMode="CALCS" pantheonMinorGod="Ryslatha">
+	<Build level="95" targetVersion="3_0" pantheonMajorGod="Arakaali" bandit="None" className="Ranger" ascendClassName="Pathfinder" characterLevelAutoMode="false" mainSocketGroup="6" viewMode="ITEMS" pantheonMinorGod="Ryslatha">
 		<Spectre id="Metadata/Monsters/AtlasExiles/AdjudicatorInfluenceMonsters/AdjudicatorGrandMasterSpectre"/>
 		<PlayerStat stat="AverageDamage" value="678.80411391"/>
 		<PlayerStat stat="AverageBurstDamage" value="678.80411391"/>
@@ -403,27 +403,29 @@ Your Hexes can affect Hexproof Enemies
 			<ModRange range="0.75" id="8"/>
 			<ModRange range="0.75" id="9"/>
 		</Item>
-		<Item id="13">
+		<Item id="35">
 			Rarity: UNIQUE
 Snakebite
 Assassin&apos;s Mitts
-Evasion: 344
-EvasionBasePercentile: 0.9466
-Energy Shield: 30
-EnergyShieldBasePercentile: 1
-Unique ID: 288438c3bf782d8016278633caf84f8c41986f83e7ec17297a839d97f46ef68e
-Item Level: 78
-Quality: 20
-Sockets: G-G
+Evasion: 370
+EvasionBasePercentile: 0.8489
+Energy Shield: 31
+EnergyShieldBasePercentile: 0.8047
+Unique ID: ee2444f24e01cfdd0db362df6e56716fec9dd93167cd92e5590bd7ff929610fc
+Item Level: 77
+Quality: 28
+Sockets: G
 LevelReq: 58
-Implicits: 0
-162% increased Evasion Rating
-+66 to maximum Life
+Implicits: 1
+9% increased Attack Speed
+180% increased Evasion Rating
++67 to maximum Life
 2% increased Attack Speed per Frenzy Charge
 6% increased Accuracy Rating per Frenzy Charge
 10% reduced Frenzy Charge Duration per Frenzy Charge
 Attacks have 60% chance to Poison while at maximum Frenzy Charges
 +5% to Damage over Time Multiplier for Poison per Frenzy Charge
+Corrupted
 			<ModRange range="0.75" id="1"/>
 			<ModRange range="0.75" id="2"/>
 			<ModRange range="0.75" id="3"/>
@@ -431,6 +433,7 @@ Attacks have 60% chance to Poison while at maximum Frenzy Charges
 			<ModRange range="0.75" id="5"/>
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
+			<ModRange range="0.75" id="8"/>
 		</Item>
 		<Item id="34">
 			Rarity: RARE
@@ -535,28 +538,6 @@ Gain 16 Life per Enemy Hit with Attacks
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
 		</Item>
-		<Item id="11">
-			Rarity: RARE
-Chimeric Turn
-Ruby Ring
-Elder Item
-Hunter Item
-Item Level: 85
-LevelReq: 64
-Implicits: 1
-+21% to Fire Resistance
-+255 to Accuracy Rating
-+14% to Fire Resistance
-Gain 18 Life per Enemy Hit with Attacks
-Curse Enemies with Despair on Hit
-{tags:resource,unveiled_mod,mana}{crafted}{range:0}Non-Channelling Skills have -(7-6) to Total Mana Cost
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="2"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-			<ModRange range="0" id="6"/>
-		</Item>
 		<Item id="18">
 			Rarity: RARE
 Dread Finger
@@ -581,6 +562,28 @@ Gain 15 Life per Enemy Hit with Attacks
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
 			<ModRange range="0.75" id="8"/>
+		</Item>
+		<Item id="11">
+			Rarity: RARE
+Chimeric Turn
+Ruby Ring
+Elder Item
+Hunter Item
+Item Level: 85
+LevelReq: 64
+Implicits: 1
++21% to Fire Resistance
++255 to Accuracy Rating
++14% to Fire Resistance
+Gain 18 Life per Enemy Hit with Attacks
+Curse Enemies with Despair on Hit
+{tags:resource,unveiled_mod,mana}{crafted}{range:0}Non-Channelling Skills have -(7-6) to Total Mana Cost
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="2"/>
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
+			<ModRange range="0" id="6"/>
 		</Item>
 		<Item id="3">
 			Rarity: RARE
@@ -656,21 +659,21 @@ Gain 10% of Physical Damage as Extra Cold Damage during effect
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
 		</Item>
-		<Item id="27">
+		<Item id="33">
 			Rarity: MAGIC
-Alchemist&apos;s Topaz Flask
-Crafted: true
-Prefix: {range:0.75}FlaskEffectReducedDuration3
-Suffix: None
+Abecedarian&apos;s Topaz Flask of the Order
+Unique ID: 6e4720279504fbb2a14e2f35b903a26f843aee7af862789cdaa3014e902d67bb
+Item Level: 66
 Quality: 20
-LevelReq: 64
-Implicits: 0
-26% reduced Duration
+LevelReq: 48
+Implicits: 1
+{crafted}Reused at the end of this Flask&apos;s effect
+36% reduced Duration
 25% increased effect
-{tags:flask,resource,unveiled_mod,mana}{crafted}{range:0.75}(20-25)% reduced Mana Cost of Skills during Effect
-			<ModRange range="0.75" id="3"/>
+{crafted}22% increased Rarity of Items found during Effect
 			<ModRange range="0.75" id="4"/>
 			<ModRange range="0.75" id="5"/>
+			<ModRange range="0.75" id="6"/>
 		</Item>
 		<Item id="12">
 			Rarity: MAGIC
@@ -687,6 +690,22 @@ Implicits: 1
 			<ModRange range="0.75" id="4"/>
 			<ModRange range="0.75" id="5"/>
 			<ModRange range="0.75" id="6"/>
+		</Item>
+		<Item id="27">
+			Rarity: MAGIC
+Alchemist&apos;s Topaz Flask
+Crafted: true
+Prefix: {range:0.75}FlaskEffectReducedDuration3
+Suffix: None
+Quality: 20
+LevelReq: 64
+Implicits: 0
+26% reduced Duration
+25% increased effect
+{tags:flask,resource,unveiled_mod,mana}{crafted}{range:0.75}(20-25)% reduced Mana Cost of Skills during Effect
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
 		</Item>
 		<Item id="29">
 			Rarity: MAGIC
@@ -706,6 +725,107 @@ Recover an additional 26% of Flask&apos;s Life Recovery Amount over 10 seconds i
 			<ModRange range="0.75" id="5"/>
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
+		</Item>
+		<Item id="31">
+			Rarity: MAGIC
+Saturated Divine Life Flask of the Necromancer
+Item Level: 85
+Quality: 20
+LevelReq: 65
+Implicits: 0
+Recovers 4896 Life over 5.20 Seconds
+Consumes 15 of 45 Charges on use
+Currently has 0 Charges
+Grants 181% of Life Recovery to Minions
+70% increased Amount Recovered
+33% reduced Recovery rate
+30% Increased Effect
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
+			<ModRange range="0.75" id="6"/>
+			<ModRange range="0.75" id="7"/>
+		</Item>
+		<Item id="4">
+			Rarity: RARE
+Spirit Splinter
+Cobalt Jewel
+Unique ID: 2f713316b2ed54232ed1511ff58bd35ef02e6667a96f36f37d641ce636f82042
+Item Level: 83
+LevelReq: 32
+Implicits: 2
+2% increased Reservation Efficiency of Skills
+You cannot be Hindered
++10% to all Elemental Resistances
+2% increased Mana Reservation Efficiency of Skills
+16% increased Damage with Poison
+Corrupted
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
+		</Item>
+		<Item id="8">
+			Rarity: UNIQUE
+Lethal Pride
+Timeless Jewel
+Unique ID: b30dfd6939fdaa1933cd658a305258e4bb6f06d20695ae7d7e7c0e5c06f43fd2
+Item Level: 84
+Radius: Large
+Implicits: 0
+Commanded leadership over 11525 warriors under Kaom
+Passives in radius are Conquered by the Karui
+Historic
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="2"/>
+			<ModRange range="0.75" id="3"/>
+		</Item>
+		<Item id="32">
+			Rarity: RARE
+Foul Oculus
+Searching Eye Jewel
+Unique ID: 360ae465aff68951af501f4f3fdcf76625cb2d24d2c53b4c2b86d7f4666271fb
+Item Level: 83
+LevelReq: 66
+Implicits: 1
+24% chance to Avoid being Shocked
+Regenerate 13.6 Life per second
++38 to maximum Mana
+36% chance to Avoid being Shocked
+Corrupted
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="2"/>
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+		</Item>
+		<Item id="28">
+			Rarity: RARE
+Foul Oculus
+Searching Eye Jewel
+Item Level: 83
+LevelReq: 66
+Implicits: 1
+24% chance to Avoid being Shocked
+Abyss
+Regenerate 13.6 Life per second
++38 to maximum Mana
+36% chance to Avoid being Shocked
+Corrupted
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
+		</Item>
+		<Item id="6">
+			Rarity: MAGIC
+Angry Poisonberry Tincture of Enervation
+Unique ID: 28019ad913ece6821790d3344950b47774f0a16cecf6de705bce46748d8bf9ae
+Item Level: 83
+LevelReq: 56
+Implicits: 1
+All Damage can Poison
+10% chance to gain 1 Rage when you Hit a Rare or Unique Enemy
+Hits Steal Power Charges
+			<ModRange range="0.75" id="1"/>
 		</Item>
 		<Item id="2">
 			Rarity: RARE
@@ -739,6 +859,30 @@ Implicits: 0
 Modifiers to Chance to Avoid being Shocked apply to all Elemental Ailments
 			<ModRange range="0.75" id="1"/>
 			<ModRange range="0.75" id="2"/>
+		</Item>
+		<Item id="17">
+			Rarity: RARE
+Glyph Ruin
+Large Cluster Jewel
+Unique ID: eed8e0523c1be2897e329eb0f5075877e8b83a9464b93e925e721bd7fdb51445
+Item Level: 83
+LevelReq: 60
+Implicits: 4
+{crafted}Adds 8 Passive Skills
+{crafted}2 Added Passive Skills are Jewel Sockets
+{crafted}Added Small Passive Skills grant: Axe Attacks deal 12% increased Damage with Hits and Ailments
+Added Small Passive Skills grant: Sword Attacks deal 12% increased Damage with Hits and Ailments
+Added Small Passive Skills also grant: +4% to Fire Resistance
+1 Added Passive Skill is Bloodscent
+1 Added Passive Skill is Fuel the Fight
+1 Added Passive Skill is Smite the Weak
+			<ModRange range="0.75" id="1"/>
+			<ModRange range="0.75" id="2"/>
+			<ModRange range="0.75" id="3"/>
+			<ModRange range="0.75" id="4"/>
+			<ModRange range="0.75" id="5"/>
+			<ModRange range="0.75" id="6"/>
+			<ModRange range="0.75" id="7"/>
 		</Item>
 		<Item id="26">
 			Rarity: RARE
@@ -797,179 +941,6 @@ Corrupted
 			<ModRange range="0.75" id="5"/>
 			<ModRange range="0.75" id="6"/>
 			<ModRange range="0.75" id="7"/>
-		</Item>
-		<Item id="6">
-			Rarity: MAGIC
-Angry Poisonberry Tincture of Enervation
-Unique ID: 28019ad913ece6821790d3344950b47774f0a16cecf6de705bce46748d8bf9ae
-Item Level: 83
-LevelReq: 56
-Implicits: 1
-All Damage can Poison
-10% chance to gain 1 Rage when you Hit a Rare or Unique Enemy
-Hits Steal Power Charges
-			<ModRange range="0.75" id="1"/>
-		</Item>
-		<Item id="17">
-			Rarity: RARE
-Glyph Ruin
-Large Cluster Jewel
-Unique ID: eed8e0523c1be2897e329eb0f5075877e8b83a9464b93e925e721bd7fdb51445
-Item Level: 83
-LevelReq: 60
-Implicits: 4
-{crafted}Adds 8 Passive Skills
-{crafted}2 Added Passive Skills are Jewel Sockets
-{crafted}Added Small Passive Skills grant: Axe Attacks deal 12% increased Damage with Hits and Ailments
-Added Small Passive Skills grant: Sword Attacks deal 12% increased Damage with Hits and Ailments
-Added Small Passive Skills also grant: +4% to Fire Resistance
-1 Added Passive Skill is Bloodscent
-1 Added Passive Skill is Fuel the Fight
-1 Added Passive Skill is Smite the Weak
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="2"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-			<ModRange range="0.75" id="6"/>
-			<ModRange range="0.75" id="7"/>
-		</Item>
-		<Item id="4">
-			Rarity: RARE
-Spirit Splinter
-Cobalt Jewel
-Unique ID: 2f713316b2ed54232ed1511ff58bd35ef02e6667a96f36f37d641ce636f82042
-Item Level: 83
-LevelReq: 32
-Implicits: 2
-2% increased Reservation Efficiency of Skills
-You cannot be Hindered
-+10% to all Elemental Resistances
-2% increased Mana Reservation Efficiency of Skills
-16% increased Damage with Poison
-Corrupted
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-		</Item>
-		<Item id="8">
-			Rarity: UNIQUE
-Lethal Pride
-Timeless Jewel
-Unique ID: b30dfd6939fdaa1933cd658a305258e4bb6f06d20695ae7d7e7c0e5c06f43fd2
-Item Level: 84
-Radius: Large
-Implicits: 0
-Commanded leadership over 11525 warriors under Kaom
-Passives in radius are Conquered by the Karui
-Historic
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="2"/>
-			<ModRange range="0.75" id="3"/>
-		</Item>
-		<Item id="28">
-			Rarity: RARE
-Foul Oculus
-Searching Eye Jewel
-Item Level: 83
-LevelReq: 66
-Implicits: 1
-24% chance to Avoid being Shocked
-Abyss
-Regenerate 13.6 Life per second
-+38 to maximum Mana
-36% chance to Avoid being Shocked
-Corrupted
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-		</Item>
-		<Item id="31">
-			Rarity: MAGIC
-Saturated Divine Life Flask of the Necromancer
-Item Level: 85
-Quality: 20
-LevelReq: 65
-Implicits: 0
-Recovers 4896 Life over 5.20 Seconds
-Consumes 15 of 45 Charges on use
-Currently has 0 Charges
-Grants 181% of Life Recovery to Minions
-70% increased Amount Recovered
-33% reduced Recovery rate
-30% Increased Effect
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-			<ModRange range="0.75" id="6"/>
-			<ModRange range="0.75" id="7"/>
-		</Item>
-		<Item id="32">
-			Rarity: RARE
-Foul Oculus
-Searching Eye Jewel
-Unique ID: 360ae465aff68951af501f4f3fdcf76625cb2d24d2c53b4c2b86d7f4666271fb
-Item Level: 83
-LevelReq: 66
-Implicits: 1
-24% chance to Avoid being Shocked
-Regenerate 13.6 Life per second
-+38 to maximum Mana
-36% chance to Avoid being Shocked
-Corrupted
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="2"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-		</Item>
-		<Item id="33">
-			Rarity: MAGIC
-Abecedarian&apos;s Topaz Flask of the Order
-Unique ID: 6e4720279504fbb2a14e2f35b903a26f843aee7af862789cdaa3014e902d67bb
-Item Level: 66
-Quality: 20
-LevelReq: 48
-Implicits: 1
-{crafted}Reused at the end of this Flask&apos;s effect
-36% reduced Duration
-25% increased effect
-{crafted}22% increased Rarity of Items found during Effect
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-			<ModRange range="0.75" id="6"/>
-		</Item>
-		<Item id="35">
-			Rarity: UNIQUE
-Snakebite
-Assassin&apos;s Mitts
-Evasion: 370
-EvasionBasePercentile: 0.8489
-Energy Shield: 31
-EnergyShieldBasePercentile: 0.8047
-Unique ID: ee2444f24e01cfdd0db362df6e56716fec9dd93167cd92e5590bd7ff929610fc
-Item Level: 77
-Quality: 28
-Sockets: G
-LevelReq: 58
-Implicits: 1
-9% increased Attack Speed
-180% increased Evasion Rating
-+67 to maximum Life
-2% increased Attack Speed per Frenzy Charge
-6% increased Accuracy Rating per Frenzy Charge
-10% reduced Frenzy Charge Duration per Frenzy Charge
-Attacks have 60% chance to Poison while at maximum Frenzy Charges
-+5% to Damage over Time Multiplier for Poison per Frenzy Charge
-Corrupted
-			<ModRange range="0.75" id="1"/>
-			<ModRange range="0.75" id="2"/>
-			<ModRange range="0.75" id="3"/>
-			<ModRange range="0.75" id="4"/>
-			<ModRange range="0.75" id="5"/>
-			<ModRange range="0.75" id="6"/>
-			<ModRange range="0.75" id="7"/>
-			<ModRange range="0.75" id="8"/>
 		</Item>
 		<ItemSet useSecondWeaponSet="false" title="Current" id="3">
 			<Slot itemPbURL="" name="Weapon 1" itemId="5"/>

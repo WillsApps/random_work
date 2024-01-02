@@ -104,37 +104,56 @@ global flasks_triggering := 0
 
         if (flasks_triggering == 1){
 ;            run_flasks()
-            run_life_flask()
-            Send(4)
-            Send(5)
+;            run_flask_1()
+;            Send(4)
+;            Send(5)
 ;            SetTimer(run_flasks, 6000)
-            SetTimer(run_life_flask, 2300)
+;            SetTimer(run_flask_1, 2300)
+            run_flask_2()
+            run_flask_4()
+            SetTimer(run_flask_2, 7100)
+            SetTimer(run_flask_4, 8500)
         } else{
 ;            SetTimer(run_flasks, 0)
-            SetTimer(run_life_flask, 0)
+;            SetTimer(run_flask_1, 0)
+            SetTimer(run_flask_2, 0)
+            SetTimer(run_flask_4, 0)
         }
 
-        run_life_flask() {
+        send_flask(flask_number) {
             if (WinActive("ahk_exe PathOfExileSteam.exe")){
-                Send(1)
+                Send(flask_number)
             }
+        }
+
+        run_flask_1() {
+            send_flask(1)
+        }
+
+        run_flask_2() {
+            send_flask(2)
+        }
+
+        run_flask_3() {
+            send_flask(3)
+        }
+
+        run_flask_4() {
+            send_flask(4)
+        }
+
+        run_flask_5() {
+            send_flask(5)
         }
 
         run_flasks() {
             global last_flask
-            if (WinActive("ahk_exe PathOfExileSteam.exe")){
-;                Send(2)
-;                Send(3)
-;                Send("e")
-;                Send(4)
-;                Send(5)
-                if (last_flask == 2){
-                    Send(3)
-                    last_flask := 3
-                } else {
-                    Send(2)
-                    last_flask := 2
-                }
+            if (last_flask == 2){
+                send_flask(3)
+                last_flask := 3
+            } else {
+                send_flask(2)
+                last_flask := 2
             }
         }
     }
@@ -302,7 +321,7 @@ global flasks_triggering := 0
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AF_RenHangingOut")
+        wrap_paste("/kick Aggy_AF_FlyFlyAway")
     }
 
     ; F8::{
