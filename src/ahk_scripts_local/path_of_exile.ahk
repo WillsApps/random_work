@@ -133,6 +133,16 @@ global flasks_triggering := 0
 ;When Sarn burned
 ;And was born again
 
+    ^!+LButton::{
+        MouseGetPos &x_pos, &y_pos
+        games_click(x_pos, y_pos)
+        Send("c")
+        modifier_text := ClipboardAll()
+        pattern := "[RBG]-[RBG]-[RBG]-[RBG]-[RBG]-[RBG]"
+        position := RegExMatch(modifier_text, pattern)
+        MsgBox("position: '" position "'")
+    }
+
 
     F9::{
         global flasks_triggering
