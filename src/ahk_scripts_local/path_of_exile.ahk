@@ -101,47 +101,39 @@ global flasks_triggering := 0
 ;Requirements:
 ;Intelligence: 17
 ;--------
-;Sockets: G-B B G B-B
+;Sockets: G-B-B-G B B
 ;--------
 ;Item Level: 85
 ;--------
-;{ Unique Modifier — Defences, Energy Shield }
-;+49(30-60) to maximum Energy Shield
-;{ Unique Modifier — Defences, Evasion }
-;+32(30-60) to Evasion Rating
-;{ Unique Modifier — Gem }
-;Socketed Gems are Supported by Level 5 Elemental Proliferation — Unscalable Value
-;{ Unique Modifier — Life }
-;+28(25-50) to maximum Life
-;{ Unique Modifier — Mana }
-;+41(25-50) to maximum Mana
-;{ Unique Modifier — Damage, Elemental, Fire, Attack, Caster }
-;Adds 4(2-4) to 8(5-9) Fire Damage to Spells and Attacks
-;{ Unique Modifier — Damage, Elemental, Lightning, Attack, Caster }
-;Adds 1 to 8(4-12) Lightning Damage to Spells and Attacks
-;{ Unique Modifier — Damage, Elemental, Cold, Attack, Caster }
-;Adds 4(2-4) to 7(5-9) Cold Damage to Spells and Attacks
-;{ Unique Modifier — Elemental, Fire, Resistance }
-;+18(15-30)% to Fire Resistance
-;{ Unique Modifier — Elemental, Cold, Resistance }
-;+18(15-30)% to Cold Resistance
-;{ Unique Modifier — Elemental, Lightning, Resistance }
-;+15(15-30)% to Lightning Resistance
+;Socketed Gems are Supported by Level 5 Elemental Proliferation
+;Adds 4 to 8 Fire Damage to Spells and Attacks
+;Adds 4 to 7 Cold Damage to Spells and Attacks
+;Adds 1 to 8 Lightning Damage to Spells and Attacks
+;+32 to Evasion Rating
+;+49 to maximum Energy Shieldlue
+;+28 to maximum Life
+;+41 to maximum Mana
+;+18% to Fire Resistance
+;+18% to Cold Resistance
+;+15% to Lightning Resistance
 ;--------
 ;The night of a thousand ribbons
 ;To remember the day of a thousand flames
 ;When Sarn burned
 ;And was born again
 
-    ^!+LButton::{
-        MouseGetPos &x_pos, &y_pos
-        games_click(x_pos, y_pos)
-        Send("c")
-        modifier_text := ClipboardAll()
-        pattern := "[RBG]-[RBG]-[RBG]-[RBG]-[RBG]-[RBG]"
-        position := RegExMatch(modifier_text, pattern)
-        MsgBox("position: '" position "'")
-    }
+;    ^!+LButton::{
+;        MouseGetPos &x_pos, &y_pos
+;        games_click(x_pos, y_pos)
+;        Sleep(35)
+;        Send("{Ctrl down}c{Ctrl up}")
+;        modifier_text := A_Clipboard
+;        pattern := "[RBG]-[RBG]-[RBG]-[RBG]-[RBG]-[RBG]"
+;        position := RegExMatch(modifier_text, pattern)
+;        if (position != 0){
+;            MsgBox("position: '" position "'")
+;        }
+;    }
 
 
     F9::{
@@ -158,21 +150,28 @@ global flasks_triggering := 0
         }
 
         if (flasks_triggering == 1){
+            ; Molten Strike
 ;            run_flasks()
-;            SetTimer(run_flasks, 6000)
 ;            SetTimer(run_flask_1, 2300)
+;            SetTimer(run_flask_3, 9700)
 ;            run_flask_1()
-            run_flask_2()
 ;            run_flask_3()
-;            SetTimer(run_flask_1, 4900)
-            SetTimer(run_flask_2, 8500)
-;            SetTimer(run_flask_3, 8500)
+;            run_flask_4()
+;            run_flask_5()
+
+            ; Tornado Shot
+            run_flask_1()
+;            run_flask_2()
+            run_flask_3()
+            SetTimer(run_flask_1, 9100)
+;            SetTimer(run_flask_2, 8500)
+            SetTimer(run_flask_3, 7100)
         } else {
-;            SetTimer(run_flasks, 0)
-;            SetTimer(run_flask_1, 0)
-;            SetTimer(run_flask_1, 0)
+            SetTimer(run_flask_1, 0)
             SetTimer(run_flask_2, 0)
-;            SetTimer(run_flask_3, 0)
+            SetTimer(run_flask_3, 0)
+            SetTimer(run_flask_4, 0)
+            SetTimer(run_flask_5, 0)
         }
 
         send_flask(flask_number) {
