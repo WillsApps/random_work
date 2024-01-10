@@ -22,7 +22,7 @@ F22::{
     A_Clipboard := process_path
 }
 
-fast_paste(paste_me){
+FastPaste(paste_me){
     saved := ClipboardAll()
     A_Clipboard := paste_me
     Sleep(35)
@@ -32,25 +32,31 @@ fast_paste(paste_me){
     saved := ""
 }
 
-games_click(click_x, click_y){
+GamesClick(click_x, click_y){
     number_clicks := 1
     speed := 2
     MouseClick("Left", click_x, click_y, number_clicks, speed)
 }
 
-games_click_modifier(click_x, click_y, modifier){
+GamesClickRight(click_x, click_y){
+    number_clicks := 1
+    speed := 2
+    MouseClick("Right", click_x, click_y, number_clicks, speed)
+}
+
+GamesClickModifier(click_x, click_y, modifier){
     number_clicks := 1
     speed := 2
     Send("{" modifier " down}")
-    games_click(click_x, click_y)
+    GamesClick(click_x, click_y)
     Send("{" modifier " up}")
 }
 
-games_click_back(click_x, click_y, key){
+GamesClickBack(click_x, click_y, key){
     state := GetKeyState("ScrollLock", "T")
     if (state) {
         MouseGetPos &x_pos, &y_pos
-        games_click(click_x, click_y)
+        GamesClick(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     } else {
         Send(key)

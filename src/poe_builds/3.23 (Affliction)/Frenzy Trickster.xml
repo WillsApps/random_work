@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PathOfBuilding>
-	<Build level="91" targetVersion="3_0" pantheonMajorGod="Lunaris" bandit="None" className="Shadow" ascendClassName="Trickster" characterLevelAutoMode="true" mainSocketGroup="1" viewMode="TREE" pantheonMinorGod="Yugul">
+	<Build level="91" targetVersion="3_0" pantheonMajorGod="Lunaris" bandit="None" className="Shadow" ascendClassName="Trickster" characterLevelAutoMode="true" mainSocketGroup="1" viewMode="ITEMS" pantheonMinorGod="Yugul">
 		<PlayerStat stat="AverageDamage" value="179095.33678953"/>
 		<PlayerStat stat="AverageBurstDamage" value="179095.33678953"/>
 		<PlayerStat stat="Speed" value="10.40364"/>
@@ -242,7 +242,7 @@
 		<Section subsection="DotsandDegens" collapsed="false" id="DamageTaken"/>
 		<Section subsection="RecoupandHitTakenOverTime" collapsed="true" id="DamageTaken"/>
 	</Calcs>
-	<TreeView searchStr="block" zoomY="79.336491407407" zoomLevel="7" showStatDifferences="true" zoomX="-1302.2313476132"/>
+	<TreeView searchStr="block" zoomY="-313.54913099129" zoomLevel="0" showStatDifferences="true" zoomX="-357.30876007945"/>
 	<Items activeItemSet="1" useSecondWeaponSet="nil">
 		<Item variant="5" id="7">
 			Rarity: UNIQUE
@@ -522,7 +522,7 @@ Right ring slot: You cannot Regenerate Mana
 {tags:mana}{variant:3}Right ring slot: +100 to maximum Mana
 {tags:mana}{variant:4}Right ring slot: +250 to maximum Mana
 Left ring slot: You cannot Recharge or Regenerate Energy Shield
-{tags:mana}{variant:4,3}Left ring slot: Regenerate 40 Mana per Second
+{tags:mana}{variant:3,4}Left ring slot: Regenerate 40 Mana per Second
 {tags:jewellery_defense}{variant:3}Left ring slot: +100 to maximum Energy Shield
 {tags:jewellery_defense}{variant:4}Left ring slot: +250 to maximum Energy Shield
 {tags:mana}{variant:1,2}Left ring slot: 100% increased Mana Regeneration Rate

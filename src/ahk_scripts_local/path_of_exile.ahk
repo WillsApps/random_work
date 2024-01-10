@@ -124,7 +124,7 @@ global flasks_triggering := 0
 
 ;    ^!+LButton::{
 ;        MouseGetPos &x_pos, &y_pos
-;        games_click(x_pos, y_pos)
+;        GamesClick(x_pos, y_pos)
 ;        Sleep(35)
 ;        Send("{Ctrl down}c{Ctrl up}")
 ;        modifier_text := A_Clipboard
@@ -150,63 +150,78 @@ global flasks_triggering := 0
         }
 
         if (flasks_triggering == 1){
-            ; Molten Strike
-;            run_flasks()
-;            SetTimer(run_flask_1, 2300)
-;            SetTimer(run_flask_3, 9700)
-;            run_flask_1()
-;            run_flask_3()
-;            run_flask_4()
-;            run_flask_5()
-
-            ; Tornado Shot
-            run_flask_1()
-;            run_flask_2()
-            run_flask_3()
-            SetTimer(run_flask_1, 9100)
-;            SetTimer(run_flask_2, 8500)
-            SetTimer(run_flask_3, 7100)
+;            RenHangingOut()
+;            ColeHangingOut()
+            SpeedQueen()
         } else {
-            SetTimer(run_flask_1, 0)
-            SetTimer(run_flask_2, 0)
-            SetTimer(run_flask_3, 0)
-            SetTimer(run_flask_4, 0)
-            SetTimer(run_flask_5, 0)
+            SetTimer(RunFlask1, 0)
+            SetTimer(RunFlask2, 0)
+            SetTimer(RunFlask3, 0)
+            SetTimer(RunFlask4, 0)
+            SetTimer(RunFlask5, 0)
+            SetTimer(RunFlasks, 0)
         }
 
-        send_flask(flask_number) {
+        RenHangingOut() {
+            RunFlask1()
+            RunFlask3()
+            RunFlask4()
+            RunFlask5()
+            SetTimer(RunFlask1, 2300)
+            SetTimer(RunFlask3, 9700)
+        }
+
+        ColeHangingOut() {
+            RunFlask1()
+            RunFlask3()
+            SetTimer(RunFlask1, 9100)
+            SetTimer(RunFlask3, 7100)
+        }
+
+        SpeedQueen() {
+;            RunFlasks()
+            RunFlask1()
+            RunFlask2()
+            RunFlask3()
+            SetTimer(RunFlask1, 10100)
+            SetTimer(RunFlask2, 7300)
+            SetTimer(RunFlask3, 10100)
+;            SetTimer(RunFlask5, 4500)
+        }
+
+        SendFlask(flask_number) {
             if (WinActive("ahk_exe PathOfExileSteam.exe")){
                 Send(flask_number)
             }
         }
 
-        run_flask_1() {
-            send_flask(1)
+        RunFlask1() {
+            SendFlask(1)
         }
 
-        run_flask_2() {
-            send_flask(2)
+        RunFlask2() {
+            SendFlask(2)
         }
 
-        run_flask_3() {
-            send_flask(3)
+        RunFlask3() {
+            SendFlask(3)
         }
 
-        run_flask_4() {
-            send_flask(4)
+        RunFlask4() {
+            SendFlask(4)
         }
 
-        run_flask_5() {
-            send_flask(5)
+        RunFlask5() {
+            SendFlask(5)
         }
 
-        run_flasks() {
+        RunFlasks() {
             global last_flask
             if (last_flask == 2){
-                send_flask(3)
+                SendFlask(3)
                 last_flask := 3
             } else {
-                send_flask(2)
+                SendFlask(2)
                 last_flask := 2
             }
         }
@@ -215,7 +230,7 @@ global flasks_triggering := 0
 ;    *F10::{
 ;        ; craft flasks
 ;        MouseGetPos &x_pos, &y_pos
-;        games_click(x_pos, y_pos)
+;        GamesClick(x_pos, y_pos)
 ;        Send("{Ctrl down}c{Ctrl up}")
 ;    }
 
@@ -230,9 +245,9 @@ global flasks_triggering := 0
         grab_y := 665
 
         MouseGetPos &x_pos, &y_pos
-        games_click_modifier(x_pos, y_pos, "Ctrl")
-        games_click(confirm_x, confirm_y)
-        games_click_modifier(grab_x, grab_y, "Ctrl")
+        GamesClickModifier(x_pos, y_pos, "Ctrl")
+        GamesClick(confirm_x, confirm_y)
+        GamesClickModifier(grab_x, grab_y, "Ctrl")
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -262,10 +277,10 @@ global flasks_triggering := 0
     ;        MouseGetPos &x_pos, &y_pos
     ;        mouse_start_x := x_pos
     ;        mouse_start_y := y_pos
-    ;        games_click(x_pos, y_pos)
+    ;        GamesClick(x_pos, y_pos)
 ;
     ;        ; Click the textbox, grab value
-    ;        games_click(textbox_x, textbox_y)
+    ;        GamesClick(textbox_x, textbox_y)
     ;        Send("{Ctrl down}a{Ctrl up}")
     ;        Send("{Ctrl down}c{Ctrl up}")
     ;        max_value := A_Clipboard
@@ -274,13 +289,13 @@ global flasks_triggering := 0
     ;        half_value := Ceil(max_value / 2)
     ;        previous_price := half_value
     ;        Send(half_value)
-    ;        games_click(confirm_x, confirm_y)
+    ;        GamesClick(confirm_x, confirm_y)
     ;    }
     ;    else{
     ;        calls_this_item += 1
 ;
     ;        ; Click the textbox, grab value
-    ;        games_click(textbox_x, textbox_y)
+    ;        GamesClick(textbox_x, textbox_y)
     ;        Send("{Ctrl down}a{Ctrl up}")
     ;        Send("{Ctrl down}c{Ctrl up}")
     ;        max_value := A_Clipboard
@@ -291,7 +306,7 @@ global flasks_triggering := 0
     ;        send_value := previous_price + quarter_value + 1
     ;        previous_price := send_value
     ;        Send(send_value)
-    ;        games_click(confirm_x, confirm_y)
+    ;        GamesClick(confirm_x, confirm_y)
     ;    }
     ;}
 
@@ -306,7 +321,7 @@ global flasks_triggering := 0
 
     ;F9::{
     ;    MouseGetPos &x_pos, &y_pos
-    ;    games_click(x_pos, y_pos)
+    ;    GamesClick(x_pos, y_pos)
     ;    wrap_paste("/destroy")
     ;}
 
@@ -319,10 +334,10 @@ global flasks_triggering := 0
         click_y := 1148
 
         MouseGetPos &x_pos, &y_pos
-        games_click(x_pos, y_pos)
+        GamesClick(x_pos, y_pos)
         MouseMove(drag_start_x, drag_start_y, 2)
         MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
-        games_click(click_x, click_y)
+        GamesClick(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -335,10 +350,10 @@ global flasks_triggering := 0
         click_y := 1148
 
         MouseGetPos &x_pos, &y_pos
-        games_click(x_pos, y_pos)
+        GamesClick(x_pos, y_pos)
         MouseMove(drag_start_x, drag_start_y, 2)
         MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
-        games_click(click_x, click_y)
+        GamesClick(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -346,7 +361,7 @@ global flasks_triggering := 0
         reset_x := 1258
         reset_y := 1162
         MouseGetPos &x_pos, &y_pos
-        games_click(reset_x, reset_y)
+        GamesClick(reset_x, reset_y)
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -354,8 +369,22 @@ global flasks_triggering := 0
         Send("{Enter}")
         Sleep(35)
         Send("^a")
-        fast_paste(warped_paste_me)
+        FastPaste(warped_paste_me)
         Send("{Enter}")
+    }
+
+    F2::{
+        essence_x := 1412
+        essence_y := 951
+
+        MouseGetPos &x_pos, &y_pos
+
+        Send("i")
+        Sleep(15)
+        GamesClickRight(essence_x, essence_y)
+        MouseMove(x_pos, y_pos)
+        Sleep(15)
+        Send("i")
     }
 
     F3::{
@@ -375,7 +404,7 @@ global flasks_triggering := 0
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AF_FlyFlyAway")
+        wrap_paste("/kick Aggy_AF_SpeedQueen")
     }
 
     ; F8::{

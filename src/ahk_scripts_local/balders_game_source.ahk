@@ -14,7 +14,7 @@ SendMode("Event")
         click_x := 1313
         click_y := 561
         MouseGetPos &x_pos, &y_pos
-        games_click(click_x, click_y)
+        GamesClick(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -22,7 +22,7 @@ SendMode("Event")
         click_x := 1280
         click_y := 1090
         MouseGetPos &x_pos, &y_pos
-        games_click(click_x, click_y)
+        GamesClick(click_x, click_y)
         MouseMove(x_pos, y_pos, 2)
     }
 
@@ -41,13 +41,13 @@ SendMode("Event")
 
 ; START_GEN_HERE
     1::{
-        games_click_back(888, 1162, 1)
+        GamesClickBack(888, 1162, 1)
     }
 
     2::{
-        games_click_back(947, 1164, 2)
+        GamesClickBack(947, 1164, 2)
     }
 
     3::{
-        games_click_back(1005, 1164, 3)
+        GamesClickBack(1005, 1164, 3)
     }

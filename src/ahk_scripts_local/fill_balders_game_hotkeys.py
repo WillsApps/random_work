@@ -30,7 +30,7 @@ TOP_Y = 1164
 def get_hotkey_template(key, x_pos, y_pos, modifier: tuple[str, str]):
     return f"""
     {modifier[1]}{key}::{{
-        games_click_back({x_pos}, {y_pos}, "{modifier[0]}{key}")
+        GamesClickBack({x_pos}, {y_pos}, "{modifier[0]}{key}")
     }}
 """
 
