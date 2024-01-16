@@ -3,6 +3,7 @@
 ;#InstallKeybdHook
 SendMode("Event")
 #include utils.ahk
+Thread "Interrupt", 0
 
 
 maps_to_skip := [
@@ -45,7 +46,7 @@ global flasks_triggering := 0
     }
 
     MButton::{
-        Send("``")
+        Send("{Shift down}``{Shift up}")
     }
 
     *`::{
@@ -68,20 +69,20 @@ global flasks_triggering := 0
         Send(4)
     }
 
-    NumpadAdd::{
-
-    }
-
-    NumpadSub::{
-
-    }
-
     *F15::{
         Send(5)
     }
 
+    NumpadAdd::{
+
+    }
+
     *F16::{
         Send("{Shift down}q{Shift up}")
+    }
+
+    NumpadSub::{
+
     }
 
     ;F8::{
@@ -152,7 +153,8 @@ global flasks_triggering := 0
         if (flasks_triggering == 1){
 ;            RenHangingOut()
 ;            ColeHangingOut()
-            SpeedQueen()
+;            SpeedQueen()
+            SnakeBite()
         } else {
             SetTimer(RunFlask1, 0)
             SetTimer(RunFlask2, 0)
@@ -160,9 +162,11 @@ global flasks_triggering := 0
             SetTimer(RunFlask4, 0)
             SetTimer(RunFlask5, 0)
             SetTimer(RunFlasks, 0)
+            SetTimer(SendW, 0)
         }
 
         RenHangingOut() {
+            global character_name := "Aggy_AF_RenHangingOut"
             RunFlask1()
             RunFlask3()
             RunFlask4()
@@ -172,6 +176,7 @@ global flasks_triggering := 0
         }
 
         ColeHangingOut() {
+            global character_name := "Aggy_AF_ColeHangingOut"
             RunFlask1()
             RunFlask3()
             SetTimer(RunFlask1, 9100)
@@ -179,6 +184,7 @@ global flasks_triggering := 0
         }
 
         SpeedQueen() {
+            global character_name := "Aggy_AF_SpeedQueen"
 ;            RunFlasks()
             RunFlask1()
             RunFlask2()
@@ -187,6 +193,26 @@ global flasks_triggering := 0
             SetTimer(RunFlask2, 7300)
             SetTimer(RunFlask3, 10100)
 ;            SetTimer(RunFlask5, 4500)
+        }
+
+        SnakeBite() {
+            global character_name := "Aggy_AF_SnakeBite"
+            SendW()
+            RunFlask1()
+            RunFlask2()
+            RunFlask3()
+            RunFlask4()
+            SetTimer(SendW, 12000)
+            SetTimer(RunFlask4, 3300)
+;            SetTimer(RunFlask3, 15000)
+;            SetTimer(RunFlask4, 11400)
+;            SetTimer(RunFlask5, 8000)
+        }
+
+        SendW() {
+            if (WinActive("ahk_exe PathOfExileSteam.exe")){
+                Send("w")
+            }
         }
 
         SendFlask(flask_number) {
@@ -388,7 +414,7 @@ global flasks_triggering := 0
     }
 
     F3::{
-        wrap_paste("F4-Thanks | F5-hideout | F6-Invite | F7-Leave")
+        wrap_paste("/menagerie")
     }
 
     F4::{
@@ -404,7 +430,13 @@ global flasks_triggering := 0
     }
 
     F7::{
-        wrap_paste("/kick Aggy_AF_SpeedQueen")
+        global character_name
+        if(IsSet(character_name)){
+            wrap_paste("/kick " character_name)
+        }
+        else {
+            wrap_paste("/leave")
+        }
     }
 
     ; F8::{
