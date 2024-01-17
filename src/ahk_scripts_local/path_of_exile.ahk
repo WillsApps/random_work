@@ -153,8 +153,8 @@ global flasks_triggering := 0
         if (flasks_triggering == 1){
 ;            RenHangingOut()
 ;            ColeHangingOut()
-;            SpeedQueen()
-            SnakeBite()
+            SpeedQueen()
+;            SnakeBite()
         } else {
             SetTimer(RunFlask1, 0)
             SetTimer(RunFlask2, 0)
@@ -176,7 +176,6 @@ global flasks_triggering := 0
         }
 
         ColeHangingOut() {
-            global character_name := "Aggy_AF_ColeHangingOut"
             RunFlask1()
             RunFlask3()
             SetTimer(RunFlask1, 9100)
@@ -184,7 +183,6 @@ global flasks_triggering := 0
         }
 
         SpeedQueen() {
-            global character_name := "Aggy_AF_SpeedQueen"
 ;            RunFlasks()
             RunFlask1()
             RunFlask2()
@@ -196,14 +194,13 @@ global flasks_triggering := 0
         }
 
         SnakeBite() {
-            global character_name := "Aggy_AF_SnakeBite"
             SendW()
             RunFlask1()
             RunFlask2()
             RunFlask3()
             RunFlask4()
             SetTimer(SendW, 12000)
-            SetTimer(RunFlask4, 3300)
+            SetTimer(RunFlask4, 4000)
 ;            SetTimer(RunFlask3, 15000)
 ;            SetTimer(RunFlask4, 11400)
 ;            SetTimer(RunFlask5, 8000)
@@ -430,13 +427,7 @@ global flasks_triggering := 0
     }
 
     F7::{
-        global character_name
-        if(IsSet(character_name)){
-            wrap_paste("/kick " character_name)
-        }
-        else {
-            wrap_paste("/leave")
-        }
+        wrap_paste("/leave")
     }
 
     ; F8::{
