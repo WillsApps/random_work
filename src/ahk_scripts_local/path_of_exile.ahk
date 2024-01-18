@@ -184,13 +184,14 @@ global flasks_triggering := 0
 
         SpeedQueen() {
 ;            RunFlasks()
-            RunFlask1()
-            RunFlask2()
-            RunFlask3()
-            SetTimer(RunFlask1, 10100)
-            SetTimer(RunFlask2, 7300)
-            SetTimer(RunFlask3, 10100)
-;            SetTimer(RunFlask5, 4500)
+;            RunFlask1()
+;            RunFlask2()
+;            RunFlask3()
+            RunFlask5()
+;            SetTimer(RunFlask1, 10100)
+;            SetTimer(RunFlask2, 7300)
+;            SetTimer(RunFlask3, 10100)
+            SetTimer(RunFlask5, 5300)
         }
 
         SnakeBite() {
