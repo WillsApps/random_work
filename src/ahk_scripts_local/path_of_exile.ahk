@@ -151,9 +151,11 @@ global flasks_triggering := 0
         }
 
         if (flasks_triggering == 1){
+;            MostMeta()
+;            PocketGopher()
 ;            RenHangingOut()
 ;            ColeHangingOut()
-            SpeedQueen()
+;            SpeedQueen()
 ;            SnakeBite()
         } else {
             SetTimer(RunFlask1, 0)
@@ -175,11 +177,23 @@ global flasks_triggering := 0
             SetTimer(RunFlask3, 9700)
         }
 
+        PocketGopher() {
+            RunFlasks()
+            RunFlask4()
+            SetTimer(RunFlasks, 6000)
+            SetTimer(RunFlask4, 5000)
+        }
+
         ColeHangingOut() {
-            RunFlask1()
-            RunFlask3()
-            SetTimer(RunFlask1, 9100)
-            SetTimer(RunFlask3, 7100)
+            RunFlasks()
+            RunFlask4()
+            SetTimer(RunFlasks, 6000)
+            SetTimer(RunFlask4, 5)
+        }
+
+        MostMeta() {
+            RunFlask5()
+            SetTimer(RunFlask5, 5300)
         }
 
         SpeedQueen() {
@@ -398,8 +412,8 @@ global flasks_triggering := 0
     }
 
     F2::{
-        essence_x := 1412
-        essence_y := 951
+        essence_x := 1867
+        essence_y := 837
 
         MouseGetPos &x_pos, &y_pos
 
