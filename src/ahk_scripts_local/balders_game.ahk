@@ -9,26 +9,26 @@ SendMode("Event")
 ;;MyGui.Opt("-Border")
 ;MyGui.Opt("+MaxSize20")
 ;;MyGui.Opt("+MaxSizey200")
-#HotIf WinActive("ahk_exe C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\bin\bg3_dx11.exe")
+#HotIf WinActive("ahk_exe bg3_dx11.exe")
     F11::{
-        click_x := 1313
-        click_y := 561
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(click_x, click_y)
-        MouseMove(x_pos, y_pos, 2)
+        clickX := 1313
+        clickY := 561
+        MouseGetPos &xPos, &yPos
+        GamesClick(clickX, clickY)
+        MouseMove(xPos, yPos, 2)
     }
 
     F12::{
-        click_x := 1280
-        click_y := 1090
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(click_x, click_y)
-        MouseMove(x_pos, y_pos, 2)
+        clickX := 1280
+        clickY := 1090
+        MouseGetPos &xPos, &yPos
+        GamesClick(clickX, clickY)
+        MouseMove(xPos, yPos, 2)
     }
 
     F20::{
-        MouseGetPos &x_pos, &y_pos
-        MsgBox "x_pos: '" x_pos "' y_pos: '" y_pos "'"
+        MouseGetPos &xPos, &yPos
+        MsgBox "xPos: '" xPos "' yPos: '" yPos "'"
     }
 
    ;ScrollLock::{
@@ -284,3 +284,4 @@ SendMode("Event")
     !=::{
         GamesClickBack(1537, 1341, "{Alt}=")
     }
+#HotIf

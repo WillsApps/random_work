@@ -18,3 +18,4 @@ SendMode("Event")
     F12::{
         Send("{Alt down}p{Alt up}")
     }
+#HotIf

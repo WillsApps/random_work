@@ -6,8 +6,8 @@ SetTitleMatchMode(2)
 
 
 F20::{
-    MouseGetPos &x_pos, &y_pos
-    MsgBox("Mouse position is X" x_pos " Y" y_pos ".")
+    MouseGetPos &xPos, &yPos
+    MsgBox("Mouse position is X" xPos " Y" yPos ".")
 }
 
 F21::{
@@ -17,14 +17,16 @@ F21::{
 F22::{
     ;active_id := WinGetProcessName("A")
     ;MsgBox "active_id: '" active_id "'"
-    process_path := WinGetProcessPath("A")
-    MsgBox "process_path: '" process_path "'"
-    A_Clipboard := process_path
+    processPath := WinGetProcessPath("A")
+    processName := WinGetProcessName("A")
+    class := WinGetClass("A")
+    MsgBox "processPath: '" processPath "'`nprocessName: '" processName "'`nclass: '" class "'"
+    A_Clipboard := processPath
 }
 
-FastPaste(paste_me){
+FastPaste(pasteMe){
     saved := ClipboardAll()
-    A_Clipboard := paste_me
+    A_Clipboard := pasteMe
     Sleep(35)
     Send("^v")
     Sleep(35)
@@ -32,32 +34,32 @@ FastPaste(paste_me){
     saved := ""
 }
 
-GamesClick(click_x, click_y){
-    number_clicks := 1
+GamesClick(clickX, clickY){
+    numberClicks := 1
     speed := 2
-    MouseClick("Left", click_x, click_y, number_clicks, speed)
+    MouseClick("Left", clickX, clickY, numberClicks, speed)
 }
 
-GamesClickRight(click_x, click_y){
-    number_clicks := 1
+GamesClickRight(clickX, clickY){
+    numberClicks := 1
     speed := 2
-    MouseClick("Right", click_x, click_y, number_clicks, speed)
+    MouseClick("Right", clickX, clickY, numberClicks, speed)
 }
 
-GamesClickModifier(click_x, click_y, modifier){
-    number_clicks := 1
+GamesClickModifier(clickX, clickY, modifier){
+    numberClicks := 1
     speed := 2
     Send("{" modifier " down}")
-    GamesClick(click_x, click_y)
+    GamesClick(clickX, clickY)
     Send("{" modifier " up}")
 }
 
-GamesClickBack(click_x, click_y, key){
+GamesClickBack(clickX, clickY, key){
     state := GetKeyState("ScrollLock", "T")
     if (state) {
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(click_x, click_y)
-        MouseMove(x_pos, y_pos, 2)
+        MouseGetPos &xPos, &yPos
+        GamesClick(clickX, clickY)
+        MouseMove(xPos, yPos, 2)
     } else {
         Send(key)
     }

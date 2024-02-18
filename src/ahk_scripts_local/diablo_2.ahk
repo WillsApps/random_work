@@ -28,8 +28,8 @@ if (not A_IsAdmin) {
             fkeyCount := 1
             fkeys := ["{F9}"]
         }
-        mod_value := Mod(counter, fkeyCount)
-        Send % fkeys[mod_value + 1]
+        moValue := Mod(counter, fkeyCount)
+        Send % fkeys[moValue + 1]
     }
 
     SendRightClick() {

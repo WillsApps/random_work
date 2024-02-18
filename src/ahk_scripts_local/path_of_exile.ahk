@@ -5,30 +5,46 @@ SendMode("Event")
 #include utils.ahk
 Thread "Interrupt", 0
 
-
-maps_to_skip := [
-    "core",
-    "arsenal",
-    "maze",
-    "siege",
-    "frozen cabin",
-    "overgrown ruin",
-]
-okay_maps := [
-    "jungle valley",
-    "plaza",
-    "terrace",
-]
-maps_i_like := [
-    "underground river",
-    "wharf",
-]
-
-
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
-global click_x := 830
-global click_y := 1148
-global flasks_triggering := 0
+global currentCharacter := "Boo"
+
+global clickX := 830
+global clickY := 1148
+global flasksTriggering := 0
+global RunKeyFuncs := Map()
+
+global activeRunKeyFuncs := Map()
+
+RunKeyFuncs[1] := RunKey1
+RunKeyFuncs[2] := RunKey2
+RunKeyFuncs[3] := RunKey3
+RunKeyFuncs[4] := RunKey4
+RunKeyFuncs[5] := RunKey5
+RunKeyFuncs["W"] := RunKeyW
+
+global characters := Map()
+
+characters["MostMeta"] := Map()
+characters["MostMeta"][5] := 6900
+
+characters["PocketGopher"] := Map()
+
+characters["RenHangingOut"] := Map()
+characters["RenHangingOut"][1] := 2300
+characters["RenHangingOut"][3] := 9700
+
+characters["ColeHangingOut"] := Map()
+characters["ColeHangingOut"][4] := 5000
+characters["SpeedQueen"] := Map()
+characters["SpeedQueen"][5] := Map()
+characters["SnakeBite"] := Map()
+
+RunKey(key) {
+    if (WinActive("ahk_exe PathOfExileSteam.exe")){
+        Send("{Blind}" key)
+    }
+}
+
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
             MouseClick()
@@ -53,27 +69,79 @@ global flasks_triggering := 0
         Send("{Shift down}``{Shift up}")
     }
 
+    *1::{
+        ScheduleKey(1)
+    }
+
+    *2::{
+        ScheduleKey(2)
+    }
+
+    *3::{
+        ScheduleKey(3)
+    }
+
+    *4::{
+        ScheduleKey(4)
+    }
+
+    *5::{
+        ScheduleKey(5)
+    }
+
+    *W::{
+        ScheduleKey("W")
+    }
+
+    ScheduleKey(key){
+        global characters
+        global activeRunKeyFuncs
+        global currentCharacter
+        ; Run the flask
+        RunKey(key)
+
+        if(characters.Has(currentCharacter)){
+            keyCooldowns := characters[currentCharacter]
+
+            ; If the flask has a schedule, reset timer
+            if(keyCooldowns.Has(key)){
+                if(activeRunKeyFuncs.Has(key)){
+                    runKeyTimer := activeRunKeyFuncs[key]
+                    SetTimer(runKeyTimer, 0)
+                } else {
+                    runKeyTimer := RunKey.bind(key)
+                    activeRunKeyFuncs[key] := runKeyTimer
+                }
+                SetTimer(runKeyTimer, keyCooldowns[key])
+            }
+        }
+    }
+
     *F11::{
-        Send(1)
+        ScheduleKey(1)
     }
 
     *F12::{
-        Send(2)
+        ScheduleKey(2)
     }
 
     *F13::{
-        Send(3)
+        ScheduleKey(3)
     }
 
     *F14::{
-        Send(4)
+        ScheduleKey(4)
     }
 
     *F15::{
-        Send(5)
+        ScheduleKey(5)
     }
 
-    NumpadAdd::{
+    *NumpadAdd::{
+
+    }
+
+    *NumpadSub::{
 
     }
 
@@ -81,56 +149,15 @@ global flasks_triggering := 0
         Send("{Shift down}q{Shift up}")
     }
 
-    NumpadSub::{
-
-    }
-
-    ;F8::{
-    ;    global flasks_triggering := 0
-    ;    X226, Y543
-    ;}
-;
-    ; 6-link orbing
-;Item Class: Body Armours
-;Rarity: Unique
-;Thousand Ribbons
-;Simple Robe
-;--------
-;Evasion Rating: 32 (augmented)
-;Energy Shield: 65 (augmented)
-;--------
-;Requirements:
-;Intelligence: 17
-;--------
-;Sockets: G-B-B-G B B
-;--------
-;Item Level: 85
-;--------
-;Socketed Gems are Supported by Level 5 Elemental Proliferation
-;Adds 4 to 8 Fire Damage to Spells and Attacks
-;Adds 4 to 7 Cold Damage to Spells and Attacks
-;Adds 1 to 8 Lightning Damage to Spells and Attacks
-;+32 to Evasion Rating
-;+49 to maximum Energy Shieldlue
-;+28 to maximum Life
-;+41 to maximum Mana
-;+18% to Fire Resistance
-;+18% to Cold Resistance
-;+15% to Lightning Resistance
-;--------
-;The night of a thousand ribbons
-;To remember the day of a thousand flames
-;When Sarn burned
-;And was born again
 
 ;    ^!+LButton::{
-;        MouseGetPos &x_pos, &y_pos
-;        GamesClick(x_pos, y_pos)
+;        MouseGetPos &posX, &posY
+;        GamesClick(posX, posY)
 ;        Sleep(35)
 ;        Send("{Ctrl down}c{Ctrl up}")
-;        modifier_text := A_Clipboard
+;        modifierText := A_Clipboard
 ;        pattern := "[RBG]-[RBG]-[RBG]-[RBG]-[RBG]-[RBG]"
-;        position := RegExMatch(modifier_text, pattern)
+;        position := RegExMatch(modifierText, pattern)
 ;        if (position != 0){
 ;            MsgBox("position: '" position "'")
 ;        }
@@ -138,316 +165,318 @@ global flasks_triggering := 0
 
 
     F9::{
-        global flasks_triggering
-        global last_flask := 2
-        if (!IsSet(flasks_triggering)){
-            flasks_triggering := 1
+        global flasksTriggering
+        global keyCooldowns
+        global lastFlask := 2
+        if (!IsSet(flasksTriggering)){
+            flasksTriggering := 1
         }
-        else if (flasks_triggering == 0){
-            flasks_triggering := 1
+        else if (flasksTriggering == 0){
+            flasksTriggering := 1
         }
         else {
-            flasks_triggering := 0
+            flasksTriggering := 0
         }
 
-        if (flasks_triggering == 1){
-;            MostMeta()
+        if (flasksTriggering == 1){
+            MostMeta()
 ;            PocketGopher()
 ;            RenHangingOut()
 ;            ColeHangingOut()
 ;            SpeedQueen()
 ;            SnakeBite()
         } else {
-            SetTimer(RunFlask1, 0)
-            SetTimer(RunFlask2, 0)
-            SetTimer(RunFlask3, 0)
-            SetTimer(RunFlask4, 0)
-            SetTimer(RunFlask5, 0)
-            SetTimer(RunFlasks, 0)
-            SetTimer(SendW, 0)
+            SetTimer(RunKey1, 0)
+            SetTimer(RunKey2, 0)
+            SetTimer(RunKey3, 0)
+            SetTimer(RunKey4, 0)
+            SetTimer(RunKey5, 0)
+            SetTimer(RunKeys, 0)
+            SetTimer(RunKeyW, 0)
         }
 
         RenHangingOut() {
-            global character_name := "Aggy_AF_RenHangingOut"
-            RunFlask1()
-            RunFlask3()
-            RunFlask4()
-            RunFlask5()
-            SetTimer(RunFlask1, 2300)
-            SetTimer(RunFlask3, 9700)
+            RunKey1()
+            RunKey3()
+            RunKey4()
+            RunKey5()
+            SetTimer(RunKey1, 2300)
+            SetTimer(RunKey3, 9700)
         }
 
         PocketGopher() {
-            RunFlasks()
-            RunFlask4()
-            SetTimer(RunFlasks, 6000)
-            SetTimer(RunFlask4, 5000)
+            RunKeys()
+            RunKey4()
+            SetTimer(RunKeys, 6000)
+            SetTimer(RunKey4, 5000)
         }
 
         ColeHangingOut() {
-            RunFlasks()
-            RunFlask4()
-            SetTimer(RunFlasks, 6000)
-            SetTimer(RunFlask4, 5)
+            RunKeys()
+            RunKey4()
+            SetTimer(RunKeys, 6000)
+            SetTimer(RunKey4, 5000)
         }
 
         MostMeta() {
-            RunFlask5()
-            SetTimer(RunFlask5, 5300)
+            RunKey5()
+            SetTimer(RunKey5, 6400)
         }
 
         SpeedQueen() {
-;            RunFlasks()
-;            RunFlask1()
-;            RunFlask2()
-;            RunFlask3()
-            RunFlask5()
-;            SetTimer(RunFlask1, 10100)
-;            SetTimer(RunFlask2, 7300)
-;            SetTimer(RunFlask3, 10100)
-            SetTimer(RunFlask5, 5300)
+;            RunKeys()
+;            RunKey1()
+;            RunKey2()
+;            RunKey3()
+            RunKey5()
+;            SetTimer(RunKey1, 10100)
+;            SetTimer(RunKey2, 7300)
+;            SetTimer(RunKey3, 10100)
+            SetTimer(RunKey5, 5300)
         }
 
         SnakeBite() {
-            SendW()
-            RunFlask1()
-            RunFlask2()
-            RunFlask3()
-            RunFlask4()
-            SetTimer(SendW, 12000)
-            SetTimer(RunFlask4, 4000)
-;            SetTimer(RunFlask3, 15000)
-;            SetTimer(RunFlask4, 11400)
-;            SetTimer(RunFlask5, 8000)
+            RunKeyW()
+            RunKey1()
+            RunKey2()
+            RunKey3()
+            RunKey4()
+            SetTimer(RunKeyW, 12000)
+            SetTimer(RunKey4, 4000)
+;            SetTimer(RunKey3, 15000)
+;            SetTimer(RunKey4, 11400)
+;            SetTimer(RunKey5, 8000)
         }
+    }
 
-        SendW() {
-            if (WinActive("ahk_exe PathOfExileSteam.exe")){
-                Send("w")
-            }
+
+
+    RunKeyW() {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            Send("w")
         }
+    }
 
-        SendFlask(flask_number) {
-            if (WinActive("ahk_exe PathOfExileSteam.exe")){
-                Send(flask_number)
-            }
+    SendFlask(flaskNumber) {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            Send(flaskNumber)
         }
+    }
 
-        RunFlask1() {
-            SendFlask(1)
-        }
+    RunKey1() {
+        SendFlask(1)
+    }
 
-        RunFlask2() {
-            SendFlask(2)
-        }
+    RunKey2() {
+        SendFlask(2)
+    }
 
-        RunFlask3() {
+    RunKey3() {
+        SendFlask(3)
+    }
+
+    RunKey4() {
+        SendFlask(4)
+    }
+
+    RunKey5() {
+        SendFlask(5)
+    }
+
+    RunKeys() {
+        global lastFlask
+        if (lastFlask == 2){
             SendFlask(3)
-        }
-
-        RunFlask4() {
-            SendFlask(4)
-        }
-
-        RunFlask5() {
-            SendFlask(5)
-        }
-
-        RunFlasks() {
-            global last_flask
-            if (last_flask == 2){
-                SendFlask(3)
-                last_flask := 3
-            } else {
-                SendFlask(2)
-                last_flask := 2
-            }
+            lastFlask := 3
+        } else {
+            SendFlask(2)
+            lastFlask := 2
         }
     }
 
 ;    *F10::{
 ;        ; craft flasks
-;        MouseGetPos &x_pos, &y_pos
-;        GamesClick(x_pos, y_pos)
+;        MouseGetPos &posX, &posY
+;        GamesClick(posX, posY)
 ;        Send("{Ctrl down}c{Ctrl up}")
 ;    }
 
     F10::{
-        drag_start_x := 970
-        drag_start_y := 1062
-        drag_end_x := 836
-        drag_end_y := 1066
-        confirm_x := 814
-        confirm_y := 987
-        grab_x := 814
-        grab_y := 665
+        dragStartX := 970
+        dragStartY := 1062
+        dragEndX := 836
+        dragEndY := 1066
+        confirmX := 814
+        confirmY := 987
+        grabX := 814
+        grabY := 665
 
-        MouseGetPos &x_pos, &y_pos
-        GamesClickModifier(x_pos, y_pos, "Ctrl")
-        GamesClick(confirm_x, confirm_y)
-        GamesClickModifier(grab_x, grab_y, "Ctrl")
-        MouseMove(x_pos, y_pos, 2)
+        MouseGetPos &posX, &posY
+        GamesClickModifier(posX, posY, "Ctrl")
+        GamesClick(confirmX, confirmY)
+        GamesClickModifier(grabX, grabY, "Ctrl")
+        MouseMove(posX, posY, 2)
     }
 
 
     ;F8::{
-    ;    global calls_this_item := 0
-    ;    global mouse_start_x := 0
-    ;    global mouse_start_y := 0
+    ;    global callsThisItem := 0
+    ;    global mouseStartX := 0
+    ;    global mouseStartY := 0
     ;}
 ;
 ;
     ;F9::{
-    ;    textbox_x := 837
-    ;    textbox_y := 1021
-    ;    confirm_x := 830
-    ;    confirm_y := 1148
+    ;    textboxX := 837
+    ;    textboxY := 1021
+    ;    confirmX := 830
+    ;    confirmY := 1148
 ;
-    ;    global calls_this_item
-    ;    static previous_price
-    ;    global mouse_start_x
-    ;    global mouse_start_y
+    ;    global callsThisItem
+    ;    static previousPrice
+    ;    global mouseStartX
+    ;    global mouseStartY
 ;
-    ;    if (calls_this_item == 0){
-    ;        calls_this_item += 1
+    ;    if (callsThisItem == 0){
+    ;        callsThisItem += 1
 ;
     ;        ; Get item position, click it
-    ;        MouseGetPos &x_pos, &y_pos
-    ;        mouse_start_x := x_pos
-    ;        mouse_start_y := y_pos
-    ;        GamesClick(x_pos, y_pos)
+    ;        MouseGetPos &posX, &posY
+    ;        mouseStartX := posX
+    ;        mouseStartY := posY
+    ;        GamesClick(posX, posY)
 ;
     ;        ; Click the textbox, grab value
-    ;        GamesClick(textbox_x, textbox_y)
+    ;        GamesClick(textboxX, textboxY)
     ;        Send("{Ctrl down}a{Ctrl up}")
     ;        Send("{Ctrl down}c{Ctrl up}")
-    ;        max_value := A_Clipboard
+    ;        maxValue := A_Clipboard
 ;
     ;        ; Half the value, send it
-    ;        half_value := Ceil(max_value / 2)
-    ;        previous_price := half_value
-    ;        Send(half_value)
-    ;        GamesClick(confirm_x, confirm_y)
+    ;        halfValue := Ceil(maxValue / 2)
+    ;        previousPrice := halfValue
+    ;        Send(halfValue)
+    ;        GamesClick(confirmX, confirmY)
     ;    }
     ;    else{
-    ;        calls_this_item += 1
+    ;        callsThisItem += 1
 ;
     ;        ; Click the textbox, grab value
-    ;        GamesClick(textbox_x, textbox_y)
+    ;        GamesClick(textboxX, textboxY)
     ;        Send("{Ctrl down}a{Ctrl up}")
     ;        Send("{Ctrl down}c{Ctrl up}")
-    ;        max_value := A_Clipboard
+    ;        maxValue := A_Clipboard
 ;
     ;        ; Find difference, add quarter of difference to previous, send it
-    ;        difference := max_value - previous_price
-    ;        quarter_value := Ceil(difference / 4)
-    ;        send_value := previous_price + quarter_value + 1
-    ;        previous_price := send_value
-    ;        Send(send_value)
-    ;        GamesClick(confirm_x, confirm_y)
+    ;        difference := maxValue - previousPrice
+    ;        quarterValue := Ceil(difference / 4)
+    ;        sendValue := previousPrice + quarterValue + 1
+    ;        previousPrice := sendValue
+    ;        Send(sendValue)
+    ;        GamesClick(confirmX, confirmY)
     ;    }
     ;}
 
     ;F10::{
-    ;    global calls_this_item
-    ;    global mouse_start_x
-    ;    global mouse_start_y
+    ;    global callsThisItem
+    ;    global mouseStartX
+    ;    global mouseStartY
 ;
-    ;    calls_this_item := 0
-    ;    MouseMove(mouse_start_x, mouse_start_y, 2)
+    ;    callsThisItem := 0
+    ;    MouseMove(mouseStartX, mouseStartY, 2)
     ;}
 
     ;F9::{
-    ;    MouseGetPos &x_pos, &y_pos
-    ;    GamesClick(x_pos, y_pos)
-    ;    wrap_paste("/destroy")
+    ;    MouseGetPos &posX, &posY
+    ;    GamesClick(posX, posY)
+    ;    WrapPaste("/destroy")
     ;}
 
     F17::{
-        drag_start_x := 970
-        drag_start_y := 1062
-        drag_end_x := 836
-        drag_end_y := 1066
-        click_x := 830
-        click_y := 1148
+        dragStartX := 970
+        dragStartY := 1062
+        dragEndX := 836
+        dragEndY := 1066
+        clickX := 830
+        clickY := 1148
 
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(x_pos, y_pos)
-        MouseMove(drag_start_x, drag_start_y, 2)
-        MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
-        GamesClick(click_x, click_y)
-        MouseMove(x_pos, y_pos, 2)
+        MouseGetPos &posX, &posY
+        GamesClick(posX, posY)
+        MouseMove(dragStartX, dragStartY, 2)
+        MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
+        GamesClick(clickX, clickY)
+        MouseMove(posX, posY, 2)
     }
 
     F18::{
-        drag_start_x := 970
-        drag_start_y := 1062
-        drag_end_x := 891
-        drag_end_y := 1066
-        click_x := 830
-        click_y := 1148
+        dragStartX := 970
+        dragStartY := 1062
+        dragEndX := 891
+        dragEndY := 1066
+        clickX := 830
+        clickY := 1148
 
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(x_pos, y_pos)
-        MouseMove(drag_start_x, drag_start_y, 2)
-        MouseClickDrag("left", drag_start_x, drag_start_y, drag_end_x, drag_end_y, 2)
-        GamesClick(click_x, click_y)
-        MouseMove(x_pos, y_pos, 2)
+        MouseGetPos &posX, &posY
+        GamesClick(posX, posY)
+        MouseMove(dragStartX, dragStartY, 2)
+        MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
+        GamesClick(clickX, clickY)
+        MouseMove(posX, posY, 2)
     }
 
     F19::{
-        reset_x := 1258
-        reset_y := 1162
-        MouseGetPos &x_pos, &y_pos
-        GamesClick(reset_x, reset_y)
-        MouseMove(x_pos, y_pos, 2)
+        resetX := 1258
+        resetY := 1162
+        MouseGetPos &posX, &posY
+        GamesClick(resetX, resetY)
+        MouseMove(posX, posY, 2)
     }
 
-    wrap_paste(warped_paste_me){
+    WrapPaste(warpedPasteMe){
         Send("{Enter}")
         Sleep(35)
         Send("^a")
-        FastPaste(warped_paste_me)
+        FastPaste(warpedPasteMe)
         Send("{Enter}")
     }
 
     F2::{
-        essence_x := 1867
-        essence_y := 837
+        essenceX := 1867
+        essenceY := 837
 
-        MouseGetPos &x_pos, &y_pos
+        MouseGetPos &posX, &posY
 
         Send("i")
         Sleep(15)
-        GamesClickRight(essence_x, essence_y)
-        MouseMove(x_pos, y_pos)
+        GamesClickRight(essenceX, essenceY)
+        MouseMove(posX, posY)
         Sleep(15)
         Send("i")
     }
 
     F3::{
-        wrap_paste("/menagerie")
+        WrapPaste("/menagerie")
     }
 
     F4::{
-        wrap_paste("Thank you!")
+        WrapPaste("Thank you!")
     }
 
     F5::{
-        wrap_paste("/hideout")
+        WrapPaste("/hideout")
     }
 
     F6::{
-        wrap_paste("/invite @last")
+        WrapPaste("/invite @last")
     }
 
     F7::{
-        wrap_paste("/leave")
+        WrapPaste("/leave")
     }
 
-    ; F8::{
-    ;     wrap_paste("/tradewith @last")
-    ; }
+     F8::{
+         WrapPaste("/exit")
+     }
 
     ScrollLock::{
         Send("{Space}")
@@ -464,3 +493,4 @@ global flasks_triggering := 0
     ;    }
     ;}
 ;}
+#HotIf

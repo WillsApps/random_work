@@ -15,3 +15,4 @@ SendMode("Event")
         Send("S")
     }
 
+#HotIf
