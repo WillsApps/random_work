@@ -1,6 +1,7 @@
 import json
 from dataclasses import dataclass, field
 from datetime import datetime
+from pathlib import Path
 from typing import List, Any, Set, Dict
 
 # @dataclass
@@ -109,7 +110,7 @@ SHORTCUTS = [
             Condition(
                 "frontmost_application_if",
                 "bundle_identifiers",
-                ["com.jetbrains.pycharm", "com.jetbrains.AppCode"],
+                ["com.jetbrains.pycharm.ce", "com.jetbrains.AppCode"],
             )
         ],
     ),
@@ -143,7 +144,7 @@ SHORTCUTS = [
                 "frontmost_application_unless",
                 "bundle_identifiers",
                 [
-                    "com.jetbrains.pycharm",
+                    "com.jetbrains.pycharm.ce",
                     "com.jetbrains.AppCode",
                     "com.googlecode.iterm2",
                 ],
@@ -173,21 +174,23 @@ SHORTCUTS = [
     ),
 ]
 
+root = Path("/Users/will.burdett/.config/karabiner")
+
 
 def main():
     d = datetime.now()
     rules = []
     for shortcut in SHORTCUTS:
         rules.extend(shortcut.to_dict())
-    with open("/Users/Shared/web/local_tooling/karabiner.json", "r") as f:
+    with open(root / "karabiner.json", "r") as f:
         raw = json.loads(f.read())
     with open(
-        f"/Users/Shared/web/local_tooling/karabiner_backup_{d.strftime('%Y_%m_%d_%H_%M')}.json",
+        root / f"karabiner_backup_{d.strftime('%Y_%m_%d_%H_%M')}.json",
         "w",
     ) as f:
         f.write(json.dumps(raw, indent=2))
     raw["profiles"][0]["complex_modifications"]["rules"] = rules
-    with open("/Users/Shared/web/local_tooling/karabiner.json", "w") as f:
+    with open(root / "karabiner.json", "w") as f:
         f.write(json.dumps(raw, indent=2))
     print(json.dumps(rules))
 

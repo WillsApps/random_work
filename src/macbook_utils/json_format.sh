@@ -1,3 +1,4 @@
-source /Users/Shared/web/random_work/venv/bin/activate
+source /Users/will.burdett/projects/random_work/venv/bin/activate
+export PYTHONPATH="/Users/will.burdett/projects/random_work/src/:$PYTHONPATH"
 
-python /Users/wburdett/.PyCharm/scratches/extensions/mine/_aliases/json_format.py "$1"
+python /Users/will.burdett/projects/random_work/src/macbook_utils/json_format.py "$1"
