@@ -1,8 +1,6 @@
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cd $SCRIPT_DIR/..
-SRC_DIR=`pwd`
-source $SCRIPT_DIR/../../venv/bin/activate
+REPO_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../.." &> /dev/null && pwd )
+source $REPO_DIR/venv/bin/activate
 
-export PYTHONPATH="$SRC_DIR/:$PYTHONPATH"
+export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
 
-python $SRC_DIR/macbook_utils/json_format.py "$1"
+python $REPO_DIR/src/macbook_utils/json_format.py "$1"
