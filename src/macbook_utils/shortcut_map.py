@@ -1,8 +1,10 @@
 import json
 from dataclasses import dataclass, field
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
-from typing import List, Any, Set, Dict
+from typing import List, Any, Set, Dict, Union
+
 
 # @dataclass
 # class Shortcut:
@@ -30,6 +32,63 @@ from typing import List, Any, Set, Dict
 #         }
 
 
+class KeyCodes(Enum):
+    TYPE = "key_code"
+    A = "a"
+    B = "b"
+    C = "c"
+    D = "d"
+    E = "e"
+    F = "f"
+    G = "g"
+    H = "h"
+    I = "i"
+    J = "j"
+    K = "k"
+    L = "l"
+    M = "m"
+    N = "n"
+    O = "o"
+    P = "p"
+    Q = "q"
+    R = "r"
+    S = "s"
+    T = "t"
+    U = "u"
+    V = "v"
+    W = "w"
+    X = "x"
+    Y = "y"
+    Z = "z"
+    N1 = "1"
+    N2 = "2"
+    N3 = "3"
+    N4 = "4"
+    N5 = "5"
+    N6 = "6"
+    N7 = "7"
+    N8 = "8"
+    N9 = "9"
+    N0 = "0"
+    DOWN_ARROW = "down_arrow"
+    UP_ARROW = "up_arrow"
+    LEFT_ARROW = "left_arrow"
+    RIGHT_ARROW = "right_arrow"
+    GRAVE_ACCENT_AND_TILDE = "grave_accent_and_tilde"
+    TAB = "tab"
+    DELETE_OR_BACKSPACE = "delete_or_backspace"
+
+
+class PointingButtons(Enum):
+    TYPE = "pointing_button"
+    LEFT_CLICK = "button1"
+    RIGHT_CLICK = "button2"
+    MIDDLE_CLICK = "button3"
+
+
+KeyType = Union[KeyCodes, PointingButtons]
+
+
 @dataclass()
 class Condition:
     type: str
@@ -43,37 +102,80 @@ class Condition:
 @dataclass()
 class Shortcut:
     original_modifier: str
-    new_modifier: str
-    key_names: List[str]
-    key_type: str
-    _optionals: Set[str] = field(default_factory=lambda: set())
-    conditions: List[Condition] = field(default_factory=lambda: list())
-    _clean_optionals: Set[str] = None
+    optionals: Set[str]
 
-    @property
-    def optionals(self):
-        if not self._clean_optionals:
-            self._clean_optionals = self._optionals
-            try:
-                self._clean_optionals.remove(self.original_modifier)
-            except:
-                pass
-        return self._clean_optionals
+    def __post_init__(self):
+        self.cleaned_optionals: Set[str] = self.get_cleaned_optionals()
+
+    def get_cleaned_optionals(self):
+        cleaned_optionals = self.optionals
+        if self.original_modifier in cleaned_optionals:
+            cleaned_optionals.remove(self.original_modifier)
+        return cleaned_optionals
+
+
+@dataclass()
+class KeyChangeShortcut(Shortcut):
+    original_key: KeyType
+    new_key: KeyType
+    new_modifier: str = None
+    conditions: List[Condition] = field(default_factory=lambda: list())
 
     def to_dict(self) -> List[Dict[str, Any]]:
         rules = []
-        for key in self.key_names:
+        part_from = {
+            self.original_key.TYPE.value: self.original_key.value,
+        }
+        if self.original_modifier:
+            part_from["modifiers"] = {"mandatory": [self.original_modifier]}
+
+        part_to = {
+            self.new_key.TYPE.value: self.new_key.value.lower(),
+        }
+        if self.new_modifier:
+            part_to["modifiers"] = {"mandatory": [self.new_modifier]}
+        rule = {
+            "description": f"{self.original_modifier}+{self.original_key} to {self.new_modifier}+{self.new_key}",
+            "manipulators": [
+                {
+                    "from": part_from,
+                    "to": [part_to],
+                    "type": "basic",
+                }
+            ],
+        }
+        if self.cleaned_optionals:
+            rule["manipulators"][0]["from"]["modifiers"]["optional"] = list(
+                self.cleaned_optionals
+            )
+        if self.conditions:
+            rule["manipulators"][0]["conditions"] = [
+                condition.to_dict() for condition in self.conditions
+            ]
+        rules.append(rule)
+        return rules
+
+
+@dataclass()
+class ModifierChangeShortcut(Shortcut):
+    new_modifier: str
+    keys: List[KeyType]
+    conditions: List[Condition] = field(default_factory=lambda: list())
+
+    def to_dict(self) -> List[Dict[str, Any]]:
+        rules = []
+        for key in self.keys:
             rule = {
-                "description": f"{self.original_modifier} to {self.new_modifier} for {key}",
+                "description": f"{self.original_modifier} to {self.new_modifier} for {key.value}",
                 "manipulators": [
                     {
                         "from": {
-                            self.key_type: key.lower(),
+                            key.TYPE.value: key.value,
                             "modifiers": {"mandatory": [self.new_modifier]},
                         },
                         "to": [
                             {
-                                self.key_type: key.lower(),
+                                key.TYPE.value: key.value,
                                 "modifiers": [self.original_modifier],
                             }
                         ],
@@ -81,9 +183,9 @@ class Shortcut:
                     }
                 ],
             }
-            if self.optionals:
+            if self.cleaned_optionals:
                 rule["manipulators"][0]["from"]["modifiers"]["optional"] = list(
-                    self.optionals
+                    self.cleaned_optionals
                 )
             if self.conditions:
                 rule["manipulators"][0]["conditions"] = [
@@ -97,48 +199,63 @@ optionals = {"left_command", "left_control", "left_option", "left_shift"}
 
 
 SHORTCUTS = [
-    Shortcut(
+    # ModifierChangeShortcut(
+    #     original_modifier="left_command",
+    #     new_modifier="left_control",
+    #     key_names=[
+    #         "button1",
+    #         "button2",
+    #     ],
+    #     key_type="pointing_button",
+    #     optionals=optionals,
+    #     conditions=[
+    #         Condition(
+    #             "frontmost_application_if",
+    #             "bundle_identifiers",
+    #             ["com.jetbrains.pycharm.ce", "com.jetbrains.AppCode"],
+    #         )
+    #     ],
+    # ),
+    # KeyChangeShortcut(
+    #     original_modifier="left_control",
+    #     original_key="button1",
+    #     original_key_type="pointing_button",
+    #     new_modifier="left_control",
+    #     new_key="button3",
+    #     new_key_type="pointing_button",
+    #     optionals=set(),
+    #     conditions=[
+    #         Condition(
+    #             "frontmost_application_if",
+    #             "bundle_identifiers",
+    #             ["com.jetbrains.pycharm.ce", "com.jetbrains.AppCode"],
+    #         )
+    #     ],
+    # ),
+    ModifierChangeShortcut(
         original_modifier="left_command",
         new_modifier="left_control",
-        key_names=[
-            "button1",
-            "button2",
+        keys=[
+            KeyCodes.A,
+            KeyCodes.X,
+            KeyCodes.Q,
+            KeyCodes.Z,
+            KeyCodes.T,
+            KeyCodes.W,
+            KeyCodes.R,
+            KeyCodes.F,
+            KeyCodes.C,
+            KeyCodes.V,
+            KeyCodes.I,
+            KeyCodes.P,
+            KeyCodes.I,
+            KeyCodes.N1,
+            KeyCodes.N2,
+            KeyCodes.N3,
+            KeyCodes.N4,
+            KeyCodes.N5,
         ],
-        key_type="pointing_button",
-        _optionals=optionals,
-        conditions=[
-            Condition(
-                "frontmost_application_if",
-                "bundle_identifiers",
-                ["com.jetbrains.pycharm.ce", "com.jetbrains.AppCode"],
-            )
-        ],
-    ),
-    Shortcut(
-        original_modifier="left_command",
-        new_modifier="left_control",
-        key_names=[
-            "a",
-            "x",
-            "q",
-            "z",
-            "t",
-            "w",
-            "r",
-            "f",
-            "c",
-            "v",
-            "i",
-            "p",
-            "i",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-        ],
-        key_type="key_code",
-        _optionals=optionals,
+        optionals=optionals,
         conditions=[
             Condition(
                 "frontmost_application_unless",
@@ -151,26 +268,24 @@ SHORTCUTS = [
             )
         ],
     ),
-    Shortcut(
+    ModifierChangeShortcut(
         original_modifier="left_option",
         new_modifier="left_control",
-        key_names=[
-            "delete_or_backspace",
-            "right_arrow",
-            "left_arrow",
+        keys=[
+            KeyCodes.DELETE_OR_BACKSPACE,
+            KeyCodes.RIGHT_ARROW,
+            KeyCodes.LEFT_ARROW,
         ],
-        key_type="key_code",
-        _optionals=optionals,
+        optionals=optionals,
     ),
-    Shortcut(
+    ModifierChangeShortcut(
         original_modifier="left_command",
         new_modifier="left_option",
-        key_names=[
-            "grave_accent_and_tilde",
-            "tab",
+        keys=[
+            KeyCodes.GRAVE_ACCENT_AND_TILDE,
+            KeyCodes.TAB,
         ],
-        key_type="key_code",
-        _optionals={"left_shift"},
+        optionals={"left_shift"},
     ),
 ]
 
