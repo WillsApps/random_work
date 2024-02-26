@@ -1,4 +1,8 @@
-source /Users/will.burdett/projects/random_work/venv/bin/activate
-export PYTHONPATH="/Users/will.burdett/projects/random_work/src/:$PYTHONPATH"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd $SCRIPT_DIR/..
+SRC_DIR=`pwd`
+source $SCRIPT_DIR/../../venv/bin/activate
 
-python /Users/will.burdett/projects/random_work/src/macbook_utils/json_format.py "$1"
+export PYTHONPATH="$SRC_DIR/:$PYTHONPATH"
+
+python $SRC_DIR/macbook_utils/json_format.py "$1"
