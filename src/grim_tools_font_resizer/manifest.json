@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Font Resizer",
+  "version": "1.0",
+  "description": "Change font size on GrimTools.com",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "grim_tools_font_resizer@willsapps.com"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.grimtools.com/*"],
+      "js": ["popup.js"]
+    }
+  ]
+}
