@@ -2626,7 +2626,7 @@
       <nameOverride />
     </Rule>
     <Rule>
-      <type>SHOW</type>
+      <type>HIGHLIGHT</type>
       <conditions>
         <Condition i:type="SubTypeCondition">
           <type>
@@ -2645,15 +2645,15 @@
             <int>9</int>
             <int>39</int>
           </affixes>
-          <comparsion>ANY</comparsion>
-          <comparsionValue>0</comparsionValue>
+          <comparsion>MORE_OR_EQUAL</comparsion>
+          <comparsionValue>6</comparsionValue>
           <minOnTheSameItem>1</minOnTheSameItem>
           <combinedComparsion>ANY</combinedComparsion>
-          <combinedComparsionValue>1</combinedComparsionValue>
+          <combinedComparsionValue>6</combinedComparsionValue>
           <advanced>true</advanced>
         </Condition>
       </conditions>
-      <color>0</color>
+      <color>14</color>
       <isEnabled>true</isEnabled>
       <levelDependent>false</levelDependent>
       <minLvl>0</minLvl>
@@ -2662,7 +2662,7 @@
       <nameOverride>Crystal Sword</nameOverride>
     </Rule>
     <Rule>
-      <type>SHOW</type>
+      <type>HIGHLIGHT</type>
       <conditions>
         <Condition i:type="SubTypeCondition">
           <type>
@@ -2674,19 +2674,22 @@
         </Condition>
         <Condition i:type="AffixCondition">
           <affixes>
-            <int>79</int>
+            <int>38</int>
             <int>2</int>
-            <int>62</int>
+            <int>49</int>
+            <int>23</int>
+            <int>9</int>
+            <int>39</int>
           </affixes>
-          <comparsion>ANY</comparsion>
-          <comparsionValue>0</comparsionValue>
+          <comparsion>MORE_OR_EQUAL</comparsion>
+          <comparsionValue>6</comparsionValue>
           <minOnTheSameItem>1</minOnTheSameItem>
           <combinedComparsion>ANY</combinedComparsion>
-          <combinedComparsionValue>1</combinedComparsionValue>
+          <combinedComparsionValue>6</combinedComparsionValue>
           <advanced>true</advanced>
         </Condition>
       </conditions>
-      <color>0</color>
+      <color>14</color>
       <isEnabled>true</isEnabled>
       <levelDependent>false</levelDependent>
       <minLvl>0</minLvl>
@@ -2695,7 +2698,7 @@
       <nameOverride>Moon Dagger</nameOverride>
     </Rule>
     <Rule>
-      <type>SHOW</type>
+      <type>HIGHLIGHT</type>
       <conditions>
         <Condition i:type="SubTypeCondition">
           <type>
@@ -2707,21 +2710,22 @@
         </Condition>
         <Condition i:type="AffixCondition">
           <affixes>
-            <int>79</int>
+            <int>38</int>
             <int>2</int>
-            <int>62</int>
-            <int>722</int>
+            <int>49</int>
+            <int>23</int>
+            <int>9</int>
             <int>39</int>
           </affixes>
-          <comparsion>ANY</comparsion>
-          <comparsionValue>0</comparsionValue>
+          <comparsion>MORE_OR_EQUAL</comparsion>
+          <comparsionValue>6</comparsionValue>
           <minOnTheSameItem>1</minOnTheSameItem>
           <combinedComparsion>ANY</combinedComparsion>
-          <combinedComparsionValue>1</combinedComparsionValue>
+          <combinedComparsionValue>6</combinedComparsionValue>
           <advanced>true</advanced>
         </Condition>
       </conditions>
-      <color>0</color>
+      <color>14</color>
       <isEnabled>true</isEnabled>
       <levelDependent>false</levelDependent>
       <minLvl>0</minLvl>
@@ -2730,7 +2734,7 @@
       <nameOverride>Crescent Axe</nameOverride>
     </Rule>
     <Rule>
-      <type>SHOW</type>
+      <type>HIGHLIGHT</type>
       <conditions>
         <Condition i:type="SubTypeCondition">
           <type>
@@ -2742,25 +2746,64 @@
         </Condition>
         <Condition i:type="AffixCondition">
           <affixes>
-            <int>79</int>
+            <int>38</int>
             <int>2</int>
-            <int>62</int>
+            <int>49</int>
+            <int>23</int>
+            <int>9</int>
+            <int>39</int>
           </affixes>
-          <comparsion>ANY</comparsion>
-          <comparsionValue>0</comparsionValue>
+          <comparsion>MORE_OR_EQUAL</comparsion>
+          <comparsionValue>6</comparsionValue>
           <minOnTheSameItem>1</minOnTheSameItem>
           <combinedComparsion>ANY</combinedComparsion>
-          <combinedComparsionValue>1</combinedComparsionValue>
+          <combinedComparsionValue>6</combinedComparsionValue>
           <advanced>true</advanced>
         </Condition>
       </conditions>
-      <color>0</color>
+      <color>14</color>
       <isEnabled>true</isEnabled>
       <levelDependent>false</levelDependent>
       <minLvl>0</minLvl>
       <maxLvl>0</maxLvl>
       <emphasized>true</emphasized>
       <nameOverride>Rune Hammer</nameOverride>
+    </Rule>
+    <Rule>
+      <type>HIGHLIGHT</type>
+      <conditions>
+        <Condition i:type="SubTypeCondition">
+          <type>
+            <EquipmentType>ONE_HANDED_SCEPTRE</EquipmentType>
+          </type>
+          <subTypes>
+            <int>8</int>
+          </subTypes>
+        </Condition>
+        <Condition i:type="AffixCondition">
+          <affixes>
+            <int>38</int>
+            <int>2</int>
+            <int>49</int>
+            <int>23</int>
+            <int>9</int>
+            <int>39</int>
+          </affixes>
+          <comparsion>MORE_OR_EQUAL</comparsion>
+          <comparsionValue>6</comparsionValue>
+          <minOnTheSameItem>1</minOnTheSameItem>
+          <combinedComparsion>ANY</combinedComparsion>
+          <combinedComparsionValue>6</combinedComparsionValue>
+          <advanced>true</advanced>
+        </Condition>
+      </conditions>
+      <color>14</color>
+      <isEnabled>true</isEnabled>
+      <levelDependent>false</levelDependent>
+      <minLvl>0</minLvl>
+      <maxLvl>0</maxLvl>
+      <emphasized>true</emphasized>
+      <nameOverride>Sceptre</nameOverride>
     </Rule>
   </rules>
 </ItemFilter>
