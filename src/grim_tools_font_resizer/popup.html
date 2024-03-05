@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Resizer</title>
+    <script type="javascript">
+        function resizeButtonsWillsApps() {
+            console.log("Resizing fonts");
+            let classesToChange = {
+                "0.8em": ["char-info-res", "tooltip-v2", "item-selector", "main-container"],
+                "1.1em": ["tooltip-boundskill", "tooltip-skill-name", "tooltip-level"]
+            };
+
+            for (const [size, classNames] of Object.entries(classesToChange)) {
+                classNames.forEach(function (className) {
+                    document.querySelectorAll("." + className).forEach(function (element) {
+                        console.log("element", element);
+                        element.style.fontSize = size;
+                    });
+                });
+            }
+
+            const elementsWithClassesToChange = ["devotion-view-container"];
+            document.querySelectorAll("*").forEach(function (element) {
+                // Check if the element or any of its classes has a font size specified
+                const classList = element.classList;
+                if (!classList.contains("devotion-view-container")) {
+                    return;
+                }
+                console.log("element", element);
+
+                // Font size not specified or set to 0, update the font size to 0.9em
+                element.style.fontSize = "0.8em";
+                // If you want to skip elements that already have a font size specified, remove the if statement and unconditionally set the font size:
+                // element.style.fontSize = "0.9em";
+            });
+        }
+    </script>
+</head>
+<body>
+<h2>Font Resizer</h2>
+<button id="resizeButton" onclick="resizeButtonsWillsApps()">Resize Fonts</button>
+</body>
+</html>

@@ -9,3 +9,4 @@ SendMode("Event")
     F11::{
         Send("{Shift down}{F6}{Shift up}")
     }
+#HotIf

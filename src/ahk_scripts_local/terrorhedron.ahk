@@ -52,3 +52,4 @@ Thread "Interrupt", 0
         Send("X")
     }
 
+#HotIf

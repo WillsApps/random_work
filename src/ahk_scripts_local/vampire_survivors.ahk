@@ -36,3 +36,4 @@ SendMode("Event")
         global runHorizontal := "False"
         global runSquare := "False"
     }
+#HotIf

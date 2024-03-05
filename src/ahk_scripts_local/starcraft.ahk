@@ -34,3 +34,4 @@ SendMode("Event")
         Send("0")
     }
 
+#HotIf
