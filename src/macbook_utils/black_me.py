@@ -47,7 +47,7 @@ def main():
     log.debug(file_paths)
     log.debug(f"Command: {' '.join(['black', *file_paths])}")
     black_output = (
-        run(["black", *file_paths], capture_output=True)
+        run(["black", "--line-length=79", *file_paths], capture_output=True)
         .stderr.decode()
         # .stdout.decode()
         .replace(
