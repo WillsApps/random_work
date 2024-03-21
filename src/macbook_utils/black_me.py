@@ -36,9 +36,9 @@ def main():
             elif "modified:" in line or "new file:" in line:
                 file_paths.add(add_if_py_or_dir(line.split(":")[1]))
             elif "removed:" in line:
-                continue  #  Don't do anything if the file doesn't exist
+                continue  # Don't do anything if the file doesn't exist
             elif "deleted:" in line:
-                continue  #  Don't do anything if the file doesn't exist
+                continue  # Don't do anything if the file doesn't exist
             else:
                 file_paths.add(add_if_py_or_dir(line))
 

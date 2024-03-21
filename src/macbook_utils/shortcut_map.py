@@ -248,7 +248,15 @@ SHORTCUTS = [
             KeyCodes.LEFT_ARROW,
         ],
         optionals=optionals,
-        conditions=[],
+        conditions=[
+            # Condition(
+            #     "frontmost_application_unless",
+            #     "bundle_identifiers",
+            #     [
+            #         "com.apple.finder",
+            #     ],
+            # )
+        ],
     ),
     ModifierChangeShortcut(
         original_modifier=Modifiers.LEFT_COMMAND,
