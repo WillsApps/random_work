@@ -89,9 +89,9 @@ RunKey(key) {
         ScheduleKey(5)
     }
 
-    *W::{
-        ScheduleKey("W")
-    }
+;    *W::{
+;        ScheduleKey("W")
+;    }
 
     ScheduleKey(key){
         global characters
@@ -164,7 +164,7 @@ RunKey(key) {
 ;    }
 
 
-    F9::{
+    *F9::{
         global flasksTriggering
         global keyCooldowns
         global lastFlask := 2
@@ -179,12 +179,12 @@ RunKey(key) {
         }
 
         if (flasksTriggering == 1){
-            MostMeta()
+;            MostMeta()
 ;            PocketGopher()
 ;            RenHangingOut()
 ;            ColeHangingOut()
 ;            SpeedQueen()
-;            SnakeBite()
+            SnakeBite()
         } else {
             SetTimer(RunKey1, 0)
             SetTimer(RunKey2, 0)
@@ -220,7 +220,7 @@ RunKey(key) {
 
         MostMeta() {
             RunKey5()
-            SetTimer(RunKey5, 6400)
+            SetTimer(RunKey5, 4300)
         }
 
         SpeedQueen() {
