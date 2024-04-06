@@ -26,8 +26,8 @@
 
 | Day      | Day<br/>Visit # | Visit<br/>Sum | Time    | Responsibilities                                            |
 |----------|-----------------|---------------|---------|-------------------------------------------------------------|
-| Saturday | 1               | 1             | 4:00 pm | Feed dry food                                               |
-| Saturday | 1               | 1             | 4:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Saturday | 1               | 1             | 3:00 pm | Feed dry food                                               |
+| Saturday | 1               | 1             | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
 | Saturday | 2               | 2             | 9:00 pm | Pepsid                                                      |
 | Saturday | 2               | 2             | 9:20 pm | Sucralfate                                                  |
 | Sunday   | 1               | 3             | 9:00 am | Feed wet Select Protein                                     |
