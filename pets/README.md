@@ -49,7 +49,6 @@
 
 
 # Visits
-Note: There were going to be 2 types of canned wet food, but they hated the Renal Care one; so we're doing just Select Protein.
 
 ## Morning Responsibilities
 - Cole needs his [pepsid](#pepsid-quarter-pill-in-small-syringe)
@@ -129,6 +128,7 @@ Note: There were going to be 2 types of canned wet food, but they hated the Rena
 - Filly push the syringe in
 - Leave out to dry
 ## Wet Food
+Note: There were going to be 2 types of canned wet food, but they hated the Renal Care one; so we're doing just Select Protein.
 - Split a can of wet food between two metal bowls
 ## Wet Food in Automated Feeder
 - Split a can of food between two metal bowls.
