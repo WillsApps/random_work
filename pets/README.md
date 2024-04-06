@@ -88,6 +88,7 @@
 - Tie off the plastic bag
 - Throw away the gloves and wash your hands
 - The away the plastic bag in the trash bin behind the apartment.
+  - Key for the padlock on the gate is on a magnet above the stool where you can take your shoes off when you come inside
 ## Sucralfate (Pink powder in big syringe)
 - Add 1 ml of water
 - Leave about 1 to 1.5 ml of 'air', put your finger on the tip, and shake well
