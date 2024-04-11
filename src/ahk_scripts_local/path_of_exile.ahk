@@ -45,6 +45,98 @@ RunKey(key) {
     }
 }
 
+
+    *F9::{
+        global flasksTriggering
+        global keyCooldowns
+        global lastFlask := 2
+        if (!IsSet(flasksTriggering)){
+            flasksTriggering := 1
+        }
+        else if (flasksTriggering == 0){
+            flasksTriggering := 1
+        }
+        else {
+            flasksTriggering := 0
+        }
+
+        if (flasksTriggering == 1){
+            ColeAndRen()
+;            MostMeta()
+;            PocketGopher()
+;            RenHangingOut()
+;            ColeHangingOut()
+;            SpeedQueen()
+;            SnakeBite()
+        } else {
+            SetTimer(RunKey1, 0)
+            SetTimer(RunKey2, 0)
+            SetTimer(RunKey3, 0)
+            SetTimer(RunKey4, 0)
+            SetTimer(RunKey5, 0)
+            SetTimer(RunKeys, 0)
+            SetTimer(RunKeyW, 0)
+        }
+
+        ColeAndRen() {
+            RunKeys()
+            SetTimer(RunKeys, 7200)
+        }
+
+        RenHangingOut() {
+            RunKey1()
+            RunKey3()
+            RunKey4()
+            RunKey5()
+            SetTimer(RunKey1, 2300)
+            SetTimer(RunKey3, 9700)
+        }
+
+        PocketGopher() {
+            RunKeys()
+            RunKey4()
+            SetTimer(RunKeys, 6000)
+            SetTimer(RunKey4, 5000)
+        }
+
+        ColeHangingOut() {
+            RunKeys()
+            RunKey4()
+            SetTimer(RunKeys, 6000)
+            SetTimer(RunKey4, 5000)
+        }
+
+        MostMeta() {
+            RunKey5()
+            SetTimer(RunKey5, 4300)
+        }
+
+        SpeedQueen() {
+;            RunKeys()
+;            RunKey1()
+;            RunKey2()
+;            RunKey3()
+            RunKey5()
+;            SetTimer(RunKey1, 10100)
+;            SetTimer(RunKey2, 7300)
+;            SetTimer(RunKey3, 10100)
+            SetTimer(RunKey5, 5300)
+        }
+
+        SnakeBite() {
+            RunKeyW()
+            RunKey1()
+            RunKey2()
+            RunKey3()
+            RunKey4()
+            SetTimer(RunKeyW, 12000)
+            SetTimer(RunKey4, 4000)
+;            SetTimer(RunKey3, 15000)
+;            SetTimer(RunKey4, 11400)
+;            SetTimer(RunKey5, 8000)
+        }
+    }
+
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
             MouseClick()
@@ -162,92 +254,6 @@ RunKey(key) {
 ;            MsgBox("position: '" position "'")
 ;        }
 ;    }
-
-
-    *F9::{
-        global flasksTriggering
-        global keyCooldowns
-        global lastFlask := 2
-        if (!IsSet(flasksTriggering)){
-            flasksTriggering := 1
-        }
-        else if (flasksTriggering == 0){
-            flasksTriggering := 1
-        }
-        else {
-            flasksTriggering := 0
-        }
-
-        if (flasksTriggering == 1){
-;            MostMeta()
-;            PocketGopher()
-;            RenHangingOut()
-;            ColeHangingOut()
-;            SpeedQueen()
-            SnakeBite()
-        } else {
-            SetTimer(RunKey1, 0)
-            SetTimer(RunKey2, 0)
-            SetTimer(RunKey3, 0)
-            SetTimer(RunKey4, 0)
-            SetTimer(RunKey5, 0)
-            SetTimer(RunKeys, 0)
-            SetTimer(RunKeyW, 0)
-        }
-
-        RenHangingOut() {
-            RunKey1()
-            RunKey3()
-            RunKey4()
-            RunKey5()
-            SetTimer(RunKey1, 2300)
-            SetTimer(RunKey3, 9700)
-        }
-
-        PocketGopher() {
-            RunKeys()
-            RunKey4()
-            SetTimer(RunKeys, 6000)
-            SetTimer(RunKey4, 5000)
-        }
-
-        ColeHangingOut() {
-            RunKeys()
-            RunKey4()
-            SetTimer(RunKeys, 6000)
-            SetTimer(RunKey4, 5000)
-        }
-
-        MostMeta() {
-            RunKey5()
-            SetTimer(RunKey5, 4300)
-        }
-
-        SpeedQueen() {
-;            RunKeys()
-;            RunKey1()
-;            RunKey2()
-;            RunKey3()
-            RunKey5()
-;            SetTimer(RunKey1, 10100)
-;            SetTimer(RunKey2, 7300)
-;            SetTimer(RunKey3, 10100)
-            SetTimer(RunKey5, 5300)
-        }
-
-        SnakeBite() {
-            RunKeyW()
-            RunKey1()
-            RunKey2()
-            RunKey3()
-            RunKey4()
-            SetTimer(RunKeyW, 12000)
-            SetTimer(RunKey4, 4000)
-;            SetTimer(RunKey3, 15000)
-;            SetTimer(RunKey4, 11400)
-;            SetTimer(RunKey5, 8000)
-        }
-    }
 
 
 
