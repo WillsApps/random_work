@@ -97,7 +97,9 @@ class Shortcut:
             self.cleaned_optionals.remove(self.original_modifier)
 
     @staticmethod
-    def get_part_direction(key: KeyType, direction: str, modifier: Modifiers = None):
+    def get_part_direction(
+        key: KeyType, direction: str, modifier: Modifiers = None
+    ):
         part = {key.TYPE: key, "modifiers": {}}
         if modifier:
             if direction == "from":
@@ -109,9 +111,9 @@ class Shortcut:
     def add_manipulators_optional(self, rule: Dict[str, Any]):
         if not self.cleaned_optionals:
             return
-        rule["manipulators"][0]["from"]["modifiers"][
-            "optional"
-        ] = values_from_enum_list(self.cleaned_optionals)
+        rule["manipulators"][0]["from"]["modifiers"]["optional"] = (
+            values_from_enum_list(self.cleaned_optionals)
+        )
 
     def add_manipulators_conditional(self, rule: Dict[str, Any]):
         if not self.conditions:
@@ -186,7 +188,6 @@ optionals = {
     Modifiers.LEFT_SHIFT,
 }
 
-
 SHORTCUTS = [
     # KeyChangeShortcut(
     #     original_modifier=Modifiers.LEFT_COMMAND,
@@ -258,16 +259,17 @@ SHORTCUTS = [
             # )
         ],
     ),
-    ModifierChangeShortcut(
-        original_modifier=Modifiers.LEFT_COMMAND,
-        new_modifier=Modifiers.LEFT_OPTION,
-        keys=[
-            KeyCodes.GRAVE_ACCENT_AND_TILDE,
-            KeyCodes.TAB,
-        ],
-        optionals={Modifiers.LEFT_SHIFT},
-        conditions=[],
-    ),
+    # ---- Replaced with "AltTab" ----
+    # ModifierChangeShortcut(
+    #     original_modifier=Modifiers.LEFT_COMMAND,
+    #     new_modifier=Modifiers.LEFT_OPTION,
+    #     keys=[
+    #         KeyCodes.GRAVE_ACCENT_AND_TILDE,
+    #         KeyCodes.TAB,
+    #     ],
+    #     optionals={Modifiers.LEFT_SHIFT},
+    #     conditions=[],
+    # ),
 ]
 
 root = Path("/Users/will.burdett/.config/karabiner")
