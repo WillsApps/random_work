@@ -61,7 +61,8 @@ RunKey(key) {
         }
 
         if (flasksTriggering == 1){
-            ColeAndRen()
+            StinkyBoy()
+;            ColeAndRen()
 ;            MostMeta()
 ;            PocketGopher()
 ;            RenHangingOut()
@@ -76,6 +77,11 @@ RunKey(key) {
             SetTimer(RunKey5, 0)
             SetTimer(RunKeys, 0)
             SetTimer(RunKeyW, 0)
+        }
+
+        StinkyBoy() {
+            RunKeys()
+            SetTimer(RunKeys, 7200)
         }
 
         ColeAndRen() {
@@ -291,12 +297,12 @@ RunKey(key) {
 
     RunKeys() {
         global lastFlask
-        if (lastFlask == 2){
+        if (lastFlask == 4){
             SendFlask(3)
             lastFlask := 3
         } else {
-            SendFlask(2)
-            lastFlask := 2
+            SendFlask(4)
+            lastFlask := 4
         }
     }
 
