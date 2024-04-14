@@ -31,10 +31,9 @@
 
 | Day       | Person   | Time    | Responsibilities                                            |
 |-----------|----------|---------|-------------------------------------------------------------|
-| Sunday    | Michelle | 9:00 am | Feed Wet Select Protein                                     |
 | Sunday    | Michelle | 9:00 am | Pepsid                                                      |
 | Sunday    | Michelle | 9:20 am | Sucralfate                                                  |
-| Sunday    | Michelle | 3:00 pm | Feed dry food (when you're off work)                        |
+| Sunday    | Michelle | 3:00 pm | Feed dry food                                               |
 | Sunday    | Michelle | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
 | Sunday    | Michelle | 3:20 pm | Sucralfate                                                  |
 | Sunday    | Michelle | 9:00 pm | Pepsid                                                      |
@@ -240,32 +239,3 @@ Only Ren has been here
 ### Hospital Hours
 
 - Open 24/7
-
-<!--
-# Litter Box
-
-I try to scoop the litter box every morning and afternoon.
-
-Don't worry about being efficient with litter, better to get extra litter into the bag rather than leave something
-behind.
-
-## Removing waste
-
-1. Grab a pink plastic bag
-2. Use the scooper look around the boxes for dark litter spots or poop
-3. Scoop any poop and put it into the bag
-4. Scoop any dark litter spots and put it into the bag
-    1. They will want to fall apart, so move quickly so it doesn't all just fall through the holes
-5. Put some baking powder into the bag
-6. Tie the bag
-7. Add fresh litter to replace what was removed
-8. Take the bag to the trash outside
-
-## Setting up after removal
-
-1. Use the scooper to mix up the litter
-2. Push the litter into a pile in the middle of the box
-3. Put baking powder on top of the pile
-4. Poke the baking powder to get it to mix in a little so they don't track it all over
-
--->
