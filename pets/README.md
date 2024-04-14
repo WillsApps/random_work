@@ -1,5 +1,6 @@
 <!-- TOC -->
-* [Visit Schedule](#visit-schedule)
+* [Videos](#videos)
+* [Schedule](#schedule)
 * [Visits](#visits)
   * [Morning Responsibilities](#morning-responsibilities)
   * [Afternoon Responsibilities](#afternoon-responsibilities)
@@ -22,30 +23,57 @@
     * [Hospital Hours](#hospital-hours)
 <!-- TOC -->
 
-# Visit Schedule
+# Videos
+- Video on cleaning out syringe all the way: https://www.youtube.com/watch?v=djYZpT1Yxe0
+- Video on popping fluid out of the tip: https://www.youtube.com/watch?v=W3qw64SLuTk
 
-| Day      | Day<br/>Visit # | Visit<br/>Sum | Time    | Responsibilities                                            |
-|----------|-----------------|---------------|---------|-------------------------------------------------------------|
-| Saturday | 1               | 1             | 3:00 pm | Feed dry food                                               |
-| Saturday | 1               | 1             | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Saturday | 2               | 2             | 9:00 pm | Pepsid                                                      |
-| Saturday | 2               | 2             | 9:20 pm | Sucralfate                                                  |
-| Sunday   | 1               | 3             | 9:00 am | Feed wet Select Protein                                     |
-| Sunday   | 1               | 3             | 9:00 am | Pepsid                                                      |
-| Sunday   | 1               | 3             | 9:20 am | Sucralfate                                                  |
-| Sunday   | 2               | 4             | 3:00 pm | Chemo                                                       |
-| Sunday   | 2               | 4             | 3:00 pm | Steroids                                                    |
-| Sunday   | 2               | 4             | 3:00 pm | Feed dry food (when you're off work)                        |
-| Sunday   | 2               | 4             | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Sunday   | 3               | 5             | 9:00 pm | Pepsid                                                      |
-| Sunday   | 3               | 5             | 9:20 pm | Sucralfate                                                  |
-| Monday   | 1               | 6             | 9:00 am | Feed wet Select Protein                                     |
-| Monday   | 1               | 6             | 9:00 am | Pepsid                                                      |
-| Monday   | 1               | 6             | 9:20 am | Sucralfate                                                  |
-| Monday   | 2               | 7             | 3:00 pm | Feed dry food                                               |
-| Monday   | 2               | 7             | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Monday   | 3               | 8             | 9:00 pm | Pepsid                                                      |
-| Monday   | 3               | 8             | 9:20 pm | Sucralfate                                                  |
+# Schedule
+
+| Day       | Person   | Time    | Responsibilities                                            |
+|-----------|----------|---------|-------------------------------------------------------------|
+| Sunday    | Michelle | 9:00 am | Feed Wet Select Protein                                     |
+| Sunday    | Michelle | 9:00 am | Pepsid                                                      |
+| Sunday    | Michelle | 9:20 am | Sucralfate                                                  |
+| Sunday    | Michelle | 3:00 pm | Feed dry food (when you're off work)                        |
+| Sunday    | Michelle | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Sunday    | Michelle | 3:20 pm | Sucralfate                                                  |
+| Sunday    | Michelle | 9:00 pm | Pepsid                                                      |
+| Sunday    | Michelle | 9:20 pm | Sucralfate                                                  |
+| Monday    | Newt     | 9:00 am | Feed wet Select Protein                                     |
+| Monday    | Newt     | 9:00 am | Pepsid                                                      |
+| Monday    | Newt     | 9:20 am | Sucralfate                                                  |
+| Monday    | Newt     | 3:00 pm | Feed dry food                                               |
+| Monday    | Newt     | 3:00 pm | Steroids                                                    |
+| Monday    | Newt     | 3:20 pm | Sucralfate                                                  |
+| Monday    | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Monday    | Michelle | 9:00 pm | Pepsid                                                      |
+| Monday    | Michelle | 9:20 pm | Sucralfate                                                  |
+| Tuesday   | Newt     | 9:00 am | Feed wet Select Protein                                     |
+| Tuesday   | Newt     | 9:00 am | Pepsid                                                      |
+| Tuesday   | Newt     | 9:20 am | Sucralfate                                                  |
+| Tuesday   | Newt     | 3:00 pm | Feed dry food                                               |
+| Tuesday   | Newt     | 3:00 pm | Chemo                                                       |
+| Tuesday   | Newt     | 3:20 pm | Sucralfate                                                  |
+| Tuesday   | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Tuesday   | Michelle | 9:00 pm | Pepsid                                                      |
+| Tuesday   | Michelle | 9:20 pm | Sucralfate                                                  |
+| Wednesday | Newt     | 9:00 am | Feed wet Select Protein                                     |
+| Wednesday | Newt     | 9:00 am | Pepsid                                                      |
+| Wednesday | Newt     | 9:20 am | Sucralfate                                                  |
+| Wednesday | Newt     | 3:00 pm | Feed dry food                                               |
+| Wednesday | Newt     | 3:00 pm | Steroids                                                    |
+| Wednesday | Newt     | 3:20 pm | Sucralfate                                                  |
+| Wednesday | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Wednesday | Michelle | 9:00 pm | Pepsid                                                      |
+| Wednesday | Michelle | 9:20 pm | Sucralfate                                                  |
+| Thursday  | Will     | 9:00 am | Feed wet Select Protein                                     |
+| Thursday  | Will     | 9:00 am | Pepsid                                                      |
+| Thursday  | Will     | 9:20 am | Sucralfate                                                  |
+| Thursday  | Will     | 3:00 pm | Feed dry food                                               |
+| Thursday  | Will     | 3:20 pm | Sucralfate                                                  |
+| Thursday  | Will     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
+| Thursday  | Will     | 9:00 pm | Pepsid                                                      |
+| Thursday  | Will     | 9:20 pm | Sucralfate                                                  |
 
 
 # Visits
@@ -61,6 +89,7 @@
 
 ## Afternoon Responsibilities
 - Feed [dry food](#dry-food)
+- Cole needs his [sucralfate](#sucralfate-pink-powder-in-big-syringe)
 - Clean up bowls from their breakfast
 - Set up their dinner for about 11pm in the [Automated Feeder](#wet-food-in-automated-feeder)
 - Clear out the [litter boxes](#litter-box)
@@ -97,6 +126,7 @@
 - Squirt the rest into Cole's mouth
 - Give Cole and Ren each 1 Temptation's treat
 - Wash the syringe out with water as best you can
+- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
 - Filly push the syringe in
 - Leave out to dry
 ## Pepsid (Quarter pill in small syringe)
@@ -116,6 +146,7 @@
 - Squirt into Cole's mouth
 - Give Cole and Ren each 1 Temptation's treat
 - Wash the syringe out with water as best you can
+- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
 - Filly push the syringe in
 - Leave out to dry
 - Throw away gloves
@@ -126,6 +157,7 @@
 - Squirt into Cole's mouth
 - Give Cole and Ren each 1 Temptation's treat
 - Wash the syringe out with water as best you can
+- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
 - Filly push the syringe in
 - Leave out to dry
 ## Wet Food
