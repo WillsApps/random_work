@@ -29,50 +29,50 @@
 
 # Schedule
 
-| Day       | Person   | Time    | Responsibilities                                            |
-|-----------|----------|---------|-------------------------------------------------------------|
-| Sunday    | Michelle | 9:00 am | Pepsid                                                      |
-| Sunday    | Michelle | 9:20 am | Sucralfate                                                  |
-| Sunday    | Michelle | 3:00 pm | Feed dry food                                               |
-| Sunday    | Michelle | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Sunday    | Michelle | 3:20 pm | Sucralfate                                                  |
-| Sunday    | Michelle | 9:00 pm | Pepsid                                                      |
-| Sunday    | Michelle | 9:20 pm | Sucralfate                                                  |
-| Monday    | Newt     | 9:00 am | Feed wet Select Protein                                     |
-| Monday    | Newt     | 9:00 am | Pepsid                                                      |
-| Monday    | Newt     | 9:20 am | Sucralfate                                                  |
-| Monday    | Newt     | 3:00 pm | Feed dry food                                               |
-| Monday    | Newt     | 3:00 pm | Steroids                                                    |
-| Monday    | Newt     | 3:20 pm | Sucralfate                                                  |
-| Monday    | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Monday    | Michelle | 9:00 pm | Pepsid                                                      |
-| Monday    | Michelle | 9:20 pm | Sucralfate                                                  |
-| Tuesday   | Newt     | 9:00 am | Feed wet Select Protein                                     |
-| Tuesday   | Newt     | 9:00 am | Pepsid                                                      |
-| Tuesday   | Newt     | 9:20 am | Sucralfate                                                  |
-| Tuesday   | Newt     | 3:00 pm | Feed dry food                                               |
-| Tuesday   | Newt     | 3:00 pm | Chemo                                                       |
-| Tuesday   | Newt     | 3:20 pm | Sucralfate                                                  |
-| Tuesday   | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Tuesday   | Michelle | 9:00 pm | Pepsid                                                      |
-| Tuesday   | Michelle | 9:20 pm | Sucralfate                                                  |
-| Wednesday | Newt     | 9:00 am | Feed wet Select Protein                                     |
-| Wednesday | Newt     | 9:00 am | Pepsid                                                      |
-| Wednesday | Newt     | 9:20 am | Sucralfate                                                  |
-| Wednesday | Newt     | 3:00 pm | Feed dry food                                               |
-| Wednesday | Newt     | 3:00 pm | Steroids                                                    |
-| Wednesday | Newt     | 3:20 pm | Sucralfate                                                  |
-| Wednesday | Newt     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Wednesday | Michelle | 9:00 pm | Pepsid                                                      |
-| Wednesday | Michelle | 9:20 pm | Sucralfate                                                  |
-| Thursday  | Will     | 9:00 am | Feed wet Select Protein                                     |
-| Thursday  | Will     | 9:00 am | Pepsid                                                      |
-| Thursday  | Will     | 9:20 am | Sucralfate                                                  |
-| Thursday  | Will     | 3:00 pm | Feed dry food                                               |
-| Thursday  | Will     | 3:20 pm | Sucralfate                                                  |
-| Thursday  | Will     | 3:00 pm | Setup feeding machine with Renal Care wet food for midnight |
-| Thursday  | Will     | 9:00 pm | Pepsid                                                      |
-| Thursday  | Will     | 9:20 pm | Sucralfate                                                  |
+| Day       | Person   | Time    | Responsibilities |
+|-----------|----------|---------|------------------|
+| Sunday    | Michelle | 9:00 am | Pepsid           |
+| Sunday    | Michelle | 9:20 am | Sucralfate       |
+| Sunday    | Michelle | 3:00 pm | Feed dry food    |
+| Sunday    | Michelle | 3:00 pm | Feed wet food    |
+| Sunday    | Michelle | 3:20 pm | Sucralfate       |
+| Sunday    | Michelle | 9:00 pm | Pepsid           |
+| Sunday    | Michelle | 9:20 pm | Sucralfate       |
+| Monday    | Newt     | 9:00 am | Feed wet food    |
+| Monday    | Newt     | 9:00 am | Pepsid           |
+| Monday    | Newt     | 9:20 am | Sucralfate       |
+| Monday    | Newt     | 3:00 pm | Feed dry food    |
+| Monday    | Newt     | 3:00 pm | Steroids         |
+| Monday    | Newt     | 3:20 pm | Sucralfate       |
+| Monday    | Newt     | 3:00 pm | Feed wet food    |
+| Monday    | Michelle | 9:00 pm | Pepsid           |
+| Monday    | Michelle | 9:20 pm | Sucralfate       |
+| Tuesday   | Newt     | 9:00 am | Feed wet food    |
+| Tuesday   | Newt     | 9:00 am | Pepsid           |
+| Tuesday   | Newt     | 9:20 am | Sucralfate       |
+| Tuesday   | Newt     | 3:00 pm | Feed dry food    |
+| Tuesday   | Newt     | 3:00 pm | Chemo            |
+| Tuesday   | Newt     | 3:20 pm | Sucralfate       |
+| Tuesday   | Newt     | 3:00 pm | Feed wet food    |
+| Tuesday   | Michelle | 9:00 pm | Pepsid           |
+| Tuesday   | Michelle | 9:20 pm | Sucralfate       |
+| Wednesday | Newt     | 9:00 am | Feed wet food    |
+| Wednesday | Newt     | 9:00 am | Pepsid           |
+| Wednesday | Newt     | 9:20 am | Sucralfate       |
+| Wednesday | Newt     | 3:00 pm | Feed dry food    |
+| Wednesday | Newt     | 3:00 pm | Steroids         |
+| Wednesday | Newt     | 3:20 pm | Sucralfate       |
+| Wednesday | Newt     | 3:00 pm | Feed wet food    |
+| Wednesday | Michelle | 9:00 pm | Pepsid           |
+| Wednesday | Michelle | 9:20 pm | Sucralfate       |
+| Thursday  | Will     | 9:00 am | Feed wet food    |
+| Thursday  | Will     | 9:00 am | Pepsid           |
+| Thursday  | Will     | 9:20 am | Sucralfate       |
+| Thursday  | Will     | 3:00 pm | Feed dry food    |
+| Thursday  | Will     | 3:20 pm | Sucralfate       |
+| Thursday  | Will     | 3:00 pm | Feed wet food    |
+| Thursday  | Will     | 9:00 pm | Pepsid           |
+| Thursday  | Will     | 9:20 pm | Sucralfate       |
 
 
 # Visits
@@ -173,39 +173,6 @@ Note: There were going to be 2 types of canned wet food, but they hated the Rena
 - Repeat with the second bowl.
   - The bowls don't all weigh the same so you need to zero out for both of them
 
-<!--
-
-## Evening (Wet)
-- 
-### Setting up the cat feeder
-
-1. Take out white trays
-2. Clean the trays as needed
-3. Take warm ice pack and put it into the freezer
-4. Grab the next ice pack from the freezer
-5. Put the cold ice pack into the feeder
-6. Put the white trays back on top of the ice pack
-7. Add the filled metal food bowls
-8. Closing the lids - one at a time
-    1. Turn the time dial to 0 hours
-    2. Close the lid
-    3. Hold the lid down while turning the time dial to be about 8 hours
-
-# Medications
-
-## Schedule
-
-- Thursday (28th) - Chemo
-- Friday (29th) - Steroids
-- Saturday (30th) - Antibiotics
-- Sunday (1st) - Chemo and Steroids
-
-## Dosages
-
-- Chemo - 0.5ml
-- Steroids - 0.7ml
-- Antibiotics - 0.7ml
- -->
 # Veterinarian Info
 
 ## Glendale Vet Clinic
