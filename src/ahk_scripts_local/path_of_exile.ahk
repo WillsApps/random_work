@@ -39,17 +39,26 @@ characters["SpeedQueen"] := Map()
 characters["SpeedQueen"][5] := Map()
 characters["SnakeBite"] := Map()
 
-RunKey(key) {
-    if (WinActive("ahk_exe PathOfExileSteam.exe")){
-        Send("{Blind}" key)
+    RunKey(key) {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            Send("{Blind}" key)
+        }
     }
-}
+
+    *f::{
+        StopFlasks()
+        RunKey("f")
+    }
+
+    *p::{
+        StopFlasks()
+        RunKey("p")
+    }
 
 
     *F9::{
         global flasksTriggering
         global keyCooldowns
-        global lastFlask := 2
         if (!IsSet(flasksTriggering)){
             flasksTriggering := 1
         }
@@ -61,7 +70,9 @@ RunKey(key) {
         }
 
         if (flasksTriggering == 1){
-            StinkyBoy()
+            WheresTheBodies()
+;            BombaBamBo()
+;            StinkyBoy()
 ;            ColeAndRen()
 ;            MostMeta()
 ;            PocketGopher()
@@ -70,78 +81,65 @@ RunKey(key) {
 ;            SpeedQueen()
 ;            SnakeBite()
         } else {
-            SetTimer(RunKey1, 0)
-            SetTimer(RunKey2, 0)
-            SetTimer(RunKey3, 0)
-            SetTimer(RunKey4, 0)
-            SetTimer(RunKey5, 0)
-            SetTimer(RunKeys, 0)
-            SetTimer(RunKeyW, 0)
-        }
-
-        StinkyBoy() {
-            RunKeys()
-            SetTimer(RunKeys, 7200)
-        }
-
-        ColeAndRen() {
-            RunKeys()
-            SetTimer(RunKeys, 7200)
-        }
-
-        RenHangingOut() {
-            RunKey1()
-            RunKey3()
-            RunKey4()
-            RunKey5()
-            SetTimer(RunKey1, 2300)
-            SetTimer(RunKey3, 9700)
-        }
-
-        PocketGopher() {
-            RunKeys()
-            RunKey4()
-            SetTimer(RunKeys, 6000)
-            SetTimer(RunKey4, 5000)
-        }
-
-        ColeHangingOut() {
-            RunKeys()
-            RunKey4()
-            SetTimer(RunKeys, 6000)
-            SetTimer(RunKey4, 5000)
-        }
-
-        MostMeta() {
-            RunKey5()
-            SetTimer(RunKey5, 4300)
-        }
-
-        SpeedQueen() {
-;            RunKeys()
-;            RunKey1()
-;            RunKey2()
-;            RunKey3()
-            RunKey5()
-;            SetTimer(RunKey1, 10100)
-;            SetTimer(RunKey2, 7300)
-;            SetTimer(RunKey3, 10100)
-            SetTimer(RunKey5, 5300)
-        }
-
-        SnakeBite() {
-            RunKeyW()
-            RunKey1()
-            RunKey2()
-            RunKey3()
-            RunKey4()
-            SetTimer(RunKeyW, 12000)
-            SetTimer(RunKey4, 4000)
-;            SetTimer(RunKey3, 15000)
-;            SetTimer(RunKey4, 11400)
-;            SetTimer(RunKey5, 8000)
+            StopFlasks()
         }
     }
+
+    StopFlasks() {
+        global flasksTriggering
+        flasksTriggering := 0
+        SetTimer(RunKey1, 0)
+        SetTimer(RunKey2, 0)
+        SetTimer(RunKey3, 0)
+        SetTimer(RunKey4, 0)
+        SetTimer(RunKey5, 0)
+        SetTimer(RunKeysA, 0)
+        SetTimer(RunKeysB, 0)
+        SetTimer(RunKeyW, 0)
+        SetTimer(RunKeyE, 0)
+        SetTimer(RunKeyQ, 0)
+    }
+
+    WheresTheBodies() {
+        RunKey3()
+        RunKey4()
+        RunKey5()
+;        RunKeyE()
+;        RunKeyQ()
+        SetTimer(RunKey3, 8900)
+        SetTimer(RunKey4, 7100)
+        SetTimer(RunKey5, 7100)
+;        SetTimer(RunKeyE, 8500)
+;        SetTimer(RunKeyQ, 16000)
+;        global lastFlaskA
+;        global lastFlaskB
+;        if (!IsSet(lastFlaskA)){
+;            lastFlaskA := 2
+;            lastFlaskB := 4
+;        }
+;        global minFlaskA := 2
+;        global maxFlaskA := 3
+;        global minFlaskB := 4
+;        global maxFlaskB := 5
+    }
+
+    BombaBamBo() {
+        global minFlaskA := 2
+        global maxFlaskA := 4
+        RunKeysA()
+        SetTimer(RunKeysA, 6000)
+    }
+
+    StinkyBoy() {
+        RunKeysA()
+        SetTimer(RunKeysA, 7200)
+    }
+
+    ColeAndRen() {
+        RunKeysA()
+        SetTimer(RunKeysA, 7200)
+    }
+
 
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
@@ -269,6 +267,18 @@ RunKey(key) {
         }
     }
 
+    RunKeyE() {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            Send("e")
+        }
+    }
+
+    RunKeyQ() {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            Send("q")
+        }
+    }
+
     SendFlask(flaskNumber) {
         if (WinActive("ahk_exe PathOfExileSteam.exe")){
             Send(flaskNumber)
@@ -295,15 +305,34 @@ RunKey(key) {
         SendFlask(5)
     }
 
-    RunKeys() {
-        global lastFlask
-        if (lastFlask == 4){
-            SendFlask(3)
-            lastFlask := 3
-        } else {
-            SendFlask(4)
-            lastFlask := 4
+    RunKeysA() {
+        global lastFlaskA
+        global minFlaskA
+        global maxFlaskA
+        if (!IsSet(minFlaskA) || !IsSet(maxFlaskA)){
+            minFlaskA := 0
+            maxFlaskA := 0
         }
+        if (lastFlaskA > maxFlaskA) {
+            lastFlaskA := minFlaskA
+        }
+        SendFlask(lastFlaskA)
+        lastFlaskA := lastFlaskA + 1
+    }
+
+    RunKeysB() {
+        global lastFlaskB
+        global minFlaskB
+        global maxFlaskB
+        if (!IsSet(minFlaskB) || !IsSet(maxFlaskB)){
+            minFlaskB := 0
+            maxFlaskB := 0
+        }
+        if (lastFlaskB > maxFlaskB) {
+            lastFlaskB := minFlaskB
+        }
+        SendFlask(lastFlaskB)
+        lastFlaskB := lastFlaskB + 1
     }
 
 ;    *F10::{
@@ -401,7 +430,7 @@ RunKey(key) {
     ;F9::{
     ;    MouseGetPos &posX, &posY
     ;    GamesClick(posX, posY)
-    ;    WrapPaste("/destroy")
+    ;    WarpPaste("/destroy")
     ;}
 
     F17::{
@@ -444,14 +473,6 @@ RunKey(key) {
         MouseMove(posX, posY, 2)
     }
 
-    WrapPaste(warpedPasteMe){
-        Send("{Enter}")
-        Sleep(35)
-        Send("^a")
-        FastPaste(warpedPasteMe)
-        Send("{Enter}")
-    }
-
     F2::{
         essenceX := 1867
         essenceY := 837
@@ -467,42 +488,87 @@ RunKey(key) {
     }
 
     F3::{
-        WrapPaste("/menagerie")
+        StopFlasks()
+        WarpPaste("/menagerie")
     }
 
     F4::{
-        WrapPaste("Thank you!")
+        WarpPaste("Thank you!")
     }
 
     F5::{
-        WrapPaste("/hideout")
+        StopFlasks()
+        WarpPaste("/hideout")
     }
 
     F6::{
-        WrapPaste("/invite @last")
+        WarpPaste("/invite @last")
     }
 
     F7::{
-        WrapPaste("/leave")
+        StopFlasks()
+        WarpPaste("/leave")
     }
 
-     F8::{
-         WrapPaste("/exit")
-     }
+;     F8::{
+;         WarpPaste("/exit")
+;     }
 
     ScrollLock::{
         Send("{Space}")
     }
 
-    ;F21::{
-    ;    Loop
-    ;    {
-    ;        Send("^{Click}")
-    ;        Sleep 125
-    ;        if !GetKeyState("F21"){
-    ;            break
-    ;        }
-    ;    }
-    ;}
-;}
+
+    RenHangingOut() {
+        RunKey1()
+        RunKey3()
+        RunKey4()
+        RunKey5()
+        SetTimer(RunKey1, 2300)
+        SetTimer(RunKey3, 9700)
+    }
+
+    PocketGopher() {
+        RunKeysA()
+        RunKey4()
+        SetTimer(RunKeysA, 6000)
+        SetTimer(RunKey4, 5000)
+    }
+
+    ColeHangingOut() {
+        RunKeysA()
+        RunKey4()
+        SetTimer(RunKeysA, 6000)
+        SetTimer(RunKey4, 5000)
+    }
+
+    MostMeta() {
+        RunKey5()
+        SetTimer(RunKey5, 4300)
+    }
+
+    SpeedQueen() {
+;            RunKeysA()
+;            RunKey1()
+;            RunKey2()
+;            RunKey3()
+        RunKey5()
+;            SetTimer(RunKey1, 10100)
+;            SetTimer(RunKey2, 7300)
+;            SetTimer(RunKey3, 10100)
+        SetTimer(RunKey5, 5300)
+    }
+
+    SnakeBite() {
+        RunKeyW()
+        RunKey1()
+        RunKey2()
+        RunKey3()
+        RunKey4()
+        SetTimer(RunKeyW, 12000)
+        SetTimer(RunKey4, 4000)
+;            SetTimer(RunKey3, 15000)
+;            SetTimer(RunKey4, 11400)
+;            SetTimer(RunKey5, 8000)
+    }
 #HotIf

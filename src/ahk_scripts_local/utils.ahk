@@ -64,3 +64,11 @@ GamesClickBack(clickX, clickY, key){
         Send(key)
     }
 }
+
+WarpPaste(warpedPasteMe){
+    Send("{Enter}")
+    Sleep(35)
+    Send("^a")
+    FastPaste(warpedPasteMe)
+    Send("{Enter}")
+}
