@@ -61,6 +61,11 @@ class PointingButtons(str, Enum):
     MIDDLE_CLICK = "button3"
 
 
+class ConsumerKeyCode(str, Enum):
+    TYPE = "consumer_key_code"
+    PLAY_OR_PAUSE = "play_or_pause"
+
+
 class Modifiers(str, Enum):
     LEFT_CONTROL = "left_control"
     LEFT_SHIFT = "left_shift"
@@ -68,11 +73,11 @@ class Modifiers(str, Enum):
     LEFT_OPTION = "left_option"
 
 
-KeyType = Union[KeyCodes, PointingButtons]
+KeyType = Union[KeyCodes, PointingButtons, ConsumerKeyCode]
 
 
 def values_from_enum_list(enums: Sequence[Enum]):
-    return [val for val in enums]
+    return [val.value for val in enums]
 
 
 @dataclass()
@@ -87,25 +92,23 @@ class Condition:
 
 @dataclass()
 class Shortcut:
-    original_modifier: Modifiers
-    optionals: Set[Modifiers]
+    original_modifiers: List[Modifiers]
+    optional_modifiers: List[Modifiers]
     conditions: List[Condition]
 
     def __post_init__(self):
-        self.cleaned_optionals: Set[Modifiers] = self.optionals
-        if self.original_modifier in self.cleaned_optionals:
-            self.cleaned_optionals.remove(self.original_modifier)
+        self.cleaned_optionals: List[Modifiers] = list(set(self.optional_modifiers) - set(self.original_modifiers))
 
     @staticmethod
     def get_part_direction(
-        key: KeyType, direction: str, modifier: Modifiers = None
+        key: KeyType, direction: str, modifiers: Sequence[Modifiers] = ()
     ):
         part = {key.TYPE: key, "modifiers": {}}
-        if modifier:
+        if modifiers:
             if direction == "from":
-                part["modifiers"] = {"mandatory": [modifier]}
+                part["modifiers"] = {"mandatory": values_from_enum_list(modifiers)}
             else:
-                part["modifiers"] = [modifier]
+                part["modifiers"] = values_from_enum_list(modifiers)
         return part
 
     def add_manipulators_optional(self, rule: Dict[str, Any]):
@@ -127,19 +130,19 @@ class Shortcut:
 class KeyChangeShortcut(Shortcut):
     original_key: KeyType
     new_key: KeyType
-    new_modifier: Modifiers = None
+    new_modifiers: Sequence[Modifiers] = None
 
     def to_dict(self) -> List[Dict[str, Any]]:
         rule = {
-            "description": f"{self.original_modifier}+{self.original_key} to {self.new_modifier}+{self.new_key}",
+            "description": f"{values_from_enum_list(self.original_modifiers)}+{self.original_key} to {values_from_enum_list(self.new_modifiers)}+{self.new_key}",
             "manipulators": [
                 {
                     "from": Shortcut.get_part_direction(
-                        self.original_key, "from", self.original_modifier
+                        self.original_key, "from", self.original_modifiers
                     ),
                     "to": [
                         Shortcut.get_part_direction(
-                            self.new_key, "to", self.new_modifier
+                            self.new_key, "to", self.new_modifiers
                         )
                     ],
                     "type": "basic",
@@ -153,22 +156,22 @@ class KeyChangeShortcut(Shortcut):
 
 @dataclass()
 class ModifierChangeShortcut(Shortcut):
-    new_modifier: Modifiers
+    new_modifiers: Sequence[Modifiers]
     keys: List[KeyType]
 
     def to_dict(self) -> List[Dict[str, Any]]:
         rules = []
         for key in self.keys:
             rule = {
-                "description": f"{self.original_modifier} to {self.new_modifier} for {key}",
+                "description": f"{values_from_enum_list(self.original_modifiers)} to {values_from_enum_list(self.new_modifiers)} for {key}",
                 "manipulators": [
                     {
                         "from": Shortcut.get_part_direction(
-                            key, "from", self.new_modifier
+                            key, "from", self.new_modifiers
                         ),
                         "to": [
                             Shortcut.get_part_direction(
-                                key, "to", self.original_modifier
+                                key, "to", self.original_modifiers
                             )
                         ],
                         "type": "basic",
@@ -181,12 +184,38 @@ class ModifierChangeShortcut(Shortcut):
         return rules
 
 
-optionals = {
+@dataclass()
+class DisableShortcut(Shortcut):
+    keys: List[KeyType]
+
+    def to_dict(self) -> List[Dict[str, Any]]:
+        rules = []
+        for key in self.keys:
+            rule = {
+                "description": f"Disabling {key}",
+                "manipulators": [
+                    {
+                        "from": Shortcut.get_part_direction(
+                            key, "from"
+                        ),
+                        "to": [
+                        ],
+                        "type": "basic",
+                    }
+                ],
+            }
+            self.add_manipulators_optional(rule)
+            self.add_manipulators_conditional(rule)
+            rules.append(rule)
+        return rules
+
+
+optional_modifiers = [
     Modifiers.LEFT_COMMAND,
     Modifiers.LEFT_CONTROL,
     Modifiers.LEFT_OPTION,
     Modifiers.LEFT_SHIFT,
-}
+]
 
 SHORTCUTS = [
     # KeyChangeShortcut(
@@ -204,8 +233,42 @@ SHORTCUTS = [
     #     ],
     # ),
     ModifierChangeShortcut(
-        original_modifier=Modifiers.LEFT_COMMAND,
-        new_modifier=Modifiers.LEFT_CONTROL,
+        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_COMMAND, Modifiers.LEFT_OPTION],
+        new_modifiers=[Modifiers.LEFT_COMMAND, Modifiers.LEFT_SHIFT],
+        keys=[
+            KeyCodes.V,
+        ],
+        optional_modifiers=[],
+        conditions=[
+            Condition(
+                "frontmost_application_if",
+                "bundle_identifiers",
+                [
+                    "com.jgraph.drawio.desktop",
+                ],
+            )
+        ],
+    ),
+    ModifierChangeShortcut(
+        original_modifiers=[Modifiers.LEFT_COMMAND],
+        new_modifiers=[Modifiers.LEFT_SHIFT, Modifiers.LEFT_CONTROL],
+        keys=[
+            KeyCodes.C,
+        ],
+        optional_modifiers=[],
+        conditions=[
+            Condition(
+                "frontmost_application_if",
+                "bundle_identifiers",
+                [
+                    "com.google.Chrome",
+                ],
+            )
+        ],
+    ),
+    ModifierChangeShortcut(
+        original_modifiers=[Modifiers.LEFT_COMMAND],
+        new_modifiers=[Modifiers.LEFT_CONTROL],
         keys=[
             KeyCodes.A,
             KeyCodes.X,
@@ -226,7 +289,7 @@ SHORTCUTS = [
             KeyCodes.N4,
             KeyCodes.N5,
         ],
-        optionals=optionals,
+        optional_modifiers=optional_modifiers,
         conditions=[
             Condition(
                 "frontmost_application_unless",
@@ -241,14 +304,30 @@ SHORTCUTS = [
         ],
     ),
     ModifierChangeShortcut(
-        original_modifier=Modifiers.LEFT_OPTION,
-        new_modifier=Modifiers.LEFT_CONTROL,
+        original_modifiers=[Modifiers.LEFT_OPTION],
+        new_modifiers=[Modifiers.LEFT_CONTROL],
         keys=[
             KeyCodes.DELETE_OR_BACKSPACE,
             KeyCodes.RIGHT_ARROW,
             KeyCodes.LEFT_ARROW,
         ],
-        optionals=optionals,
+        optional_modifiers=optional_modifiers,
+        conditions=[
+            # Condition(
+            #     "frontmost_application_unless",
+            #     "bundle_identifiers",
+            #     [
+            #         "com.apple.finder",
+            #     ],
+            # )
+        ],
+    ),
+    DisableShortcut(
+        original_modifiers=[Modifiers.LEFT_OPTION],
+        keys=[
+            ConsumerKeyCode.PLAY_OR_PAUSE,
+        ],
+        optional_modifiers=optional_modifiers,
         conditions=[
             # Condition(
             #     "frontmost_application_unless",
@@ -267,7 +346,7 @@ SHORTCUTS = [
     #         KeyCodes.GRAVE_ACCENT_AND_TILDE,
     #         KeyCodes.TAB,
     #     ],
-    #     optionals={Modifiers.LEFT_SHIFT},
+    #     optionals=[Modifiers.LEFT_SHIFT],
     #     conditions=[],
     # ),
 ]
@@ -289,7 +368,8 @@ def main():
         f.write(json.dumps(raw, indent=2))
     raw["profiles"][0]["complex_modifications"]["rules"] = rules
     with open(root / "karabiner.json", "w") as f:
-        f.write(json.dumps(raw, indent=2))
+        output = json.dumps(raw, indent=2)
+        f.write(output)
     print(json.dumps(rules))
 
 
