@@ -1,6 +1,4 @@
 #SingleInstance Force
-;#NoTrayIcon
-;#InstallKeybdHook
 SendMode("Event")
 #include utils.ahk
 Thread "Interrupt", 0
