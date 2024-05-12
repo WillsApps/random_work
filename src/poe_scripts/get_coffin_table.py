@@ -15,7 +15,7 @@ ORIGINAL_FILE = Path(environ["OBSIDIAN_PATH"]) / "PoE.md"
 BACKUP_FILE = Path(environ["OBSIDIAN_PATH"]) / "BackupPoE.md"
 
 
-PERCENT_REGEX = re.compile(r"(\d\d\d)%")
+PERCENT_REGEX = re.compile(r"(\d){2,3}%")
 
 # 100% increased chance of Caster Modifiers - 1
 
@@ -28,6 +28,8 @@ class Modifier:
 
 
 def get_modifier_name(name: str) -> str:
+    if "Corruption" in name:
+        return "Corruption"
     return name.split(" Modifier")[0].split(" ")[-1]
 
 
@@ -46,9 +48,12 @@ def get_modifiers(csv_data: list[dict]) -> dict[str,Modifier]:
     for row in csv_data:
         name = row["Name"]
         if (
-            "% increased chance of " not in name
+            ("% increased chance of " not in name
+            and "% increased chance for " not in name
             and "scarcer" not in name
             and "+50 to Modifier Tier" not in name
+            )
+                # or  "Corruption" in name
         ):
             continue
         if "+50 to Modifier Tier" in name:
@@ -64,10 +69,10 @@ def get_modifiers(csv_data: list[dict]) -> dict[str,Modifier]:
             modifier_change = 0.4
         else:
             modifier_change = 1
-        if "% increased chance of " in name or "+50 to Modifier Tier" in name:
-            modifier.increase_quantity += modifier_change * int(row["Quantity"])
-        elif "scarcer" in name:
+        if "scarcer" in name:
             modifier.scarcer_quantity += modifier_change * int(row["Quantity"])
+        else:
+            modifier.increase_quantity += modifier_change * int(row["Quantity"])
         modifiers[modifier_name] = modifier
     return modifiers
 
