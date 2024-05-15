@@ -6,7 +6,7 @@ source $REPO_DIR/venv/bin/activate
 export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
 
 if [ $# != 0 ]; then
-    black "$*"
+    black --line-length=79 "$*"
 else
     python $REPO_DIR/src/macbook_utils/black_me.py
 fi

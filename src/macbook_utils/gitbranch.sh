@@ -29,7 +29,9 @@ if [ "$ARGS_CONCATENATE" == "" ]
 then
   exit 0
 fi
-echo "DATAI-$TICKET/$ARGS_CONCATENATE"
+echo "git checkout -b \"DATAI-$TICKET/$ARGS_CONCATENATE\""
+
+git checkout -b "DATAI-$TICKET/$ARGS_CONCATENATE"
 #git add .
 #git commit -m "${ARGS_CONCATENATE}"
 #git push
