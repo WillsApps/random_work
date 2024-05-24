@@ -336,11 +336,10 @@ characters["SnakeBite"] := Map()
     ;}
 
     F17::{
-        doExpedition := 0
+        doExpedition := 1
 
         if (doExpedition == 0){
             Send("{Shift down}w{Shift up}")
-
         }
         else {
             dragStartX := 970

@@ -1,6 +1,7 @@
 import os
 import re
 from dataclasses import dataclass
+from typing import Callable, Union
 
 from dotenv import load_dotenv
 from pathlib import Path
@@ -25,16 +26,15 @@ class Modifier:
     name: str
     increase_quantity: float
     scarcer_quantity: float
+    is_meta: bool
 
 
-def get_modifier_name(name: str) -> str:
-    if "Corruption" in name:
-        return "Corruption"
-    return name.split(" Modifier")[0].split(" ")[-1]
+def get_modifier_name(row: str) -> str:
+    return row.split(" Modifier")[0].split(" ")[-1]
 
 
-def get_percent(name: str) -> int:
-    return int(PERCENT_REGEX.findall(name)[0])
+def get_percent(row: str) -> int:
+    return int(PERCENT_REGEX.findall(row)[0])
 
 
 def get_rows_newest_file(csv_folder: Path) -> list[dict[str, any]]:
@@ -46,35 +46,79 @@ def get_rows_newest_file(csv_folder: Path) -> list[dict[str, any]]:
     return pandas.read_csv(file).to_dict(orient="records")
 
 
+def get_name_percent_and_is_meta(row: str) -> tuple[str, int, bool]:
+    name_map = {
+        "+50 to Modifier Tier": lambda n: "Modifier Tier",
+        "Reroll Modifier": lambda n: "Reroll Explicit",
+        "Reroll Implicit": lambda n: "Reroll Implicit",
+        "Corruption": lambda n: "Corruption",
+        "Randomized": lambda n: "Randomized",
+        "Fracture": lambda n: "Fracture",
+        "Grave Row": lambda n: "Grave Row",
+        "Grave Column": lambda n: "Grave Column",
+        "40% increased Effect": lambda n: (
+            "Effect of " + n.split("40% increased Effect of ")[1].split(" ")[0]
+        ),
+    }
+
+    for key, name_func in name_map.items():
+        if key in row:
+            return name_func(row), 0, True
+    return get_modifier_name(row), get_percent(row), False
+
+
 def get_modifiers(csv_data: list[dict]) -> dict[str, Modifier]:
     modifiers = {}
-    for row in csv_data:
-        name = row["Name"]
+    for full_row in csv_data:
+        row = full_row["Name"]
         if (
-            "% increased chance of " not in name
-            and "% increased chance for " not in name
-            and "scarcer" not in name
-            and "+50 to Modifier Tier" not in name
-            # or  "Corruption" in name
+            "% increased chance of " not in row
+            and "% increased chance for " not in row
+            and "scarcer" not in row
+            and "+50 to Modifier Tier" not in row
+            and "Randomized" not in row
+            and "chance to Fracture" not in row
+            and "40% increased Effect" not in row
+            and "Grave Row" not in row
+            and "Grave Column" not in row
+            and "Reroll" not in row
         ):
             continue
-        if "+50 to Modifier Tier" in name:
-            modifier_name = "Modifier Tier"
-            percent = 0
-        else:
-            modifier_name = get_modifier_name(name)
-            percent = get_percent(name)
-        modifier = modifiers.get(modifier_name, Modifier(modifier_name, 0, 0))
+        modifier_name, percent, is_meta = get_name_percent_and_is_meta(row)
+        #
+        # for key, name_func in name_map.items():
+        #     if key in row:
+        #         modifier_name, percent = name_func(row)
+        #         break
+        # if "+50 to Modifier Tier" in row:
+        #     modifier_name, percent = name_map["+50 to Modifier Tier"](row)
+        #     percent = 0
+        # elif "40% increased Effect" in row:
+        #     modifier_name, percent = name_map["40% increased Effect"](row)
+        #     modifier_name = (
+        #         "Effect of " + row.split("40% increased Effect of ")[1].split(" ")[0]
+        #     )
+        #     percent = 0
+        # elif "Reroll Modifier" in row:
+        #     modifier_name = "Reroll Explicit"
+        #     percent = 0
+        # elif "Reroll Implicit" in row:
+        #     modifier_name = "Reroll Implicit"
+        #     percent = 0
+        # else:
+        #     modifier_name = get_modifier_name(row)
+        #     percent = get_percent(row)
+        modifier = modifiers.get(modifier_name, Modifier(modifier_name, 0, 0, is_meta))
         if percent == 100:
             modifier_change = 0.3
         elif percent == 200:
             modifier_change = 0.4
         else:
             modifier_change = 1
-        if "scarcer" in name:
-            modifier.scarcer_quantity += modifier_change * int(row["Quantity"])
+        if "scarcer" in row:
+            modifier.scarcer_quantity += modifier_change * int(full_row["Quantity"])
         else:
-            modifier.increase_quantity += modifier_change * int(row["Quantity"])
+            modifier.increase_quantity += modifier_change * int(full_row["Quantity"])
         modifiers[modifier_name] = modifier
     return modifiers
 
@@ -82,20 +126,32 @@ def get_modifiers(csv_data: list[dict]) -> dict[str, Modifier]:
 def get_markdown_table(modifiers: dict[str, Modifier]) -> list[str]:
     table_lines = [
         (
-            """|               | Increased | Scarcer |
+            """| Name          | Increased | Scarcer |
     | ------------- | --------- | ------- |"""
         )
     ]
     for modifier in sorted(modifiers.values(), key=lambda x: x.name):
-        if modifier.name == "Modifier Tier":
+        if modifier.is_meta:
             continue
         table_lines.append(
             f"| {modifier.name:13} | {modifier.increase_quantity:9} | {modifier.scarcer_quantity:7} |"
         )
-    tier_modifier = modifiers["Modifier Tier"]
+
+    table_lines.append("")
     table_lines.append(
-        f"| {tier_modifier.name:13} | {tier_modifier.increase_quantity:9} | {' ':7} |"
+        (
+            """| Name          | Count |
+    | ------------- | ----- |"""
+        )
     )
+    for modifier in sorted(modifiers.values(), key=lambda x: x.name):
+        if not modifier.is_meta:
+            continue
+        table_lines.append(f"| {modifier.name:13} | {modifier.increase_quantity:5} |")
+    # tier_modifier = modifiers["Modifier Tier"]
+    # table_lines.append(
+    #     f"| {tier_modifier.name:13} | {tier_modifier.increase_quantity:9} | {' ':7} |"
+    # )
     return table_lines
 
 
@@ -140,6 +196,7 @@ def main():
     rows = get_rows_newest_file(CSV_FOLDER)
     modifiers = get_modifiers(rows)
     markdown_table = get_markdown_table(modifiers)
+    # meta_markdown_table = get_markdown_table(meta_modifiers)
     original_content = get_content_lines(ORIGINAL_FILE)
     make_backup(ORIGINAL_FILE, BACKUP_FILE)
     new_content = splice_in_rows(
