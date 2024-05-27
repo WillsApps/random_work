@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhtt5vfxywo5"]
+
+[ext_resource type="PackedScene" uid="uid://dj6ppr1yl84ru" path="res://Scenes/Player.tscn" id="1_p2p01"]
+[ext_resource type="PackedScene" uid="uid://ckxkxe5v334c8" path="res://Scenes/wall.tscn" id="2_wtocf"]
+[ext_resource type="Script" path="res://Scripts/CameraController.gd" id="3_0x8k4"]
+
+[node name="Scene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_p2p01")]
+
+[node name="Wall" parent="." instance=ExtResource("2_wtocf")]
+position = Vector2(-1000, 0)
+scale = Vector2(1, 100)
+
+[node name="Wall2" parent="." instance=ExtResource("2_wtocf")]
+position = Vector2(1000, 0)
+scale = Vector2(1, 100)
+
+[node name="Wall3" parent="." instance=ExtResource("2_wtocf")]
+position = Vector2(0, 625)
+rotation = 1.5708
+scale = Vector2(1, 100)
+
+[node name="Wall4" parent="." instance=ExtResource("2_wtocf")]
+position = Vector2(0, -625)
+rotation = 1.5708
+scale = Vector2(1, 100)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_0x8k4")

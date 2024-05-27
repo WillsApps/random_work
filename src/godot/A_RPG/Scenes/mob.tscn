@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72av4p3wgm83"]
+
+[ext_resource type="Script" path="res://Scripts/Mob.gd" id="1_o4b18"]
+[ext_resource type="Texture2D" uid="uid://ci7lsyubhalb5" path="res://gimps/blue.png" id="2_h6vor"]
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+script = ExtResource("1_o4b18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_h6vor")

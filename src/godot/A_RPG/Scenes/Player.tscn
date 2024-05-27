@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj6ppr1yl84ru"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerControiler.gd" id="1_uvbdh"]
+[ext_resource type="Texture2D" uid="uid://cgnyg3bsdwiis" path="res://gimps/triangle.png" id="2_pgo1l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xjgw"]
+radius = 14.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrh5h"]
+size = Vector2(49, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2vri"]
+size = Vector2(76, 23)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(16, -1)
+script = ExtResource("1_uvbdh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_pgo1l")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1xjgw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 0.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_wrh5h")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-38.5, -1.90735e-06)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_u2vri")
+metadata/_edit_group_ = true
