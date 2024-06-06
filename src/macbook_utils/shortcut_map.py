@@ -67,6 +67,8 @@ class ConsumerKeyCode(str, Enum):
 
 
 class Modifiers(str, Enum):
+    CAPS_LOCK = "caps_lock"
+    ALL = "all"
     LEFT_CONTROL = "left_control"
     LEFT_SHIFT = "left_shift"
     LEFT_COMMAND = "left_command"
@@ -211,6 +213,7 @@ class DisableShortcut(Shortcut):
 
 
 optional_modifiers = [
+    Modifiers.CAPS_LOCK,
     Modifiers.LEFT_COMMAND,
     Modifiers.LEFT_CONTROL,
     Modifiers.LEFT_OPTION,
