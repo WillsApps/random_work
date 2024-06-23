@@ -29,50 +29,20 @@
 
 # Schedule
 
-| Day       | Person   | Time    | Responsibilities             |
-|-----------|----------|---------|------------------------------|
-| Sunday    | Michelle | 9:00 am | Pepsid                       |
-| Sunday    | Michelle | 9:20 am | Sucralfate                   |
-| Sunday    | Michelle | 3:00 pm | Feed dry food                |
-| Sunday    | Michelle | 3:00 pm | Wet Food in Automated Feeder |
-| Sunday    | Michelle | 3:20 pm | Sucralfate                   |
-| Sunday    | Michelle | 9:00 pm | Pepsid                       |
-| Sunday    | Michelle | 9:20 pm | Sucralfate                   |
-| Monday    | Newt     | 9:00 am | Feed wet food                |
-| Monday    | Newt     | 9:00 am | Pepsid                       |
-| Monday    | Newt     | 9:20 am | Sucralfate                   |
-| Monday    | Newt     | 3:00 pm | Feed dry food                |
-| Monday    | Newt     | 3:00 pm | Steroids                     |
-| Monday    | Newt     | 3:20 pm | Sucralfate                   |
-| Monday    | Newt     | 3:00 pm | Wet Food in Automated Feeder |
-| Monday    | Michelle | 9:00 pm | Pepsid                       |
-| Monday    | Michelle | 9:20 pm | Sucralfate                   |
-| Tuesday   | Newt     | 9:00 am | Feed wet food                |
-| Tuesday   | Newt     | 9:00 am | Pepsid                       |
-| Tuesday   | Newt     | 9:20 am | Sucralfate                   |
-| Tuesday   | Newt     | 3:00 pm | Feed dry food                |
-| Tuesday   | Newt     | 3:00 pm | Chemo                        |
-| Tuesday   | Newt     | 3:20 pm | Sucralfate                   |
-| Tuesday   | Newt     | 3:00 pm | Wet Food in Automated Feeder |
-| Tuesday   | Michelle | 9:00 pm | Pepsid                       |
-| Tuesday   | Michelle | 9:20 pm | Sucralfate                   |
-| Wednesday | Newt     | 9:00 am | Feed wet food                |
-| Wednesday | Newt     | 9:00 am | Pepsid                       |
-| Wednesday | Newt     | 9:20 am | Sucralfate                   |
-| Wednesday | Newt     | 3:00 pm | Feed dry food                |
-| Wednesday | Newt     | 3:00 pm | Steroids                     |
-| Wednesday | Newt     | 3:20 pm | Sucralfate                   |
-| Wednesday | Newt     | 3:00 pm | Wet Food in Automated Feeder |
-| Wednesday | Michelle | 9:00 pm | Pepsid                       |
-| Wednesday | Michelle | 9:20 pm | Sucralfate                   |
-| Thursday  | Will     | 9:00 am | Feed wet food                |
-| Thursday  | Will     | 9:00 am | Pepsid                       |
-| Thursday  | Will     | 9:20 am | Sucralfate                   |
-| Thursday  | Will     | 3:00 pm | Feed dry food                |
-| Thursday  | Will     | 3:20 pm | Sucralfate                   |
-| Thursday  | Will     | 3:00 pm | Wet Food in Automated Feeder |
-| Thursday  | Will     | 9:00 pm | Pepsid                       |
-| Thursday  | Will     | 9:20 pm | Sucralfate                   |
+| Day      | Time     | Responsibilities             |
+|----------|----------|------------------------------|
+| Thursday | 3:00 pm  | 10g Dry Food                 |
+| Thursday | 10:00 pm | Wet food with Black Powder   |
+| Thursday | 10:00 pm | Wet Food in Automated Feeder |
+| Friday   | 3:00 pm  | 10g Dry Food                 |
+| Friday   | 10:00 pm | Wet food with Black Powder   |
+| Friday   | 10:00 pm | Wet Food in Automated Feeder |
+| Saturday | 3:00 pm  | 10g Dry Food                 |
+| Saturday | 10:00 pm | Wet food with Black Powder   |
+| Saturday | 10:00 pm | Wet Food in Automated Feeder |
+| Sunday   | 3:00 pm  | 10g Dry Food                 |
+| Sunday   | 10:00 pm | Wet food with Black Powder   |
+| Sunday   | 10:00 pm | Wet Food in Automated Feeder |
 
 
 # Visits

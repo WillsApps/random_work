@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 COOLDOWN = 5
-MAX_RAGE = 50
+MAX_RAGE = 130
 
 
 @dataclass
@@ -26,7 +26,7 @@ SKILLS = [
 @dataclass
 class Result:
     rage_generation: int
-    berserker_length: int
+    length: int
     max_rage_length: int
     total_length: int
     uptime: float
@@ -34,7 +34,7 @@ class Result:
 
 def get_results_for_skill(skill: Skill):
     results = []
-    for rage_generation in range(1, 25):
+    for rage_generation in range(1, 30):
         berserker_length = 0
         current_rage = 120
         current_rage = min(current_rage, MAX_RAGE)
@@ -60,7 +60,7 @@ def get_results_for_skill(skill: Skill):
         results.append(
             Result(
                 rage_generation=rage_generation,
-                berserker_length=berserker_length,
+                length=berserker_length,
                 max_rage_length=max_rage_length,
                 total_length=total_length,
                 uptime=uptime,
@@ -69,9 +69,12 @@ def get_results_for_skill(skill: Skill):
         # print(f"{rage_generation=}, {berserker_length=}, {max_rage_length=}, {total_length=}, {uptime=}")
     return results
 
+def main():
+    for skill in SKILLS:
+        results = get_results_for_skill(skill)
+        print(f"{skill.name=}")
+        for result in results:
+            print(result)
 
-for skill in SKILLS:
-    results = get_results_for_skill(skill)
-    print(f"{skill.name=}")
-    for result in results:
-        print(result)
+if __name__ == '__main__':
+    main()
