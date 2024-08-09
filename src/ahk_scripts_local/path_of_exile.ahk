@@ -20,8 +20,14 @@ RunKeyFuncs[3] := RunKey3
 RunKeyFuncs[4] := RunKey4
 RunKeyFuncs[5] := RunKey5
 RunKeyFuncs["W"] := RunKeyW
+RunKeyFuncs["E"] := RunKeyE
+RunKeyFuncs["Q"] := RunKeyQ
 
 global characters := Map()
+characters["SlashAndDash"] := Map()
+characters["SlashAndDash"]["keys"] := ["w"]
+characters["SlashAndDash"]["groups"] := [Map("key", [2,4], "peroid", 6000)]
+characters["SlashAndDash"]["keys"]
 
 characters["MostMeta"] := Map()
 characters["MostMeta"][5] := 6900
@@ -54,6 +60,16 @@ characters["SnakeBite"] := Map()
         RunKey("p")
     }
 
+    *g::{
+        StopFlasks()
+        RunKey("g")
+    }
+
+    +LButton::{
+        StopFlasks()
+        Send("+{Click}")
+    }
+
 
     *F9::{
         global flasksTriggering
@@ -69,11 +85,9 @@ characters["SnakeBite"] := Map()
         }
 
         if (flasksTriggering == 1){
-;            WheresTheBodies()
-            CantRemember()
-;            BombaBamBo()
-;            StinkyBoy()
-;            ColeAndRen()
+;            SmackBabySmack()
+            Venom()
+;            SlashAndDash()
         } else {
             StopFlasks()
         }
@@ -92,6 +106,65 @@ characters["SnakeBite"] := Map()
         SetTimer(RunKeyW, 0)
         SetTimer(RunKeyE, 0)
         SetTimer(RunKeyQ, 0)
+    }
+
+    SmackBabySmack() {
+        global lastFlaskA
+        global minFlaskA := 3
+        global maxFlaskA := 4
+        if (!IsSet(lastFlaskA)){
+            lastFlaskA := minFlaskA
+        }
+        RunKeysA()
+        SetTimer(RunKeysA, 6000)
+        RunKey2()
+        SetTimer(RunKey2, 6000)
+;        RunKey5()
+;        SetTimer(RunKey5, 6000)
+        RunKeyW()
+        SetTimer(RunKeyW, 3900)
+    }
+
+    Venom() {
+;        global lastFlaskA
+;        global minFlaskA := 3
+;        global maxFlaskA := 4
+;        if (!IsSet(lastFlaskA)){
+;            lastFlaskA := minFlaskA
+;        }
+;        RunKeysA()
+;        SetTimer(RunKeysA, 5900)
+        RunKey1()
+        SetTimer(RunKey1, 7500)
+        RunKey2()
+        SetTimer(RunKey2, 7300)
+        RunKey3()
+        SetTimer(RunKey3, 11600)
+        RunKey4()
+        SetTimer(RunKey4, 10600)
+        RunKey5()
+        SetTimer(RunKey5, 12300)
+;        RunKeyW()
+;        SetTimer(RunKeyW, 3900)
+    }
+
+    SlashAndDash() {
+        global lastFlaskA
+        global minFlaskA := 3
+        global maxFlaskA := 4
+        if (!IsSet(lastFlaskA)){
+            lastFlaskA := minFlaskA
+        }
+;        RunKeysA()
+;        SetTimer(RunKeysA, 6000)
+        RunKey2()
+        SetTimer(RunKey2, 9400)
+        RunKey4()
+        SetTimer(RunKey4, 7100)
+;        RunKey5()
+;        SetTimer(RunKey4, 4)
+        RunKeyW()
+        SetTimer(RunKeyW, 3900)
     }
 
     CantRemember() {
@@ -136,24 +209,6 @@ characters["SnakeBite"] := Map()
 ;        global minFlaskB := 4
 ;        global maxFlaskB := 5
     }
-
-    BombaBamBo() {
-        global minFlaskA := 2
-        global maxFlaskA := 4
-        RunKeysA()
-        SetTimer(RunKeysA, 6000)
-    }
-
-    StinkyBoy() {
-        RunKeysA()
-        SetTimer(RunKeysA, 7200)
-    }
-
-    ColeAndRen() {
-        RunKeysA()
-        SetTimer(RunKeysA, 7200)
-    }
-
 
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
@@ -383,17 +438,8 @@ characters["SnakeBite"] := Map()
     }
 
     F2::{
-        essenceX := 1867
-        essenceY := 837
-
-        MouseGetPos &posX, &posY
-
-        Send("i")
-        Sleep(15)
-        GamesClickRight(essenceX, essenceY)
-        MouseMove(posX, posY)
-        Sleep(15)
-        Send("i")
+        StopFlasks()
+        WarpPaste("/kingsmarch")
     }
 
     F3::{
@@ -480,4 +526,22 @@ characters["SnakeBite"] := Map()
 ;            SetTimer(RunKey4, 11400)
 ;            SetTimer(RunKey5, 8000)
     }
+
+    BombaBamBo() {
+        global minFlaskA := 2
+        global maxFlaskA := 4
+        RunKeysA()
+        SetTimer(RunKeysA, 6000)
+    }
+
+    StinkyBoy() {
+        RunKeysA()
+        SetTimer(RunKeysA, 7200)
+    }
+
+    ColeAndRen() {
+        RunKeysA()
+        SetTimer(RunKeysA, 7200)
+    }
+
 #HotIf

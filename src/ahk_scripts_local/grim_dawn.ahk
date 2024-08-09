@@ -6,15 +6,16 @@ SendMode("Event")
 Thread "Interrupt", 0
 SetTitleMatchMode("RegEx")
 
-#HotIf WinActive("Grim Dawn.exe")
+winName := "Grim Dawn.exe"
+#HotIf WinActive("ahk_exe .*Dawn.exe")
 
     global grimDawnGlobals := Map()
     grimDawnGlobals["keysTriggering"] := 0
     grimDawnGlobals["activeRunKeyFuncs"] := Map()
     grimDawnGlobals["cooldowns"] := Map()
-    grimDawnGlobals["cooldowns"][1] := 1000
-    grimDawnGlobals["cooldowns"][2] := 10000
-    grimDawnGlobals["cooldowns"][3] := 59000
+;    grimDawnGlobals["cooldowns"][1] := 1000
+;    grimDawnGlobals["cooldowns"][2] := 10000
+;    grimDawnGlobals["cooldowns"][3] := 59000
 
 
     RunKeyGrimDawn(key) {
@@ -43,79 +44,80 @@ SetTitleMatchMode("RegEx")
         }
     }
 
-    1::{
-        ScheduleKeyGrimDawn(1)
+    *1::{
+        RunKeyGrimDawn(1)
     }
 
-    2::{
-        ScheduleKeyGrimDawn(2)
+    *2::{
+        RunKeyGrimDawn(2)
     }
 
-    3::{
-        ScheduleKeyGrimDawn(3)
+    *3::{
+        RunKeyGrimDawn(3)
     }
 
-    4::{
-        ScheduleKeyGrimDawn(4)
+    *4::{
+        RunKeyGrimDawn(4)
     }
 
-    5::{
-        ScheduleKeyGrimDawn(5)
+    *5::{
+        RunKeyGrimDawn(5)
     }
 
-    6::{
-        ScheduleKeyGrimDawn(5)
+    *6::{
+        RunKeyGrimDawn(6)
     }
 
-    7::{
-        ScheduleKeyGrimDawn(5)
+    *7::{
+        RunKeyGrimDawn(7)
     }
 
-    8::{
-        ScheduleKeyGrimDawn(5)
+    *8::{
+        RunKeyGrimDawn(8)
     }
 
-    9::{
-        ScheduleKeyGrimDawn(5)
+    *9::{
+        RunKeyGrimDawn(9)
     }
 
-    0::{
-        ScheduleKeyGrimDawn(5)
+    *0::{
+        RunKeyGrimDawn(0)
     }
 
-    F11::{
-        ScheduleKeyGrimDawn(1)
+    *F11::{
+        RunKeyGrimDawn(1)
     }
 
-    F12::{
-        ScheduleKeyGrimDawn(2)
+    *F12::{
+        RunKeyGrimDawn(2)
     }
 
-    F13::{
-        ScheduleKeyGrimDawn(3)
+    *F13::{
+        RunKeyGrimDawn(3)
     }
 
-    F14::{
-        ScheduleKeyGrimDawn(4)
+    *F14::{
+        RunKeyGrimDawn(4)
     }
 
-    F15::{
-        ScheduleKeyGrimDawn(5)
+    *F15::{
+        RunKeyGrimDawn(5)
     }
 
-    F16::{
-        ScheduleKeyGrimDawn(6)
+    *F16::{
+        RunKeyGrimDawn(6)
     }
 
-    F17::{
-        ScheduleKeyGrimDawn(7)
+    *F17::{
+        RunKeyGrimDawn(7)
     }
 
-    F18::{
-        ScheduleKeyGrimDawn(8)
+    *F18::{
+        RunKeyGrimDawn(8)
     }
 
     ScrollLock::{
         Send("{Space}")
     }
 ;#HotIf
+#HotIf

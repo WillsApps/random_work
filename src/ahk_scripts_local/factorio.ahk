@@ -1,8 +1,7 @@
 #SingleInstance Force
 #NoTrayIcon
 ;#InstallKeybdHook
-
-if WinActive("ahk_exe Factorio.exe"){
+#HotIf WinActive("ahk_exe Factorio.exe")
 ;    F11::
 ;        MouseGetPos, xpos, ypos
 ;        MsgBox, The cursor is at X%xpos% Y%ypos%.
@@ -13,4 +12,4 @@ if WinActive("ahk_exe Factorio.exe"){
         Click(496, 36)
         MouseMove(xpos, ypos)
     }
-}
+#HotIf

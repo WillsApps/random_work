@@ -3,7 +3,7 @@
 SetWorkingDir path
 ; Admin
 ; Standard
-Run "balders_game.ahk"
+;Run "balders_game.ahk"
 Run "chained_echoes.ahk"
 Run "email.ahk"
 Run "factorio.ahk"

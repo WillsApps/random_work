@@ -4,6 +4,12 @@ SendMode("Event")
 Thread "Interrupt", 0
 
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
+    class KeyGroup {
+        __New(keys, peroid){
+            
+        }
+    }
+
     ScheduleKey(key){
         global characters
         global activeRunKeyFuncs
@@ -27,21 +33,6 @@ Thread "Interrupt", 0
             }
         }
     }
-
-
-;    ^!+LButton::{
-;        MouseGetPos &posX, &posY
-;        GamesClick(posX, posY)
-;        Sleep(35)
-;        Send("{Ctrl down}c{Ctrl up}")
-;        modifierText := A_Clipboard
-;        pattern := "[RBG]-[RBG]-[RBG]-[RBG]-[RBG]-[RBG]"
-;        position := RegExMatch(modifierText, pattern)
-;        if (position != 0){
-;            MsgBox("position: '" position "'")
-;        }
-;    }
-
 
 
     RunKeyW() {
