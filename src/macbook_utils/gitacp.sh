@@ -12,7 +12,7 @@ done
 
 function addFolders()
 {
-  FOLDERS=("dags" "tests" "src" "cdh")
+  FOLDERS=("dags" "tests" "src" "cdh" "file_extraction_data_pipeline")
   for folder in "${FOLDERS[@]}"
   do
     if [ -d "$folder" ]; then
@@ -22,6 +22,7 @@ function addFolders()
 }
 
 
+git pull
 addFolders
 git commit -m "${ARGS_CONCATENATE}"
 addFolders
