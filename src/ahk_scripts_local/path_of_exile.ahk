@@ -4,6 +4,50 @@ SendMode("Event")
 #include path_of_exile_utils.ahk
 Thread "Interrupt", 0
 
+;select_ports:
+;	542, 336
+;	542, 671
+;	542, 1008
+;prepare_shipments:
+;	542, 116
+;	542, 446
+;	542, 778
+;ports:
+;	Riben_Fell:
+;		1534, 543
+;	Ngakanu:
+;		1580, 645
+;	Te_Onui:
+;		966, 1214
+;	Pondium:
+;		1991, 272
+;	Kalguur:
+;		1930, 1144
+;products:
+;	crimson:
+;		1022, 501
+;	orichalcum:
+;		1022, 537
+;	petrified_amber:
+;		1022, 573
+;	bismuth:
+;		1022, 606
+;	verisium:
+;		1022, 640
+;	wheat:
+;		1022, 678
+;	corn:
+;		1022, 716
+;	pumpkin:
+;		1022, 750
+;	orgond:
+;		1022, 789
+;	blue_zanthiumum:
+;		1022, 823
+;	thaumaturic_dust:
+;		1022, 854
+
+
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
 global currentCharacter := "Boo"
 
@@ -88,6 +132,7 @@ characters["SnakeBite"] := Map()
 ;            SmackBabySmack()
             Venom()
 ;            SlashAndDash()
+;            GottaGo()
         } else {
             StopFlasks()
         }
@@ -139,13 +184,42 @@ characters["SnakeBite"] := Map()
         RunKey2()
         SetTimer(RunKey2, 10000)
         RunKey3()
-        SetTimer(RunKey3, 11000)
+        SetTimer(RunKey3, 13000)
         RunKey4()
-        SetTimer(RunKey4, 13400)
+        SetTimer(RunKey4, 13000)
         RunKey5()
-        SetTimer(RunKey5, 12000)
+        SetTimer(RunKey5, 13000)
 ;        RunKeyW()
 ;        SetTimer(RunKeyW, 3900)
+    }
+
+    GottaGo() {
+        RunKey2()
+        RunKey3()
+        RunKey4()
+        RunKey5()
+    }
+
+    Leveling34() {
+        global lastFlaskA
+        global minFlaskA := 3
+        global maxFlaskA := 4
+        if (!IsSet(lastFlaskA)){
+            lastFlaskA := minFlaskA
+        }
+        RunKeysA()
+        SetTimer(RunKeysA, 7100)
+    }
+
+    Leveling234() {
+        global lastFlaskA
+        global minFlaskA := 2
+        global maxFlaskA := 4
+        if (!IsSet(lastFlaskA)){
+            lastFlaskA := minFlaskA
+        }
+        RunKeysA()
+        SetTimer(RunKeysA, 7100)
     }
 
     SlashAndDash() {
@@ -227,11 +301,13 @@ characters["SnakeBite"] := Map()
     }
 
     MButton::{
-        Send("{Shift down}``{Shift up}")
+;        Send("{Shift down}``{Shift up}")
+        Send("``")
     }
 
     *`::{
-        Send("{Shift down}``{Shift up}")
+;        Send("{Shift down}``{Shift up}")
+        Send("``")
     }
 
     *1::{
