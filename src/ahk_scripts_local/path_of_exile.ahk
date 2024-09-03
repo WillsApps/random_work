@@ -109,33 +109,54 @@ characters["SnakeBite"] := Map()
         RunKey("g")
     }
 
-    +LButton::{
-        StopFlasks()
-        Send("+{Click}")
+    *z::{
+        MouseClick("right")
     }
+
+    +Enter::
+    ^Enter::
+    {
+        StopFlasks()
+        Send("{bind}{Enter}")
+    }
+
+;    +LButton::{
+;        StopFlasks()
+;        Send("+{Click}")
+;    }
 
 
     *F9::{
+        StopFlasks()
+;        global flasksTriggering
+;        global keyCooldowns
+;        if (!IsSet(flasksTriggering)){
+;            StartFlasks()
+;        }
+;        else if (flasksTriggering == 0){
+;            StartFlasks()
+;        }
+;        else if (flasksTriggering == 1){
+;            StopFlasks()
+;        }
+    }
+
+    StartFlasks() {
         global flasksTriggering
-        global keyCooldowns
         if (!IsSet(flasksTriggering)){
             flasksTriggering := 1
-        }
-        else if (flasksTriggering == 0){
+            CharacterFunctions()
+        } else if (flasksTriggering == 0){
             flasksTriggering := 1
+            CharacterFunctions()
         }
-        else {
-            flasksTriggering := 0
-        }
+    }
 
-        if (flasksTriggering == 1){
-;            SmackBabySmack()
-            Venom()
-;            SlashAndDash()
-;            GottaGo()
-        } else {
-            StopFlasks()
-        }
+    CharacterFunctions() {
+        Venom()
+        GottaGo()
+;        SmackBabySmack()
+;        SlashAndDash()
     }
 
     StopFlasks() {
@@ -187,8 +208,8 @@ characters["SnakeBite"] := Map()
         SetTimer(RunKey3, 13000)
         RunKey4()
         SetTimer(RunKey4, 13000)
-        RunKey5()
-        SetTimer(RunKey5, 13000)
+;        RunKey5()
+;        SetTimer(RunKey5, 13000)
 ;        RunKeyW()
 ;        SetTimer(RunKeyW, 3900)
     }
@@ -303,31 +324,38 @@ characters["SnakeBite"] := Map()
     MButton::{
 ;        Send("{Shift down}``{Shift up}")
         Send("``")
+        StartFlasks()
     }
 
     *`::{
 ;        Send("{Shift down}``{Shift up}")
         Send("``")
+        StartFlasks()
     }
 
     *1::{
-        ScheduleKey(1)
+        StartFlasks()
+        RunKey1()
     }
 
     *2::{
-        ScheduleKey(2)
+        StartFlasks()
+        RunKey2()
     }
 
     *3::{
-        ScheduleKey(3)
+        StartFlasks()
+        RunKey3()
     }
 
     *4::{
-        ScheduleKey(4)
+        StartFlasks()
+        RunKey4()
     }
 
     *5::{
-        ScheduleKey(5)
+        StartFlasks()
+        RunKey5()
     }
 
 ;    *W::{
@@ -336,23 +364,28 @@ characters["SnakeBite"] := Map()
 
 
     *F11::{
-        ScheduleKey(1)
+        StartFlasks()
+        RunKey1()
     }
 
     *F12::{
-        ScheduleKey(2)
+        StartFlasks()
+        RunKey2()
     }
 
     *F13::{
-        ScheduleKey(3)
+        StartFlasks()
+        RunKey3()
     }
 
     *F14::{
-        ScheduleKey(4)
+        StartFlasks()
+        RunKey4()
     }
 
     *F15::{
-        ScheduleKey(5)
+        StartFlasks()
+        RunKey5()
     }
 
     *NumpadAdd::{
