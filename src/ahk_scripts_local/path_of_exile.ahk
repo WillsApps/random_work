@@ -88,6 +88,14 @@ characters["SpeedQueen"] := Map()
 characters["SpeedQueen"][5] := Map()
 characters["SnakeBite"] := Map()
 
+    CharacterFunctions() {
+        Venom()
+;        Leveling234()
+;        GottaGo()
+;        SmackBabySmack()
+;        SlashAndDash()
+    }
+
     RunKey(key) {
         if (WinActive("ahk_exe PathOfExileSteam.exe")){
             Send("{Blind}" key)
@@ -113,8 +121,8 @@ characters["SnakeBite"] := Map()
         MouseClick("right")
     }
 
-    +Enter::
-    ^Enter::
+;    +Enter::
+    *Enter::
     {
         StopFlasks()
         Send("{bind}{Enter}")
@@ -128,17 +136,6 @@ characters["SnakeBite"] := Map()
 
     *F9::{
         StopFlasks()
-;        global flasksTriggering
-;        global keyCooldowns
-;        if (!IsSet(flasksTriggering)){
-;            StartFlasks()
-;        }
-;        else if (flasksTriggering == 0){
-;            StartFlasks()
-;        }
-;        else if (flasksTriggering == 1){
-;            StopFlasks()
-;        }
     }
 
     StartFlasks() {
@@ -150,13 +147,6 @@ characters["SnakeBite"] := Map()
             flasksTriggering := 1
             CharacterFunctions()
         }
-    }
-
-    CharacterFunctions() {
-        Venom()
-        GottaGo()
-;        SmackBabySmack()
-;        SlashAndDash()
     }
 
     StopFlasks() {
@@ -201,15 +191,15 @@ characters["SnakeBite"] := Map()
 ;        RunKeysA()
 ;        SetTimer(RunKeysA, 5900)
         RunKey1()
-        SetTimer(RunKey1, 7400)
+        SetTimer(RunKey1, 2400)
         RunKey2()
-        SetTimer(RunKey2, 10000)
+;        SetTimer(RunKey2, 22000)
         RunKey3()
-        SetTimer(RunKey3, 13000)
+;        SetTimer(RunKey3, 8400)
         RunKey4()
-        SetTimer(RunKey4, 13000)
-;        RunKey5()
-;        SetTimer(RunKey5, 13000)
+;        SetTimer(RunKey4, 11300)
+        RunKey5()
+;        SetTimer(RunKey5, 8400)
 ;        RunKeyW()
 ;        SetTimer(RunKeyW, 3900)
     }
@@ -307,6 +297,7 @@ characters["SnakeBite"] := Map()
 
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
+            StopFlasks()
             MouseClick()
         } else {
             Send("{WheelDown}")
@@ -315,6 +306,7 @@ characters["SnakeBite"] := Map()
 
     *WheelUp::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
+            StopFlasks()
             MouseClick()
         } else {
             Send("{WheelUp}")
@@ -335,7 +327,6 @@ characters["SnakeBite"] := Map()
 
     *1::{
         StartFlasks()
-        RunKey1()
     }
 
     *2::{
@@ -408,6 +399,11 @@ characters["SnakeBite"] := Map()
 ;        Send("{Ctrl down}c{Ctrl up}")
 ;    }
 
+    F8::{
+        StopFlasks()
+        SendScarabShips()
+    }
+
     F10::{
         dragStartX := 970
         dragStartY := 1062
@@ -425,12 +421,6 @@ characters["SnakeBite"] := Map()
         MouseMove(posX, posY, 2)
     }
 
-
-    ;F8::{
-    ;    global callsThisItem := 0
-    ;    global mouseStartX := 0
-    ;    global mouseStartY := 0
-    ;}
 ;
 ;
     ;F9::{
@@ -580,6 +570,72 @@ characters["SnakeBite"] := Map()
 
     ScrollLock::{
         Send("{Space}")
+    }
+
+    SendScarabShips(){
+        select_port_buttons := [
+            {x: 542, y: 336},
+            {x: 542, y: 671},
+            {x: 542, y: 1008}
+        ]
+        prepare_shipment_buttons := [
+            {x: 542, y: 116},
+            {x: 542, y: 446},
+            {x: 542, y: 778},
+        ]
+        ports := Map(
+            "Riben_Fell",
+            {x: 1534, y: 543},
+            "Ngakanu",
+            {x: 1580, y: 645},
+            "Te_Onui",
+            {x: 966, y: 1214},
+            "Pondium",
+            {x: 1991, y: 272},
+            "Kalguur",
+            {x: 1930, y: 1144}
+        )
+        products := Map(
+            "crimson",
+            {x: 1022, y: 501},
+            "orichalcum",
+            {x: 1022, y: 537},
+            "petrified_amber",
+            {x: 1022, y: 573},
+            "bismuth",
+            {x: 1022, y: 606},
+            "verisium",
+            {x: 1022, y: 640},
+            "wheat",
+            {x: 1022, y: 678},
+            "corn",
+            {x: 1022, y: 716},
+            "pumpkin",
+            {x: 1022, y: 750},
+            "orgond",
+            {x: 1022, y: 789},
+            "blue_zanthiumum",
+            {x: 1022, y: 823},
+            "thaumaturic_dust",
+            {x: 1022, y: 854}
+        )
+        accept_product_button := {x: 961, y:898}
+
+        Loop 3 {
+            cord := select_port_buttons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := ports["Riben_Fell"]
+            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := prepare_shipment_buttons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := products["verisium"]
+            GamesClickSpeed(cord.x, cord.y, 3)
+            Send("5")
+            cord := accept_product_button
+            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := select_port_buttons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, 3)
+        }
     }
 
 

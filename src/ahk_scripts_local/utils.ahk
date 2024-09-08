@@ -40,6 +40,11 @@ GamesClick(clickX, clickY){
     MouseClick("Left", clickX, clickY, numberClicks, speed)
 }
 
+GamesClickSpeed(clickX, clickY, speed){
+    numberClicks := 1
+    MouseClick("Left", clickX, clickY, numberClicks, speed)
+}
+
 GamesClickRight(clickX, clickY){
     numberClicks := 1
     speed := 2
