@@ -89,79 +89,11 @@ characters["SpeedQueen"][5] := Map()
 characters["SnakeBite"] := Map()
 
     CharacterFunctions() {
-        Venom()
+;        Venom()
 ;        Leveling234()
-;        GottaGo()
+        GottaGo()
 ;        SmackBabySmack()
 ;        SlashAndDash()
-    }
-
-    RunKey(key) {
-        if (WinActive("ahk_exe PathOfExileSteam.exe")){
-            Send("{Blind}" key)
-        }
-    }
-
-    *f::{
-        StopFlasks()
-        RunKey("f")
-    }
-
-    *p::{
-        StopFlasks()
-        RunKey("p")
-    }
-
-    *g::{
-        StopFlasks()
-        RunKey("g")
-    }
-
-    *z::{
-        MouseClick("right")
-    }
-
-;    +Enter::
-    *Enter::
-    {
-        StopFlasks()
-        Send("{bind}{Enter}")
-    }
-
-;    +LButton::{
-;        StopFlasks()
-;        Send("+{Click}")
-;    }
-
-
-    *F9::{
-        StopFlasks()
-    }
-
-    StartFlasks() {
-        global flasksTriggering
-        if (!IsSet(flasksTriggering)){
-            flasksTriggering := 1
-            CharacterFunctions()
-        } else if (flasksTriggering == 0){
-            flasksTriggering := 1
-            CharacterFunctions()
-        }
-    }
-
-    StopFlasks() {
-        global flasksTriggering
-        flasksTriggering := 0
-        SetTimer(RunKey1, 0)
-        SetTimer(RunKey2, 0)
-        SetTimer(RunKey3, 0)
-        SetTimer(RunKey4, 0)
-        SetTimer(RunKey5, 0)
-        SetTimer(RunKeysA, 0)
-        SetTimer(RunKeysB, 0)
-        SetTimer(RunKeyW, 0)
-        SetTimer(RunKeyE, 0)
-        SetTimer(RunKeyQ, 0)
     }
 
     SmackBabySmack() {
@@ -295,6 +227,17 @@ characters["SnakeBite"] := Map()
 ;        global maxFlaskB := 5
     }
 
+    *Enter::
+    {
+        StopFlasks()
+        Send("{blind}{Enter}")
+    }
+
+    +LButton::{
+        StopFlasks()
+        Send("+{Click}")
+    }
+
     *WheelDown::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
             StopFlasks()
@@ -303,6 +246,7 @@ characters["SnakeBite"] := Map()
             Send("{WheelDown}")
         }
     }
+
 
     *WheelUp::{
         if(GetKeyState("Shift") || GetKeyState("Ctrl")){
@@ -314,19 +258,56 @@ characters["SnakeBite"] := Map()
     }
 
     MButton::{
-;        Send("{Shift down}``{Shift up}")
-        Send("``")
-        StartFlasks()
+        BacktickMove()
     }
 
     *`::{
-;        Send("{Shift down}``{Shift up}")
-        Send("``")
+        BacktickMove()
+    }
+
+    *NumpadAdd::{
+
+    }
+
+    *NumpadSub::{
+
+    }
+
+    ScrollLock::{
+        Send("{Space}")
+    }
+
+;    *W::{
+;        ScheduleKey("W")
+;    }
+
+    *f::{
+        StopFlasks()
+        RunKey("f")
+    }
+
+    *q::{
         StartFlasks()
+        Send("{blind}q")
+    }
+
+    *p::{
+        StopFlasks()
+        RunKey("p")
+    }
+
+    *g::{
+        StopFlasks()
+        RunKey("g")
+    }
+
+    *z::{
+        MouseClick("right")
     }
 
     *1::{
         StartFlasks()
+        RunKey1()
     }
 
     *2::{
@@ -349,10 +330,66 @@ characters["SnakeBite"] := Map()
         RunKey5()
     }
 
-;    *W::{
-;        ScheduleKey("W")
+
+;    *F10::{
+;        ; craft flasks
+;        MouseGetPos &posX, &posY
+;        GamesClick(posX, posY)
+;        Send("{Ctrl down}c{Ctrl up}")
 ;    }
 
+    F2::{
+        StopFlasks()
+        WarpPaste("/kingsmarch")
+    }
+
+    F3::{
+        StopFlasks()
+        WarpPaste("/menagerie")
+    }
+
+    F4::{
+        WarpPaste("Thank you!")
+    }
+
+    F5::{
+        StopFlasks()
+        WarpPaste("/hideout")
+    }
+
+    F6::{
+        WarpPaste("/invite @last")
+    }
+
+    F7::{
+        StopFlasks()
+        WarpPaste("/leave")
+    }
+    F8::{
+        StopFlasks()
+        SendScarabShips()
+    }
+
+    *F9::{
+        StopFlasks()
+    }
+
+    F10::{
+        dragStartX := 970
+        dragStartY := 1062
+        dragEndX := 836
+        dragEndY := 1066
+        confirmX := 814
+        confirmY := 987
+        grabX := 814
+        grabY := 665
+
+        MouseGetPos &posX, &posY
+        GamesClickModifier(posX, posY, "Ctrl")
+        GamesClick(confirmX, confirmY)
+        GamesClickModifier(grabX, grabY, "Ctrl")
+        MouseMove(posX, posY, 2)
+    }
 
     *F11::{
         StartFlasks()
@@ -379,45 +416,55 @@ characters["SnakeBite"] := Map()
         RunKey5()
     }
 
-    *NumpadAdd::{
-
-    }
-
-    *NumpadSub::{
-
-    }
-
     *F16::{
         Send("{Shift down}q{Shift up}")
     }
 
 
-;    *F10::{
-;        ; craft flasks
-;        MouseGetPos &posX, &posY
-;        GamesClick(posX, posY)
-;        Send("{Ctrl down}c{Ctrl up}")
-;    }
+    F17::{
+        doExpedition := 1
 
-    F8::{
-        StopFlasks()
-        SendScarabShips()
+        if (doExpedition == 0){
+            Send("{Shift down}w{Shift up}")
+        }
+        else {
+            dragStartX := 970
+            dragStartY := 1062
+            dragEndX := 836
+            dragEndY := 1066
+            clickX := 830
+            clickY := 1148
+
+            MouseGetPos &posX, &posY
+            GamesClick(posX, posY)
+            MouseMove(dragStartX, dragStartY, 2)
+            MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
+            GamesClick(clickX, clickY)
+            MouseMove(posX, posY, 2)
+        }
     }
 
-    F10::{
+    F18::{
         dragStartX := 970
         dragStartY := 1062
-        dragEndX := 836
+        dragEndX := 891
         dragEndY := 1066
-        confirmX := 814
-        confirmY := 987
-        grabX := 814
-        grabY := 665
+        clickX := 830
+        clickY := 1148
 
         MouseGetPos &posX, &posY
-        GamesClickModifier(posX, posY, "Ctrl")
-        GamesClick(confirmX, confirmY)
-        GamesClickModifier(grabX, grabY, "Ctrl")
+        GamesClick(posX, posY)
+        MouseMove(dragStartX, dragStartY, 2)
+        MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
+        GamesClick(clickX, clickY)
+        MouseMove(posX, posY, 2)
+    }
+
+    F19::{
+        resetX := 1258
+        resetY := 1162
+        MouseGetPos &posX, &posY
+        GamesClick(resetX, resetY)
         MouseMove(posX, posY, 2)
     }
 
@@ -489,154 +536,11 @@ characters["SnakeBite"] := Map()
     ;    WarpPaste("/destroy")
     ;}
 
-    F17::{
-        doExpedition := 1
 
-        if (doExpedition == 0){
-            Send("{Shift down}w{Shift up}")
-        }
-        else {
-            dragStartX := 970
-            dragStartY := 1062
-            dragEndX := 836
-            dragEndY := 1066
-            clickX := 830
-            clickY := 1148
-
-            MouseGetPos &posX, &posY
-            GamesClick(posX, posY)
-            MouseMove(dragStartX, dragStartY, 2)
-            MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
-            GamesClick(clickX, clickY)
-            MouseMove(posX, posY, 2)
-        }
-    }
-
-    F18::{
-        dragStartX := 970
-        dragStartY := 1062
-        dragEndX := 891
-        dragEndY := 1066
-        clickX := 830
-        clickY := 1148
-
-        MouseGetPos &posX, &posY
-        GamesClick(posX, posY)
-        MouseMove(dragStartX, dragStartY, 2)
-        MouseClickDrag("left", dragStartX, dragStartY, dragEndX, dragEndY, 2)
-        GamesClick(clickX, clickY)
-        MouseMove(posX, posY, 2)
-    }
-
-    F19::{
-        resetX := 1258
-        resetY := 1162
-        MouseGetPos &posX, &posY
-        GamesClick(resetX, resetY)
-        MouseMove(posX, posY, 2)
-    }
-
-    F2::{
-        StopFlasks()
-        WarpPaste("/kingsmarch")
-    }
-
-    F3::{
-        StopFlasks()
-        WarpPaste("/menagerie")
-    }
-
-    F4::{
-        WarpPaste("Thank you!")
-    }
-
-    F5::{
-        StopFlasks()
-        WarpPaste("/hideout")
-    }
-
-    F6::{
-        WarpPaste("/invite @last")
-    }
-
-    F7::{
-        StopFlasks()
-        WarpPaste("/leave")
-    }
 
 ;     F8::{
 ;         WarpPaste("/exit")
 ;     }
-
-    ScrollLock::{
-        Send("{Space}")
-    }
-
-    SendScarabShips(){
-        select_port_buttons := [
-            {x: 542, y: 336},
-            {x: 542, y: 671},
-            {x: 542, y: 1008}
-        ]
-        prepare_shipment_buttons := [
-            {x: 542, y: 116},
-            {x: 542, y: 446},
-            {x: 542, y: 778},
-        ]
-        ports := Map(
-            "Riben_Fell",
-            {x: 1534, y: 543},
-            "Ngakanu",
-            {x: 1580, y: 645},
-            "Te_Onui",
-            {x: 966, y: 1214},
-            "Pondium",
-            {x: 1991, y: 272},
-            "Kalguur",
-            {x: 1930, y: 1144}
-        )
-        products := Map(
-            "crimson",
-            {x: 1022, y: 501},
-            "orichalcum",
-            {x: 1022, y: 537},
-            "petrified_amber",
-            {x: 1022, y: 573},
-            "bismuth",
-            {x: 1022, y: 606},
-            "verisium",
-            {x: 1022, y: 640},
-            "wheat",
-            {x: 1022, y: 678},
-            "corn",
-            {x: 1022, y: 716},
-            "pumpkin",
-            {x: 1022, y: 750},
-            "orgond",
-            {x: 1022, y: 789},
-            "blue_zanthiumum",
-            {x: 1022, y: 823},
-            "thaumaturic_dust",
-            {x: 1022, y: 854}
-        )
-        accept_product_button := {x: 961, y:898}
-
-        Loop 3 {
-            cord := select_port_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := ports["Riben_Fell"]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := prepare_shipment_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := products["verisium"]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            Send("5")
-            cord := accept_product_button
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := select_port_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
-        }
-    }
 
 
     RenHangingOut() {
