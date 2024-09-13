@@ -89,9 +89,9 @@ characters["SpeedQueen"][5] := Map()
 characters["SnakeBite"] := Map()
 
     CharacterFunctions() {
-;        Venom()
+        Venom()
 ;        Leveling234()
-        GottaGo()
+;        GottaGo()
 ;        SmackBabySmack()
 ;        SlashAndDash()
     }
