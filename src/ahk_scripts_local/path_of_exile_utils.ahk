@@ -5,14 +5,31 @@ Thread "Interrupt", 0
 
 #HotIf WinActive("ahk_exe PathOfExileSteam.exe")
 
+    CapsLockOn() {
+        return (GetKeyState("CapsLock", "T") == 1)
+    }
+
     StartFlasks() {
         global flasksTriggering
+        if (CapsLockOn() == false) {
+            return
+        }
         if (!IsSet(flasksTriggering)){
             flasksTriggering := 1
             CharacterFunctions()
         } else if (flasksTriggering == 0){
             flasksTriggering := 1
             CharacterFunctions()
+        }
+    }
+
+    SendKey(flaskNumber) {
+        if (WinActive("ahk_exe PathOfExileSteam.exe")){
+            if (CapsLockOn()) {
+                Send(flaskNumber)
+            } else {
+                Send("{blind}" flaskNumber)
+            }
         }
     }
 
@@ -83,12 +100,6 @@ Thread "Interrupt", 0
 
     RunKeyQ() {
         SendKey("q")
-    }
-
-    SendKey(flaskNumber) {
-        if (WinActive("ahk_exe PathOfExileSteam.exe")){
-            Send(flaskNumber)
-        }
     }
 
     RunKey1() {
