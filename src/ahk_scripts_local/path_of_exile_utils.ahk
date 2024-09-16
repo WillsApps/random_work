@@ -155,22 +155,22 @@ Thread "Interrupt", 0
 
     ; Settlers
     SendScarabShips(){
-        select_port_buttons := [
+        selectPortButtons := [
             {x: 542, y: 336},
             {x: 542, y: 671},
             {x: 542, y: 1008}
         ]
-        prepare_shipment_buttons := [
+        prepareShipmentButtons := [
             {x: 542, y: 116},
             {x: 542, y: 446},
             {x: 542, y: 778},
         ]
         ports := Map(
-            "Riben_Fell",
+            "RibenFell",
             {x: 1534, y: 543},
             "Ngakanu",
             {x: 1580, y: 645},
-            "Te_Onui",
+            "TeOnui",
             {x: 966, y: 1214},
             "Pondium",
             {x: 1991, y: 272},
@@ -178,48 +178,48 @@ Thread "Interrupt", 0
             {x: 1930, y: 1144}
         )
         products := Map(
-            "crimson",
+            "Crimson",
             {x: 1022, y: 501},
-            "orichalcum",
+            "Orichalcum",
             {x: 1022, y: 537},
-            "petrified_amber",
+            "PetrifiedAmber",
             {x: 1022, y: 573},
-            "bismuth",
+            "Bismuth",
             {x: 1022, y: 606},
-            "verisium",
+            "Verisium",
             {x: 1022, y: 640},
-            "wheat",
+            "Wheat",
             {x: 1022, y: 678},
-            "corn",
+            "Corn",
             {x: 1022, y: 716},
-            "pumpkin",
+            "Pumpkin",
             {x: 1022, y: 750},
-            "orgond",
+            "Orgond",
             {x: 1022, y: 789},
-            "blue_zanthiumum",
+            "BlueZanthiumum",
             {x: 1022, y: 823},
-            "thaumaturic_dust",
+            "ThaumaturicDust",
             {x: 1022, y: 854}
         )
-        accept_product_button := {x: 961, y:898}
-
+        acceptProductButton := {x: 961, y:898}
+        clickSpeed := 2.5
         Loop 3 {
-            cord := select_port_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := ports["Riben_Fell"]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := prepare_shipment_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := products["verisium"]
-            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := selectPortButtons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
+            cord := ports["RibenFell"]
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
+            cord := prepareShipmentButtons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
+            cord := products["Verisium"]
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
             Send("5")
-;            cord := products["thaumaturic_dust"]
-;            GamesClickSpeed(cord.x, cord.y, 3)
+;            cord := products["thaumaturicDust"]
+;            GamesClickSpeed(cord.x, cord.y, clickSpeed)
 ;            Send("5")
-            cord := accept_product_button
-            GamesClickSpeed(cord.x, cord.y, 3)
-            cord := select_port_buttons[A_Index]
-            GamesClickSpeed(cord.x, cord.y, 3)
+            cord := acceptProductButton
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
+            cord := selectPortButtons[A_Index]
+            GamesClickSpeed(cord.x, cord.y, clickSpeed)
         }
     }
 #HotIf
