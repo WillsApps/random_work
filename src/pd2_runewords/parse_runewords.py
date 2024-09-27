@@ -4,6 +4,7 @@ from typing import Dict, List
 
 from bs4 import BeautifulSoup
 
+
 RUNES = [
     "El",
     "Eld",
