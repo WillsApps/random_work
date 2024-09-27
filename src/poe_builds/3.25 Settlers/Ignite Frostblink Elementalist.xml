@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PathOfBuilding>
-	<Build level="92" targetVersion="3_0" pantheonMajorGod="None" bandit="None" className="Witch" ascendClassName="Elementalist" characterLevelAutoMode="true" mainSocketGroup="1" viewMode="CONFIG" pantheonMinorGod="None">
+	<Build level="92" targetVersion="3_0" pantheonMajorGod="None" bandit="None" className="Witch" ascendClassName="Elementalist" characterLevelAutoMode="true" mainSocketGroup="1" viewMode="ITEMS" pantheonMinorGod="None">
 		<PlayerStat stat="AverageHit" value="21534.44265"/>
 		<PlayerStat stat="AverageBurstDamage" value="21534.44265"/>
 		<PlayerStat stat="Speed" value="0"/>
@@ -99,29 +99,29 @@ vaal_notable_lightning_resistance_1, 1, 0, 0" socketFilterDistance="2" devotionV
 	<Import exportParty="false"/>
 	<Party destination="All" ShowAdvanceTools="false" append="false"/>
 	<Tree activeSpec="2">
-		<Spec masteryEffects="{38921,4500},{24481,45653},{34927,37},{55491,61097},{25281,34242},{12125,47642},{54413,45317}" title="Base" ascendClassId="2" nodes="7388,40483,39841,7444,28859,54447,52502,9408,36634,6616,21984,4105,57226,27203,65573,27929,57197,127,61653,33310,63447,5935,42760,58998,19595,12125,53123,36858,32932,66899,59585,21958,66896,65898,8948,19919,65890,61320,13170,65568,12143,65888,65570,61419,41263,2474,65574,29712,64583,46340,65578,7960,42649,24481,48093,55743,15117,20987,11784,5296,18865,13559,19501,24067,53290,55491,21678,55247,55332,66905,48778,27659,21033,44184,32710,11924,6967,18769,49605,14936,64210,4502,40366,38921,9769,31462,63799,25831,54413,27415,37114,62849,36678,5916,21974,58218,34927,36585,50382,37403,49515,55571,4713,25281,20852,61259,12738,6764,16023,2292,29049,22088,55804,32210,27038,5743,22618,60440,4367,61804,60398,37671" secondaryAscendClassId="nil" treeVersion="3_25" classId="3">
+		<Spec masteryEffects="{38921,4500},{24481,45653},{34927,37},{55491,61097},{25281,34242},{12125,47642},{54413,45317}" title="Base" ascendClassId="2" nodes="7388,40483,39841,7444,28859,54447,52502,9408,36634,6616,21984,4105,57226,27203,65573,57197,127,61653,33310,63447,5935,32210,53123,19595,12125,49605,64583,32932,29712,59585,21958,66896,65888,8948,19919,65568,61320,13170,65890,12143,65898,65570,61419,41263,2474,65574,66899,27659,46340,65578,61804,4367,24481,48093,55743,60440,22618,5743,5296,18865,18769,27038,24067,53290,55491,21678,55247,55332,66905,48778,42649,21033,44184,32710,22088,29049,6967,2292,6764,27929,40366,9769,11924,38921,20852,31462,25281,4713,55571,49515,37403,50382,36678,36585,21974,64210,34927,5916,58218,62849,37114,27415,54413,25831,63799,61259,12738,4502,16023,14936,36858,42760,55804,15117,7960,58998,20987,13559,11784,19501,60398,37671" secondaryAscendClassId="nil" treeVersion="3_25" classId="3">
 			<URL>
-				https://www.pathofexile.com/passive-skill-tree/AAAABgMCbRzcniOboR0UcLvNFiTAjxoZ2FXgEAnfimpDbRnfbQB_8NWCHvfXFy-nCOZ2TIsvXc-Dj_qApOjBVcYi9E3P74gzci9v7-uhLwmqdBD8R7UEHximmV-hu93ZvzsNUfsuCBSwSbE090wtXgPQKtjDVK7Xz9gkvopsC1IprJh_xi6UGzdJUcHFOlj60hGWna6YCSYpeub5N2Tn1I1rF5D69YGPRhccVdbjaohvjunEzpIbwWvZExJpYsFRdO9LMcIabAj0cXlWSNn8fdJpnhZvWFrsGBEP8Wzr7pMnCwAlBVMFUAFqAWIAIAFgACIAJgAqBVkHuhovXbJVX6HuqdjDEZSYCbEF1I0AJYhvhcJiwQ==
+				https://www.pathofexile.com/passive-skill-tree/AAAABgMCbRzcniOboR0UcLvNFiTAjxoZ2FXgEAnfimpD320Af_DVgh731xcvfdLPg0yLL13BxfxHgKR0EOjBVcYi9E3P74gzci9v7-uhLwmqbAu1BPFsEQ9fobvd2b_sGFhaFm8UsEmxSVFpnl4D0CrYw1Su18_YJL6KpplSKayYf8ZWSHF5GzcI9BpsbRmdriYpLpSYCVF0euZiwRJp2RPBa5IbxM6PRo7pVdb60ohvFxzjavWBkPprF9SNZOf5N-9LMcIRljpYj_qnCNn8Ow0fGOZ2Ufs09y4ITC3r7pMnCwAlBVABYAAgAWIBagAiACYFUwAqBVkHuhovXbJVX6HuqdjDEZSYCYXCYsEAJYhvsQXUjQ==
 			</URL>
 			<Sockets>
 				<Socket nodeId="9408" itemId="7"/>
-				<Socket nodeId="21984" itemId="10"/>
 				<Socket nodeId="29712" itemId="8"/>
-				<Socket nodeId="7960" itemId="5"/>
+				<Socket nodeId="21984" itemId="10"/>
 				<Socket nodeId="13170" itemId="16"/>
+				<Socket nodeId="7960" itemId="5"/>
 			</Sockets>
 			<Overrides/>
 		</Spec>
-		<Spec masteryEffects="{30393,16215},{38921,23442},{24481,45653},{54413,45317},{12125,47642},{857,31556},{34927,37},{25281,34242}" title="NoColdFire" ascendClassId="2" nodes="40483,39841,64583,5743,60472,52502,9408,30393,6616,21984,4105,57226,48362,27203,27415,65573,35958,37999,57197,127,61653,34171,63447,33310,54447,34173,19595,12125,49605,4367,66896,7960,61804,21958,27659,8948,26196,19919,58998,61320,11420,65898,65888,15117,65570,61419,41263,2474,65574,13559,22618,36858,65578,20987,61259,22088,48093,55743,20852,65568,19732,5296,18865,18769,36585,24067,53290,9769,21678,55247,55332,66905,48778,46897,21033,44184,32710,26270,49515,11730,37403,58218,27929,50382,11924,40366,38921,4713,31462,54413,42649,59585,42760,14936,4502,36678,60440,56075,13170,34927,5916,64210,62849,37114,6967,29712,25281,63799,65890,12738,24481,16023,32210,7444,857,55804,27038,2292,19501,29049,66899,11784,53123,6764,37671" secondaryAscendClassId="nil" treeVersion="3_25" classId="3">
+		<Spec masteryEffects="{24481,45653},{38921,23442},{54413,45317},{12125,47642},{30393,16215},{25281,34242},{34927,37},{857,31556}" title="NoColdFire" ascendClassId="2" nodes="40483,39841,7444,5743,60472,61804,9408,66899,6616,21984,4105,57226,48362,27203,65890,65573,29712,13170,57197,127,61653,34171,27659,59585,63799,34173,19595,12125,49605,65568,7960,27038,11784,21958,53123,52502,22618,19919,65898,61320,66896,64583,65888,6764,65570,61419,41263,2474,65574,29049,19501,2292,65578,58998,857,22088,48093,55743,32210,24481,19732,5296,18865,18769,37999,24067,53290,9769,21678,55247,55332,66905,48778,46897,21033,44184,32710,26270,54447,11730,6967,37114,27929,62849,64210,11924,38921,5916,31462,4713,56075,60440,42760,4502,14936,36678,42649,54413,27415,34927,36585,40366,37403,49515,50382,58218,25281,20852,61259,12738,33310,16023,35958,26196,30393,55804,15117,11420,36858,20987,13559,4367,8948,63447,37671" secondaryAscendClassId="nil" treeVersion="3_25" classId="3">
 			<URL>
-				https://www.pathofexile.com/passive-skill-tree/AAAABgMCcJ4jm6H8RxZv7DjNFiTAdrkZ2FXgEAnfirzqakNrF4x2lG_fbQB_8NWFe_fXgh6FfUyLL13BxREPHxjxbFXGbAsi9GZUTc_mdu-ILJw7De_roS8JqjT3WFqP-lH770tWSLvd2b9RdE0UFLBJsUlRjuleA9AqJilUrtfP2CS-ircxUimsmH_GZp7Bay3Skhvjam0ZxM4ulJ2umAkSaXrm1I2mmejBpwg6WBGWj0bsGNsLM3KIbxcc-tL1gZD6Gzd0EGLB-Tcxwl-hfdIdFANZ2fxpngj0TC1xeS4Iz4MabJMnCwAlBVABagFgACIAJgAqACAFWQFiBVMIP1d2uboaL11bkpgJsQXUjQAliG-FwmLBslVfoXtEA1k=
+				https://www.pathofexile.com/passive-skill-tree/AAAABgMCcJ4jm6EdFBZv7DjxbCTAGdhV4BAJ34q86mpDdBAzct9tAH_w1YV7bAvowfk3hX1Miy9dwcUfGGmeLghVxs-DzRZYWk3P74j8Rxps7-uhLwmqcXlMLQj05nYDWVZIu93Zv33SX6FNFBSwSbFJUZRvXgPQKiYpVK7Xz9gkvoq3MVIprJh_xmaeLdIbN5D6bRn1gfrSLpSYCRcceuYSadsL7BinCBGWOliPRqaZ1I1rF4hvjumdrpIbwWvEzuNqYsFRdO9LMcKCHox2ZlR2udn8Ow0snI_6Ufs09xEPIvT315MnCwVTAWIAJQAgAWoFUAFgACIAJgAqBVkIuhovXXtEA1myVV-hW5KYCbEF1I0AJYhvhcJiwT9Xdrk=
 			</URL>
 			<Sockets>
 				<Socket nodeId="64583" itemId="19"/>
 				<Socket nodeId="9408" itemId="7"/>
 				<Socket nodeId="36634" itemId="23"/>
-				<Socket nodeId="21984" itemId="10"/>
 				<Socket nodeId="29712" itemId="8"/>
+				<Socket nodeId="21984" itemId="10"/>
 				<Socket nodeId="7960" itemId="5"/>
 				<Socket nodeId="13170" itemId="16"/>
 				<Socket nodeId="26196" itemId="26"/>
@@ -144,7 +144,7 @@ vaal_notable_lightning_resistance_1, 1, 0, 0" socketFilterDistance="2" devotionV
 				<Gem enableGlobal2="true" level="20" gemId="Metadata/Items/Gems/SupportGemReducedMana" variantId="SupportInspiration" skillId="SupportInspiration" quality="20" qualityId="Default" enableGlobal1="true" enabled="true" count="1" nameSpec="Inspiration"/>
 			</Skill>
 			<Skill mainActiveSkillCalcs="1" includeInFullDPS="false" label="On Kill Monster Explosion" source="Explode" enabled="true" mainActiveSkill="1">
-				<Gem enableGlobal2="nil" level="1" skillId="EnemyExplode" quality="0" skillPart="1" enableGlobal1="nil" enabled="true" count="nil" nameSpec=""/>
+				<Gem enableGlobal2="false" level="1" skillId="EnemyExplode" quality="0" skillPart="1" qualityId="Default" enableGlobal1="false" enabled="true" count="1" nameSpec="On Kill Monster Explosion"/>
 			</Skill>
 			<Skill mainActiveSkillCalcs="1" includeInFullDPS="false" label="" enabled="true" slot="Weapon 2" mainActiveSkill="1">
 				<Gem enableGlobal2="true" level="20" gemId="Metadata/Items/Gems/SkillGemFlammability" variantId="Flammability" skillId="Flammability" quality="20" qualityId="Default" enableGlobal1="true" enabled="true" count="1" nameSpec="Flammability"/>
@@ -249,7 +249,7 @@ vaal_notable_lightning_resistance_1, 1, 0, 0" socketFilterDistance="2" devotionV
 		<Section subsection="DotsandBuildDegens" collapsed="false" id="DamageTaken"/>
 		<Section subsection="EnemyDegens" collapsed="true" id="DamageTaken"/>
 	</Calcs>
-	<TreeView searchStr="movement" zoomY="244.95034382715" zoomLevel="6" showStatDifferences="true" zoomX="-49.011478806534"/>
+	<TreeView searchStr="movement" zoomY="1319.9503438271" zoomLevel="6" showStatDifferences="true" zoomX="-387.01147880653"/>
 	<Items activeItemSet="2" showStatDifferences="true" useSecondWeaponSet="false">
 		<Item id="20">
 			Rarity: RARE
@@ -2776,7 +2776,7 @@ Historic
 			<Placeholder name="enemyLightningPen" number="3"/>
 			<Placeholder name="enemyLightningResist" number="50"/>
 			<Placeholder name="enemyChaosDamage" number="896"/>
-			<Placeholder name="enemyEvasion" number="10143"/>
+			<Placeholder name="enemyFirePen" number="3"/>
 			<Placeholder name="enemyCritDamage" number="30"/>
 			<Placeholder name="enemyColdPen" number="3"/>
 			<Placeholder name="ScorchStacks" number="1"/>
@@ -2784,7 +2784,7 @@ Historic
 			<Placeholder name="enemyArmour" number="61989"/>
 			<Placeholder name="sigilOfPowerStages" number="1"/>
 			<Placeholder name="enemyPhysicalDamage" number="2241"/>
-			<Placeholder name="enemyFirePen" number="3"/>
+			<Placeholder name="enemyEvasion" number="10143"/>
 			<Placeholder name="ShockStacks" number="1"/>
 		</ConfigSet>
 		<ConfigSet title="NoColdFire" id="2">
@@ -2793,8 +2793,8 @@ Historic
 			<Input name="conditionChilledEnemyRecently" boolean="true"/>
 			<Input name="waveOfConvictionExposureType" string="Fire"/>
 			<Input name="conditionIgnitedEnemyRecently" boolean="true"/>
-			<Input name="useEnduranceCharges" boolean="true"/>
 			<Input name="multiplierChilledByYouSeconds" number="10"/>
+			<Input name="useEnduranceCharges" boolean="true"/>
 			<Input name="conditionEnemyIgnited" boolean="true"/>
 			<Input name="conditionEnemyShocked" boolean="true"/>
 			<Input name="multiplierCorpseConsumedRecently" number="10"/>
@@ -2811,16 +2811,16 @@ Historic
 			<Placeholder name="enemyLightningPen" number="3"/>
 			<Placeholder name="enemyLightningResist" number="50"/>
 			<Placeholder name="enemyChaosDamage" number="896"/>
-			<Placeholder name="ShockStacks" number="1"/>
-			<Placeholder name="enemyFirePen" number="3"/>
-			<Placeholder name="enemyPhysicalDamage" number="2241"/>
-			<Placeholder name="ScorchStacks" number="1"/>
+			<Placeholder name="enemyFireDamage" number="2241"/>
+			<Placeholder name="enemyEvasion" number="10143"/>
 			<Placeholder name="enemyCritDamage" number="30"/>
+			<Placeholder name="ScorchStacks" number="1"/>
+			<Placeholder name="enemyDamageRollRange" number="70"/>
 			<Placeholder name="enemyArmour" number="61989"/>
 			<Placeholder name="sigilOfPowerStages" number="1"/>
-			<Placeholder name="enemyDamageRollRange" number="70"/>
-			<Placeholder name="enemyEvasion" number="10143"/>
-			<Placeholder name="enemyFireDamage" number="2241"/>
+			<Placeholder name="enemyPhysicalDamage" number="2241"/>
+			<Placeholder name="enemyFirePen" number="3"/>
+			<Placeholder name="ShockStacks" number="1"/>
 		</ConfigSet>
 	</Config>
 </PathOfBuilding>
