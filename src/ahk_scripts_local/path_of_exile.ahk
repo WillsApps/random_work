@@ -302,7 +302,12 @@ characters["SnakeBite"] := Map()
     }
 
     *z::{
-        MouseClick("right")
+        if (CapsLockOn() == false) {
+            Send("{blind}z")
+        }
+        else {
+            MouseClick("right")
+        }
     }
 
     *1::{
