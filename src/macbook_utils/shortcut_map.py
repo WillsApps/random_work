@@ -52,6 +52,8 @@ class KeyCodes(str, Enum):
     GRAVE_ACCENT_AND_TILDE = "grave_accent_and_tilde"
     TAB = "tab"
     DELETE_OR_BACKSPACE = "delete_or_backspace"
+    OPEN_BRACKET = "open_bracket"
+    CLOSE_BRACKET = "close_bracket"
 
 
 class PointingButtons(str, Enum):
@@ -269,6 +271,38 @@ SHORTCUTS = [
             )
         ],
     ),
+    KeyChangeShortcut(
+        new_modifiers=[Modifiers.LEFT_COMMAND],
+        new_key=KeyCodes.OPEN_BRACKET,
+        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_CONTROL],
+        original_key=KeyCodes.LEFT_ARROW,
+        optional_modifiers=[],
+        conditions=[
+            Condition(
+                "frontmost_application_if",
+                "bundle_identifiers",
+                [
+                    "com.tinyspeck.slackmacgap",
+                ],
+            )
+        ],
+    ),
+    KeyChangeShortcut(
+        new_modifiers=[Modifiers.LEFT_COMMAND],
+        new_key=KeyCodes.CLOSE_BRACKET,
+        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_CONTROL],
+        original_key=KeyCodes.RIGHT_ARROW,
+        optional_modifiers=[],
+        conditions=[
+            Condition(
+                "frontmost_application_if",
+                "bundle_identifiers",
+                [
+                    "com.tinyspeck.slackmacgap",
+                ],
+            )
+        ],
+    ),
     ModifierChangeShortcut(
         original_modifiers=[Modifiers.LEFT_COMMAND],
         new_modifiers=[Modifiers.LEFT_CONTROL],
@@ -373,7 +407,7 @@ def main():
     with open(root / "karabiner.json", "w") as f:
         output = json.dumps(raw, indent=2)
         f.write(output)
-    print(json.dumps(rules))
+    print(json.dumps(rules, indent=2))
 
 
 if __name__ == "__main__":

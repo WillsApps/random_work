@@ -1,7 +1,12 @@
-source /Users/Shared/web/random_work/venv/bin/activate
+#!/usr/bin/env bash
+
+REPO_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../.." &> /dev/null && pwd )
+source $REPO_DIR/venv/bin/activate
+
+export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
 
 if [ $# -eq 1 ]; then
-    python /Users/wburdett/.PyCharm/scratches/extensions/mine/_aliases/sql_me.py "$1"
+    python $REPO_DIR/src/macbook_utils/sql_me.py "$1"
 else
-    python /Users/wburdett/.PyCharm/scratches/extensions/mine/_aliases/sql_me.py
+    python $REPO_DIR/src/macbook_utils/sql_me.py
 fi

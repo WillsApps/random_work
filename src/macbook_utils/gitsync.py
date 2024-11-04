@@ -1,23 +1,20 @@
 import os
-import time
+from pathlib import Path
 from sys import argv
 
-from github import Github
-
-from github import Auth
-
 from dotenv import load_dotenv
-from pathlib import Path
+from github import Auth
+from github import Github
+from github.Branch import Branch
+from github.Workflow import Workflow
 
 env_file = Path(__file__).parent.parent.parent / ".env"
 load_dotenv(env_file)
 
 
-def dispatch(workflow, branch, path):
-    print(f"Dispatching {path=}")
-    workflow.create_dispatch(
-        branch, {"stage": "testing", "path": path}
-    )
+def dispatch(workflow: Workflow, branch: Branch, path: str, env: str):
+    print(f"Dispatching {path=}, {env=}")
+    workflow.create_dispatch(branch, {"stage": env, "path": path})
 
 
 def main():
@@ -28,7 +25,10 @@ def main():
     repo = g.get_repo("verana-health/vh-airflow")
     branch = repo.get_branch(branch_name)
     workflow = repo.get_workflow("sync_dags.yml")
-    dispatch(workflow, branch, "integrations/")
+    # dispatch(workflow, branch, "integrations/", "testing")
+    dispatch(workflow, branch, "", "develop")
+    # dispatch(workflow, branch, "utils/", "testing")
+    # dispatch(workflow, branch, "", "testing")
     # dispatch(workflow, branch, "integrations/")
     # time.sleep(5)
     # dispatch(workflow, branch, "operators/")
