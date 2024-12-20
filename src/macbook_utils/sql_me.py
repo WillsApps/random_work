@@ -84,9 +84,10 @@ def get_files_from_git():
 
 
 def main():
-    dialect = sys.argv[2]
+    print(sys.argv)
+    dialect = sys.argv[1]
     if len(sys.argv) == 3:
-        file_paths = [Path(sys.argv[1])]
+        file_paths = [Path(sys.argv[2])]
     else:
         file_paths = get_files_from_git()
 

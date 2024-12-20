@@ -26,14 +26,15 @@ def main():
     branch = repo.get_branch(branch_name)
     workflow = repo.get_workflow("sync_dags.yml")
     # dispatch(workflow, branch, "integrations/", "testing")
-    dispatch(workflow, branch, "", "develop")
+    # dispatch(workflow, branch, "", "develop")
     # dispatch(workflow, branch, "utils/", "testing")
-    # dispatch(workflow, branch, "", "testing")
+    # dispatch(workflow, branch, "", "new_staging")
     # dispatch(workflow, branch, "integrations/")
     # time.sleep(5)
     # dispatch(workflow, branch, "operators/")
     # time.sleep(5)
-    # dispatch(workflow, branch, "entities/")
+    dispatch(workflow, branch, "entities/", "new_staging")
+    dispatch(workflow, branch, "integrations/cdh/", "new_staging")
 
 
 if __name__ == "__main__":

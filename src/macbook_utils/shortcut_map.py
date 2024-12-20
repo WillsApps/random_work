@@ -54,6 +54,8 @@ class KeyCodes(str, Enum):
     DELETE_OR_BACKSPACE = "delete_or_backspace"
     OPEN_BRACKET = "open_bracket"
     CLOSE_BRACKET = "close_bracket"
+    HOME = "home"
+    END = "end"
 
 
 class PointingButtons(str, Enum):
@@ -325,6 +327,8 @@ SHORTCUTS = [
             KeyCodes.N3,
             KeyCodes.N4,
             KeyCodes.N5,
+            KeyCodes.HOME,
+            KeyCodes.END
         ],
         optional_modifiers=optional_modifiers,
         conditions=[

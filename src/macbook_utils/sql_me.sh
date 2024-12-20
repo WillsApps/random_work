@@ -5,8 +5,8 @@ source $REPO_DIR/venv/bin/activate
 
 export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
 
-if [ $# -eq 1 ]; then
-    python $REPO_DIR/src/macbook_utils/sql_me.py "$1"
+if [ $# -eq 2 ]; then
+    python $REPO_DIR/src/macbook_utils/sql_me.py "$1" "$2"
 else
     python $REPO_DIR/src/macbook_utils/sql_me.py
 fi
