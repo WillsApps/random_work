@@ -1,10 +1,7 @@
 from time import sleep
 
-import keyboard
-
-
-
 import gi
+
 gi.require_version("Wnck", "3.0")
 from gi.repository import Wnck
 
@@ -23,4 +20,3 @@ while True:
     for i, w in enumerate(scr.get_windows()):
         print(f"{i}: {w.get_name()}")
     sleep(3)
-

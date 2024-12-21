@@ -1,15 +1,10 @@
-import logging
 from subprocess import run
 
-from utils.log_utils import set_log_stout
-
-log = logging.getLogger(__file__)
-log.setLevel(logging.INFO)
-set_log_stout(log)
+from src.macbook_utils import logger
 
 
 def add_if_py_or_dir(file_path: str):
-    log.debug(file_path)
+    logger.debug(file_path)
     if file_path.endswith(".py") or file_path.endswith("/"):
         return file_path.strip(" ")
     return ""
@@ -28,8 +23,8 @@ def main():
 
     file_paths = set()
     for line in git_status_output.split("\n"):
-        log.debug(line)
-        log.debug(line.startswith("\t") or line.startswith("        "))
+        logger.debug(line)
+        logger.debug(line.startswith("\t") or line.startswith("        "))
         if line.startswith("        "):
             if "renamed:" in line:
                 file_paths.add(add_if_py_or_dir(line.split("->")[1]))
@@ -44,8 +39,8 @@ def main():
 
     if "" in file_paths:
         file_paths.remove("")
-    log.debug(file_paths)
-    log.debug(f"Command: {' '.join(['black', *file_paths])}")
+    logger.debug(file_paths)
+    logger.debug(f"Command: {' '.join(['black', *file_paths])}")
     black_output = (
         run(["black", "--line-length=79", *file_paths], capture_output=True)
         .stderr.decode()
@@ -56,7 +51,7 @@ def main():
         )
         .replace("\t", "        ")
     )
-    log.info(black_output)
+    logger.info(black_output)
 
 
 if __name__ == "__main__":

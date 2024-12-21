@@ -1,17 +1,12 @@
-import logging
 import os
 import sys
 from pathlib import Path
 from subprocess import run
+
 from sqlfluff import fix
-import sqlparse
 from sqlfluff.core import FluffConfig
 
-from utils.log_utils import set_log_stout
-
-log = logging.getLogger(__file__)
-log.setLevel(logging.DEBUG)
-set_log_stout(log)
+from src.macbook_utils import logger
 
 
 def get_sql_paths_from_dir(path: Path) -> set[Path]:
@@ -91,7 +86,7 @@ def main():
     else:
         file_paths = get_files_from_git()
 
-    log.debug(file_paths)
+    logger.debug(file_paths)
     fluff_path = Path(__file__).parent.parent.parent / ".sqlfluff"
     config = FluffConfig.from_path(
         str(fluff_path), overrides={"dialect": dialect}
