@@ -1,6 +1,6 @@
 import sqlparse
 
-from get_sql_lineage.get_lineage import get_identifiers, get_cleaned_statement
+from src.get_sql_lineage.get_lineage import get_cleaned_statement, get_identifiers
 
 
 def test_get_identifiers_case_one():
