@@ -1,12 +1,11 @@
 import os
 import re
 from dataclasses import dataclass
-from typing import Callable, Union
-
-from dotenv import load_dotenv
-from pathlib import Path
 from os import environ
+from pathlib import Path
+
 import pandas
+from dotenv import load_dotenv
 
 env_path = Path(__file__).parent.parent.parent / ".env"
 load_dotenv(env_path)

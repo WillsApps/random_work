@@ -1,17 +1,28 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 
 import requests
+from dataclasses_json import DataClassJsonMixin, config
 from github import Github
+from marshmallow import fields
 
 from src.linux_utils import logger
 
 
 @dataclass
-class RepoToUpdate:
+class RepoToUpdate(DataClassJsonMixin):
     owner: str
     name: str
+    last_updated: datetime = field(
+        metadata=config(
+            encoder=datetime.isoformat,
+            decoder=datetime.fromisoformat,
+            mm_field=fields.DateTime(format="iso"),
+        )
+    )
+
     file_location: Path = None
 
     def __str__(self):
@@ -19,6 +30,7 @@ class RepoToUpdate:
 
 
 downloads = Path.home() / "Downloads"
+config_path = Path.home() / ".config" / "update_programs" / "config.json"
 
 repos = [
     RepoToUpdate("lutris", "lutris"),
@@ -43,9 +55,7 @@ for repo_to_update in repos:
             f.write(content)
     else:
         deb_names = [deb.name for deb in debs]
-        raise Exception(
-            f"Too many debs to download. {repo_to_update=}, {deb_names=}"
-        )
+        raise Exception(f"Too many debs to download. {repo_to_update=}, {deb_names=}")
 
 for repo_to_update in repos:
     command = f"sudo dpkg -i {repo_to_update.file_location}"

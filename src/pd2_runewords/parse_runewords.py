@@ -4,7 +4,6 @@ from typing import Dict, List
 
 from bs4 import BeautifulSoup
 
-
 RUNES = [
     "El",
     "Eld",
@@ -82,7 +81,13 @@ class RuneWord:
             else:
                 rune_output.append("0")
         formatted = "\t".join(
-            [self.name, str(self.level_required), str(self.bases), str(self.runes), *rune_output]
+            [
+                self.name,
+                str(self.level_required),
+                str(self.bases),
+                str(self.runes),
+                *rune_output,
+            ]
         )
         return formatted
 

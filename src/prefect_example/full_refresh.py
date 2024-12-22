@@ -2,16 +2,15 @@ import json
 import os
 from datetime import datetime, timedelta
 from typing import List
-from zipfile import ZipFile, ZIP_DEFLATED
+from zipfile import ZIP_DEFLATED, ZipFile
 
 import boto3
 from botocore.exceptions import ClientError
 from dotenv import load_dotenv
-from prefect import Flow, task, context, unmapped
+from prefect import Flow, context, task, unmapped
 
-from utils.file_utils import get_file_name, delete_file, get_delete_folder_tasks
+from utils.file_utils import get_delete_folder_tasks, get_file_name
 from utils.request_manager import RequestManager
-from utils.prefect_utils import flatten_iterable_of_variables
 
 DOWNLOADS_URL = "https://api.fda.gov/download.json"
 LOGGER = context.get("logger")
@@ -81,7 +80,7 @@ def upload_file(file_path: str):
     s3_key = f"{S3_PREFIX}/{file_name}"
     LOGGER.debug(s3_key)
     try:
-        response = s3_client.upload_file(file_path, BUCKET_NAME, s3_key)
+        _response = s3_client.upload_file(file_path, BUCKET_NAME, s3_key)
     except ClientError as e:
         LOGGER.error(e)
         return False
@@ -232,6 +231,7 @@ def save_max_marketing_start_dates(
         file.write(json.dumps({"max_marketing_start_date": max_marketing[0]}))
     return file_path
 
+
 @task()
 def myfail():
     raise Exception()
@@ -276,13 +276,13 @@ def main_full_refresh() -> Flow:
 
         faiiling_task = myfail()
 
-        cleaning_up = get_delete_folder_tasks(
+        _cleaning_up = get_delete_folder_tasks(
             folder_path=folder_path,
             upstream_tasks=[
                 meta_uploading_files,
                 results_uploading_files,
                 uploading_max_marketing,
-                faiiling_task
+                faiiling_task,
             ],
         )
     return flow
@@ -297,7 +297,7 @@ def main_incremental() -> Flow:
         f"&limit={MAX_SKIP}"
         f"&skip=SKIP"
     )
-    params = [
+    _params = [
         ("api_key", FDA_API_KEY),
         ("search", "marketing_start_date:[MIN_DATE+TO+MAX_DATE]"),
         ("sort", "marketing_start_date:asc"),
@@ -312,7 +312,7 @@ def main_incremental() -> Flow:
         maximum_date = get_maximum_date()
         formatted_url = format_url(url, minimum_date, maximum_date)
         chunks = get_chunks(formatted_url, request_manager)
-        file_paths = save_chunk_to_file.map(
+        _file_paths = save_chunk_to_file.map(
             multiplier=chunks,
             url=unmapped(formatted_url),
             folder_path=unmapped(folder_path),

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-from slack_sdk import WebClient
 from collections import Counter
 from datetime import datetime, timedelta
 from os import getenv
+
+from slack_sdk import WebClient
+
 from utils.consts import load_env
 
 
@@ -68,9 +70,7 @@ def top_10_users_by_dm(
                     message_counts[other_user_id] += 1
 
             # Check if more messages are available (pagination)
-            next_cursor = history.get("response_metadata", {}).get(
-                "next_cursor"
-            )
+            next_cursor = history.get("response_metadata", {}).get("next_cursor")
             if not next_cursor:
                 break  # Exit the loop when no more pages are available
 
@@ -78,27 +78,22 @@ def top_10_users_by_dm(
     top_10_users = message_counts.most_common(10)
 
     # Convert user IDs to usernames
-    users_info = {
-        user["id"]: user["name"] for user in client.users_list()["members"]
-    }
+    users_info = {user["id"]: user["name"] for user in client.users_list()["members"]}
 
     # Filter only the top 10 users, and ensure we are skipping excluded users
     return [
-        (users_info.get(user_id, "Unknown"), count)
-        for user_id, count in top_10_users
+        (users_info.get(user_id, "Unknown"), count) for user_id, count in top_10_users
     ]
 
 
 def main():
     load_env()
     slack_token = getenv("SLACK_USER_TOKEN")
-    start_iso = (datetime.now() - timedelta(days=180))
+    start_iso = datetime.now() - timedelta(days=180)
     end_iso = datetime.now()
     exclude_users = ["google_calendar"]  # Users to exclude from top 10
 
-    top_users = top_10_users_by_dm(
-        slack_token, start_iso, end_iso, exclude_users
-    )
+    top_users = top_10_users_by_dm(slack_token, start_iso, end_iso, exclude_users)
 
     # Print the result
     for user, count in top_users:

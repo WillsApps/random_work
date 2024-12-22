@@ -1,9 +1,8 @@
 import json
-from dataclasses import dataclass, field
-from typing import List, Dict, Any, Tuple, Union
+from typing import Dict, List, Union
 
 import sqlparse
-from sqlparse.sql import TokenList, Statement, Identifier
+from sqlparse.sql import Identifier, Statement, TokenList
 
 #
 # @dataclass
@@ -44,7 +43,7 @@ def get_sql(path: str) -> Dict[str, Dict[str, Union[str, Statement]]]:
         try:
             raw_sql = _def["compiled_code"].replace('"beehive".', "")
             statement = sqlparse.parse(raw_sql)[0]
-            sql = sqlparse.format(raw_sql, strip_comments=True)
+            _sql = sqlparse.format(raw_sql, strip_comments=True)
             identifiers = get_identifiers(statement)
         except KeyError:
             print(f"Model: {name} doesn't have compiled")
@@ -91,4 +90,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

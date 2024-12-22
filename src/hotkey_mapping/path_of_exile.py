@@ -3,7 +3,8 @@ from time import sleep
 import gi
 
 gi.require_version("Wnck", "3.0")
-from gi.repository import Wnck
+
+from gi.repository import Wnck  # noqa: E402
 
 scr = Wnck.Screen.get_default()
 scr.force_update()

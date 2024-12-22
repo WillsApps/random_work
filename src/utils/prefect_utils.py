@@ -1,4 +1,4 @@
-from typing import Iterable, Any, List
+from typing import Any, Iterable, List
 
 from prefect import task
 

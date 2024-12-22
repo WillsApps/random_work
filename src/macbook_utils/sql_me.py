@@ -36,7 +36,7 @@ def format_query(query: str, config: FluffConfig):
     query = query.strip()
     if not query:
         return ""
-    log.debug(query)
+    logger.debug(query)
     query = f"{query};"
 
     fluffed = fix(
@@ -88,9 +88,7 @@ def main():
 
     logger.debug(file_paths)
     fluff_path = Path(__file__).parent.parent.parent / ".sqlfluff"
-    config = FluffConfig.from_path(
-        str(fluff_path), overrides={"dialect": dialect}
-    )
+    config = FluffConfig.from_path(str(fluff_path), overrides={"dialect": dialect})
     for file_path in sorted(file_paths):
         with open(file_path, "r") as f:
             raw = f.read()

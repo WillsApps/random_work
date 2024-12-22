@@ -69,6 +69,7 @@ def get_results_for_skill(skill: Skill):
         # print(f"{rage_generation=}, {berserker_length=}, {max_rage_length=}, {total_length=}, {uptime=}")
     return results
 
+
 def main():
     for skill in SKILLS:
         results = get_results_for_skill(skill)
@@ -76,5 +77,6 @@ def main():
         for result in results:
             print(result)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

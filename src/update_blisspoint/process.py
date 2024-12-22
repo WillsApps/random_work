@@ -1,14 +1,12 @@
 import json
 import logging
 import os
-import time
-from queue import Queue, Empty
+from queue import Empty, Queue
 from threading import Thread
 from typing import List
 
 import psycopg2
 from dotenv import load_dotenv
-
 
 VERSION = "v2"
 logging.basicConfig(

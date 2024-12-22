@@ -1,12 +1,13 @@
 import json
-from collections.abc import Mapping
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import List, Any, Set, Dict, Union, Sequence
+from typing import Any, Dict, List, Sequence, Union
 
 
+# noqa: E741
+# noqa: E501
 class KeyCodes(str, Enum):
     TYPE = "key_code"
     A = "a"
@@ -17,13 +18,13 @@ class KeyCodes(str, Enum):
     F = "f"
     G = "g"
     H = "h"
-    I = "i"
+    I = "i"  # noqa: E741
     J = "j"
     K = "k"
     L = "l"
     M = "m"
     N = "n"
-    O = "o"
+    O = "o"  # noqa: E741
     P = "p"
     Q = "q"
     R = "r"
@@ -103,7 +104,9 @@ class Shortcut:
     conditions: List[Condition]
 
     def __post_init__(self):
-        self.cleaned_optionals: List[Modifiers] = list(set(self.optional_modifiers) - set(self.original_modifiers))
+        self.cleaned_optionals: List[Modifiers] = list(
+            set(self.optional_modifiers) - set(self.original_modifiers)
+        )
 
     @staticmethod
     def get_part_direction(
@@ -201,11 +204,8 @@ class DisableShortcut(Shortcut):
                 "description": f"Disabling {key}",
                 "manipulators": [
                     {
-                        "from": Shortcut.get_part_direction(
-                            key, "from"
-                        ),
-                        "to": [
-                        ],
+                        "from": Shortcut.get_part_direction(key, "from"),
+                        "to": [],
                         "type": "basic",
                     }
                 ],
@@ -240,7 +240,11 @@ SHORTCUTS = [
     #     ],
     # ),
     ModifierChangeShortcut(
-        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_COMMAND, Modifiers.LEFT_OPTION],
+        original_modifiers=[
+            Modifiers.LEFT_OPTION,
+            Modifiers.LEFT_COMMAND,
+            Modifiers.LEFT_OPTION,
+        ],
         new_modifiers=[Modifiers.LEFT_COMMAND, Modifiers.LEFT_SHIFT],
         keys=[
             KeyCodes.V,
@@ -328,7 +332,7 @@ SHORTCUTS = [
             KeyCodes.N4,
             KeyCodes.N5,
             KeyCodes.HOME,
-            KeyCodes.END
+            KeyCodes.END,
         ],
         optional_modifiers=optional_modifiers,
         conditions=[

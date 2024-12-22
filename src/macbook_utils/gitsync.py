@@ -3,8 +3,7 @@ from pathlib import Path
 from sys import argv
 
 from dotenv import load_dotenv
-from github import Auth
-from github import Github
+from github import Auth, Github
 from github.Branch import Branch
 from github.Workflow import Workflow
 

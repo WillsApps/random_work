@@ -1,7 +1,7 @@
-from typing import List, Dict, Any
+from sqlite3 import connect
+from typing import Any, Dict, List
 
 from flask import Flask, jsonify, request
-from sqlite3 import connect
 
 from src.utils.threading import Manager
 
@@ -18,6 +18,7 @@ def insert_log(productivity_score: int, activity: str):
     )
     conn.commit()
     conn.close()
+
 
 def get_logs() -> List[Dict[str, Any]]:
     conn = connect("productivity.db")
@@ -39,7 +40,9 @@ def post_log():
     productivity_score = data.get("productivity_score")
     activity = data.get("activity")
     # Process the data
-    queue.put((insert_log, {"productivity_score": productivity_score, "activity": activity}))
+    queue.put(
+        (insert_log, {"productivity_score": productivity_score, "activity": activity})
+    )
     return jsonify({"message": "Data received", "received_data": data}), 200
 
 

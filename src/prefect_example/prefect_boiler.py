@@ -1,10 +1,9 @@
-from datetime import timedelta, datetime
-
-from prefect import Client
-from prefect.executors import LocalDaskExecutor
-from prefect.schedules import IntervalSchedule, CronSchedule
+from datetime import datetime, timedelta
 
 from full_refresh import main_full_refresh as full_refresh_flow
+from prefect import Client
+from prefect.executors import LocalDaskExecutor
+from prefect.schedules import IntervalSchedule
 
 client = Client()
 

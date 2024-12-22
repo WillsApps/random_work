@@ -17,7 +17,7 @@ def delete_folder(folder_path: str):
 @task()
 def get_all_file_paths(folder_path: str) -> List[str]:
     file_paths = []
-    for root, sub_dirs, files in os.walk(folder_path):
+    for root, _sub_dirs, files in os.walk(folder_path):
         for file in files:
             file_paths.append(os.path.join(root, file))
     return file_paths
@@ -26,7 +26,7 @@ def get_all_file_paths(folder_path: str) -> List[str]:
 @task()
 def get_all_folder_paths(folder_path: str) -> List[str]:
     folder_paths = []
-    for root, sub_dirs, files in os.walk(folder_path):
+    for root, sub_dirs, _files in os.walk(folder_path):
         for sub_dir in sub_dirs:
             folder_paths.append(os.path.join(root, sub_dir))
     return folder_paths

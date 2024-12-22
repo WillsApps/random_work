@@ -2,8 +2,6 @@ import tkinter
 from random import randint
 from typing import Dict, Tuple
 
-from utils.threading import Manager
-
 SCREEN_SIZE = 800
 GRID_SIZE = 34
 CELL_SIZE = int(SCREEN_SIZE / GRID_SIZE)
@@ -21,7 +19,6 @@ class Cell:
         self.y_location = y_location
 
     def get_canvas_location(self) -> Tuple[int, int, int, int]:
-
         x_start = self.x_location * CELL_SIZE + 2
         x_end = x_start + CELL_SIZE
         y_start = self.y_location * CELL_SIZE + 2
@@ -48,7 +45,6 @@ def clear(canvas: tkinter.Canvas) -> None:
 
 
 def main():
-    queue_manager = Manager()
     cells: Dict[str, Cell] = {}
     start_x_location = randint(0, GRID_SIZE)
     start_y_location = randint(0, GRID_SIZE)

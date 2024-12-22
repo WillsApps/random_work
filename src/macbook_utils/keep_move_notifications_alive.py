@@ -1,4 +1,3 @@
-import os
 import subprocess
 from time import sleep
 
@@ -8,7 +7,7 @@ while True:
 
     (output, err) = p.communicate()
 
-    #This makes the wait possible
+    # This makes the wait possible
     p_status = p.wait()
     print(p_status)
     sleep(10)
