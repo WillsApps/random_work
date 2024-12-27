@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import requests
 from dataclasses_json import DataClassJsonMixin, config
@@ -15,12 +16,13 @@ from src.linux_utils import logger
 class RepoToUpdate(DataClassJsonMixin):
     owner: str
     name: str
-    last_updated: datetime = field(
+    last_updated: Optional[datetime] = field(
         metadata=config(
             encoder=datetime.isoformat,
             decoder=datetime.fromisoformat,
             mm_field=fields.DateTime(format="iso"),
-        )
+        ),
+        default=None,
     )
 
     file_location: Path = None

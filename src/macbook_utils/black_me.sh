@@ -10,7 +10,7 @@ fi
 
 source "$VENV_DIR"/bin/activate
 
-export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
+export PYTHONPATH="$REPO_DIR/:$REPO_DIR/src/:$PYTHONPATH"
 
 if [ $# != 0 ]; then
     black --line-length=79 "$*"
