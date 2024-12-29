@@ -1,3 +1,4 @@
+import json
 import os
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -34,9 +35,10 @@ class RepoToUpdate(DataClassJsonMixin):
 downloads = Path.home() / "Downloads"
 config_path = Path.home() / ".config" / "update_programs" / "config.json"
 
-repos = [
-    RepoToUpdate("lutris", "lutris"),
-]
+if not config_path.exists():
+    raise Exception(f"Config must exist: {config_path}")
+
+repos = json.loads(config_path.read_text())
 
 github = Github()
 for repo_to_update in repos:
