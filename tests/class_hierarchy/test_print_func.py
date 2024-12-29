@@ -1,16 +1,10 @@
-from abc import ABC, abstractmethod
 from unittest.mock import MagicMock
 
 from _pytest.monkeypatch import MonkeyPatch
 
 from src.class_hierarchy import print_func
+from src.class_hierarchy.classes import Base
 from src.class_hierarchy.print_func import print_all
-
-
-class Base(ABC):
-    @abstractmethod
-    def print_me(self, index: int):
-        raise NotImplementedError()
 
 
 def test_print_all(monkeypatch: MonkeyPatch) -> None:
