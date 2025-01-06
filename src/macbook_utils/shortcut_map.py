@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Sequence, Union
 
 # noqa: E741
 # noqa: E501
-class KeyCodes(str, Enum):
+class KeyCode(str, Enum):
     TYPE = "key_code"
     A = "a"
     B = "b"
@@ -59,7 +59,7 @@ class KeyCodes(str, Enum):
     END = "end"
 
 
-class PointingButtons(str, Enum):
+class PointingButton(str, Enum):
     TYPE = "pointing_button"
     LEFT_CLICK = "button1"
     RIGHT_CLICK = "button2"
@@ -71,7 +71,7 @@ class ConsumerKeyCode(str, Enum):
     PLAY_OR_PAUSE = "play_or_pause"
 
 
-class Modifiers(str, Enum):
+class Modifier(str, Enum):
     CAPS_LOCK = "caps_lock"
     ALL = "all"
     LEFT_CONTROL = "left_control"
@@ -80,7 +80,16 @@ class Modifiers(str, Enum):
     LEFT_OPTION = "left_option"
 
 
-KeyType = Union[KeyCodes, PointingButtons, ConsumerKeyCode]
+class ConditionType(str, Enum):
+    FRONTMOST_APPLICATION_UNLESS = "frontmost_application_unless"
+    FRONTMOST_APPLICATION_IF = "frontmost_application_if"
+
+
+class ConditionOptionName(str, Enum):
+    BUNDLE_IDENTIFIERS = "bundle_identifiers"
+
+
+KeyType = Union[KeyCode, PointingButton, ConsumerKeyCode]
 
 
 def values_from_enum_list(enums: Sequence[Enum]):
@@ -89,9 +98,9 @@ def values_from_enum_list(enums: Sequence[Enum]):
 
 @dataclass()
 class Condition:
-    type: str
-    option_1_name: str
-    option_1_value: any
+    type: ConditionType
+    option_1_name: ConditionOptionName
+    option_1_value: list[str]
 
     def to_dict(self) -> Dict[str, any]:
         return {"type": self.type, self.option_1_name: self.option_1_value}
@@ -99,18 +108,18 @@ class Condition:
 
 @dataclass()
 class Shortcut:
-    original_modifiers: List[Modifiers]
-    optional_modifiers: List[Modifiers]
+    original_modifiers: List[Modifier]
+    optional_modifiers: List[Modifier]
     conditions: List[Condition]
 
     def __post_init__(self):
-        self.cleaned_optionals: List[Modifiers] = list(
+        self.cleaned_optionals: List[Modifier] = list(
             set(self.optional_modifiers) - set(self.original_modifiers)
         )
 
     @staticmethod
     def get_part_direction(
-        key: KeyType, direction: str, modifiers: Sequence[Modifiers] = ()
+        key: KeyType, direction: str, modifiers: Sequence[Modifier] = ()
     ):
         part = {key.TYPE: key, "modifiers": {}}
         if modifiers:
@@ -139,7 +148,7 @@ class Shortcut:
 class KeyChangeShortcut(Shortcut):
     original_key: KeyType
     new_key: KeyType
-    new_modifiers: Sequence[Modifiers] = None
+    new_modifiers: Sequence[Modifier] = None
 
     def to_dict(self) -> List[Dict[str, Any]]:
         rule = {
@@ -165,7 +174,7 @@ class KeyChangeShortcut(Shortcut):
 
 @dataclass()
 class ModifierChangeShortcut(Shortcut):
-    new_modifiers: Sequence[Modifiers]
+    new_modifiers: Sequence[Modifier]
     keys: List[KeyType]
 
     def to_dict(self) -> List[Dict[str, Any]]:
@@ -204,7 +213,9 @@ class DisableShortcut(Shortcut):
                 "description": f"Disabling {key}",
                 "manipulators": [
                     {
-                        "from": Shortcut.get_part_direction(key, "from"),
+                        "from": Shortcut.get_part_direction(
+                            key, "from", self.original_modifiers
+                        ),
                         "to": [],
                         "type": "basic",
                     }
@@ -217,11 +228,18 @@ class DisableShortcut(Shortcut):
 
 
 optional_modifiers = [
-    Modifiers.CAPS_LOCK,
-    Modifiers.LEFT_COMMAND,
-    Modifiers.LEFT_CONTROL,
-    Modifiers.LEFT_OPTION,
-    Modifiers.LEFT_SHIFT,
+    Modifier.CAPS_LOCK,
+    Modifier.LEFT_COMMAND,
+    Modifier.LEFT_CONTROL,
+    Modifier.LEFT_OPTION,
+    Modifier.LEFT_SHIFT,
+]
+
+IDES = [
+    "com.jetbrains.pycharm.ce",
+    "com.jetbrains.pycharm",
+    "com.jetbrains.AppCode",
+    "com.googlecode.iterm2",
 ]
 
 SHORTCUTS = [
@@ -233,27 +251,27 @@ SHORTCUTS = [
     #     optionals=set(),
     #     conditions=[
     #         Condition(
-    #             "frontmost_application_if",
-    #             "bundle_identifiers",
+    #             ConditionType.FRONTMOST_APPLICATION_IF,
+    #             ConditionOptionName.BUNDLE_IDENTIFIERS,
     #             ["com.jetbrains.pycharm.ce", "com.jetbrains.AppCode"],
     #         )
     #     ],
     # ),
     ModifierChangeShortcut(
         original_modifiers=[
-            Modifiers.LEFT_OPTION,
-            Modifiers.LEFT_COMMAND,
-            Modifiers.LEFT_OPTION,
+            Modifier.LEFT_OPTION,
+            Modifier.LEFT_COMMAND,
+            Modifier.LEFT_OPTION,
         ],
-        new_modifiers=[Modifiers.LEFT_COMMAND, Modifiers.LEFT_SHIFT],
+        new_modifiers=[Modifier.LEFT_COMMAND, Modifier.LEFT_SHIFT],
         keys=[
-            KeyCodes.V,
+            KeyCode.V,
         ],
         optional_modifiers=[],
         conditions=[
             Condition(
-                "frontmost_application_if",
-                "bundle_identifiers",
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
                 [
                     "com.jgraph.drawio.desktop",
                 ],
@@ -261,16 +279,16 @@ SHORTCUTS = [
         ],
     ),
     ModifierChangeShortcut(
-        original_modifiers=[Modifiers.LEFT_COMMAND],
-        new_modifiers=[Modifiers.LEFT_SHIFT, Modifiers.LEFT_CONTROL],
+        original_modifiers=[Modifier.LEFT_COMMAND],
+        new_modifiers=[Modifier.LEFT_SHIFT, Modifier.LEFT_CONTROL],
         keys=[
-            KeyCodes.C,
+            KeyCode.C,
         ],
         optional_modifiers=[],
         conditions=[
             Condition(
-                "frontmost_application_if",
-                "bundle_identifiers",
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
                 [
                     "com.google.Chrome",
                 ],
@@ -278,15 +296,15 @@ SHORTCUTS = [
         ],
     ),
     KeyChangeShortcut(
-        new_modifiers=[Modifiers.LEFT_COMMAND],
-        new_key=KeyCodes.OPEN_BRACKET,
-        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_CONTROL],
-        original_key=KeyCodes.LEFT_ARROW,
+        new_modifiers=[Modifier.LEFT_COMMAND],
+        new_key=KeyCode.OPEN_BRACKET,
+        original_modifiers=[Modifier.LEFT_OPTION, Modifier.LEFT_CONTROL],
+        original_key=KeyCode.LEFT_ARROW,
         optional_modifiers=[],
         conditions=[
             Condition(
-                "frontmost_application_if",
-                "bundle_identifiers",
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
                 [
                     "com.tinyspeck.slackmacgap",
                 ],
@@ -294,15 +312,15 @@ SHORTCUTS = [
         ],
     ),
     KeyChangeShortcut(
-        new_modifiers=[Modifiers.LEFT_COMMAND],
-        new_key=KeyCodes.CLOSE_BRACKET,
-        original_modifiers=[Modifiers.LEFT_OPTION, Modifiers.LEFT_CONTROL],
-        original_key=KeyCodes.RIGHT_ARROW,
+        new_modifiers=[Modifier.LEFT_COMMAND],
+        new_key=KeyCode.CLOSE_BRACKET,
+        original_modifiers=[Modifier.LEFT_OPTION, Modifier.LEFT_CONTROL],
+        original_key=KeyCode.RIGHT_ARROW,
         optional_modifiers=[],
         conditions=[
             Condition(
-                "frontmost_application_if",
-                "bundle_identifiers",
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
                 [
                     "com.tinyspeck.slackmacgap",
                 ],
@@ -310,57 +328,52 @@ SHORTCUTS = [
         ],
     ),
     ModifierChangeShortcut(
-        original_modifiers=[Modifiers.LEFT_COMMAND],
-        new_modifiers=[Modifiers.LEFT_CONTROL],
+        original_modifiers=[Modifier.LEFT_COMMAND],
+        new_modifiers=[Modifier.LEFT_CONTROL],
         keys=[
-            KeyCodes.A,
-            KeyCodes.X,
-            KeyCodes.Q,
-            KeyCodes.Z,
-            KeyCodes.T,
-            KeyCodes.W,
-            KeyCodes.R,
-            KeyCodes.F,
-            KeyCodes.C,
-            KeyCodes.V,
-            KeyCodes.I,
-            KeyCodes.P,
-            KeyCodes.I,
-            KeyCodes.N1,
-            KeyCodes.N2,
-            KeyCodes.N3,
-            KeyCodes.N4,
-            KeyCodes.N5,
-            KeyCodes.HOME,
-            KeyCodes.END,
+            KeyCode.A,
+            KeyCode.X,
+            KeyCode.Q,
+            KeyCode.Z,
+            KeyCode.T,
+            KeyCode.W,
+            KeyCode.R,
+            KeyCode.F,
+            KeyCode.C,
+            KeyCode.V,
+            KeyCode.I,
+            KeyCode.P,
+            KeyCode.I,
+            KeyCode.N1,
+            KeyCode.N2,
+            KeyCode.N3,
+            KeyCode.N4,
+            KeyCode.N5,
+            KeyCode.HOME,
+            KeyCode.END,
         ],
         optional_modifiers=optional_modifiers,
         conditions=[
             Condition(
                 "frontmost_application_unless",
-                "bundle_identifiers",
-                [
-                    "com.jetbrains.pycharm.ce",
-                    "com.jetbrains.pycharm",
-                    "com.jetbrains.AppCode",
-                    "com.googlecode.iterm2",
-                ],
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
+                IDES,
             )
         ],
     ),
     ModifierChangeShortcut(
-        original_modifiers=[Modifiers.LEFT_OPTION],
-        new_modifiers=[Modifiers.LEFT_CONTROL],
+        original_modifiers=[Modifier.LEFT_OPTION],
+        new_modifiers=[Modifier.LEFT_CONTROL],
         keys=[
-            KeyCodes.DELETE_OR_BACKSPACE,
-            KeyCodes.RIGHT_ARROW,
-            KeyCodes.LEFT_ARROW,
+            KeyCode.DELETE_OR_BACKSPACE,
+            KeyCode.RIGHT_ARROW,
+            KeyCode.LEFT_ARROW,
         ],
         optional_modifiers=optional_modifiers,
         conditions=[
             # Condition(
             #     "frontmost_application_unless",
-            #     "bundle_identifiers",
+            #     ConditionOptionName.BUNDLE_IDENTIFIERS,
             #     [
             #         "com.apple.finder",
             #     ],
@@ -368,7 +381,7 @@ SHORTCUTS = [
         ],
     ),
     DisableShortcut(
-        original_modifiers=[Modifiers.LEFT_OPTION],
+        original_modifiers=[Modifier.LEFT_OPTION],
         keys=[
             ConsumerKeyCode.PLAY_OR_PAUSE,
         ],
@@ -376,11 +389,25 @@ SHORTCUTS = [
         conditions=[
             # Condition(
             #     "frontmost_application_unless",
-            #     "bundle_identifiers",
+            #     ConditionOptionName.BUNDLE_IDENTIFIERS,
             #     [
             #         "com.apple.finder",
             #     ],
             # )
+        ],
+    ),
+    DisableShortcut(
+        original_modifiers=[Modifier.LEFT_COMMAND],
+        keys=[
+            KeyCode.Q,
+        ],
+        optional_modifiers=optional_modifiers,
+        conditions=[
+            Condition(
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
+                IDES,
+            )
         ],
     ),
     # ---- Replaced with "AltTab" ----

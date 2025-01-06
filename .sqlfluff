@@ -1,5 +1,9 @@
 [sqlfluff]
 templater = jinja
+dialect = databricks
+large_file_skip_char_limit = 0
+large_file_skip_byte_limit = 0
+max_line_length = 200
 
 [sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = upper
