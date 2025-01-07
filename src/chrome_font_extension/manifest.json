@@ -10,15 +10,16 @@
   "content_scripts": [
     {
       "matches": ["https://*.github.com/*"],
-      "css" : ["github_custom_font.css"]
+      "css" : ["github.css"]
     },
     {
-      "matches": ["https://*.airflow.amazonaws.com/*/*"],
-      "css" : ["airflow_custom_font.css"]
+      "matches": ["https://*.airflow.amazonaws.com/*"],
+      "css" : ["airflow.css"],
+      "js": ["airflow.js"]
     },
     {
       "matches": ["<all_urls>"],
-      "css" : ["custom_font.css"],
+      "css" : ["generic.css"],
       "exclude_globs": [
         "https://*.github.com/*",
         "https://*.airflow.amazonaws.com/*"
