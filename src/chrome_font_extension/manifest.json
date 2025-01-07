@@ -13,9 +13,16 @@
       "css" : ["github_custom_font.css"]
     },
     {
+      "matches": ["https://*.airflow.amazonaws.com/*/*"],
+      "css" : ["airflow_custom_font.css"]
+    },
+    {
       "matches": ["<all_urls>"],
       "css" : ["custom_font.css"],
-      "exclude_globs": ["https://*.github.com/*"]
+      "exclude_globs": [
+        "https://*.github.com/*",
+        "https://*.airflow.amazonaws.com/*"
+      ]
     }
   ]
 }

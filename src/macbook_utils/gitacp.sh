@@ -12,7 +12,7 @@ done
 
 function addFolders()
 {
-  FOLDERS=("dags" "tests" "src" "cdh" "file_extraction_data_pipeline")
+  FOLDERS=("dags" "tests" "src" "cdh" "file_extraction_data_pipeline" "vh_platform_deletes")
   for folder in "${FOLDERS[@]}"
   do
     if [ -d "$folder" ]; then
