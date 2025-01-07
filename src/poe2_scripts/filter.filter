@@ -61,6 +61,13 @@ SetBackgroundColor 0 33 71
 PlayEffect Orange Temp
 
 Show
+StackSize >= 100
+BaseType == "Gold"
+SetTextColor 255 223 0
+SetBorderColor 255 223 0
+SetBackgroundColor 0 0 0 180
+
+Hide
 BaseType == "Gold"
 SetTextColor 255 223 0
 SetBorderColor 255 223 0
@@ -73,18 +80,8 @@ SetBackgroundColor 0 0 0 180
 
 # Always make Spirit gems pop
 Show
+ItemLevel >= 19
 BaseType "Uncut Spirit Gem"
-SetTextColor 20 240 240
-SetBorderColor 20 240 240
-PlayAlertSound 2 300
-PlayEffect Cyan
-MinimapIcon 1 Cyan Triangle
-SetFontSize 40
-
-# Make support gems pop during campaign
-Show
-AreaLevel < 68
-BaseType "Uncut Support Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
 PlayAlertSound 2 300
@@ -98,7 +95,6 @@ AreaLevel < 65
 BaseType "Uncut Skill Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
-PlayAlertSound 2 300
 PlayEffect Cyan
 MinimapIcon 1 Cyan Triangle
 SetFontSize 40
@@ -106,23 +102,37 @@ SetFontSize 40
 # Gems up to level 18 in maps don't get a special highlight
 Show
 ItemLevel <= 18
+AreaLevel >= 65
 BaseType "Uncut Skill Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
 SetFontSize 35
 
+
 Show
 BaseType "Uncut Support Gem"
+ItemLevel >= 3
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
 SetFontSize 35
 
 # Level 19 gems and up in maps get a special highlight
 Show
+ItemLevel <= 19
 BaseType "Uncut Skill Gem"
 SetTextColor 20 240 240
 SetBorderColor 20 240 240
 PlayAlertSound 2 300
+PlayEffect Cyan
+MinimapIcon 1 Cyan Triangle
+SetFontSize 40
+
+Show
+ItemLevel = 19
+BaseType "Uncut Skill Gem" "Uncut Spirit Gem"
+SetTextColor 20 240 240
+SetBorderColor 20 240 240
+PlayAlertSound 1 300
 PlayEffect Cyan
 MinimapIcon 1 Cyan Triangle
 SetFontSize 40
@@ -406,7 +416,7 @@ SetTextColor 255 255 0
 SetBorderColor 255 255 0
 SetBackgroundColor 255 255 0 50
 SetFontSize 40
-PlayAlertSound 4 300
+PlayAlertSound 4 200
 PlayEffect Yellow
 MinimapIcon 1 Yellow Square
 
@@ -419,7 +429,7 @@ SetTextColor 255 255 0
 SetBorderColor 255 255 0
 SetBackgroundColor 0 0 255 50
 SetFontSize 40
-PlayAlertSound 4 300
+PlayAlertSound 4 200
 PlayEffect Yellow
 MinimapIcon 1 Yellow Square
 
@@ -432,7 +442,7 @@ SetTextColor 255 255 0
 SetBorderColor 255 255 0
 SetBackgroundColor 200 200 200 50
 SetFontSize 40
-PlayAlertSound 4 300
+PlayAlertSound 4 200
 PlayEffect Yellow
 MinimapIcon 1 Yellow Square
 
@@ -448,7 +458,7 @@ SetTextColor 255 255 255
 SetBorderColor 255 255 255
 SetBackgroundColor 255 255 0 50
 SetFontSize 30
-PlayAlertSound 4 300
+PlayAlertSound 4 100
 PlayEffect White
 MinimapIcon 1 White Square
 
@@ -460,7 +470,7 @@ SetTextColor 255 255 255
 SetBorderColor 255 255 255
 SetBackgroundColor 0 0 255 50
 SetFontSize 30
-PlayAlertSound 4 300
+PlayAlertSound 4 100
 PlayEffect White
 MinimapIcon 1 White Square
 
@@ -472,7 +482,7 @@ SetTextColor 255 255 255
 SetBorderColor 255 255 255
 SetBackgroundColor 200 200 200 50
 SetFontSize 30
-PlayAlertSound 4 300
+PlayAlertSound 4 100
 PlayEffect White
 MinimapIcon 1 White Square
 
@@ -493,6 +503,14 @@ MinimapIcon 1 Yellow Diamond
 #--------------------------
 # Rings, Amulets, Belts
 #--------------------------
+
+Show
+Rarity Normal
+Class "Rings" "Amulets" "Belts"
+BaseType "Stellar Amulet"
+SetFontSize 60
+PlayAlertSound 2 300
+MinimapIcon 1 Red Diamond
 
 Show
 Rarity Normal
@@ -555,8 +573,10 @@ SetFontSize 35
 Show
 Quality = 0
 AreaLevel >= 68
-Rarity <= Magic
+Rarity >= Magic
 Class "Flasks"
+BaseType "Ultimate Life Flask" "Ultimate Mana Flask"
+
 
 Hide
 AreaLevel >= 69
