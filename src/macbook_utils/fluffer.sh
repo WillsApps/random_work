@@ -9,4 +9,4 @@ else
 fi
 source "$VENV_DIR"/bin/activate
 
-sqlfluff fix --dialect databricks $1
+sqlfluff format --dialect databricks $1
