@@ -1,7 +1,7 @@
 from typing import Any
 
-from entities.constants import SILVER_CATALOG
-from integration_testing.test_cases.base_test_case import (
+from airflow_testing_framework.entities.constants import SILVER_CATALOG
+from airflow_testing_framework.integration_testing.test_cases.base_test_case import (
     DataEnvironment,
     TestCase,
 )
@@ -32,7 +32,7 @@ class PlatformDeletesRefinements(TestCase):
     def setups_map(self) -> dict[DataEnvironment : list[str]]:
         return {
             DataEnvironment.DBX: [
-                f"INSERT INTO {SILVER_CATALOG}.platform.deletes (refresh_version) VALUES ({self.refresh_version});)",
+                f"INSERT INTO {SILVER_CATALOG}.platform.deletes (refresh_version) VALUES ('{self.refresh_version}');)",
             ]
         }
 
@@ -40,6 +40,6 @@ class PlatformDeletesRefinements(TestCase):
     def assertions_map(self) -> dict[DataEnvironment : list[str]]:
         return {
             DataEnvironment.DBX: [
-                f"INSERT INTO {SILVER_CATALOG}.platform.deletes (refresh_version) VALUES ({self.refresh_version});)",
+                f"SELECT count(*) = 1 AS is_passing FROM {SILVER_CATALOG}.platform.deletes WHERE refresh_version = '{self.refresh_version}';)",
             ]
         }

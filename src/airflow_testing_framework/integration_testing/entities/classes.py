@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
 from dataclasses_json import DataClassJsonMixin
-from entities.constants import REFRESH_VERSION
+
+from airflow_testing_framework.entities.constants import REFRESH_VERSION
 
 
 @dataclass

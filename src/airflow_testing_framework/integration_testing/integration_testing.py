@@ -6,13 +6,15 @@ from airflow.operators.empty import EmptyOperator
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.utils.task_group import TaskGroup
 from dataclasses_json import DataClassJsonMixin
-from integration_testing.entities.enums import TestId
-from integration_testing.test_cases.base_test_case import DataEnvironment
-from integration_testing.test_cases.platform_deletes_refinements import (
+
+from airflow_testing_framework.integration_testing.entities.enums import TestId
+from airflow_testing_framework.integration_testing.test_cases.base_test_case import (
+    DataEnvironment,
+)
+from airflow_testing_framework.integration_testing.test_cases.platform_deletes_refinements import (
     PlatformDeletesRefinements,
 )
-
-from utils.dag_utils import get_dag_conf
+from airflow_testing_framework.utils.dag_utils import get_dag_conf
 
 
 @dataclass
