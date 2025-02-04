@@ -7,19 +7,21 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 from airflow.utils.task_group import TaskGroup
 from dataclasses_json import DataClassJsonMixin
 
-from airflow_testing_framework.integration_testing.entities.enums import TestId
-from airflow_testing_framework.integration_testing.test_cases.base_test_case import (
+from integrations.integration_testing.entities.classes import IntTestAction
+from integrations.integration_testing.entities.enums import TestId
+from integrations.integration_testing.test_cases.base_test_case import (
     DataEnvironment,
 )
-from airflow_testing_framework.integration_testing.test_cases.platform_deletes_refinements import (
+from integrations.integration_testing.test_cases.platform_deletes_refinements import (
     PlatformDeletesRefinements,
 )
-from airflow_testing_framework.utils.dag_utils import get_dag_conf
+from integrations.utils.dag_utils import get_dag_conf
 
 
 @dataclass
 class DagConf(DataClassJsonMixin):
     test_ids: list[TestId]
+    maximum_mapped_task_ids: int = 100
 
 
 TEST_ID_TEST_CASE_MAP = {
@@ -28,37 +30,37 @@ TEST_ID_TEST_CASE_MAP = {
 
 
 @task
-def remove_s3_files(dag_conf: DagConf, items: list[str]) -> None:
+def remove_s3_files(dag_conf: DagConf, actions: list[IntTestAction]) -> None:
     pass
 
 
 @task
-def write_s3_files(dag_conf: DagConf, items: list[str]) -> None:
+def write_s3_files(dag_conf: DagConf, actions: list[IntTestAction]) -> None:
     pass
 
 
 @task
-def writer_queries_dbx(dag_conf: DagConf, items: list[str]) -> None:
+def writer_queries_dbx(dag_conf: DagConf, actions: list[IntTestAction]) -> None:
     pass
 
 
 @task
-def writer_queries_rds(dag_conf: DagConf, items: list[str]) -> None:
+def writer_queries_rds(dag_conf: DagConf, actions: list[IntTestAction]) -> None:
     pass
 
 
 @task
-def read_s3_files(dag_conf: DagConf, items: list[str]):
+def read_s3_files(dag_conf: DagConf, actions: list[IntTestAction]):
     pass
 
 
 @task
-def reader_queries_dbx(dag_conf: DagConf, items: list[str]):
+def reader_queries_dbx(dag_conf: DagConf, actions: list[IntTestAction]):
     pass
 
 
 @task
-def reader_queries_rds(dag_conf: DagConf, items: list[str]):
+def reader_queries_rds(dag_conf: DagConf, items: list[IntTestAction]):
     pass
 
 
@@ -82,7 +84,7 @@ ASSERTION_TASK_MAP = {
 
 
 @task
-def get_teardowns(dag_conf: DagConf, environment: DataEnvironment) -> list[str]:
+def get_teardowns(dag_conf: DagConf, environment: DataEnvironment) -> list[IntTestAction]:
     teardowns = []
     for test_id in dag_conf.test_ids:
         teardowns.extend(TEST_ID_TEST_CASE_MAP[test_id].get_teardowns(environment))
@@ -90,7 +92,7 @@ def get_teardowns(dag_conf: DagConf, environment: DataEnvironment) -> list[str]:
 
 
 @task
-def get_setups(dag_conf: DagConf, environment: DataEnvironment) -> list[str]:
+def get_setups(dag_conf: DagConf, environment: DataEnvironment) -> list[IntTestAction]:
     setups = []
     for test_id in dag_conf.test_ids:
         setups.extend(TEST_ID_TEST_CASE_MAP[test_id].get_setups(environment))
@@ -98,7 +100,7 @@ def get_setups(dag_conf: DagConf, environment: DataEnvironment) -> list[str]:
 
 
 @task
-def get_assertions(dag_conf: DagConf, environment: DataEnvironment) -> list[str]:
+def get_assertions(dag_conf: DagConf, environment: DataEnvironment) -> list[IntTestAction]:
     assertions = []
     for test_id in dag_conf.test_ids:
         assertions.extend(TEST_ID_TEST_CASE_MAP[test_id].get_assertions(environment))
@@ -106,18 +108,18 @@ def get_assertions(dag_conf: DagConf, environment: DataEnvironment) -> list[str]
 
 
 @task
-def run_teardowns(dag_conf: DagConf, environment: DataEnvironment, items: list[str]):
-    TEARDOWN_TASK_MAP[environment](dag_conf, items)
+def run_teardowns(dag_conf: DagConf, environment: DataEnvironment, actions: list[IntTestAction]):
+    TEARDOWN_TASK_MAP[environment](dag_conf, actions)
 
 
 @task
-def run_setups(dag_conf: DagConf, environment: DataEnvironment, items: list[str]):
-    SETUP_TASK_MAP[environment](dag_conf, items)
+def run_setups(dag_conf: DagConf, environment: DataEnvironment, actions: list[IntTestAction]):
+    SETUP_TASK_MAP[environment](dag_conf, actions)
 
 
 @task
-def run_assertions(dag_conf: DagConf, environment: DataEnvironment, items: list[str]):
-    ASSERTION_TASK_MAP[environment](dag_conf, items)
+def run_assertions(dag_conf: DagConf, environment: DataEnvironment, actions: list[IntTestAction]):
+    ASSERTION_TASK_MAP[environment](dag_conf, actions)
 
 
 @task
@@ -130,12 +132,13 @@ def get_trigger_dag_ids_and_confs(dag_conf: DagConf) -> list[dict[str, str]]:
         for test_id in dag_conf.test_ids
     ]
 
-
-default_args = {"owner": "airflow", "params": DagConf(list(TestId)).to_dict()}
+@task
+def batch_actions(dag_conf: DagConf, actions: list[IntTestAction]) -> list[list[IntTestAction]]:
+    action_map =
 
 
 @dag(
-    default_args=default_args,
+    default_args={"owner": "airflow", "params": DagConf(list(TestId)).to_dict()},
     schedule_interval=None,
     start_date=datetime.fromtimestamp(0),
     tags=["example"],
@@ -169,3 +172,10 @@ def integration_testing():
             assertions = get_assertions(dag_conf, env)
             run_assertions(dag_conf, env, assertions)
     trigger_dags_task_group >> assertions_task_group
+
+    with TaskGroup("post_test_teardown") as post_test_teardown_task_group:
+        for env in DataEnvironment:
+            teardowns = get_teardowns(dag_conf, env)
+            run_teardowns(dag_conf, env, teardowns)
+    assertions_task_group >> post_test_teardown_task_group
+
