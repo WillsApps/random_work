@@ -1,17 +1,21 @@
 #/usr/bin/sh
 
+
 PROGRAM=$1
-VERSION=$2
+VERSION=$(ls -l ~/Programs/ | grep $PROGRAM | rev | cut -d' ' -f 1 | rev)
+echo $VERSION
 DIR=$(basename "$(pwd)")
 cd ..
 PARENT_DIR=$(basename "$(pwd)")
 cd "$DIR" || exit
-
-if [ "$PARENT_DIR" != "Code" ]
-then
-  screen -S pycharm -d -m "$HOME/Programs/$PROGRAM-$VERSION/bin/$PROGRAM"
-  echo "Generically opening $PROGRAM"
-  exit 0
+PROGRAM_PATH="$HOME/Programs/$VERSION/bin/$PROGRAM"
+if [ ! -f $PROGRAM_PATH ]; then
+  PROGRAM_PATH="$PROGRAM_PATH.sh"
 fi
-
-screen -S "$PROGRAM-$DIR" -d -m "$HOME/Programs/$PROGRAM-$VERSION/bin/$PROGRAM" "$(pwd)"
+NAME="$PROGRAM"
+TARGET=""
+if [ "$PARENT_DIR" = "Code" ]; then
+  NAME="$PROGRAM-$DIR"
+  TARGET="$(pwd)"
+fi
+screen -S $NAME -d -m $PROGRAM_PATH $TARGET
