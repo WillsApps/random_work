@@ -2,7 +2,6 @@
 # https://stackoverflow.com/questions/35160417/threading-queue-working-example
 from queue import Empty, Queue
 from threading import Thread
-from typing import List
 
 
 class Worker(Thread):
@@ -23,8 +22,8 @@ class Worker(Thread):
 
 
 class Manager(Queue):
-    def __init__(self, num_works=4):
+    def __init__(self, num_works=4, worker_class=type[Worker]):
         super().__init__()
-        self.workers: List[Worker] = []
+        self.workers: list[worker_class] = []
         for _ in range(num_works):
-            self.workers.append(Worker(self))
+            self.workers.append(worker_class(self))

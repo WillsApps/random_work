@@ -22,7 +22,9 @@
       "css" : ["generic.css"],
       "exclude_globs": [
         "https://*.github.com/*",
-        "https://*.airflow.amazonaws.com/*"
+        "https://*.airflow.amazonaws.com/*",
+        "https://meet.google.com/*",
+        "https://mail.google.com/*"
       ]
     }
   ]
