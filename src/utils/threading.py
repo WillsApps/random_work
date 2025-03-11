@@ -1,7 +1,10 @@
 # Stole this code from here
 # https://stackoverflow.com/questions/35160417/threading-queue-working-example
+from abc import ABC, abstractmethod
 from queue import Empty, Queue
 from threading import Thread
+
+from utils import logger
 
 
 class Worker(Thread):
@@ -17,6 +20,32 @@ class Worker(Thread):
                 work(**kwargs)
             except Empty:
                 return
+            # do whatever work you have to do on work
+            self.my_queue.task_done()
+
+
+class ConnectionWorker(Worker, ABC):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.connection = self.get_connection()
+
+    @abstractmethod
+    def get_connection(self):
+        raise NotImplementedError
+
+    def run(self):
+        while True:
+            try:
+                work, kwargs = self.my_queue.get(timeout=3)  # 3s timeout
+                work(connection=self.connection, **kwargs)
+            except Empty:
+                self.connection.close()
+                logger.info("Closing connection.")
+                return
+            except Exception as ex:
+                self.connection.close()
+                logger.exception(ex)
+                logger.exception("Closing connection.")
             # do whatever work you have to do on work
             self.my_queue.task_done()
 

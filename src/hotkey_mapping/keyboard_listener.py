@@ -2,7 +2,12 @@ import asyncio
 import os
 import sys
 
-from evdev import InputDevice, KeyEvent, categorize
+from hotkey_mapping.utils import get_led_name
+
+try:
+    from evdev import InputDevice, KeyEvent, categorize
+except ModuleNotFoundError:
+    exit(0)
 
 sys.path.append("/home/aggy/Code/random_work")
 from src.utils.consts import load_env
@@ -22,10 +27,6 @@ state_keys = {
     "KEY_NUMLOCK": False,
     "KEY_CAPSLOCK": False,
 }
-
-
-def get_led_name(key_code: str) -> str:
-    return key_code.replace("KEY", "LED")[0:-3]
 
 
 def get_key_state(_dev: InputDevice, key_code: str) -> bool:

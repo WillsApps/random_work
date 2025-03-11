@@ -9,3 +9,4 @@ fi
 
 git checkout $MAIN
 git pull
+git status
