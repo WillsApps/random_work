@@ -65,8 +65,7 @@ async def main(_dev: InputDevice):
 
                 if modifier_keys["KEY_LEFTSHIFT"] or modifier_keys["KEY_RIGHTSHIFT"]:
                     top_row_dict = {
-                        "0": "=",
-                        "1": "!",
+                        "0": "=", 
                         "2": '"',
                         "3": "§",
                         "4": "$",
