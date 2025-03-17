@@ -13,3 +13,6 @@ def get_logger(name: str):
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
     return logger
+
+
+logger = get_logger(__name__)

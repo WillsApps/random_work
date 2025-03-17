@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from queue import Empty, Queue
 from threading import Thread
 
-from utils import logger
+from utils.log_utils import logger
 
 
 class Worker(Thread):
