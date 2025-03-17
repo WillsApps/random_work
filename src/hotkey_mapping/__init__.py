@@ -1,1 +1,4 @@
-# sudo apt-get install python3-evdev
+"""
+# Installing:
+sudo apt-get install python3-evdev
+"""
