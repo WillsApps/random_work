@@ -9,18 +9,35 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.github.com/*"],
-      "css" : ["github.css"]
+      "matches": [
+        "https://github.com/*",
+        "https://*.github.com/*"
+      ],
+      "css": [
+        "github.css"
+      ],
+      "js": [
+        "github.js"
+      ]
     },
     {
-      "matches": ["https://*.airflow.amazonaws.com/*"],
-      "css" : ["airflow.css"]
+      "matches": [
+        "https://*.airflow.amazonaws.com/*"
+      ],
+      "css": [
+        "airflow.css"
+      ]
     },
     {
-      "matches": ["<all_urls>"],
-      "css" : ["generic.css"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "generic.css"
+      ],
       "exclude_globs": [
         "https://*.github.com/*",
+        "https://github.com/*",
         "https://*.airflow.amazonaws.com/*",
         "https://meet.google.com/*",
         "https://mail.google.com/*"
