@@ -26,8 +26,8 @@ class Worker(Thread):
 
 class ConnectionWorker(Worker, ABC):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
         self.connection = self.get_connection()
+        super().__init__(*args, **kwargs)
 
     @abstractmethod
     def get_connection(self):

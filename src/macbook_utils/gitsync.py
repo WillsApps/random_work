@@ -24,7 +24,7 @@ def main():
     repo = g.get_repo("verana-health/vh-airflow")
     branch = repo.get_branch(branch_name)
     workflow = repo.get_workflow("sync_dags.yml")
-    dispatch(workflow, branch, "integrations/", "testing")
+    dispatch(workflow, branch, "integrations/platform_deletes/", "testing")
     # dispatch(workflow, branch, "integrations/cdh/", "testing")
 
 
