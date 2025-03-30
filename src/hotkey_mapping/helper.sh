@@ -18,6 +18,5 @@ fi
 
 source "$VENV_DIR"/bin/activate
 
-export PYTHONPATH="$REPO_DIR/:$PYTHONPATH"
-export PYTHONPATH="$REPO_DIR/src/:$PYTHONPATH"
-python "$MODULE_DIR/$PYTHON_NAME"
+export PYTHONPATH="src/:$PYTHONPATH"
+python "$MODULE_DIR/$1"
