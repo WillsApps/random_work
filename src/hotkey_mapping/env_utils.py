@@ -20,6 +20,10 @@ class Key:
     def __str__(self):
         return f"Key({self.name=}, {self.code=})"
 
+    @property
+    def led_name(self) -> str:
+        return self.name.replace("KEY", "LED")[0:-3]
+
 
 def get_key_name(key_code: int) -> str:
     if isinstance(key_code, str):
@@ -39,11 +43,10 @@ def get_led_key(key: int | str) -> str:
     return key.replace("KEY", "LED")[0:-3]
 
 
-def get_key_state(key_code: int) -> bool:
-    led_name = get_led_key(key_code)
-    logger.debug(f"{led_name=}")
+def get_key_state(key: Key) -> bool:
+    logger.debug(f"{key.led_name=}")
     for name, _ in KEYBOARD_INPUT.leds(True):
         logger.debug(f"{name=}")
-        if name == led_name:
+        if name == key.led_name:
             return True
     return False
