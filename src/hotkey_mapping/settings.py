@@ -1,4 +1,3 @@
-import asyncio
 import os
 
 from utils.consts import load_env

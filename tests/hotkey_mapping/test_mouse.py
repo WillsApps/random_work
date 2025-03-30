@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from src.hotkey_mapping.mouse import Position, Window, get_active_window, get_location
+from hotkey_mapping.mouse import Position, Window, get_active_window, get_location
 
 
 @patch("src.hotkey_mapping.mouse.run_command")
