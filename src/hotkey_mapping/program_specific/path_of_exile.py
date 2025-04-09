@@ -1,9 +1,7 @@
 import asyncio
-import os
 from typing import Any, Callable
 
-from hotkey_mapping.env_utils import get_led_key, get_key_state, get_key_code, Key
-from utils.consts import load_env
+from hotkey_mapping.env_utils import Key, get_key_state
 
 try:
     from evdev import InputDevice, KeyEvent, categorize
@@ -11,10 +9,10 @@ try:
 except ModuleNotFoundError:
     InputDevice, KeyEvent, categorize = Any, Any, Any
 
-state = {
-    "flasks_running": False
-}
+state = {"flasks_running": False}
 tasks = []
+
+
 def start_flasks(_dev: InputDevice):
     if not get_key_state(_dev, e.KEY_CAPSLOCK):
         return
@@ -23,7 +21,6 @@ def start_flasks(_dev: InputDevice):
 
 # def stop_flasks(_dev: InputDevice):
 #     for task in tasks:
-
 
 
 # helper function for running a target periodically
@@ -39,21 +36,19 @@ async def periodic(interval_sec: float, coro_name: Callable, *args, **kwargs):
 # general task
 async def send_key(key: Key):
     # report a message
-    print(f'Sending {key}')
-
-async def start_flasks():
+    print(f"Sending {key}")
 
 
 # main coroutine
 async def main():
     # report a message
-    print('Main starting')
+    print("Main starting")
     # configure the periodic task
     t1 = asyncio.create_task(periodic(1.0, send_key, Key(4)))
     t2 = asyncio.create_task(periodic(1.0, send_key, Key(6)))
     await t1
     await t2
-    print('Main done')
+    print("Main done")
 
 
 loop = asyncio.get_event_loop()
