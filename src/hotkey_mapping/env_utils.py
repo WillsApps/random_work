@@ -1,48 +1,22 @@
-from typing import Any
+from typing import Callable
 
-from hotkey_mapping.globals import KEYBOARD_INPUT
+from evdev import ecodes as e
+
+from hotkey_mapping.classes import Key
+from hotkey_mapping.settings import KEYBOARD_INPUT, MODIFIER_KEYS
 from utils.log_utils import logger
 
-try:
-    from evdev import InputDevice, KeyEvent, categorize
-    from evdev.ecodes import ecodes as key_str_dict
-    from evdev.ecodes import KEY as KEY_INT_DICT
-except ModuleNotFoundError:
-    InputDevice, KeyEvent, categorize = Any, Any, Any
+
+def get_key(func: Callable) -> Callable:
+    def inner(key: Key | int | str, *args, **kwargs):
+        if not isinstance(key, Key):
+            key = Key(key)
+        return func(key, *args, **kwargs)
+
+    return inner
 
 
-class Key:
-    def __init__(self, key: int | str):
-        self.code = get_key_code(key)
-        self.name = get_key_name(key)
-        self.value = self.name[4:]
-
-    def __str__(self):
-        return f"Key({self.name=}, {self.code=})"
-
-    @property
-    def led_name(self) -> str:
-        return self.name.replace("KEY", "LED")[0:-3]
-
-
-def get_key_name(key_code: int) -> str:
-    if isinstance(key_code, str):
-        return key_code
-    return KEY_INT_DICT[key_code]
-
-
-def get_key_code(key_name: str) -> int:
-    if isinstance(key_name, int):
-        return key_name
-    return key_str_dict[key_name]
-
-
-def get_led_key(key: int | str) -> str:
-    if isinstance(key, int):
-        key = get_key_name(key)
-    return key.replace("KEY", "LED")[0:-3]
-
-
+@get_key
 def get_key_state(key: Key) -> bool:
     logger.debug(f"{key.led_name=}")
     for name, _ in KEYBOARD_INPUT.leds(True):
@@ -50,3 +24,7 @@ def get_key_state(key: Key) -> bool:
         if name == key.led_name:
             return True
     return False
+
+
+def is_shift_down() -> bool:
+    return MODIFIER_KEYS[Key(e.KEY_LEFTSHIFT)] or MODIFIER_KEYS[Key(e.KEY_RIGHTSHIFT)]

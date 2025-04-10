@@ -2,8 +2,6 @@
 
 MODULE_DIR=$(dirname  "${BASH_SOURCE[0]}")
 REPO_DIR=$( cd -- "$MODULE_DIR/../.." &> /dev/null && pwd )
-BASH_NAME=$(basename "$0")
-PYTHON_NAME=$(echo $BASH_NAME | sed -En "s/.sh/.py/p")
 
 if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     echo "Not running as root"
