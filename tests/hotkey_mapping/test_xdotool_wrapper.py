@@ -246,8 +246,7 @@ def test_move_mouse_has_right_number_of_calls(
     )
     assert mock_run_command.call_count == 5
     assert mock_sleep.call_count == 4
-    lerp_calls = mock_start.lerp.call_args_list
-    assert lerp_calls == [
+    assert mock_start.lerp.call_args_list == [
         call(
             mock_normalize_target.return_value,
             0.0,
