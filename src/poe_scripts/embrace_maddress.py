@@ -17,7 +17,7 @@ def get_duration(
     return base_duration * get_duration_mod(faster_mods)
 
 
-def get_highest_stack(faster_mods: list[float]) -> dict[int, dict[str, float | int]]:
+def get_highest_stack(faster_mods: list[float]) -> list[int]:
     highest_stacks = []
     debuff_duration = get_duration(faster_mods)
     print(f"{faster_mods=}")
@@ -48,7 +48,7 @@ def get_highest_stack(faster_mods: list[float]) -> dict[int, dict[str, float | i
         highest_stacks.append(highest_stack)
     print(f"    {highest_stacks=}")
     print(f"    {sum(highest_stacks)/len(highest_stacks)=}")
-    return stacks
+    return highest_stacks
 
 
 def main():
