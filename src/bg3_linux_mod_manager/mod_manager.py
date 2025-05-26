@@ -1,326 +1,202 @@
-#!/usr/bin/env python3
-
 import json
-import os
-import shutil
-import sys
-import xml.etree.ElementTree as ET
 import zipfile
+from copy import deepcopy
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Optional
+
+import rarfile
+import xmltodict
+
+from bg3_linux_mod_manager.constants import MODS_DIR, PUBLIC_XML, STEAM_XML, TEMP_DIR
+
+public_example = """<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="8" revision="0" build="200"/>
+    <region id="ModuleSettings">
+        <node id="root">
+            <children>
+                <node id="ModOrder" />
+                <node id="Mods">
+                    <children>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" type="LSString" value="GustavX"/>
+                            <attribute id="MD5" type="LSString" value="34a0c6d5bef9658123228d6a19a5cc00"/>
+                            <attribute id="Name" type="LSString" value="GustavX"/>
+                            <attribute id="PublishHandle" type="uint64" value="0"/>
+                            <attribute id="UUID" type="guid" value="cb555efe-2d9e-131f-8195-a89329d218ea"/>
+                            <attribute id="Version64" type="int64" value="145241302737902957"/>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>
+"""
 
 
-class BG3ModInstaller:
-    def __init__(self):
-        self.steam_path = Path.home() / ".steam/steam"
-        self.game_id = "1086940"
-        self.larian_path = (
-            self.steam_path
-            / f"steamapps/compatdata/{self.game_id}/pfx/drive_c/users/steamuser/AppData/Local/Larian Studios"
-        )
-        self.steam_userdata = self.steam_path / "userdata"
+def extract_mod_files(mod_path: Path) -> tuple[Optional[Path], list[str]]:
+    info_path = None
+    if mod_path.suffix == ".zip":
+        with zipfile.ZipFile(mod_path, "r") as zip_ref:
+            info_path, pak_names = method_name(zip_ref, info_path)
+    elif mod_path.suffix == ".rar":
+        with rarfile.RarFile(mod_path, "r") as rar_ref:
+            info_path, pak_names = method_name(rar_ref, info_path)
+    return info_path, pak_names
 
-        self.mods_path = self.larian_path / "Baldur's Gate 3/Mods"
-        self.profile_modsettings = (
-            self.larian_path / "Baldur's Gate 3/PlayerProfiles/Public/modsettings.lsx"
-        )
-        print(self.mods_path)
-        print(self.profile_modsettings)
 
-    def get_steam_id(self):
-        """Get the first Steam ID from userdata directory."""
-        try:
-            steam_ids = [d for d in os.listdir(self.steam_userdata) if d.isdigit()]
-            if not steam_ids:
-                raise Exception("No Steam ID found in userdata directory")
-            return steam_ids[0]
-        except Exception as e:
-            print(f"Error finding Steam ID: {e}")
-            sys.exit(1)
+def method_name(compressed_ref, info_path):
+    pak_files = [f for f in compressed_ref.filelist if f.filename.endswith(".pak")]
+    pak_names = []
+    for pak_file in pak_files:
+        compressed_ref.extract(pak_file, MODS_DIR)
+        pak_names.append(pak_file.filename)
+    info_file = [f for f in compressed_ref.filelist if f.filename == "info.json"]
+    if info_file:
+        compressed_ref.extract(info_file[0], TEMP_DIR)
+        info_path = TEMP_DIR / info_file[0].filename
+    return info_path, pak_names
 
-    def sync_modsettings(self):
-        """Copy the main modsettings.lsx file to the userdata location."""
-        try:
-            steam_id = self.get_steam_id()
-            userdata_modsettings = (
-                self.steam_userdata / steam_id / self.game_id / "modsettings.lsx"
-            )
 
-            userdata_modsettings.parent.mkdir(parents=True, exist_ok=True)
-
-            shutil.copy2(self.profile_modsettings, userdata_modsettings)
-            print(f"Synchronized modsettings.lsx to {userdata_modsettings}")
-        except Exception as e:
-            print(f"Error synchronizing modsettings files: {e}")
-            sys.exit(1)
-
-    def get_installed_mods(self) -> List[Dict]:
-        """Get list of currently installed mods from modsettings.lsx."""
-        try:
-            tree = ET.parse(self.profile_modsettings)
-            root = tree.getroot()
-            mods = []
-
-            for mod in root.findall(".//node[@id='ModuleShortDesc']"):
-                mod_info = {}
-                for attr in mod.findall("attribute"):
-                    mod_info[attr.get("id")] = attr.get("value")
-                mods.append(mod_info)
-
-            return mods
-        except Exception as e:
-            print(f"Error reading installed mods: {e}")
-            return []
-
-    def get_mod_info_from_zip(self, zip_path: Path) -> Optional[Dict]:
-        """Extract mod information from a zip file."""
-        try:
-            with zipfile.ZipFile(zip_path, "r") as zip_ref:
-                info_files = [f for f in zip_ref.namelist() if f.endswith("info.json")]
-                if info_files:
-                    info_data = json.loads(zip_ref.read(info_files[0]))
-                    if "Mods" in info_data and len(info_data["Mods"]) > 0:
-                        return info_data["Mods"][0]
-            return None
-        except Exception as e:
-            print(f"Error reading mod info from zip: {e}")
-            return None
-
-    def display_mod_info(self, mod_info: Dict):
-        """Display formatted mod information."""
-        print("\nMod Details:")
-        print("-" * 40)
-        for key, value in mod_info.items():
-            if key not in ["MD5"]:  # Skip technical details
-                print(f"{key}: {value}")
-        print("-" * 40)
-
-    def confirm_action(self, action: str, mod_info: Dict) -> bool:
-        """Ask for user confirmation with mod details."""
-        self.display_mod_info(mod_info)
-        while True:
-            response = input(
-                f"\nAre you sure you want to {action} this mod? (yes/no): "
-            ).lower()
-            if response in ["yes", "y"]:
-                return True
-            if response in ["no", "n"]:
-                return False
-            print("Please answer with 'yes' or 'no'")
-
-    def remove_mod(self, mod_index: int):
-        """Remove a mod by its index from the list."""
-        try:
-            installed_mods = self.get_installed_mods()
-            if not (0 <= mod_index < len(installed_mods)):
-                print("Invalid mod index")
-                return False
-
-            mod_to_remove = installed_mods[mod_index]
-
-            # Ask for confirmation
-            if not self.confirm_action("remove", mod_to_remove):
-                print("Mod removal cancelled.")
-                return False
-
-            mod_folder = mod_to_remove["Folder"]
-
-            # Remove .pak file
-            pak_path = self.mods_path / f"{mod_folder}.pak"
-            if pak_path.exists():
-                pak_path.unlink()
-                print(f"Removed pak file: {pak_path}")
-
-            # Update modsettings.lsx
-            tree = ET.parse(self.profile_modsettings)
-            root = tree.getroot()
-
-            mods_children = root.find(".//node[@id='Mods']/children")
-            if mods_children is not None:
-                for mod in mods_children.findall("node[@id='ModuleShortDesc']"):
-                    folder = mod.find("attribute[@id='Folder']")
-                    if folder is not None and folder.get("value") == mod_folder:
-                        mods_children.remove(mod)
-                        break
-
-            tree.write(self.profile_modsettings, encoding="utf-8", xml_declaration=True)
-            print(f"Updated {self.profile_modsettings}")
-
-            self.sync_modsettings()
-            return True
-
-        except Exception as e:
-            print(f"Error removing mod: {e}")
-            return False
-
-    def create_mod_xml(self, mod_info):
-        """Create XML structure for mod entry."""
-        module = ET.Element("node")
-        module.set("id", "ModuleShortDesc")
-
-        attributes = {
-            "Folder": mod_info["Folder"],
-            "MD5": mod_info.get("MD5", ""),
-            "Name": mod_info["Name"],
-            "UUID": mod_info["UUID"],
-            "Version64": str(mod_info.get("Version", "36028797018963968")),
+def build_empty_mod_nodes(pak_names: list[str]) -> list[dict]:
+    return build_mod_nodes(
+        {
+            "mods": [
+                {"name": pak_name, "folder": pak_name, "version": "1"}
+                for pak_name in pak_names
+            ]
         }
-
-        for key, value in attributes.items():
-            attr = ET.SubElement(module, "attribute")
-            attr.set("id", key)
-            attr.set("type", "LSString")
-            attr.set("value", value)
-
-        return module
-
-    def update_modsettings(self, mod_info):
-        """Update modsettings.lsx file with new mod information."""
-        try:
-            tree = ET.parse(self.profile_modsettings)
-            root = tree.getroot()
-
-            mods_children = root.find(".//node[@id='Mods']/children")
-            if mods_children is None:
-                raise Exception("Mods children section not found in modsettings.lsx")
-
-            new_module = self.create_mod_xml(mod_info)
-            mods_children.append(new_module)
-
-            tree.write(self.profile_modsettings, encoding="utf-8", xml_declaration=True)
-            print(f"Updated {self.profile_modsettings}")
-
-            self.sync_modsettings()
-
-        except Exception as e:
-            print(f"Error updating modsettings: {e}")
-            sys.exit(1)
-
-    def install_mod(self, mod_path):
-        """Install a mod from a zip file or directory."""
-        try:
-            # Create mods directory if it doesn't exist
-            self.mods_path.mkdir(parents=True, exist_ok=True)
-
-            if mod_path.suffix.lower() in [".zip", ".rar", ".7z"]:
-                # Get mod info and confirm installation
-                mod_info = self.get_mod_info_from_zip(mod_path)
-                if mod_info:
-                    if not self.confirm_action("install", mod_info):
-                        print("Mod installation cancelled.")
-                        return
-
-                # Extract archive
-                with zipfile.ZipFile(mod_path, "r") as zip_ref:
-                    pak_files = [f for f in zip_ref.namelist() if f.endswith(".pak")]
-                    info_files = [
-                        f for f in zip_ref.namelist() if f.endswith("info.json")
-                    ]
-
-                    if not pak_files:
-                        raise Exception("No .pak files found in archive")
-
-                    for pak_file in pak_files:
-                        zip_ref.extract(pak_file, self.mods_path)
-                        print(f"Installed {pak_file} to mods directory")
-
-                    if info_files:
-                        info_data = json.loads(zip_ref.read(info_files[0]))
-                        if "Mods" in info_data and len(info_data["Mods"]) > 0:
-                            self.update_modsettings(info_data["Mods"][0])
-
-            elif mod_path.suffix.lower() == ".pak":
-                print(
-                    "\nWarning: Installing a .pak file directly. No mod information available for confirmation."
-                )
-                while True:
-                    response = input("Do you want to continue? (yes/no): ").lower()
-                    if response in ["no", "n"]:
-                        print("Mod installation cancelled.")
-                        return
-                    if response in ["yes", "y"]:
-                        break
-                    print("Please answer with 'yes' or 'no'")
-
-                shutil.copy2(mod_path, self.mods_path)
-                print(f"Installed {mod_path.name} to mods directory")
-
-            else:
-                raise Exception(
-                    "Unsupported file type. Please provide a .zip archive or .pak file"
-                )
-
-        except Exception as e:
-            print(f"Error installing mod: {e}")
-            sys.exit(1)
+    )
 
 
-def display_menu():
-    """Display the main menu and get user choice."""
-    print("\nBaldur's Gate 3 Mod Manager")
-    print("1. Install mod")
-    print("2. Remove mod")
-    print("3. Exit")
-    while True:
-        try:
-            choice = int(input("\nEnter your choice (1-3): "))
-            if 1 <= choice <= 3:
-                return choice
-            print("Please enter a number between 1 and 3")
-        except ValueError:
-            print("Please enter a valid number")
+def build_mod_nodes(info_json: dict) -> list[dict]:
+    info_attribute_map = {
+        "modname": "Name",
+        "name": "Name",
+        "uuid": "UUID",
+        "foldername": "Folder",
+        "folder": "Folder",
+        "version": "Version64",
+        "md5": "MD5",
+    }
 
+    attribute_type_map = {
+        "Name": "LSString",
+        "UUID": "guid",
+        "Folder": "LSString",
+        "Version64": "int64",
+        "MD5": "LSString",
+    }
 
-def display_installed_mods(mods: List[Dict]):
-    """Display installed mods and get user choice for removal."""
-    print("\nInstalled Mods:")
-    for i, mod in enumerate(mods):
-        print(f"{i + 1}. {mod['Name']} ({mod['Folder']})")
+    global_md5 = info_json.get("MD5")
 
-    while True:
-        try:
-            choice = int(
-                input("\nEnter the number of the mod to remove (0 to cancel): ")
+    mod_nodes = []
+
+    mods = info_json.get("mods", info_json.get("Mods", []))
+
+    for mod in mods:
+        mod_node = {"@id": "ModuleShortDesc", "attribute": []}
+        for info_name, attribute_name in info_attribute_map.items():
+            for key in list(mod.keys()):
+                mod[key.lower()] = mod[key]
+            value = mod.get(info_name)
+            if not value or value == "":
+                continue
+            mod_node["attribute"].append(
+                {
+                    "@id": attribute_name,
+                    "@type": attribute_type_map[attribute_name],
+                    "@value": value,
+                }
             )
-            if choice == 0:
-                return None
-            if 1 <= choice <= len(mods):
-                return choice - 1
-            print(f"Please enter a number between 0 and {len(mods)}")
-        except ValueError:
-            print("Please enter a valid number")
+        if global_md5 and "md5" not in mod.keys():
+            mod_node["attribute"].append(
+                {"@id": "MD5", "@type": attribute_type_map["MD5"], "@value": global_md5}
+            )
+        mod_node["attribute"].append(
+            {"@id": "PublishHandle", "@type": "uint64", "@value": "0"}
+        )
+        mod_nodes.append(mod_node)
+    return mod_nodes
+
+
+def read_xml(source_xml: str) -> dict:
+    return xmltodict.parse(source_xml)
+
+
+def get_mods_list(parsed_xml: dict) -> list[dict]:
+    mods = parsed_xml["save"]["region"]["node"]["children"]["node"]
+    if isinstance(mods, list):
+        mods = [node for node in mods if node["@id"] == "Mods"][0]
+    mods = mods["children"]["node"]
+    if isinstance(mods, dict):
+        return [mods]
+    return mods
+
+
+def replace_mods_list(parsed_xml: dict, mods_list) -> dict:
+    new_xml = deepcopy(parsed_xml)
+    mods = new_xml["save"]["region"]["node"]["children"]["node"]
+    if isinstance(mods, dict):
+        new_xml["save"]["region"]["node"]["children"]["node"]["children"]["node"] = (
+            mods_list
+        )
+    else:
+        for _index, mod in enumerate(mods):
+            if mod["@id"] == "Mods":
+                break
+        new_xml["save"]["region"]["node"]["children"]["node"][_index]["children"][
+            "node"
+        ] = mods_list
+    return new_xml
+
+
+def get_mod_uuids(mods_list: list) -> list[str]:
+    return []
+
+
+def add_mod(mod_path: Path):
+    info_path, pak_paths = extract_mod_files(mod_path)
+    source_xml = PUBLIC_XML.read_text()
+    # source_xml = public_example
+    public_xml = read_xml(source_xml)
+    mods_list = get_mods_list(public_xml)
+    if info_path:
+        info_json = json.loads(info_path.read_text())
+        mods_list.extend(build_mod_nodes(info_json))
+        public_xml = replace_mods_list(public_xml, mods_list)
+    else:
+        mods_list.extend(build_empty_mod_nodes(pak_paths))
+        public_xml = replace_mods_list(public_xml, mods_list)
+
+    raw = xmltodict.unparse(
+        public_xml, short_empty_elements=True, pretty=True, indent="    "
+    )
+    PUBLIC_XML.write_text(raw)
+    STEAM_XML.write_text(raw)
 
 
 def main():
-    installer = BG3ModInstaller()
-
-    while True:
-        choice = display_menu()
-
-        if choice == 1:  # Install mod
-            mod_path = input("\nEnter the path to the mod file (.zip or .pak): ")
-            try:
-                installer.install_mod(Path(mod_path))
-                print("Mod installation completed successfully!")
-            except Exception as e:
-                print(f"Error installing mod: {e}")
-
-        elif choice == 2:  # Remove mod
-            installed_mods = installer.get_installed_mods()
-            if not installed_mods:
-                print("No mods currently installed.")
-                continue
-
-            mod_index = display_installed_mods(installed_mods)
-            if mod_index is not None:
-                if installer.remove_mod(mod_index):
-                    print("Mod removed successfully!")
-                else:
-                    print("Failed to remove mod.")
-
-        else:  # Exit
-            print("Goodbye!")
-            break
+    # add_mod(
+    #     Path.home()
+    #     / "Downloads"
+    #     / "Mod Configuration Menu 1.31.0-9162-1-31-0-1747588512.zip"
+    # )
+    # add_mod(Path.home() / "Downloads" / "5e Spells-125-2-3-0-0-1746891437.zip")
+    # add_mod(Path("~/Downloads/Clear Map No Grid Transparent Shroud-2256-1-2-6-1744782367.zip"))
+    add_mod(
+        Path("~/Downloads/Vessnelle's Hair Collection pack 1-1420-1-0-1708501781.zip")
+    )
+    add_mod(
+        Path("~/Downloads/Vessnelle's Hair Collection pack 2-1420-1-0-1708586487.zip")
+    )
+    add_mod(
+        Path("~/Downloads/Vessnelle's Hair Collection pack 3-1420-1-0-1709577118.zip")
+    )
+    add_mod(
+        Path("~/Downloads/Vessnelle's Hair Collection pack 4-1420-1-0-1711767563.zip")
+    )
 
 
 if __name__ == "__main__":

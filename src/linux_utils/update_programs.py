@@ -13,6 +13,7 @@ from marshmallow import fields
 from src.linux_utils import logger
 
 
+# https://discord.com/api/download/stable?platform=linux&format=deb
 @dataclass
 class RepoToUpdate(DataClassJsonMixin):
     owner: str

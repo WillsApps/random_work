@@ -1,42 +1,14 @@
 [project]
-name = "random-work"
+name = "databricks_query_spammer"
 authors = [
   {name = "Will Burdett", email = "github@willsapps.com"},
 ]
 version = "0.1.0"
-description = "This is a place where I dump a bunch of random projects."
-readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "beautifulsoup4>=4.12.3",
-    "black>=24.10.0",
-    "bs4>=0.0.2",
-    "cookiecutter>=2.6.0",
-    "cryptography>=39.0.1",
-    "flask>=3.1.0",
-    "future>=1.0.0",
-    "inflection>=0.5.1",
-    "keyboard>=0.13.5",
-    "looker-sdk>=24.20.0",
-    "numpy>=2.2.0",
-    "pandas>=2.2.3",
-    "prefect>=3.1.6",
-    "pygithub>=2.5.0",
-    "pytest>=8.3.4",
-    "python-dotenv>=1.0.1",
-    "pytube3>=9.6.4",
-    "slack-sdk>=3.33.5",
-    "sqlfluff>=3.3.0",
-    "sqlparse>=0.4.4",
-    "wikitables>=0.5.5",
     "dataclasses-json>=0.6.7",
     "ruff>=0.8.4",
-    "pre-commit>=4.0.1",
     "databricks-sql-connector>=3.7.2",
-    "pynput>=1.8.0",
-    "xmltodict>=0.14.2",
-    "fire>=0.7.0",
-    "rarfile>=4.2",
 ]
 
 [tool.ruff]
