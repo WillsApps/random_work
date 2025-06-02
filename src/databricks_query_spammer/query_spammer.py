@@ -7,7 +7,6 @@ from re import RegexFlag
 
 from databricks import sql
 from databricks.sql.client import Connection
-
 from utils.consts import load_env
 from utils.log_utils import logger
 from utils.threading import ConnectionWorker, Manager, Worker
@@ -69,7 +68,11 @@ def execute_query(
         logger.info(
             f"Task: ({index}/{total}) time_left: ({pretty_timedelta(time_left)}), expected_end_time:({expected_end_time.isoformat()}):\n{query.strip()}"
         )
-        cursor.execute(query)
+        try:
+            cursor.execute(query)
+        except Exception:
+            logger.exception(f"Failed for task: ({index}/{total})")
+            raise
 
 
 def get_queries_from_path(file: Path) -> list[str]:
@@ -101,5 +104,6 @@ def main(query_file: Path, worker_class=type[Worker]):
 
 
 if __name__ == "__main__":
-    # main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
-    main(Path("/Users/will.burdett/.scratches/scratch_666.sql"), DBXWorker)
+    main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
+    main(Path("/Users/will.burdett/.scratches/scratch_580.sql"), DBXWorker)
+    # main(Path("/Users/will.burdett/.scratches/scratch_666.sql"), DBXWorker)

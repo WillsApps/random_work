@@ -40,9 +40,11 @@ def main():
     if "" in file_paths:
         file_paths.remove("")
     logger.debug(file_paths)
-    logger.debug(f"Command: {' '.join(['black', *file_paths])}")
+    command = ["black", "--line-length=79", *file_paths]
+    logger.info(f"Command: {' '.join(command)}")
+    print(f"Command: {' '.join(command)}")
     black_output = (
-        run(["black", "--line-length=79", *file_paths], capture_output=True)
+        run(command, capture_output=True)
         .stderr.decode()
         # .stdout.decode()
         .replace(

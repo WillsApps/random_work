@@ -25,6 +25,7 @@ def main():
     branch = repo.get_branch(branch_name)
     workflow = repo.get_workflow("sync_dags.yml")
     dispatch(workflow, branch, "integrations/", "testing")
+    dispatch(workflow, branch, "utils/", "testing")
     # dispatch(workflow, branch, "entities/", "testing")
     # dispatch(workflow, branch, "", "sandbox")
     # dispatch(workflow, branch, "integrations/cdh/", "testing")
