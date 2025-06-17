@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from queue import Empty, Queue
 from threading import Thread
 
-from utils.log_utils import logger
+from general_utils.log_utils import logger
 
 
 class Worker(Thread):
@@ -46,6 +46,7 @@ class ConnectionWorker(Worker, ABC):
                 self.connection.close()
                 logger.exception(ex)
                 logger.exception("Closing connection.")
+                break
             # do whatever work you have to do on work
             self.my_queue.task_done()
 

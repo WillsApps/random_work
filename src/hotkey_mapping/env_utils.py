@@ -2,9 +2,9 @@ from typing import Callable
 
 from evdev import ecodes as e
 
+from general_utils.log_utils import logger
 from hotkey_mapping.classes import Key
 from hotkey_mapping.settings import KEYBOARD_INPUT, MODIFIER_KEYS
-from utils.log_utils import logger
 
 
 def get_key(func: Callable) -> Callable:

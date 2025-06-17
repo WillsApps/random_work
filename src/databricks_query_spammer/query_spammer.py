@@ -7,9 +7,9 @@ from re import RegexFlag
 
 from databricks import sql
 from databricks.sql.client import Connection
-from utils.consts import load_env
-from utils.log_utils import logger
-from utils.threading import ConnectionWorker, Manager, Worker
+from general_utils.consts import load_env
+from general_utils.log_utils import logger
+from general_utils.threading import ConnectionWorker, Manager, Worker
 
 load_env()
 

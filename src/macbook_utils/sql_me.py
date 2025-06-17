@@ -6,7 +6,7 @@ from subprocess import run
 from sqlfluff import fix
 from sqlfluff.core import FluffConfig
 
-from utils.log_utils import logger
+from general_utils.log_utils import logger
 
 
 def get_sql_paths_from_dir(path: Path) -> set[Path]:

@@ -32,9 +32,7 @@ def get_all_folder_paths(folder_path: str) -> List[str]:
     return folder_paths
 
 
-def get_delete_folder_tasks(
-    folder_path: str, upstream_task: Task = None, upstream_tasks: List[Task] = None
-) -> Task:
+def get_delete_folder_tasks(folder_path: str, upstream_task: Task = None, upstream_tasks: List[Task] = None) -> Task:
     all_file_paths = get_all_file_paths(folder_path)
     if upstream_task is not None:
         all_file_paths.set_upstream(upstream_task)

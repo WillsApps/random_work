@@ -4,7 +4,7 @@ from random import randint
 from time import sleep
 from typing import Tuple
 
-from utils.threading import Manager
+from general_utils.threading import Manager
 
 
 def int_to_hex(number: int) -> str:
@@ -47,9 +47,7 @@ def draw_time(canvas: tkinter.Canvas):
         canvas_color = colors[int(base_color_switch)]
         text_color = colors[int(not base_color_switch)]
         canvas.configure(bg=canvas_color)
-        canvas.create_text(
-            5, 15, anchor=tkinter.W, font=("Purisa", 18), text=now, fill=text_color
-        )
+        canvas.create_text(5, 15, anchor=tkinter.W, font=("Purisa", 18), text=now, fill=text_color)
         sleep(0.5)
 
 

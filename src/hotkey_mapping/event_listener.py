@@ -2,6 +2,7 @@ import asyncio
 
 from evdev import KeyEvent, RelEvent, categorize
 
+from general_utils.log_utils import logger
 from hotkey_mapping.env_utils import Key, get_key_state, is_shift_down
 from hotkey_mapping.event_writer import move_mouse, send_click, send_key
 from hotkey_mapping.settings import (
@@ -10,7 +11,6 @@ from hotkey_mapping.settings import (
     MOUSE_INPUT,
     STATE_KEYS,
 )
-from utils.log_utils import logger
 
 
 def key_up(key: Key):

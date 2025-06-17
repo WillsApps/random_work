@@ -3,7 +3,7 @@ from typing import Any, Dict, List
 
 from flask import Flask, jsonify, request
 
-from src.utils.threading import Manager
+from src.general_utils.threading import Manager
 
 app = Flask(__name__)
 queue = Manager()
@@ -40,9 +40,7 @@ def post_log():
     productivity_score = data.get("productivity_score")
     activity = data.get("activity")
     # Process the data
-    queue.put(
-        (insert_log, {"productivity_score": productivity_score, "activity": activity})
-    )
+    queue.put((insert_log, {"productivity_score": productivity_score, "activity": activity}))
     return jsonify({"message": "Data received", "received_data": data}), 200
 
 

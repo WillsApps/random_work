@@ -1,6 +1,6 @@
 from subprocess import run
 
-from utils.log_utils import logger
+from general_utils.log_utils import logger
 
 
 def add_if_py_or_dir(file_path: str):

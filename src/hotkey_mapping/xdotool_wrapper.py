@@ -7,7 +7,7 @@ from typing import Any, Optional
 
 from dataclasses_json import DataClassJsonMixin
 
-from utils.log_utils import logger, timeit
+from general_utils.log_utils import logger, timeit
 
 
 @dataclass
@@ -52,9 +52,7 @@ class Window(DataClassJsonMixin):
     name: str
 
 
-def run_command(
-    command_parts: Sequence[str], grab_output: bool = True
-) -> Optional[str]:
+def run_command(command_parts: Sequence[str], grab_output: bool = True) -> Optional[str]:
     logger.debug(command_parts)
     if grab_output:
         return subprocess.check_output(command_parts).decode("utf-8")
@@ -115,9 +113,7 @@ def move_mouse(
             )
         )
         commands.append((time.sleep, [duration / number_chunks]))
-    commands.append(
-        (run_command, (("xdotool", "mousemove", f"{target.x}", f"{target.y}"), False))
-    )
+    commands.append((run_command, (("xdotool", "mousemove", f"{target.x}", f"{target.y}"), False)))
     for func, args in commands:
         func(*args)
     logger.debug(f"expected_duration={duration}")

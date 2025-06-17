@@ -5,7 +5,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /app
 ADD . /app
 ADD ../../.env /app/.env
-ADD ../utils/. /app/utils/.
+ADD ../general_utils/. /app/utils/.
 
 # Install dependencies
 RUN --mount=type=cache,target=/root/.cache/uv \

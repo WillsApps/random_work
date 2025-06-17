@@ -9,8 +9,8 @@ from botocore.exceptions import ClientError
 from dotenv import load_dotenv
 from prefect import Flow, context, task, unmapped
 
-from utils.file_utils import get_delete_folder_tasks, get_file_name
-from utils.request_manager import RequestManager
+from general_utils.file_utils import get_delete_folder_tasks, get_file_name
+from general_utils.request_manager import RequestManager
 
 DOWNLOADS_URL = "https://api.fda.gov/download.json"
 LOGGER = context.get("logger")
@@ -41,17 +41,12 @@ MAX_SKIP = 1_000
 @task(max_retries=3, retry_delay=timedelta(minutes=1))
 def get_file_urls(request_manager: RequestManager) -> List[str]:
     response = request_manager.make_request(DOWNLOADS_URL).json()
-    return [
-        partition["file"]
-        for partition in response["results"]["drug"]["ndc"]["partitions"]
-    ]
+    return [partition["file"] for partition in response["results"]["drug"]["ndc"]["partitions"]]
 
 
 # Taken from: https://docs.python-requests.org/en/master/user/quickstart/#raw-response-content
 @task(max_retries=3, retry_delay=timedelta(minutes=1))
-def download_file_from_url(
-    file_url: str, folder_path: str, request_manager: RequestManager
-) -> str:
+def download_file_from_url(file_url: str, folder_path: str, request_manager: RequestManager) -> str:
     file_name = file_url.split("/")[-1]
     stream = request_manager.stream(file_url)
     full_path = os.path.join(folder_path, file_name)
@@ -187,14 +182,10 @@ def get_chunks(url: str, request_manager: RequestManager) -> List[int]:
 
 
 @task(max_retries=3, retry_delay=timedelta(minutes=1))
-def save_chunk_to_file(
-    multiplier: int, url: str, folder_path: str, request_manager: RequestManager
-) -> str:
+def save_chunk_to_file(multiplier: int, url: str, folder_path: str, request_manager: RequestManager) -> str:
     LOGGER.info(f"multiplier {multiplier}")
     all_results = []
-    for skip in range(
-        multiplier * RECORDS_PER_FILE, (multiplier + 1) * RECORDS_PER_FILE, MAX_SKIP
-    ):
+    for skip in range(multiplier * RECORDS_PER_FILE, (multiplier + 1) * RECORDS_PER_FILE, MAX_SKIP):
         url_with_skip = url.replace("SKIP", str(skip))
         response = request_manager.make_request(url_with_skip).json()
         results = response["results"]
@@ -220,9 +211,7 @@ def get_max_marketing_start_date(file_path: str) -> str:
 
 
 @task()
-def save_max_marketing_start_dates(
-    max_marketing_start_dates: List[str], folder_path: str
-) -> str:
+def save_max_marketing_start_dates(max_marketing_start_dates: List[str], folder_path: str) -> str:
     max_marketing = max_marketing_start_dates.copy()
     max_marketing.sort(reverse=True)
     file_name = "max_marketing_start_date.json"
@@ -247,27 +236,19 @@ def main_full_refresh() -> Flow:
             folder_path=unmapped(folder_path),
             request_manager=unmapped(request_manager),
         )
-        unzipped_file_paths = unzip_file.map(
-            file_path=original_zipped_file_paths, folder_path=unmapped(folder_path)
-        )
-        meta_file_paths = split_files.map(
-            file_path=unzipped_file_paths, key=unmapped("meta")
-        )
+        unzipped_file_paths = unzip_file.map(file_path=original_zipped_file_paths, folder_path=unmapped(folder_path))
+        meta_file_paths = split_files.map(file_path=unzipped_file_paths, key=unmapped("meta"))
         meta_zipped_file_paths = zip_file.map(file_path=meta_file_paths)
         meta_uploading_files = upload_file.map(
             file_path=meta_zipped_file_paths,
         )
 
-        results_file_paths = split_files.map(
-            file_path=unzipped_file_paths, key=unmapped("results")
-        )
+        results_file_paths = split_files.map(file_path=unzipped_file_paths, key=unmapped("results"))
         results_zipped_file_paths = zip_file.map(file_path=results_file_paths)
         results_uploading_files = upload_file.map(
             file_path=results_zipped_file_paths,
         )
-        max_marketing_start_dates = get_max_marketing_start_date.map(
-            file_path=results_file_paths
-        )
+        max_marketing_start_dates = get_max_marketing_start_date.map(file_path=results_file_paths)
         max_marketing_file_path = save_max_marketing_start_dates(
             max_marketing_start_dates=max_marketing_start_dates, folder_path=folder_path
         )

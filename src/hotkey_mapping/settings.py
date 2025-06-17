@@ -4,8 +4,8 @@ import evdev
 from evdev import InputDevice
 from evdev import ecodes as e
 
+from general_utils.consts import load_env
 from hotkey_mapping.classes import Key
-from utils.consts import load_env
 
 load_env()
 

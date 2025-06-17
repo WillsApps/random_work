@@ -2,7 +2,7 @@ from datetime import datetime
 
 import looker_sdk
 
-from utils.consts import load_env
+from general_utils.consts import load_env
 
 load_env()
 print(datetime.now())

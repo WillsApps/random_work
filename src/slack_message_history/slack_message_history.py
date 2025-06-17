@@ -5,12 +5,10 @@ from os import getenv
 
 from slack_sdk import WebClient
 
-from utils.consts import load_env
+from general_utils.consts import load_env
 
 
-def top_10_users_by_dm(
-    slack_token: str, start_iso: datetime, end_iso: datetime, exclude_users: list = None
-):
+def top_10_users_by_dm(slack_token: str, start_iso: datetime, end_iso: datetime, exclude_users: list = None):
     """
     Get the top 10 users based on direct message interaction counts within the given time period.
     Only counts messages *from* other users.
@@ -81,9 +79,7 @@ def top_10_users_by_dm(
     users_info = {user["id"]: user["name"] for user in client.users_list()["members"]}
 
     # Filter only the top 10 users, and ensure we are skipping excluded users
-    return [
-        (users_info.get(user_id, "Unknown"), count) for user_id, count in top_10_users
-    ]
+    return [(users_info.get(user_id, "Unknown"), count) for user_id, count in top_10_users]
 
 
 def main():

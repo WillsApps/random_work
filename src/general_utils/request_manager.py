@@ -12,10 +12,7 @@ class RequestManager:
         self.logger = logger
 
     def ready_to_make_request(self):
-        while (
-            self.last_request + timedelta(microseconds=self.request_throttle)
-            > datetime.now()
-        ):
+        while self.last_request + timedelta(microseconds=self.request_throttle) > datetime.now():
             time.sleep(self.request_throttle)
 
     def make_request(self, url: str):

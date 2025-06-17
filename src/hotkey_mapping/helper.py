@@ -3,7 +3,7 @@ import os
 import evdev
 from evdev import InputDevice
 
-from utils.consts import load_env
+from general_utils.consts import load_env
 
 load_env()
 devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
