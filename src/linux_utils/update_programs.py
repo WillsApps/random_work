@@ -10,7 +10,7 @@ from dataclasses_json import DataClassJsonMixin, config
 from github import Github
 from marshmallow import fields
 
-from src.linux_utils import logger
+from general_utils.log_utils import logger
 
 
 # https://discord.com/api/download/stable?platform=linux&format=deb
