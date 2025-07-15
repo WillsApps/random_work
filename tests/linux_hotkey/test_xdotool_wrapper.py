@@ -35,7 +35,7 @@ def test_get_display_size(mock_run_command: MagicMock) -> None:
 def test_get_active_window(mock_run_command: MagicMock) -> None:
     def side_effect(command_parts: list[str]) -> str:
         return {
-            "getmouselocation": "x:4003 y:266 screen:0 window:216006732",
+            "getactivewindow": "216006732",
             "getwindowname": "the name",
         }[command_parts[1]]
 

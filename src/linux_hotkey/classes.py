@@ -1,7 +1,7 @@
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from enum import IntEnum, StrEnum
-from typing import Any
+from typing import Any, Optional
 
 from evdev import KeyEvent, UInput
 from evdev.ecodes import ecodes as key_str_dict
@@ -39,6 +39,9 @@ class Key:
     def __str__(self):
         return f"Key({self.name=}, {self.code=})"
 
+    def __repr__(self):
+        return f"Key({self.name=}, {self.code=})"
+
     @property
     def led_name(self) -> str:
         return self.name.replace("KEY", "LED")[0:-3]
@@ -54,4 +57,6 @@ class Key:
 class Shortcut:
     source_key: Key
     action: Callable[[UInput], bool]
-    modifiers: Iterable[Key] = ()
+    modifier_keys: Iterable[Key] = ()
+    state_keys: Iterable[Key] = ()
+    window_name: Optional[str] = None

@@ -1,5 +1,11 @@
 # Setup
 
+## Installing
+
+```shell
+sudo apt install xclip
+```
+
 ## Devices
 
 Getting devices:

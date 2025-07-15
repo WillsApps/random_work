@@ -69,10 +69,9 @@ def get_mouse_location() -> Vector2:
 
 
 def get_active_window() -> Window:
-    # x:4003 y:266 screen:0 window:216006732
-    output = run_command(["xdotool", "getmouselocation"])
-    parts = output.split(" ")
-    _id = parts[3].split(":")[1]
+    # 216006732
+    output = run_command(["xdotool", "getactivewindow"])
+    _id = output.strip()
     name = run_command(["xdotool", "getwindowname", _id]).strip()
     return Window(id=_id, name=name)
 
