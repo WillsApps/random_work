@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from enum import IntEnum, StrEnum
 from typing import Any, Optional
 
-from evdev import KeyEvent, UInput
+from evdev import KeyEvent, RelEvent, UInput
 from evdev.ecodes import ecodes as key_str_dict
 from evdev.ecodes import keys as key_int_dict
 
@@ -19,11 +19,18 @@ class KeyEventAction(IntEnum):
     HOLD = 2
 
 
+class MyInputType(UInput):
+    def write_event(self, event):
+        super().write_event(event)
+
+
 class Key:
-    def __init__(self, scan_code_or_name: int | str | KeyEvent):
+    def __init__(self, scan_code_or_name: int | str | KeyEvent | RelEvent):
         try:
             if isinstance(scan_code_or_name, KeyEvent):
                 scan_code_or_name = scan_code_or_name.scancode
+            elif isinstance(scan_code_or_name, RelEvent):
+                scan_code_or_name = scan_code_or_name.event.code
             if isinstance(scan_code_or_name, int):
                 self.code = scan_code_or_name
                 name = key_int_dict[self.code]

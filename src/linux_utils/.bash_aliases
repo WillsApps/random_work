@@ -9,3 +9,4 @@ alias blackme='~/Code/random_work/src/macbook_utils/black_me.sh'
 alias proton="screen -S \"proton-vpn\" -d -m protonvpn-app"
 alias bg3mod="screen -S \"bg3mod\" -d -m ~/Programs/Lampray"
 alias bambu="screen -S \"bambu\" -d -m ~/Programs/Bambu_Studio_ubuntu-24.04_PR-5731.AppImage"
+alias openscad="screen -S \"openscad\" -d -m ~/Programs/OpenSCAD-2021.01-x86_64.AppImage"

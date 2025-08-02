@@ -53,7 +53,7 @@ class Window(DataClassJsonMixin):
 
 
 def run_command(command_parts: Sequence[str], grab_output: bool = True) -> Optional[str]:
-    logger.debug(command_parts)
+    # logger.debug(command_parts)
     if grab_output:
         return subprocess.check_output(command_parts).decode("utf-8")
     subprocess.run(command_parts)

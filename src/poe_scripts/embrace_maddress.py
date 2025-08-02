@@ -11,9 +11,7 @@ def get_duration_mod(faster_mods: Iterable[float]) -> float:
     return 100.0 / (sum(faster_mods) + 100.0)
 
 
-def get_duration(
-    faster_mods: list[float], base_duration: float = BASE_DURATION
-) -> float:
+def get_duration(faster_mods: list[float], base_duration: float = BASE_DURATION) -> float:
     return base_duration * get_duration_mod(faster_mods)
 
 
@@ -54,12 +52,15 @@ def get_highest_stack(faster_mods: list[float]) -> list[int]:
 def main():
     faster_mods = [
         100.0,
-        100.0,
-        50.0,
-        15.0,
-        15.0,
+        95,
         20.0,
         20.0,
+        15.0,
+        15.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
     ]
     for i in range(1, len(faster_mods) + 1):
         print(json.dumps(get_highest_stack(faster_mods[0:i]), indent=2))
@@ -78,9 +79,7 @@ def get_key_at_index(faster_mods: OrderedDict[DictKeyT, Any], index: int) -> Dic
             return key
 
 
-def get_mods_from_index(
-    faster_mods: OrderedDict[float, int], i: int
-) -> OrderedDict[float, int]:
+def get_mods_from_index(faster_mods: OrderedDict[float, int], i: int) -> OrderedDict[float, int]:
     mods = OrderedDict()
     for place, faster in enumerate(faster_mods.keys()):
         if place >= i:
