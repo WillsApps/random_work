@@ -1,151 +1,65 @@
 <!-- TOC -->
-* [Videos](#videos)
 * [Schedule](#schedule)
 * [Visits](#visits)
-  * [Morning Responsibilities](#morning-responsibilities)
-  * [Afternoon Responsibilities](#afternoon-responsibilities)
-  * [Evening Responsibilities](#evening-responsibilities)
-* [Instructions](#instructions)
-  * [Litter Box](#litter-box)
-  * [Sucralfate (Pink powder in big syringe)](#sucralfate-pink-powder-in-big-syringe)
-  * [Pepsid (Quarter pill in small syringe)](#pepsid-quarter-pill-in-small-syringe)
-  * [Chemo](#chemo)
-  * [Steroids](#steroids)
-  * [Wet Food](#wet-food)
-  * [Wet Food in Automated Feeder](#wet-food-in-automated-feeder)
-  * [Dry Food](#dry-food)
+  * [Afternoon/Lunch Responsibilities](#afternoonlunch-responsibilities)
+  * [Evening/Dinner Responsibilities](#eveningdinner-responsibilities)
 * [Veterinarian Info](#veterinarian-info)
-  * [Glendale Vet Clinic](#glendale-vet-clinic)
+  * [Glendale Vet Clinic (Primary Vet)](#glendale-vet-clinic-primary-vet)
     * [(347) 599-1335](#347-599-1335)
     * [Glendale Vet Clinic Hours](#glendale-vet-clinic-hours)
-  * [BluePearl Pet Hospital](#bluepearl-pet-hospital)
+  * [Animal Clinic of Queens (Secondary Vet)](#animal-clinic-of-queens-secondary-vet)
+    * [(347) 599-1335](#347-599-1335-1)
+    * [Animal Clinic of Queens Hours](#animal-clinic-of-queens-hours)
+  * [BluePearl Pet Hospital (After Hours Emergency)](#bluepearl-pet-hospital-after-hours-emergency)
     * [(718) 263-0099](#718-263-0099)
     * [Hospital Hours](#hospital-hours)
 <!-- TOC -->
 
-# Videos
-- Video on cleaning out syringe all the way: https://www.youtube.com/watch?v=djYZpT1Yxe0
-- Video on popping fluid out of the tip: https://www.youtube.com/watch?v=W3qw64SLuTk
-
 # Schedule
 
-| Day      | Time     | Responsibilities             |
-|----------|----------|------------------------------|
-| Thursday | 3:00 pm  | 10g Dry Food                 |
-| Thursday | 10:00 pm | Wet food with Black Powder   |
-| Thursday | 10:00 pm | Wet Food in Automated Feeder |
-| Friday   | 3:00 pm  | 10g Dry Food                 |
-| Friday   | 10:00 pm | Wet food with Black Powder   |
-| Friday   | 10:00 pm | Wet Food in Automated Feeder |
-| Saturday | 3:00 pm  | 10g Dry Food                 |
-| Saturday | 10:00 pm | Wet food with Black Powder   |
-| Saturday | 10:00 pm | Wet Food in Automated Feeder |
-| Sunday   | 3:00 pm  | 10g Dry Food                 |
-| Sunday   | 10:00 pm | Wet food with Black Powder   |
-| Sunday   | 10:00 pm | Wet Food in Automated Feeder |
+| Time     | Responsibilities         |
+|----------|--------------------------|
+| 1:00 pm  | Dry food lunch           |
+| 9:00 pm  | Wet food dinner          |
 
 
 # Visits
 
-## Morning Responsibilities
-- Cole needs his [pepsid](#pepsid-quarter-pill-in-small-syringe)
-- Cole needs his [sucralfate](#sucralfate-pink-powder-in-big-syringe)
-- Feed [wet food](#wet-food)
-- Clean up bowls from their dinner
-- Clear out the [litter boxes](#litter-box)
-- Cuddle / Play with them
-- Refill water bowl in dining room next to the computer desk
+## Afternoon/Lunch Responsibilities
+1. Feed 7g of dry food for lunch & afternoon snack
+   - 3.5g now, 3.5g later 
+   - First half is fed at 1:00pm
+   - Second half is scheduled for roughly 3 hours later (4:00pm) 
+2. Move ice pack from feeder into freezer
+3. Wash bowls from dinner
+4. Refresh water bowl in dining room
+5. Clean out litter box
+   - Plastic bags are on the shelf
+   - Scoop any waste into a bag
+   - Fully mix the litter up, including scraping the bottom of the box to handle pee
+   - Tie off the plastic bag
+   - Throw the waste bag away behind the apartment building
+     - There's a padlock that's usually not locked
+     - You'll see the trash cans back there
 
-## Afternoon Responsibilities
-- Feed [dry food](#dry-food)
-- Cole needs his [sucralfate](#sucralfate-pink-powder-in-big-syringe)
-- Clean up bowls from their breakfast
-- Set up their dinner for about 11pm in the [Automated Feeder](#wet-food-in-automated-feeder)
-- Clear out the [litter boxes](#litter-box)
-- Cuddle / Play with them
-- Refill water bowl in dining room next to the computer desk
-- SUNDAY ONLY
-  - Cole needs his [steroids](#steroids)
-  - Cole needs his [chemo](#chemo)
+## Evening/Dinner Responsibilities
+1. Feed wet food with charcoal for dinner & midnight snack
+   - Add a can, bit of water, and package of charcoal to a bowl
+   - Mix pretty well
+   - Split roughly half into a second bowl
+   - First half fed at 9:00pm
+   - Second half is scheduled for roughly 3 hours later (12:00am) 
+   - I usually reuse the bowls from lunch since they only had dry food in them
+2. Wash bowl from breakfast
+3. Schedule wet food for breakfast
+   - Put the whole can and an ice cube in the bowl
+   - Schedule the feeder for roughly 8 hours after dinner (5:00am)
+4. Make sure to add the ice pack to space below the feeder trays
 
-## Evening Responsibilities
-- Cole needs his [pepsid](#pepsid-quarter-pill-in-small-syringe)
-- Cole needs his [sucralfate](#sucralfate-pink-powder-in-big-syringe)
-- Clear out the [litter boxes](#litter-box)
-- Cuddle / Play with them
-- Refill water bowl in dining room next to the computer desk
-
-
-# Instructions
-## Litter Box
-- Put on gloves
-- Plastic bags are hanging from the shelf
-- Scoop any waste into a bag
-- Fully mix the litter up, including scraping the bottom of the box.
-  - They both pee only in the box on the left and it needs to be mixed up so it'll dry properly
-- Tie off the plastic bag
-- Throw away the gloves and wash your hands
-- The away the plastic bag in the trash bin behind the apartment.
-  - Key for the padlock on the gate is on a magnet above the stool where you can take your shoes off when you come inside
-## Sucralfate (Pink powder in big syringe)
-- Add 1 ml of water
-- Leave about 1 to 1.5 ml of 'air', put your finger on the tip, and shake well
-- Squirt it Cole's mouth
-- Add about 0.25 ml of water to the same syringe then some air and repeat shake
-- Squirt the rest into Cole's mouth
-- Give Cole and Ren each 1 Temptation's treat
-- Wash the syringe out with water as best you can
-- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
-- Filly push the syringe in
-- Leave out to dry
-## Pepsid (Quarter pill in small syringe)
-- Fill syringe with water, about 1ml
-- Wait a few minutes
-- Put your finger on the tip and shake well
-- Squirt into Cole's mouth
-- Give Cole and Ren each 1 Temptation's treat
-- Wash the syringe out with water as best you can
-- Filly push the syringe in
-- Leave out to dry
-## Chemo
-- Put on gloves!
-- It's in the fridge on the top shelf on the left
-- It has blue tape on the bottle and cap
-- Fill a syringe with 0.5 ml
-- Squirt into Cole's mouth
-- Give Cole and Ren each 1 Temptation's treat
-- Wash the syringe out with water as best you can
-- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
-- Filly push the syringe in
-- Leave out to dry
-- Throw away gloves
-- Wash your hands
-## Steroids
-- It's in a bottle on the counter
-- Fill a syringe with 0.5 ml
-- Squirt into Cole's mouth
-- Give Cole and Ren each 1 Temptation's treat
-- Wash the syringe out with water as best you can
-- Cleaning video: https://www.youtube.com/watch?v=djYZpT1Yxe0
-- Filly push the syringe in
-- Leave out to dry
-## Wet Food
-Note: There were going to be 2 types of canned wet food, but they hated the Renal Care one; so we're doing just Select Protein.
-- Split a can of wet food between two metal bowls
-## Wet Food in Automated Feeder
-- Split a can of food between two metal bowls.
-- Add a cube of ice to each bowl on top of the food.
-  - The ice keeps the food colder and moist for when they finally eat.
-- I use the metal bowls because I don't like them eating out of plastic
-## Dry Food
-- Put a metal bowl on top of the scale and zero it out
-- Fill that bowl with 15 to 16g of kibble
-- Repeat with the second bowl.
-  - The bowls don't all weigh the same so you need to zero out for both of them
 
 # Veterinarian Info
 
-## Glendale Vet Clinic
+## Glendale Vet Clinic (Primary Vet)
 
 ### (347) 599-1335
 
@@ -154,15 +68,40 @@ Note: There were going to be 2 types of canned wet food, but they hated the Rena
 - 67-40 Myrtle Ave, Glendale, NY 11385
 - https://maps.app.goo.gl/dhFcMbTxVmBQULqX8
 
-They know both Ren and Cole very well
+They know Ren very well.
 
 ### Glendale Vet Clinic Hours
 
-- Saturday (6th) - 10am to 2pm
-- Sunday (7th) - Closed
-- Monday (8th) - 10am to 6pm
+| Day       | Hours             |
+|-----------|-------------------|
+| Monday    | 10:00am to 6:00pm |
+| Tuesday   | 11:00am to 7:00pm |
+| Wednesday | 11:00am to 5:00pm |
+| Thursday  | 10:00am to 6:00pm |
+| Friday    | 10:00am to 6:00pm |
+| Saturday  | 9:00am to 3:00pm  |
+| Sunday    | Closed            |
 
-## BluePearl Pet Hospital
+
+
+## Animal Clinic of Queens (Secondary Vet)
+
+### (347) 599-1335
+
+- Animal Clinic of Queens
+- (718) 417-6200
+- 65-12 Fresh Pond Rd, Flushing, NY 11385
+- https://maps.app.goo.gl/teX43FPyazVZjQ5E7
+
+### Animal Clinic of Queens Hours
+
+| Days            | Hours             |
+|-----------------|-------------------|
+| Monday-Friday   | 10:00am to 7:30pm |
+| Saturday/Sunday | 9:00am to 3:00pm  |
+
+
+## BluePearl Pet Hospital (After Hours Emergency)
 
 ### (718) 263-0099
 
@@ -170,8 +109,6 @@ They know both Ren and Cole very well
 - (718) 263-0099
 - 107-28 71st Rd. Forest Hills, NY 11375
 - https://maps.app.goo.gl/unNCksy3VMqMC1cAA
-
-Only Ren has been here
 
 ### Hospital Hours
 
