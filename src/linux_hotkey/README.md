@@ -1,3 +1,6 @@
+# TODO:
+- Gracefully handle losing and gaining devices
+
 # Setup
 
 ## Installing
