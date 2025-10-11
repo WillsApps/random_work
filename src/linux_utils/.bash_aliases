@@ -12,3 +12,4 @@ alias bambu="screen -S \"bambu\" -d -m ~/Programs/Bambu_Studio_ubuntu-24.04_PR-5
 alias openscad="screen -S \"openscad\" -d -m ~/Programs/OpenSCAD-2021.01-x86_64.AppImage"
 alias obsidian="screen -S \"obsidian\" -d -m flatpak run md.obsidian.Obsidian"
 alias discord="screen -S \"discord\" -d -m flatpak run com.discordapp.Discord"
+alias gdstash="screen -S \"gdstash\" -d -m ~/Code/random_work/src/linux_utils/open_gd_stash.sh"

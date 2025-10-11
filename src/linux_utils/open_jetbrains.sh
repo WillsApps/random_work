@@ -1,5 +1,4 @@
-#/usr/bin/sh
-
+#!/usr/bin/env bash
 
 PROGRAM=$1
 VERSION=$(ls -l ~/Programs/ | grep $PROGRAM | rev | cut -d' ' -f 1 | rev)
