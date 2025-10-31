@@ -13,3 +13,4 @@ alias openscad="screen -S \"openscad\" -d -m ~/Programs/OpenSCAD-2021.01-x86_64.
 alias obsidian="screen -S \"obsidian\" -d -m flatpak run md.obsidian.Obsidian"
 alias discord="screen -S \"discord\" -d -m flatpak run com.discordapp.Discord"
 alias gdstash="screen -S \"gdstash\" -d -m ~/Code/random_work/src/linux_utils/open_gd_stash.sh"
+alias veracrypt="screen -s \"veracrypt\" -d -m ~/Programs/VeraCrypt-1.26.24-x86_64.AppImage"
