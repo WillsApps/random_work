@@ -3,7 +3,7 @@ alias rider="~/Code/random_work/src/linux_utils/open_jetbrains.sh rider"
 alias rustrover="~/Code/random_work/src/linux_utils/open_jetbrains.sh rustrover"
 alias unity="screen -S \"unityhub\" -d -m unityhub"
 alias exiled="screen -S \"exiled-exchange\" -d -m ~/Programs/Exiled-Exchange-2-0.12.4.AppImage"
-alias poe="screen -S \"exiled-exchange\" -d -m ~/Programs/Awakened-PoE-Trade-3.26.101.AppImage"
+alias poe="screen -S \"exiled-exchange\" -d -m ~/Programs/Awakened-PoE-Trade-3.27.102.AppImage"
 alias signal="screen -S \"signal\" -d -m signal-desktop"
 alias blackme='~/Code/random_work/src/macbook_utils/black_me.sh'
 alias proton="screen -S \"proton-vpn\" -d -m protonvpn-app"
@@ -19,5 +19,5 @@ alias ferdium="screen -s \"ferdium\" -d -m flatpak run org.ferdium.Ferdium"
 alias pob1="screen -s \"pob1\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe1"
 alias pob2="screen -s \"pob2\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe2"
 
-# sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=/home/will/Code/random_work/src/poe_builds/
-# sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=/home/will/Code/random_work/src/poe2_builds/
+# sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe_builds/
+# sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe2_builds/
