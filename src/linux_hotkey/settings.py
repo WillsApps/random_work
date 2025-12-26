@@ -1,8 +1,8 @@
 from evdev import InputDevice
 from evdev import ecodes as e
 
-from linux_hotkey.classes import InputType, Key
-from linux_hotkey.input_device_utils import get_input_device
+from src.linux_hotkey.classes import InputType, Key
+from src.linux_hotkey.input_device_utils import get_input_device
 
 MODIFIER_KEYS = {
     Key(e.KEY_LEFTCTRL): False,

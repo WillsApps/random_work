@@ -1,23 +1,41 @@
-alias pycharm="~/Code/random_work/src/linux_utils/open_jetbrains.sh pycharm"
-alias rider="~/Code/random_work/src/linux_utils/open_jetbrains.sh rider"
-alias rustrover="~/Code/random_work/src/linux_utils/open_jetbrains.sh rustrover"
+# Jetbrains
+alias pycharm="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh pycharm"
+alias rider="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh rider"
+alias rustrover="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh rustrover"
+
+# My Scripts
+alias blackme='$HOME/Code/random_work/src/git_utils/black_me.sh'
+alias gdstash="screen -S \"gdstash\" -d -m $HOME/Code/random_work/src/linux_utils/open_gd_stash.sh"
+
+# Apt Installed
 alias unity="screen -S \"unityhub\" -d -m unityhub"
-alias exiled="screen -S \"exiled-exchange\" -d -m ~/Programs/Exiled-Exchange-2-0.12.4.AppImage"
-alias poe="screen -S \"exiled-exchange\" -d -m ~/Programs/Awakened-PoE-Trade-3.27.102.AppImage"
 alias signal="screen -S \"signal\" -d -m signal-desktop"
-alias blackme='~/Code/random_work/src/macbook_utils/black_me.sh'
 alias proton="screen -S \"proton-vpn\" -d -m protonvpn-app"
-alias bg3mod="screen -S \"bg3mod\" -d -m ~/Programs/Lampray"
-alias bambu="screen -S \"bambu\" -d -m ~/Programs/Bambu_Studio_ubuntu-24.04_PR-5731.AppImage"
-alias openscad="screen -S \"openscad\" -d -m ~/Programs/OpenSCAD-2021.01-x86_64.AppImage"
-alias obsidian="screen -S \"obsidian\" -d -m flatpak run md.obsidian.Obsidian"
+
+# Downloaded From Web
+alias godot="screen -S \"godot\" -d -m $HOME/Programs/Godot/Godot_v4.5.1-stable_mono_linux.x86_64"
+
+# AppImage
+alias bambu="screen -S \"bambu\" -d -m $HOME/Programs/Bambu_Studio_ubuntu-24.04_PR-5731.AppImage"
+alias exiled="screen -S \"exiled-exchange\" -d -m $HOME/Programs/Exiled-Exchange-2-0.12.4.AppImage"
+alias openscad="screen -S \"openscad\" -d -m $HOME/Programs/OpenSCAD-2021.01-x86_64.AppImage"
+alias poe="screen -S \"poe-trade\" -d -m $HOME/Programs/Awakened-PoE-Trade-3.27.103.AppImage"
+alias veracrypt="screen -s \"veracrypt\" -d -m $HOME/Programs/VeraCrypt-1.26.24-x86_64.AppImage"
+alias tor="screen -s \"tor\" -d -m $HOME/Programs/tor-browser/start-tor-browser.desktop"
+
+# Flatpak
 alias discord="screen -S \"discord\" -d -m flatpak run com.discordapp.Discord"
-alias pixi="screen -S \"pixi-editor\" -d -m flatpak run net.pixieditor.PixiEditor"
-alias gdstash="screen -S \"gdstash\" -d -m ~/Code/random_work/src/linux_utils/open_gd_stash.sh"
-alias veracrypt="screen -s \"veracrypt\" -d -m ~/Programs/VeraCrypt-1.26.24-x86_64.AppImage"
 alias ferdium="screen -s \"ferdium\" -d -m flatpak run org.ferdium.Ferdium"
+alias obsidian="screen -S \"obsidian\" -d -m flatpak run md.obsidian.Obsidian"
+alias pixi="screen -S \"pixi-editor\" -d -m flatpak run net.pixieditor.PixiEditor"
 alias pob1="screen -s \"pob1\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe1"
 alias pob2="screen -s \"pob2\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe2"
-alias tor="~/Programs/tor-browser/start-tor-browser.desktop"
+
 # sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe_builds/
 # sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe2_builds/
+
+# Easy edit this file
+alias bash_aliases="vim $HOME/Code/random_work/src/linux_utils/.bash_aliases"
+
+# Python
+alias svenv='source .venv/bin/activate&> /dev/null || source venv/bin/activate'
