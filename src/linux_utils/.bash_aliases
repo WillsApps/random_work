@@ -18,6 +18,6 @@ alias veracrypt="screen -s \"veracrypt\" -d -m ~/Programs/VeraCrypt-1.26.24-x86_
 alias ferdium="screen -s \"ferdium\" -d -m flatpak run org.ferdium.Ferdium"
 alias pob1="screen -s \"pob1\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe1"
 alias pob2="screen -s \"pob2\" -d -m flatpak run community.pathofbuilding.PathOfBuilding poe2"
-
+alias tor="~/Programs/tor-browser/start-tor-browser.desktop"
 # sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe_builds/
 # sudo flatpak override community.pathofbuilding.PathOfBuilding --filesystem=$HOME/Code/random_work/src/poe2_builds/

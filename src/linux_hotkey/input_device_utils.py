@@ -4,7 +4,7 @@ import sys
 
 from evdev import InputDevice
 
-from linux_hotkey.classes import InputType
+from src.linux_hotkey.classes import InputType
 
 INPUT_NAME_MAP = {
     InputType.MOUSE: "Logitech_Gaming_Mouse_G600",
