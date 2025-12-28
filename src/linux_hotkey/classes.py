@@ -1,8 +1,8 @@
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from enum import IntEnum, StrEnum
-from typing import Any, Optional
 
+from beartype.typing import Any, Optional
 from evdev import KeyEvent, RelEvent, UInput
 from evdev.ecodes import ecodes as key_str_dict
 from evdev.ecodes import keys as key_int_dict

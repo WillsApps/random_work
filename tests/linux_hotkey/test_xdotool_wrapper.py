@@ -1,7 +1,7 @@
-from typing import NamedTuple
 from unittest.mock import MagicMock, call, patch
 
 import pytest
+from beartype.typing import NamedTuple
 
 from linux_hotkey.xdotool_wrapper import (
     Vector2,

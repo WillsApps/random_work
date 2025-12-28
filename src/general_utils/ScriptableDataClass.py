@@ -1,6 +1,6 @@
 import abc
-from typing import Mapping
 
+from beartype.typing import Mapping
 from dataclasses_json import DataClassJsonMixin
 
 

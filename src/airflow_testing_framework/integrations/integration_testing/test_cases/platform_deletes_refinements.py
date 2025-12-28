@@ -1,5 +1,4 @@
-from typing import Any
-
+from beartype.typing import Any
 from entities.constants import SILVER_CATALOG
 from integrations.integration_testing.entities.classes import IntTestAction, IntTestCase
 from integrations.integration_testing.entities.enums import DataEnvironment

@@ -11,9 +11,7 @@ from databricks_query_spammer.query_spammer import (
 
 @patch("databricks_query_spammer.query_spammer.datetime")
 def test_get_expected_end_time(mock_datetime: MagicMock):
-    mock_datetime.now.return_value = datetime.fromisoformat(
-        "2025-05-12T00:06:00.000000"
-    )
+    mock_datetime.now.return_value = datetime.fromisoformat("2025-05-12T00:06:00.000000")
     start_time = datetime.fromisoformat("2025-05-12T00:00:00.000000")
     actual_time_left, actual_end_time = get_expected_end_time(start_time, 1, 10)
     expected_time_left = timedelta(minutes=54)
@@ -24,9 +22,7 @@ def test_get_expected_end_time(mock_datetime: MagicMock):
 
 @patch("databricks_query_spammer.query_spammer.datetime")
 def test_get_expected_end_time_0_index(mock_datetime: MagicMock):
-    mock_datetime.now.return_value = datetime.fromisoformat(
-        "2025-05-12T00:06:00.000000"
-    )
+    mock_datetime.now.return_value = datetime.fromisoformat("2025-05-12T00:06:00.000000")
     start_time = datetime.fromisoformat("2025-05-12T00:00:00.000000")
     actual_time_left, actual_end_time = get_expected_end_time(start_time, 0, 10)
     expected_time_left = timedelta(days=41, seconds=57600)

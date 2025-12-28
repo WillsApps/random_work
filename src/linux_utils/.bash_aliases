@@ -22,6 +22,7 @@ alias openscad="screen -S \"openscad\" -d -m $HOME/Programs/OpenSCAD-2021.01-x86
 alias poe="screen -S \"poe-trade\" -d -m $HOME/Programs/Awakened-PoE-Trade-3.27.103.AppImage"
 alias veracrypt="screen -s \"veracrypt\" -d -m $HOME/Programs/VeraCrypt-1.26.24-x86_64.AppImage"
 alias tor="screen -s \"tor\" -d -m $HOME/Programs/tor-browser/start-tor-browser.desktop"
+alias audacity="screen -s \"audacity\" -d -m $HOME/Programs/audacity-linux-3.7.7-x64-22.04.AppImage"
 
 # Flatpak
 alias discord="screen -S \"discord\" -d -m flatpak run com.discordapp.Discord"

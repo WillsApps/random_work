@@ -109,7 +109,7 @@ def handle_rel_event(virtual_device: UInput, rel_event: RelEvent) -> bool:
     return True
 
 
-if __name__ == "__main__":
+def main():
     logger.setLevel(logging.INFO)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)

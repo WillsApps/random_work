@@ -1,5 +1,4 @@
-from typing import Any, Iterable, List
-
+from beartype.typing import Any, Iterable, List
 from prefect import task
 
 

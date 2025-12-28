@@ -1,9 +1,9 @@
 from sqlite3 import connect
-from typing import Any, Dict, List
 
+from beartype.typing import Any, Dict, List
 from flask import Flask, jsonify, request
 
-from src.general_utils.threading import Manager
+from general_utils.threading import Manager
 
 app = Flask(__name__)
 queue = Manager()

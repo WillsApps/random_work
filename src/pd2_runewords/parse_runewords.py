@@ -1,7 +1,7 @@
 import re
 from dataclasses import dataclass
-from typing import Dict, List
 
+from beartype.typing import Dict, List
 from bs4 import BeautifulSoup
 
 RUNES = [
@@ -100,9 +100,7 @@ def process(file_name: str, runewords: Dict[str, RuneWord]):
 
     for i in rw_socket_counts:
         print("-----------------")
-        name = i.parent.parent.parent.previous_sibling.previous_sibling.find_all(
-            "span"
-        )[0].text
+        name = i.parent.parent.parent.previous_sibling.previous_sibling.find_all("span")[0].text
         print(name)
         elements = i.parent.parent.parent.find_all("p")
         num_sockets = elements[0].text.split(" ")[0]

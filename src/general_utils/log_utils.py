@@ -2,7 +2,8 @@ import logging
 import sys
 import time
 from collections.abc import Callable
-from typing import TypeVar
+
+from beartype.typing import TypeVar
 
 
 def get_logger(name: str):

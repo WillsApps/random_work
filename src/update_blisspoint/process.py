@@ -3,9 +3,9 @@ import logging
 import os
 from queue import Empty, Queue
 from threading import Thread
-from typing import List
 
 import psycopg2
+from beartype.typing import List
 from dotenv import load_dotenv
 
 VERSION = "v2"

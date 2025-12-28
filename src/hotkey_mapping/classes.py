@@ -1,5 +1,4 @@
-from typing import Any
-
+from beartype.typing import Any
 from evdev.ecodes import ecodes as key_str_dict
 from evdev.ecodes import keys as key_int_dict
 

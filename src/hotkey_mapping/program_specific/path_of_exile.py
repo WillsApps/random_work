@@ -1,5 +1,6 @@
 import asyncio
-from typing import Any, Callable
+
+from beartype.typing import Any, Callable
 
 from hotkey_mapping.env_utils import Key, get_key_state
 

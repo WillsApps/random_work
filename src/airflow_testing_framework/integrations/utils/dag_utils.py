@@ -1,6 +1,5 @@
-from typing import Any
-
 from airflow.decorators import task
+from beartype.typing import Any
 
 
 @task()

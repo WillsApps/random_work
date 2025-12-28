@@ -1,6 +1,6 @@
 import os
-from typing import List
 
+from beartype.typing import List
 from prefect import Task, task
 
 

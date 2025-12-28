@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List, Sequence, Union
+
+from beartype.typing import Any, Dict, List, Sequence, Union
 
 
 # noqa: E741
@@ -113,14 +114,10 @@ class Shortcut:
     conditions: List[Condition]
 
     def __post_init__(self):
-        self.cleaned_optionals: List[Modifier] = list(
-            set(self.optional_modifiers) - set(self.original_modifiers)
-        )
+        self.cleaned_optionals: List[Modifier] = list(set(self.optional_modifiers) - set(self.original_modifiers))
 
     @staticmethod
-    def get_part_direction(
-        key: KeyType, direction: str, modifiers: Sequence[Modifier] = ()
-    ):
+    def get_part_direction(key: KeyType, direction: str, modifiers: Sequence[Modifier] = ()):
         part = {key.TYPE: key, "modifiers": {}}
         if modifiers:
             if direction == "from":
@@ -132,16 +129,12 @@ class Shortcut:
     def add_manipulators_optional(self, rule: Dict[str, Any]):
         if not self.cleaned_optionals:
             return
-        rule["manipulators"][0]["from"]["modifiers"]["optional"] = (
-            values_from_enum_list(self.cleaned_optionals)
-        )
+        rule["manipulators"][0]["from"]["modifiers"]["optional"] = values_from_enum_list(self.cleaned_optionals)
 
     def add_manipulators_conditional(self, rule: Dict[str, Any]):
         if not self.conditions:
             return
-        rule["manipulators"][0]["conditions"] = [
-            condition.to_dict() for condition in self.conditions
-        ]
+        rule["manipulators"][0]["conditions"] = [condition.to_dict() for condition in self.conditions]
 
 
 @dataclass()
@@ -155,14 +148,8 @@ class KeyChangeShortcut(Shortcut):
             "description": f"{values_from_enum_list(self.original_modifiers)}+{self.original_key} to {values_from_enum_list(self.new_modifiers)}+{self.new_key}",
             "manipulators": [
                 {
-                    "from": Shortcut.get_part_direction(
-                        self.original_key, "from", self.original_modifiers
-                    ),
-                    "to": [
-                        Shortcut.get_part_direction(
-                            self.new_key, "to", self.new_modifiers
-                        )
-                    ],
+                    "from": Shortcut.get_part_direction(self.original_key, "from", self.original_modifiers),
+                    "to": [Shortcut.get_part_direction(self.new_key, "to", self.new_modifiers)],
                     "type": "basic",
                 }
             ],
@@ -184,14 +171,8 @@ class ModifierChangeShortcut(Shortcut):
                 "description": f"{values_from_enum_list(self.original_modifiers)} to {values_from_enum_list(self.new_modifiers)} for {key}",
                 "manipulators": [
                     {
-                        "from": Shortcut.get_part_direction(
-                            key, "from", self.new_modifiers
-                        ),
-                        "to": [
-                            Shortcut.get_part_direction(
-                                key, "to", self.original_modifiers
-                            )
-                        ],
+                        "from": Shortcut.get_part_direction(key, "from", self.new_modifiers),
+                        "to": [Shortcut.get_part_direction(key, "to", self.original_modifiers)],
                         "type": "basic",
                     }
                 ],
@@ -213,9 +194,7 @@ class DisableShortcut(Shortcut):
                 "description": f"Disabling {key}",
                 "manipulators": [
                     {
-                        "from": Shortcut.get_part_direction(
-                            key, "from", self.original_modifiers
-                        ),
+                        "from": Shortcut.get_part_direction(key, "from", self.original_modifiers),
                         "to": [],
                         "type": "basic",
                     }

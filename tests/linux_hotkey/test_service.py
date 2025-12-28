@@ -17,7 +17,17 @@ def test_handle_key_event_remaps_control_p(
     mock_get_active_window.return_value = Window("123", "window_name")
     mock_action = MagicMock()
     monkeypatch.setattr(
-        service, "KEYBOARD_SHORTCUTS", [Shortcut(Key(e.KEY_P), mock_action, (Key(e.KEY_LEFTCTRL),), (), "window_name")]
+        service,
+        "KEYBOARD_SHORTCUTS",
+        [
+            Shortcut(
+                source_key=Key(e.KEY_P),
+                action=mock_action,
+                modifier_keys=(Key(e.KEY_LEFTCTRL),),
+                state_keys=(),
+                window_name="window_name",
+            )
+        ],
     )
     assert (
         handle_key_event(mock_virtual_device, MagicMock(scancode="KEY_LEFTCTRL", __class__=KeyEvent, keystate=0x1))

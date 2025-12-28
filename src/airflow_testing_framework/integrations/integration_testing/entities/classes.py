@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any, Optional
 
+from beartype.typing import Any, Optional
 from dataclasses_json import DataClassJsonMixin
 from entities.constants import REFRESH_VERSION
 from integrations.integration_testing.entities.enums import DataEnvironment

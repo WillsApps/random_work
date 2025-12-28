@@ -1,6 +1,7 @@
 import tkinter
 from random import randint
-from typing import Dict, Tuple
+
+from beartype.typing import Dict, Tuple
 
 SCREEN_SIZE = 800
 GRID_SIZE = 34

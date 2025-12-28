@@ -1,6 +1,6 @@
-from typing import Callable
+from beartype.typing import Callable
 
-from src.class_hierarchy.classes import CLASS_MAP
+from class_hierarchy.classes import CLASS_MAP
 
 
 def print_all(works: list[str], func: Callable):

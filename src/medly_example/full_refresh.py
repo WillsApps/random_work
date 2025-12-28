@@ -1,10 +1,10 @@
 import json
 import os
 from datetime import datetime, timedelta
-from typing import List
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import boto3
+from beartype.typing import List
 from botocore.exceptions import ClientError
 from dotenv import load_dotenv
 from prefect import Flow, context, task, unmapped

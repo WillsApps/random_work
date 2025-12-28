@@ -1,7 +1,7 @@
 import json
-from typing import Dict, List, Union
 
 import sqlparse
+from beartype.typing import Dict, List, Union
 from sqlparse.sql import Identifier, Statement, TokenList
 
 #
@@ -63,11 +63,7 @@ def get_sql(path: str) -> Dict[str, Dict[str, Union[str, Statement]]]:
 def get_identifiers(token_list: TokenList) -> List[str]:
     identifiers = []
     for token in token_list:
-        if (
-            isinstance(token, Identifier)
-            and '"."' in token.value
-            and len(token.tokens) == 3
-        ):
+        if isinstance(token, Identifier) and '"."' in token.value and len(token.tokens) == 3:
             identifiers.append(token.value.replace('"', ""))
         elif isinstance(token, TokenList):
             identifiers.extend(get_identifiers(token))
@@ -81,9 +77,7 @@ def main():
 
     # for t in statement.tokens:
     # identifiers = get_identifiers(statement)
-    with open(
-        "/Users/Shared/web/random_work/src/get_sql_lineage/lineage.json", "w"
-    ) as f:
+    with open("/Users/Shared/web/random_work/src/get_sql_lineage/lineage.json", "w") as f:
         f.write(json.dumps(_all, indent=2))
     print(_all)
 

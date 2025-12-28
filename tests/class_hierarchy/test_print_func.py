@@ -2,9 +2,9 @@ from unittest.mock import MagicMock
 
 from _pytest.monkeypatch import MonkeyPatch
 
-from src.class_hierarchy import print_func
-from src.class_hierarchy.classes import Base
-from src.class_hierarchy.print_func import print_all
+from class_hierarchy import print_func
+from class_hierarchy.classes import Base
+from class_hierarchy.print_func import print_all
 
 
 def test_print_all(monkeypatch: MonkeyPatch) -> None:

@@ -2,7 +2,8 @@ import json
 import random
 from collections import OrderedDict
 from collections.abc import Iterable
-from typing import Any, TypeVar
+
+from beartype.typing import Any, TypeVar
 
 BASE_DURATION = 20.0
 

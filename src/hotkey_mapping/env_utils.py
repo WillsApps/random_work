@@ -1,5 +1,4 @@
-from typing import Callable
-
+from beartype.typing import Callable
 from evdev import ecodes as e
 
 from general_utils.log_utils import logger

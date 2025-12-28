@@ -1,6 +1,6 @@
 import pytest
 
-from src.bg3_linux_mod_manager.mod_manager import (
+from bg3_linux_mod_manager.mod_manager import (
     build_mod_nodes,
     get_mods_list,
     replace_mods_list,

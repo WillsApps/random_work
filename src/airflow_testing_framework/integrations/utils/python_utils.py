@@ -1,5 +1,6 @@
 from collections.abc import Sized
-from typing import TypeVar
+
+from beartype.typing import TypeVar
 
 BatchReturnT = TypeVar("BatchReturnT")
 

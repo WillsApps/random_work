@@ -3,8 +3,8 @@ import time
 from collections.abc import Sequence
 from dataclasses import dataclass
 from math import sqrt
-from typing import Any, Optional
 
+from beartype.typing import Any, Optional
 from dataclasses_json import DataClassJsonMixin
 
 from general_utils.log_utils import logger, timeit

@@ -3,9 +3,9 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 import requests
+from beartype.typing import Optional
 from dataclasses_json import DataClassJsonMixin, config
 from github import Github
 from marshmallow import fields

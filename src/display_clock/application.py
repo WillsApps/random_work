@@ -2,7 +2,8 @@ import tkinter
 from datetime import datetime
 from random import randint
 from time import sleep
-from typing import Tuple
+
+from beartype.typing import Tuple
 
 from general_utils.threading import Manager
 

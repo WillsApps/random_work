@@ -2,10 +2,10 @@ import json
 import zipfile
 from copy import deepcopy
 from pathlib import Path
-from typing import Optional
 
 import rarfile
 import xmltodict
+from beartype.typing import Optional
 
 from bg3_linux_mod_manager.constants import MODS_DIR, PUBLIC_XML, STEAM_XML, TEMP_DIR
 
@@ -60,14 +60,7 @@ def method_name(compressed_ref, info_path):
 
 
 def build_empty_mod_nodes(pak_names: list[str]) -> list[dict]:
-    return build_mod_nodes(
-        {
-            "mods": [
-                {"name": pak_name, "folder": pak_name, "version": "1"}
-                for pak_name in pak_names
-            ]
-        }
-    )
+    return build_mod_nodes({"mods": [{"name": pak_name, "folder": pak_name, "version": "1"} for pak_name in pak_names]})
 
 
 def build_mod_nodes(info_json: dict) -> list[dict]:
@@ -111,12 +104,8 @@ def build_mod_nodes(info_json: dict) -> list[dict]:
                 }
             )
         if global_md5 and "md5" not in mod.keys():
-            mod_node["attribute"].append(
-                {"@id": "MD5", "@type": attribute_type_map["MD5"], "@value": global_md5}
-            )
-        mod_node["attribute"].append(
-            {"@id": "PublishHandle", "@type": "uint64", "@value": "0"}
-        )
+            mod_node["attribute"].append({"@id": "MD5", "@type": attribute_type_map["MD5"], "@value": global_md5})
+        mod_node["attribute"].append({"@id": "PublishHandle", "@type": "uint64", "@value": "0"})
         mod_nodes.append(mod_node)
     return mod_nodes
 
@@ -139,16 +128,12 @@ def replace_mods_list(parsed_xml: dict, mods_list) -> dict:
     new_xml = deepcopy(parsed_xml)
     mods = new_xml["save"]["region"]["node"]["children"]["node"]
     if isinstance(mods, dict):
-        new_xml["save"]["region"]["node"]["children"]["node"]["children"]["node"] = (
-            mods_list
-        )
+        new_xml["save"]["region"]["node"]["children"]["node"]["children"]["node"] = mods_list
     else:
         for _index, mod in enumerate(mods):
             if mod["@id"] == "Mods":
                 break
-        new_xml["save"]["region"]["node"]["children"]["node"][_index]["children"][
-            "node"
-        ] = mods_list
+        new_xml["save"]["region"]["node"]["children"]["node"][_index]["children"]["node"] = mods_list
     return new_xml
 
 
@@ -170,9 +155,7 @@ def add_mod(mod_path: Path):
         mods_list.extend(build_empty_mod_nodes(pak_paths))
         public_xml = replace_mods_list(public_xml, mods_list)
 
-    raw = xmltodict.unparse(
-        public_xml, short_empty_elements=True, pretty=True, indent="    "
-    )
+    raw = xmltodict.unparse(public_xml, short_empty_elements=True, pretty=True, indent="    ")
     PUBLIC_XML.write_text(raw)
     STEAM_XML.write_text(raw)
 
@@ -185,18 +168,10 @@ def main():
     # )
     # add_mod(Path.home() / "Downloads" / "5e Spells-125-2-3-0-0-1746891437.zip")
     # add_mod(Path("~/Downloads/Clear Map No Grid Transparent Shroud-2256-1-2-6-1744782367.zip"))
-    add_mod(
-        Path("~/Downloads/Vessnelle's Hair Collection pack 1-1420-1-0-1708501781.zip")
-    )
-    add_mod(
-        Path("~/Downloads/Vessnelle's Hair Collection pack 2-1420-1-0-1708586487.zip")
-    )
-    add_mod(
-        Path("~/Downloads/Vessnelle's Hair Collection pack 3-1420-1-0-1709577118.zip")
-    )
-    add_mod(
-        Path("~/Downloads/Vessnelle's Hair Collection pack 4-1420-1-0-1711767563.zip")
-    )
+    add_mod(Path("~/Downloads/Vessnelle's Hair Collection pack 1-1420-1-0-1708501781.zip"))
+    add_mod(Path("~/Downloads/Vessnelle's Hair Collection pack 2-1420-1-0-1708586487.zip"))
+    add_mod(Path("~/Downloads/Vessnelle's Hair Collection pack 3-1420-1-0-1709577118.zip"))
+    add_mod(Path("~/Downloads/Vessnelle's Hair Collection pack 4-1420-1-0-1711767563.zip"))
 
 
 if __name__ == "__main__":
