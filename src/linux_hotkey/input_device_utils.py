@@ -4,11 +4,14 @@ import sys
 
 from evdev import InputDevice
 
+from general_utils.log_utils import logger
 from linux_hotkey.classes import InputType
 
 INPUT_NAME_MAP = {
-    InputType.MOUSE: "Logitech_Gaming_Mouse_G600",
-    InputType.KEYBOARD: "Corsair_CORSAIR_K70_RGB_PRO_Mechanical_Gaming_Keyboard",
+    # InputType.MOUSE: "Logitech_Gaming_Mouse_G600",
+    InputType.MOUSE: "Logitech_USB_Receiver",
+    InputType.KEYBOARD: "Logitech_USB_Receiver",
+    # InputType.KEYBOARD: "Corsair_CORSAIR_K70_RGB_PRO_Mechanical_Gaming_Keyboard",
 }
 
 
@@ -16,6 +19,7 @@ def get_devices_by_id() -> list[str]:
     # Get the path to the input devices. These are dynamic, and can change on system reboot.
     devices_by_id = subprocess.run(["ls", "-l", "/dev/input/by-id"], encoding="utf-8", stdout=subprocess.PIPE)
     devices_by_id = devices_by_id.stdout.split("\n")
+    [logger.info(device) for device in devices_by_id]
 
     return devices_by_id
 

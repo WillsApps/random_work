@@ -26,6 +26,14 @@ cat /proc/bus/input/devices | more
     - Bus=0003 Vendor=1b1c Product=1bb3 Version=0100
     - Corsair_CORSAIR_K70_RGB_PRO_Mechanical_Gaming_Keyboard
 
+### Rog Laptop devices:
+- Logitech Wireless Mouse
+  - Bus=0003 Vendor=046d Product=4054 Version=0111
+  - Logitech_USB_Receiver
+- Built-in keyboard 
+  - Bus=0003 Vendor=0b05 Product=1866 Version=0110
+  - Logitech_USB_Receiver
+
 ## udev rules
 
 ```shell
