@@ -58,6 +58,7 @@ class KeyCode(str, Enum):
     CLOSE_BRACKET = "close_bracket"
     HOME = "home"
     END = "end"
+    BACKSLASH = "backslash"
 
 
 class PointingButton(str, Enum):
@@ -279,6 +280,25 @@ SHORTCUTS = [
         new_key=KeyCode.OPEN_BRACKET,
         original_modifiers=[Modifier.LEFT_OPTION, Modifier.LEFT_CONTROL],
         original_key=KeyCode.LEFT_ARROW,
+        optional_modifiers=[],
+        conditions=[
+            Condition(
+                ConditionType.FRONTMOST_APPLICATION_IF,
+                ConditionOptionName.BUNDLE_IDENTIFIERS,
+                [
+                    "com.tinyspeck.slackmacgap",
+                ],
+            )
+        ],
+    ),
+    KeyChangeShortcut(
+        new_modifiers=[
+            Modifier.LEFT_COMMAND,
+            Modifier.LEFT_SHIFT,
+        ],
+        new_key=KeyCode.N9,
+        original_modifiers=[Modifier.LEFT_CONTROL],
+        original_key=KeyCode.BACKSLASH,
         optional_modifiers=[],
         conditions=[
             Condition(

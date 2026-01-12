@@ -66,13 +66,12 @@ def execute_query(
     time_left, expected_end_time = get_expected_end_time(start_time, index, total)
     with connection.cursor() as cursor:
         logger.info(
-            f"Task: ({index}/{total}) time_left: ({pretty_timedelta(time_left)}), expected_end_time:({expected_end_time.isoformat()}):\n{query.strip()}"
+            f"Task: ({index}/{total}) time_left: ({pretty_timedelta(time_left)}), expected_end_time:({expected_end_time.isoformat()})"
         )
         try:
             cursor.execute(query)
         except Exception:
-            logger.exception(f"Failed for task: ({index}/{total})")
-            raise
+            logger.exception(f"Failed for task: ({index}/{total}): {query.strip()}")
 
 
 def get_queries_from_path(file: Path) -> list[str]:
@@ -81,10 +80,10 @@ def get_queries_from_path(file: Path) -> list[str]:
     return commentless.split(";")
 
 
-def main(query_file: Path, worker_class=type[Worker]):
+def main(query_file: Path, worker_class=type[Worker], num_works: int = 10):
     start_time = datetime.now()
     queries = get_queries_from_path(query_file)
-    queue = Manager(num_works=10, worker_class=worker_class)
+    queue = Manager(num_works=num_works, worker_class=worker_class)
     [
         queue.put(
             (
@@ -104,6 +103,11 @@ def main(query_file: Path, worker_class=type[Worker]):
 
 
 if __name__ == "__main__":
-    main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
-    main(Path("/Users/will.burdett/.scratches/scratch_580.sql"), DBXWorker)
+    # main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
+    main(
+        Path("/Users/will.burdett/.scratches/scratch_992_all_bronze_tables.sql"),
+        DBXWorker,
+        num_works=2,
+    )
+    # main(Path("/Users/will.burdett/.scratches/scratch_580.sql"), DBXWorker)
     # main(Path("/Users/will.burdett/.scratches/scratch_666.sql"), DBXWorker)
