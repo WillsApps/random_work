@@ -13,7 +13,7 @@ alias signal="screen -S \"signal\" -d -m signal-desktop"
 alias proton="screen -S \"proton-vpn\" -d -m protonvpn-app"
 
 # Downloaded From Web
-alias godot="screen -S \"godot\" -d -m $HOME/Programs/Godot/Godot_v4.5.1-stable_mono_linux.x86_64"
+alias godot="screen -S \"godot\" -d -m $HOME/Programs/Godot_v4.6-stable_linux.x86_64"
 
 # AppImage
 alias bambu="screen -S \"bambu\" -d -m $HOME/Programs/Bambu_Studio_ubuntu-24.04_PR-5731.AppImage"
