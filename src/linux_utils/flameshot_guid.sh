@@ -1,2 +1,2 @@
 
-flameshot gui
+flameshot gui -c -s
