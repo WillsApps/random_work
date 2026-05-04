@@ -47,6 +47,18 @@ class KeyCode(str, Enum):
     N8 = "8"
     N9 = "9"
     N0 = "0"
+    F1 = "f1"
+    F2 = "f2"
+    F3 = "f3"
+    F4 = "f4"
+    F5 = "f5"
+    F6 = "f6"
+    F7 = "f7"
+    F8 = "f8"
+    F9 = "f9"
+    F10 = "f10"
+    F11 = "f11"
+    F12 = "f12"
     DOWN_ARROW = "down_arrow"
     UP_ARROW = "up_arrow"
     LEFT_ARROW = "left_arrow"
@@ -354,7 +366,7 @@ SHORTCUTS = [
         optional_modifiers=optional_modifiers,
         conditions=[
             Condition(
-                "frontmost_application_unless",
+                ConditionType.FRONTMOST_APPLICATION_UNLESS,
                 ConditionOptionName.BUNDLE_IDENTIFIERS,
                 IDES,
             )

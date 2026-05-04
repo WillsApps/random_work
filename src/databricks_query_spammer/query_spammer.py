@@ -103,11 +103,11 @@ def main(query_file: Path, worker_class=type[Worker], num_works: int = 10):
 
 
 if __name__ == "__main__":
-    # main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
-    main(
-        Path("/Users/will.burdett/.scratches/scratch_992_all_bronze_tables.sql"),
-        DBXWorker,
-        num_works=2,
-    )
+    # main(
+    #     Path("/Users/will.burdett/.scratches/scratch_992_all_bronze_tables.sql"),
+    #     DBXWorker,
+    #     num_works=2,
+    # )
+    main(Path("/Users/will.burdett/.scratches/scratch_579.sql"), DBXWorker)
     # main(Path("/Users/will.burdett/.scratches/scratch_580.sql"), DBXWorker)
     # main(Path("/Users/will.burdett/.scratches/scratch_666.sql"), DBXWorker)
