@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PROGRAM=$1
-VERSION=$(ls -l ~/Programs/ | grep $PROGRAM | rev | cut -d' ' -f 1 | rev)
+VERSION=$(ls -ltr ~/Programs/ | grep $PROGRAM | tail -1 | rev | cut -d' ' -f 1 | rev)
 echo $VERSION
 DIR=$(basename "$(pwd)")
 cd ..

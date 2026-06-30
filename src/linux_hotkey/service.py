@@ -113,6 +113,6 @@ def main():
     logger.setLevel(logging.INFO)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    # asyncio.ensure_future(remap_input(InputType.MOUSE))
+    asyncio.ensure_future(remap_input(InputType.MOUSE))
     asyncio.ensure_future(remap_input(InputType.KEYBOARD))
     loop.run_forever()
