@@ -22,7 +22,8 @@
     },
     {
       "matches": [
-        "https://*.airflow.amazonaws.com/*"
+        "https://*.airflow.amazonaws.com/*",
+        "http://0.0.0.0:8080/*"
       ],
       "css": [
         "airflow.css"
@@ -42,7 +43,8 @@
         "https://meet.google.com/*",
         "https://mail.google.com/*",
         "https://*.sagemaker.aws/*",
-        "https://docs.google.com/presentation/*"
+        "https://docs.google.com/presentation/*",
+        "http://0.0.0.0:8080/*"
       ]
     }
   ]
