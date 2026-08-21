@@ -421,17 +421,16 @@ SHORTCUTS = [
             )
         ],
     ),
-    # ---- Replaced with "AltTab" ----
-    # ModifierChangeShortcut(
-    #     original_modifier=Modifiers.LEFT_COMMAND,
-    #     new_modifier=Modifiers.LEFT_OPTION,
-    #     keys=[
-    #         KeyCodes.GRAVE_ACCENT_AND_TILDE,
-    #         KeyCodes.TAB,
-    #     ],
-    #     optionals=[Modifiers.LEFT_SHIFT],
-    #     conditions=[],
-    # ),
+    # ---- No longer replaced with "AltTab" because the 'pro' push. ----
+    ModifierChangeShortcut(
+        original_modifiers=[Modifier.LEFT_COMMAND],
+        new_modifiers=[Modifier.LEFT_OPTION],
+        keys=[
+            KeyCode.TAB,
+        ],
+        optional_modifiers=[Modifier.LEFT_SHIFT],
+        conditions=[],
+    ),
 ]
 
 root = Path("/Users/will.burdett/.config/karabiner")
