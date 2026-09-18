@@ -2,6 +2,7 @@
 alias pycharm="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh pycharm"
 alias rider="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh rider"
 alias rustrover="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh rustrover"
+alias webstorm="$HOME/Code/random_work/src/linux_utils/open_jetbrains.sh webstorm"
 
 # My Scripts
 alias blackme='$HOME/Code/random_work/src/git_utils/black_me.sh'

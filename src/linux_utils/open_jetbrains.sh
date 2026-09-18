@@ -2,14 +2,14 @@
 
 PROGRAM=$1
 VERSION=$(ls -ltr ~/Programs/ | grep $PROGRAM | tail -1 | rev | cut -d' ' -f 1 | rev)
-echo $VERSION
+ORIGINAL_DIR="$(pwd)"
 DIR=$(basename "$(pwd)")
 cd ..
 PARENT_DIR=$(basename "$(pwd)")
-
+TARGET=""
 if [ "$PARENT_DIR" = "Code" ]; then
   NAME="$PROGRAM-$DIR"
-  TARGET="$(pwd)"
+  TARGET=$ORIGINAL_DIR
 fi
 
 cd "$DIR" || exit
