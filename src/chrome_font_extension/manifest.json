@@ -44,7 +44,9 @@
         "https://mail.google.com/*",
         "https://*.sagemaker.aws/*",
         "https://docs.google.com/presentation/*",
-        "http://0.0.0.0:8080/*"
+        "http://0.0.0.0:8080/*",
+        "http://localhost:*/",
+        "https://help.databricks.com/*"
       ]
     }
   ]
